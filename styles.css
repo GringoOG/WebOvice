@@ -107,10 +107,14 @@ textarea {
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  display: block;
+  height: 34px;
+  width: auto;
+  max-width: min(190px, 46vw);
 }
 
 .brand-mark {
@@ -454,8 +458,8 @@ textarea {
 
 .hero-title {
   margin: 0;
-  font-size: clamp(2rem, 5.2vw, 3.4rem);
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 6.5vw, 4.25rem);
+  line-height: 1.08;
   font-weight: 700;
   letter-spacing: -0.025em;
 }
@@ -473,7 +477,7 @@ textarea {
 }
 
 .hero-subtitle {
-  margin: 1rem 0 0;
+  margin: 1.5rem 0 0;
   max-width: 34rem;
   font-size: clamp(1rem, 2.2vw, 1.05rem);
   color: var(--text-muted);
@@ -781,8 +785,8 @@ textarea {
   --reveal: 0;
   position: absolute;
   z-index: 1;
-  max-width: 280px;
-  padding: 0;
+  max-width: 220px;
+  padding: 1.1rem 1.35rem;
   border: none;
   border-radius: 0;
   background: none;
@@ -795,12 +799,35 @@ textarea {
   will-change: opacity, transform;
 }
 
+#vyzvy .pain-card::before,
+#vyzvy .pain-card::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+#vyzvy .pain-card::before {
+  top: 0;
+  left: 0;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.82);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.82);
+}
+
+#vyzvy .pain-card::after {
+  right: 0;
+  bottom: 0;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.82);
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.82);
+}
+
 #vyzvy .pain-card h3 {
   margin: 0;
-  font-size: clamp(1.5rem, 2.8vw, 1.8rem);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.35;
+  font-size: clamp(1.35rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.25;
   letter-spacing: -0.02em;
 }
 
@@ -830,7 +857,7 @@ textarea {
 
 @media (max-width: 767px) {
   #vyzvy .pain-card {
-    max-width: min(280px, 88vw);
+    max-width: min(220px, 78vw);
     text-align: center;
     transform:
       translateX(-50%)
