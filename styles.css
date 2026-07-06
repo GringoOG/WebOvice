@@ -1119,32 +1119,187 @@ textarea {
   font-weight: 600;
 }
 
-/* ── Tech stack ── */
-.stack-list {
-  display: grid;
-  gap: 0.5rem;
-  max-width: 520px;
+/* ── Tech stack (fan deck) ── */
+.stack-section {
+  --stack-card-w: 220px;
+  --stack-card-h: 300px;
+  overflow: visible;
+}
+
+.stack-container {
+  width: min(var(--max), calc(100% - 2rem));
   margin-inline: auto;
-}
-
-.stack-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1rem 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  font-size: 1.1rem;
-  font-weight: 600;
 }
 
-.stack-num {
+.stack-header {
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+  text-align: center;
+}
+
+.stack-header .section-title {
+  margin: 0;
+}
+
+.stack-deck {
+  position: relative;
+  width: min(100%, 1080px);
+  height: calc(var(--stack-card-h) + 48px);
+  margin-inline: auto;
+  cursor: pointer;
+  outline: none;
+}
+
+.stack-card {
+  --fan-offset: 3.5;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--stack-card-w);
+  height: var(--stack-card-h);
+  margin-left: calc(var(--stack-card-w) / -2);
+  box-sizing: border-box;
+  padding: 1.35rem 1.5rem;
+  border-radius: 16px;
+  background: rgba(14, 16, 28, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 40px rgba(0, 0, 0, 0.35);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: calc(20 - var(--card-index));
+  transform:
+    translateX(calc(var(--card-index) * 4px))
+    rotate(calc(var(--card-index) * -1.8deg))
+    translateY(calc(var(--card-index) * -5px));
+  transform-origin: bottom center;
+  transition:
+    transform 0.55s cubic-bezier(0.25, 1, 0.45, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-number {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--text-soft);
-  min-width: 2.5rem;
+  color: var(--accent-3);
+  opacity: 0.85;
+}
+
+.card-logo {
+  align-self: center;
+  width: 58px;
+  height: 58px;
+  color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card-name {
+  align-self: flex-end;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: right;
+  line-height: 1.3;
+}
+
+.stack-deck:hover .stack-card,
+.stack-deck:focus-within .stack-card {
+  transform:
+    translateX(calc((var(--card-index) - var(--fan-offset)) * 128px))
+    rotate(calc((var(--card-index) - var(--fan-offset)) * 6deg))
+    translateY(calc((var(--card-index) - var(--fan-offset)) * (var(--card-index) - var(--fan-offset)) * 1.8px));
+  border-color: color-mix(in srgb, var(--accent) 28%, rgba(255, 255, 255, 0.1));
+}
+
+.stack-card:hover,
+.stack-card:focus-visible {
+  border-color: var(--accent) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 32px rgba(155, 111, 240, 0.28),
+    0 20px 48px rgba(0, 0, 0, 0.4) !important;
+  transform:
+    translateX(calc((var(--card-index) - var(--fan-offset)) * 128px))
+    rotate(calc((var(--card-index) - var(--fan-offset)) * 6deg))
+    translateY(-22px) !important;
+  z-index: 99 !important;
+}
+
+.stack-card:hover .card-logo,
+.stack-card:focus-visible .card-logo {
+  transform: scale(1.08);
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .stack-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    height: auto;
+    cursor: default;
+  }
+
+  .stack-card {
+    position: relative;
+    left: auto;
+    width: 100%;
+    height: 260px;
+    margin-left: 0;
+    transform: none !important;
+    z-index: 1 !important;
+  }
+
+  .stack-deck:hover .stack-card,
+  .stack-deck:focus-within .stack-card,
+  .stack-card:hover,
+  .stack-card:focus-visible {
+    transform: none !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 16px 40px rgba(0, 0, 0, 0.35) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .stack-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    height: auto;
+  }
+
+  .stack-card {
+    position: relative;
+    left: auto;
+    width: 100%;
+    height: 260px;
+    margin-left: 0;
+    transform: none !important;
+  }
 }
 
 /* ── Testimonials ── */

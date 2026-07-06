@@ -259,3 +259,92 @@ if (vyzvySection) {
   window.addEventListener("resize", onVyzvyScroll, { passive: true });
   updateVyzvyCards();
 }
+
+/* ── Tech stack deck — auto-rotace balíčku ── */
+const techStackDeck = document.getElementById("techStackDeck");
+
+if (techStackDeck) {
+  const stackCards = Array.from(techStackDeck.querySelectorAll(".stack-card"));
+  const stackCardCount = stackCards.length;
+  const stackReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let stackRotationId = null;
+  let stackDeckHovered = false;
+
+  const resetStackOrder = () => {
+    stackCards.forEach((card, index) => {
+      card.style.setProperty("--card-index", String(index));
+      card.style.zIndex = String(20 - index);
+    });
+  };
+
+  const rotateStackOnce = () => {
+    if (stackDeckHovered || stackCardCount < 2) {
+      return;
+    }
+
+    stackCards.forEach((card) => {
+      const currentIndex = Number(card.style.getPropertyValue("--card-index") || 0);
+      const nextIndex = (currentIndex + 1) % stackCardCount;
+      card.style.setProperty("--card-index", String(nextIndex));
+      card.style.zIndex = String(20 - nextIndex);
+    });
+  };
+
+  const startStackRotation = () => {
+    if (stackReducedMotion || window.innerWidth <= 1024 || stackRotationId) {
+      return;
+    }
+
+    stackRotationId = window.setInterval(rotateStackOnce, 3200);
+  };
+
+  const stopStackRotation = () => {
+    if (stackRotationId) {
+      window.clearInterval(stackRotationId);
+      stackRotationId = null;
+    }
+  };
+
+  resetStackOrder();
+  startStackRotation();
+
+  techStackDeck.addEventListener("mouseenter", () => {
+    stackDeckHovered = true;
+    stopStackRotation();
+    resetStackOrder();
+  });
+
+  techStackDeck.addEventListener("mouseleave", () => {
+    stackDeckHovered = false;
+    resetStackOrder();
+    startStackRotation();
+  });
+
+  techStackDeck.addEventListener("focusin", () => {
+    stackDeckHovered = true;
+    stopStackRotation();
+    resetStackOrder();
+  });
+
+  techStackDeck.addEventListener("focusout", (event) => {
+    if (techStackDeck.contains(event.relatedTarget)) {
+      return;
+    }
+
+    stackDeckHovered = false;
+    resetStackOrder();
+    startStackRotation();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth <= 1024) {
+      stopStackRotation();
+      resetStackOrder();
+      return;
+    }
+
+    if (!stackDeckHovered) {
+      startStackRotation();
+    }
+  });
+}
