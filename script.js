@@ -26,6 +26,84 @@ document.querySelectorAll(".accordion-item").forEach((item) => {
 
 document.getElementById("year").textContent = String(new Date().getFullYear());
 
+/* ── Hero badge — rotující citáty ── */
+const heroQuoteEl = document.getElementById("hero-quote");
+const heroQuoteTextEl = heroQuoteEl?.querySelector(".hero-quote-text");
+const heroQuoteAuthorEl = heroQuoteEl?.querySelector(".hero-quote-author");
+
+const heroQuotes = [
+  {
+    text: "90 % úspora času na přepisu měřidel.",
+    author: "Prokat Invest — projekt auto_mat",
+  },
+  {
+    text: "Web online za pár dnů, správa obsahu bez kódu.",
+    author: "Klient — firemní web ve Frameru",
+  },
+  {
+    text: "0 % halucinací AI — data rovnou v Excelu.",
+    author: "Prokat Invest — AI automatizace",
+  },
+  {
+    text: "Měsíční retainer = web běží bez starostí.",
+    author: "Klient — správa & údržba",
+  },
+];
+
+if (heroQuoteEl && heroQuoteTextEl && heroQuoteAuthorEl && heroQuotes.length) {
+  let heroQuoteIndex = 0;
+  const quoteIntervalMs = 4500;
+  const quoteFadeMs = 450;
+  let quoteTimerId = null;
+
+  const setHeroQuoteContent = (index) => {
+    const quote = heroQuotes[index];
+    heroQuoteTextEl.textContent = `„${quote.text}"`;
+    heroQuoteAuthorEl.textContent = quote.author;
+  };
+
+  const cycleHeroQuote = () => {
+    heroQuoteEl.classList.add("is-leaving");
+
+    window.setTimeout(() => {
+      heroQuoteIndex = (heroQuoteIndex + 1) % heroQuotes.length;
+      setHeroQuoteContent(heroQuoteIndex);
+      heroQuoteEl.classList.remove("is-leaving");
+      heroQuoteEl.classList.add("is-entering");
+
+      requestAnimationFrame(() => {
+        heroQuoteEl.classList.remove("is-entering");
+      });
+    }, quoteFadeMs);
+  };
+
+  setHeroQuoteContent(heroQuoteIndex);
+
+  const startHeroQuoteRotation = () => {
+    if (quoteTimerId) {
+      window.clearInterval(quoteTimerId);
+    }
+    quoteTimerId = window.setInterval(cycleHeroQuote, quoteIntervalMs);
+  };
+
+  const stopHeroQuoteRotation = () => {
+    if (quoteTimerId) {
+      window.clearInterval(quoteTimerId);
+      quoteTimerId = null;
+    }
+  };
+
+  startHeroQuoteRotation();
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopHeroQuoteRotation();
+    } else {
+      startHeroQuoteRotation();
+    }
+  });
+}
+
 /* ── Kontaktní formulář ── */
 const contactForm = document.getElementById("contact-form");
 
