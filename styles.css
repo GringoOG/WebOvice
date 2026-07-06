@@ -17,23 +17,19 @@
     #d97fce 72%,
     #f4cf9e 100%
   );
-  --gradient-text-primary: linear-gradient(180deg, #ffffff 0%, #d8d8e4 42%, #9898a8 100%);
+  --gradient-text-primary: linear-gradient(180deg, #ffffff 0%, #c8cad6 55%, #9496a8 100%);
   --gradient-text-accent: linear-gradient(
     90deg,
     #f5f5f7 0%,
-    #f5f5f7 5%,
-    #ddd6fe 12%,
-    #c4b5fd 24%,
-    #a78bfa 36%,
-    #9b6ff0 50%,
-    #b57edc 64%,
-    #d97fce 78%,
-    #eebf98 92%,
+    #ebe8fc 6%,
+    #d4c8fd 16%,
+    #b8a0f0 30%,
+    #9b6ff0 46%,
+    #b57edc 62%,
+    #d97fce 76%,
+    #eebf98 90%,
     #f4cf9e 100%
   );
-  --gradient-text-accent-cool: linear-gradient(90deg, #ddd6fe 0%, #a78bfa 100%);
-  --gradient-text-accent-mid: linear-gradient(90deg, #9b6ff0 0%, #c084fc 100%);
-  --gradient-text-accent-warm: linear-gradient(90deg, #c084fc 0%, #d97fce 45%, #f4cf9e 100%);
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
   --radius: 18px;
   --nav-height: 72px;
@@ -359,60 +355,34 @@ textarea {
   display: block;
 }
 
-.text-gradient {
-  -webkit-background-clip: text;
+.text-gradient-primary,
+.text-gradient-accent {
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-primary {
-  background: var(--gradient-text-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  background-image: var(--gradient-text-primary);
 }
 
 .text-gradient-accent {
-  background: var(--gradient-text-accent);
-  -webkit-background-clip: text;
+  background-image: var(--gradient-text-accent);
+}
+
+.text-gradient {
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-}
-
-.hero-title-accent .hero-word-white {
-  color: #f5f5f7;
-  -webkit-text-fill-color: #f5f5f7;
-}
-
-.hero-title-accent .hero-word-cool,
-.hero-title-accent .hero-word-mid,
-.hero-title-accent .hero-word-warm {
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-title-accent .hero-word-cool {
-  background: var(--gradient-text-accent-cool);
-}
-
-.hero-title-accent .hero-word-mid {
-  background: var(--gradient-text-accent-mid);
-}
-
-.hero-title-accent .hero-word-warm {
-  background: var(--gradient-text-accent-warm);
 }
 
 .gradient {
   display: inline;
-  background: var(--gradient-text-accent);
-  -webkit-background-clip: text;
+  background-image: var(--gradient-text-accent);
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
