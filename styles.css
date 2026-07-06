@@ -769,6 +769,34 @@ textarea {
   grid-column: span 2;
 }
 
+.service-card-full {
+  grid-column: span 3;
+  flex-direction: row;
+}
+
+.service-card-full .service-visual {
+  flex: 0 0 min(380px, 42%);
+  aspect-ratio: auto;
+  min-height: 200px;
+}
+
+.service-card-full .service-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.75rem 2rem;
+}
+
+.service-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-3);
+}
+
 .service-card-accent {
   border-color: color-mix(in srgb, var(--accent) 35%, rgba(255, 255, 255, 0.08));
   background: linear-gradient(
@@ -839,6 +867,22 @@ textarea {
 
   .service-card-wide {
     grid-column: span 1;
+  }
+
+  .service-card-full {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+
+  .service-card-full .service-visual {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .service-card-full .service-content {
+    padding: 1.35rem 1.5rem 1.5rem;
   }
 
   .service-card-wide .service-visual {
