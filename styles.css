@@ -389,11 +389,11 @@ textarea {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 135%;
-  height: 135%;
+  width: 118%;
+  height: 118%;
   max-width: none;
   object-fit: cover;
-  object-position: 48% 44%;
+  object-position: 50% 50%;
   display: block;
   transform: translate(-50%, -50%);
   background: #06060c;
