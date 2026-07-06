@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06060c" />
+    <meta
+      name="description"
+      content="WebOvice — weby, aplikace, správa a AI automatizace na míru. Stavím digitální řešení a postarám se, aby fungovala."
+    />
+    <title>WebOvice — weby, appky &amp; AI automatizace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#domu">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </span>
+          <span>WebOvice</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Hlavní menu">
+          <a href="#sluzby">Služby</a>
+          <a href="#pripadove-studie">Případové studie</a>
+          <a href="#cenik">Ceník</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Otevřít menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+          <a class="btn btn-nav" href="#kontakt">Spolupracujme</a>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobilní menu">
+        <a href="#sluzby">Služby</a>
+        <a href="#pripadove-studie">Případové studie</a>
+        <a href="#cenik">Ceník</a>
+        <a href="#omne">O mně</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="domu">
+        <div class="hero-beam" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1 class="hero-title">
+              Proměním váš byznys<br />
+              v <span class="gradient">digitálně poháněný stroj.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Partner zaměřený na výsledky — pomůžu vám <strong>automatizovat procesy</strong>,
+              <strong>optimalizovat provoz</strong> a rychleji škálovat díky <strong>webům, appkám a AI řešením</strong>.
+            </p>
+            <div class="hero-cta-row">
+              <a class="btn btn-hero" href="#kontakt">
+                <img
+                  src="https://framerusercontent.com/images/Myjed7Vl5edKuNWsENvmL8AnLCQ.jpg?width=80&height=80"
+                  alt=""
+                  width="32"
+                  height="32"
+                  aria-hidden="true"
+                />
+                Nezávazná konzultace zdarma
+              </a>
+              <blockquote class="hero-quote">
+                <p>„90&nbsp;% úspora času na přepisu měřidel.“</p>
+                <footer>Prokat Invest — projekt auto_mat</footer>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="torus-scene">
+              <video
+                class="hero-3d-video"
+                src="assets/hero-3d-loop.webm"
+                autoplay
+                loop
+                muted
+                playsinline
+              ></video>
+              <div class="torus-glow"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IS THIS YOU — scroll-driven -->
+      <section class="section vyzvy-scroll-track" id="vyzvy">
+        <div class="sticky-wrapper">
+          <h2 class="vyzvy-title section-title">
+            Is This <span class="gradient">You?</span>
+          </h2>
+
+          <article class="pain-card card-1">
+            <h3>Potřebujete web nebo appku, ale nevíte kde začít</h3>
+          </article>
+
+          <article class="pain-card card-2">
+            <h3>Růst bez automatizace je pomalý a drahý</h3>
+          </article>
+
+          <article class="pain-card card-3">
+            <h3>Manuální procesy snižují zisky</h3>
+          </article>
+
+          <article class="pain-card card-4">
+            <h3>Opakující se úkoly brzdí váš tým</h3>
+          </article>
+        </div>
+      </section>
+
+      <!-- SERVICES / PILLARS -->
+      <section class="section section-dark" id="sluzby">
+        <div class="container">
+          <div class="section-head">
+            <p class="section-kicker">[ NAŠE ŘEŠENÍ ]</p>
+            <h2 class="section-title">Digitální služby na míru</h2>
+            <p class="section-text">
+              Od návrhu webu po AI automatizaci — vše pod jednou střechou, bez zbytečného předávání mezi dodavateli.
+            </p>
+          </div>
+
+          <div class="services-grid services-bento">
+            <article class="service-card service-card-wide">
+              <div class="service-visual">
+                <img src="assets/solution-1.png" alt="" loading="lazy" />
+              </div>
+              <div class="service-content">
+                <h3>Web Design &amp; Development</h3>
+                <p>Moderní weby ve Frameru i WordPressu (Divi). Rychlé, responzivní, s čistým kódem.</p>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-visual">
+                <img src="assets/solution-2.png" alt="" loading="lazy" />
+              </div>
+              <div class="service-content">
+                <h3>Vývoj aplikací</h3>
+                <p>Interní nástroje, skripty a menší aplikace v Pythonu napojené na databáze a firemní systémy.</p>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-visual">
+                <img src="assets/solution-3.png" alt="" loading="lazy" />
+              </div>
+              <div class="service-content">
+                <h3>Správa &amp; údržba</h3>
+                <p>Provoz, aktualizace, monitoring a drobné úpravy — web i appka běží bez starostí.</p>
+              </div>
+            </article>
+
+            <article class="service-card service-card-accent">
+              <div class="service-visual">
+                <img src="assets/solution-4.png" alt="" loading="lazy" />
+              </div>
+              <div class="service-content">
+                <h3>AI Automatizace</h3>
+                <p>Vision/OCR, Anthropic &amp; OpenAI API, LLM prompt engineering a optimalizace firemních procesů.</p>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-visual">
+                <img src="assets/solution-5.png" alt="" loading="lazy" />
+              </div>
+              <div class="service-content">
+                <h3>Testování</h3>
+                <p>QA a ověření funkčnosti před nasazením — ruční i automatizované testy.</p>
+              </div>
+            </article>
+
+            <article class="service-card service-card-bonus">
+              <div class="service-visual">
+                <img src="assets/solution-6.png" alt="" loading="lazy" />
+              </div>
+              <div class="service-content">
+                <p class="service-bonus">Bonus</p>
+                <h3>Energetika &amp; HVAC</h3>
+                <p>Kotelny, tepelná čerpadla, FVE a chlazení — unikátní technický diferenciátor.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASE STUDIES -->
+      <section class="section" id="pripadove-studie">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">Ukázky z praxe</h2>
+            <p class="section-text">Reálné projekty s měřitelnými výsledky.</p>
+          </div>
+
+          <div class="works-grid">
+            <article class="work-card">
+              <span class="work-index">[ 0 1 ]</span>
+              <h3>auto_mat — automatizace čtení měřidel</h3>
+              <p>
+                Hybridní „History-First" systém pro Prokat Invest —
+                <strong>90&nbsp;% úspora času</strong>, <strong>0&nbsp;% halucinací AI</strong>
+                a zápis přímo do master Excelu.
+              </p>
+              <div class="work-tags">
+                <span>Python</span>
+                <span>AI / OCR</span>
+                <span>Enterprise</span>
+              </div>
+            </article>
+
+            <article class="work-card">
+              <span class="work-index">[ 0 2 ]</span>
+              <h3>Firemní web ve Frameru</h3>
+              <p>
+                Responzivní prezentační web s moderním designem —
+                <strong>rychlé nasazení</strong> a snadná správa obsahu bez zásahu do kódu.
+              </p>
+              <div class="work-tags">
+                <span>Framer</span>
+                <span>Web Design</span>
+                <span>SME</span>
+              </div>
+            </article>
+
+            <article class="work-card">
+              <span class="work-index">[ 0 3 ]</span>
+              <h3>WordPress + automatizace formulářů</h3>
+              <p>
+                Web na Divi s napojením na firemní procesy —
+                <strong>eliminace ručního přepisování</strong> dat z kontaktních formulářů.
+              </p>
+              <div class="work-tags">
+                <span>WordPress</span>
+                <span>Automatizace</span>
+                <span>B2B</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRUST -->
+      <section class="section section-dark">
+        <div class="container">
+          <div class="section-head center">
+            <h2 class="section-title">Proč spolupracovat se mnou</h2>
+          </div>
+          <div class="trust-grid">
+            <article class="trust-card">
+              <p class="trust-kicker">[ OVĚŘENÉ VÝSLEDKY ]</p>
+              <h3>Měřitelné úspory času i nákladů</h3>
+            </article>
+            <article class="trust-card">
+              <p class="trust-kicker">[ BEZPROBLÉMOVÁ INTEGRACE ]</p>
+              <h3>Funguje s vašimi stávajícími nástroji</h3>
+            </article>
+            <article class="trust-card">
+              <p class="trust-kicker">[ NA MÍRU ]</p>
+              <h3>Řešení šitá na vaše procesy</h3>
+            </article>
+            <article class="trust-card">
+              <p class="trust-kicker">[ PRŮBĚŽNÁ PODPORA ]</p>
+              <h3>Starám se, aby vše běželo hladce</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH STACK -->
+      <section class="section" id="technologie">
+        <div class="container">
+          <div class="section-head center">
+            <h2 class="section-title">Tech stack</h2>
+          </div>
+          <div class="stack-list">
+            <div class="stack-item"><span class="stack-num">[06]</span><span>Framer</span></div>
+            <div class="stack-item"><span class="stack-num">[05]</span><span>Python</span></div>
+            <div class="stack-item"><span class="stack-num">[04]</span><span>WordPress / Divi</span></div>
+            <div class="stack-item"><span class="stack-num">[03]</span><span>SQL</span></div>
+            <div class="stack-item"><span class="stack-num">[02]</span><span>Anthropic API</span></div>
+            <div class="stack-item"><span class="stack-num">[01]</span><span>OpenAI API</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="section section-dark">
+        <div class="container">
+          <div class="section-head center">
+            <p class="section-kicker">[ REFERENCE ]</p>
+            <h2 class="section-title">Co říkají klienti</h2>
+          </div>
+          <div class="testimonials-grid">
+            <blockquote class="testimonial-card">
+              <p>
+                „Automatizace čtení měřidel nám ušetřila <strong>desítky hodin týdně</strong>.
+                Žádné chyby z ručního přepisování, data rovnou v Excelu."
+              </p>
+              <footer>Prokat Invest — projekt auto_mat</footer>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <p>
+                „Web ve Frameru jsme měli online za pár dnů. Design vypadá profesionálně
+                a <strong>správa obsahu je jednoduchá</strong>."
+              </p>
+              <footer>Klient — firemní web</footer>
+            </blockquote>
+            <blockquote class="testimonial-card">
+              <p>
+                „Měsíční retainer na správu webu znamená, že se nemusíme starat o aktualizace
+                ani drobné opravy — <strong>vše řeší WebOvice</strong>."
+              </p>
+              <footer>Klient — správa &amp; údržba</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section class="section" id="cenik">
+        <div class="container">
+          <div class="section-head center">
+            <h2 class="section-title">Ceník</h2>
+            <p class="section-text">Orientační ceny — přesnou nabídku dostanete po krátkém probrání rozsahu.</p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="price-card">
+              <h3>Jednorázový projekt</h3>
+              <p class="price-for">Ideální pro web, appku nebo automatizaci na klíč</p>
+              <p class="price-value">od 15 000 Kč</p>
+              <ul class="price-list">
+                <li>Návrh a realizace dle zadání</li>
+                <li>Testování před spuštěním</li>
+                <li>Zdrojové soubory a dokumentace</li>
+                <li>Krátká podpora po spuštění</li>
+              </ul>
+              <a class="btn btn-outline" href="#kontakt">Chci nabídku</a>
+            </article>
+
+            <article class="price-card price-card-popular">
+              <p class="price-badge">Nejoblíbenější</p>
+              <h3>Správa &amp; rozvoj</h3>
+              <p class="price-for">Pravidelná péče o váš web nebo appku</p>
+              <p class="price-value">od 3 900 Kč <span>/ měsíc</span></p>
+              <ul class="price-list">
+                <li>Aktualizace a monitoring</li>
+                <li>Drobné úpravy a opravy</li>
+                <li>Prioritní podpora</li>
+                <li>Měsíční přehled o stavu</li>
+              </ul>
+              <a class="btn btn-hero btn-hero-dark" href="#kontakt">Chci nabídku</a>
+            </article>
+
+            <article class="price-card">
+              <h3>AI Automatizace na míru</h3>
+              <p class="price-for">Pro firmy s komplexními procesy</p>
+              <p class="price-value">individuální nabídka</p>
+              <ul class="price-list">
+                <li>Analýza procesu a odhad úspory</li>
+                <li>Návrh a nasazení automatizace</li>
+                <li>Zaškolení týmu</li>
+                <li>Průběžná optimalizace</li>
+              </ul>
+              <a class="btn btn-outline" href="#kontakt">Kontaktovat</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section section-dark" id="omne">
+        <div class="container about-grid">
+          <div class="about-photo">
+            <img
+              src="https://framerusercontent.com/images/Myjed7Vl5edKuNWsENvmL8AnLCQ.jpg?width=717&height=742"
+              alt="Mirek — WebOvice"
+              width="717"
+              height="742"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <p class="section-kicker">[ O MNĚ ]</p>
+            <h2 class="section-title">Za WebOvice stojí Mirek</h2>
+            <p class="about-text">
+              Absolvent elektro-průmyslovky, který zamířil do energetiky — realizace kotelen, tepelných čerpadel a FVE.
+              Cestou jsem si zamiloval i druhou stranu mince: <strong>kód</strong>. Dnes stavím weby, appky a AI
+              automatizace a technické řemeslo spojuju se softwarem tam, kde to dává smysl.
+            </p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:weboviceDoUlice@gmail.com">weboviceDoUlice@gmail.com</a></li>
+              <li><strong>Telefon:</strong> doplňte své číslo</li>
+            </ul>
+            <a class="btn btn-hero btn-hero-dark" href="#kontakt" style="margin-top: 1.5rem">Domluvit konzultaci</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-head center">
+            <h2 class="section-title">Časté dotazy</h2>
+          </div>
+
+          <div class="accordion">
+            <article class="accordion-item open">
+              <button class="accordion-trigger" type="button" aria-expanded="true">
+                <h3>Jaké služby nabízíte?</h3>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content">
+                    Web design, vývoj aplikací, správu a údržbu, AI automatizaci a testování. Na přání i
+                    energetické a HVAC realizace.
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <h3>Jak dlouho trvá projekt?</h3>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content">
+                    Záleží na rozsahu — jednoduchý web nebo automatizaci zvládneme během pár dnů až týdnů,
+                    větší projekty po domluvě.
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <h3>Nabízíte i pravidelnou správu webu?</h3>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content">
+                    Ano — formou měsíčního retaineru se starám o aktualizace, monitoring a drobné úpravy.
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <h3>Umíte AI automatizaci na míru mé firmě?</h3>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content">
+                    Ano — viz projekt auto_mat výše. Analyzuji váš proces, navrhnu automatizaci a nasadím ji s minimem chyb.
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <h3>Pracujete i na dálku?</h3>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="accordion-panel">
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content">
+                    Ano — většinu projektů řeším remote, odkudkoli. Osobní setkání po domluvě.
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section section-cta" id="kontakt">
+        <div class="container">
+          <div class="section-head center">
+            <p class="section-kicker">[ KONTAKT ]</p>
+            <h2 class="section-title">Připraveni na digitální změnu?</h2>
+            <p class="section-text">Napište mi, co potřebujete — ozvu se s návrhem řešení.</p>
+          </div>
+
+          <div class="form-card">
+            <form id="contact-form" class="form-grid" novalidate>
+              <div>
+                <label for="name">Jméno a příjmení</label>
+                <input id="name" name="Jmeno" type="text" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="Email" type="email" autocomplete="email" required />
+              </div>
+              <div>
+                <label for="service">Co potřebujete?</label>
+                <select id="service" name="Sluzba" required>
+                  <option value="">Vyberte…</option>
+                  <option>Web design</option>
+                  <option>Vývoj aplikace</option>
+                  <option>Správa &amp; údržba</option>
+                  <option>AI automatizace</option>
+                  <option>Testování</option>
+                  <option>Energetika / HVAC</option>
+                  <option>Jiné</option>
+                </select>
+              </div>
+              <div>
+                <label for="note">Poznámka (volitelná)</label>
+                <textarea id="note" name="Poznamka" placeholder="Stručně popište projekt…"></textarea>
+              </div>
+              <button class="btn btn-hero btn-hero-dark" type="submit">Odeslat poptávku</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <a class="brand brand-footer" href="#domu">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </span>
+          <span>WebOvice</span>
+        </a>
+        <nav class="footer-links" aria-label="Patička">
+          <a href="#sluzby">Služby</a>
+          <a href="#pripadove-studie">Případové studie</a>
+          <a href="#cenik">Ceník</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+        <p class="footer-copy">© <span id="year"></span> WebOvice · Created by Miroslav Pěček</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
