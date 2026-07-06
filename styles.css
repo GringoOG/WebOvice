@@ -785,7 +785,8 @@ textarea {
   --reveal: 0;
   position: absolute;
   z-index: 1;
-  max-width: 220px;
+  width: max-content;
+  max-width: 280px;
   padding: 1.1rem 1.35rem;
   border: none;
   border-radius: 0;
@@ -831,6 +832,11 @@ textarea {
   letter-spacing: -0.02em;
 }
 
+#vyzvy .pain-card-line {
+  display: block;
+  white-space: nowrap;
+}
+
 #vyzvy .card-1 {
   top: 18%;
   left: 12%;
@@ -857,7 +863,7 @@ textarea {
 
 @media (max-width: 767px) {
   #vyzvy .pain-card {
-    max-width: min(220px, 78vw);
+    max-width: min(280px, 86vw);
     text-align: center;
     transform:
       translateX(-50%)
