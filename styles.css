@@ -322,7 +322,7 @@ textarea {
     #c4b5fd 300deg,
     #9b6ff0 360deg
   );
-  animation: orbit-spin 4.5s linear infinite;
+  animation: orbit-spin 1.2s linear infinite;
 }
 
 .btn-orbit-inner {
