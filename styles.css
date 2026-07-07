@@ -457,35 +457,8 @@ textarea {
 }
 
 .hero-visual .container-loga {
-  width: min(960px, 98vw);
-  aspect-ratio: 1;
-  height: auto;
-  flex-shrink: 0;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.hero-visual .tocici-logo {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 165%;
-  height: 165%;
-  max-width: none;
-  object-fit: contain;
-  object-position: center;
-  mix-blend-mode: screen;
-  filter: contrast(1.1);
-  animation: rotaceLogaHero 15s linear infinite;
-}
-
-@keyframes rotaceLogaHero {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  margin-inline: 0 0 auto;
+  margin-top: -0.15rem;
 }
 
 .hero-title {
@@ -614,19 +587,18 @@ textarea {
 /* ── Točící se logo (komponenta) ── */
 .container-loga {
   position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
+  width: 350px;
+  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: visible;
 }
 
 .tocici-logo {
-  width: 100%;
-  height: auto;
+  width: 180%;
+  height: 180%;
   object-fit: contain;
-  /* screen: černá (0,0,0) zmizí, barevné pixely loga zůstanou viditelné */
   mix-blend-mode: screen;
   filter: contrast(1.1);
   animation: rotaceLoga 15s linear infinite;
@@ -647,11 +619,6 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .tocici-logo {
     animation: none;
-  }
-
-  .hero-visual .tocici-logo {
-    animation: none;
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -675,12 +642,6 @@ textarea {
     align-items: flex-start;
     justify-content: flex-end;
   }
-
-  .hero-visual .container-loga {
-    width: min(980px, 100%);
-    margin-inline: 0 0 auto;
-    margin-top: -0.15rem;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -690,10 +651,6 @@ textarea {
 
   .hero-visual {
     flex-basis: 45%;
-  }
-
-  .hero-visual .container-loga {
-    width: min(1000px, 100%);
   }
 }
 
