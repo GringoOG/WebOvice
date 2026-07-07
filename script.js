@@ -369,11 +369,13 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
     return;
   }
 
-  if (video.poster) {
-    visual.style.setProperty("--service-poster", `url("${video.poster}")`);
-  }
-
   resetServiceVideoState(video);
+
+  video.addEventListener("loadeddata", () => {
+    if (!visual.classList.contains("is-playing")) {
+      resetServiceVideoState(video);
+    }
+  });
 
   visual.addEventListener("mouseenter", () => {
     if (prefersReducedMotion.matches) {

@@ -934,22 +934,6 @@ textarea {
   cursor: pointer;
 }
 
-.service-visual:has(.service-video source)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-image: var(--service-poster);
-  background-size: cover;
-  background-position: center;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-.service-visual.is-playing::before {
-  opacity: 0;
-}
-
 .service-visual img,
 .service-video {
   width: 100%;
