@@ -587,8 +587,8 @@ textarea {
 /* ── Točící se logo (komponenta) ── */
 .container-loga {
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: 440px;
+  height: 440px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -596,8 +596,8 @@ textarea {
 }
 
 .tocici-logo {
-  width: 180%;
-  height: 180%;
+  width: 205%;
+  height: 205%;
   object-fit: contain;
   mix-blend-mode: screen;
   filter: contrast(1.1);
