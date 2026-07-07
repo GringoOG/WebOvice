@@ -953,14 +953,14 @@ textarea {
 }
 
 .service-card-wide .service-visual .service-video:not(.service-video--zoom-in) {
-  transform: scale(1.08);
-  transform-origin: center center;
-  object-position: center center;
+  transform: scale(1.13);
+  transform-origin: 42% 48%;
+  object-position: center 47%;
 }
 
 .service-visual .service-video--zoom-in {
   object-position: 34% center;
-  transform: scale(1.16);
+  transform: scale(1.16) translateX(4%);
   transform-origin: 40% 50%;
 }
 

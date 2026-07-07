@@ -352,11 +352,31 @@ if (techStackDeck) {
 /* ── Service cards — video hraje jen při hoveru ── */
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+function resetServiceVideoState(video) {
+  const visual = video.closest(".service-visual");
+
+  visual?.classList.remove("is-playing");
+  video.pause();
+  video.style.transform = "";
+
+  if (video.readyState >= 1) {
+    video.currentTime = 0;
+  }
+}
+
 document.querySelectorAll(".service-visual").forEach((visual) => {
   const video = visual.querySelector(".service-video");
   if (!video?.querySelector("source")) {
     return;
   }
+
+  resetServiceVideoState(video);
+
+  video.addEventListener("loadeddata", () => {
+    if (!visual.classList.contains("is-playing")) {
+      resetServiceVideoState(video);
+    }
+  });
 
   if (video.classList.contains("service-video--zoom-in")) {
     const updateZoomInFrame = () => {
@@ -380,23 +400,29 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
       return;
     }
 
+    video.currentTime = 0;
+    video.style.transform = "";
     visual.classList.add("is-playing");
     video.play().catch(() => {});
   });
 
   visual.addEventListener("mouseleave", () => {
-    visual.classList.remove("is-playing");
-    video.pause();
-    video.currentTime = 0;
-    video.style.transform = "";
+    resetServiceVideoState(video);
+  });
+});
+
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) {
+    return;
+  }
+
+  document.querySelectorAll(".service-video").forEach((video) => {
+    resetServiceVideoState(video);
   });
 });
 
 prefersReducedMotion.addEventListener("change", () => {
   document.querySelectorAll(".service-video").forEach((video) => {
-    video.pause();
-    video.currentTime = 0;
-    video.style.transform = "";
-    video.closest(".service-visual")?.classList.remove("is-playing");
+    resetServiceVideoState(video);
   });
 });
