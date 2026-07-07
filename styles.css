@@ -934,6 +934,18 @@ textarea {
   cursor: pointer;
 }
 
+.service-visual:has(.service-video source)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(145deg, transparent 18%, #07080f 52%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .service-visual img,
 .service-video {
   width: 100%;
@@ -942,6 +954,15 @@ textarea {
   object-position: center;
   display: block;
   background: #06060c;
+}
+
+.service-visual .service-video {
+  position: absolute;
+  inset: 0;
+  width: 105%;
+  height: 105%;
+  max-width: none;
+  object-position: top left;
 }
 
 .service-content {
