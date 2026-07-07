@@ -456,6 +456,11 @@ textarea {
   width: 100%;
 }
 
+.hero-visual .container-loga {
+  width: min(560px, 96vw);
+  height: min(560px, 96vw);
+}
+
 .hero-title {
   margin: 0;
   font-size: clamp(2.5rem, 6.5vw, 4.25rem);
@@ -579,60 +584,42 @@ textarea {
   align-self: flex-end;
 }
 
-/* 3D video badge */
-.torus-scene {
+/* ── Točící se logo (komponenta) ── */
+.container-loga {
   position: relative;
-  width: min(560px, 96vw);
-  max-width: 100%;
-  aspect-ratio: 1;
-  margin-inline: auto;
-  background: transparent;
-  overflow: visible;
-  isolation: isolate;
-  animation: hero-badge-spin 18s linear infinite;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes hero-badge-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.hero-3d-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.tocici-logo {
   width: 100%;
-  height: 100%;
-  max-width: none;
+  height: auto;
   object-fit: contain;
-  object-position: 50% 50%;
-  display: block;
-  transform: translate(-50%, -50%);
-  background: transparent;
-  border-radius: 0;
+  /* screen: černá (0,0,0) zmizí, barevné pixely loga zůstanou viditelné */
   mix-blend-mode: screen;
+  filter: contrast(1.1);
+  animation: rotaceLoga 15s linear infinite;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.torus-glow {
-  display: none;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.06); }
+@keyframes rotaceLoga {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .torus-scene {
+  .tocici-logo {
     animation: none;
-  }
-
-  .hero-3d-video { display: none; }
-  .torus-glow { animation: none; }
-
-  .hero-quote {
-    transition: none;
   }
 }
 
@@ -657,14 +644,11 @@ textarea {
     justify-content: flex-end;
   }
 
-  .torus-scene {
+  .hero-visual .container-loga {
     width: min(580px, 100%);
+    height: min(580px, 100%);
     margin-inline: 0 0 auto;
     margin-top: -0.15rem;
-  }
-
-  .hero-3d-video {
-    object-position: 50% 44%;
   }
 }
 
@@ -677,8 +661,9 @@ textarea {
     flex-basis: 45%;
   }
 
-  .torus-scene {
+  .hero-visual .container-loga {
     width: min(620px, 100%);
+    height: min(620px, 100%);
   }
 }
 
