@@ -348,3 +348,33 @@ if (techStackDeck) {
     }
   });
 }
+
+/* ── Service cards — video hraje jen při hoveru ── */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+document.querySelectorAll(".service-visual").forEach((visual) => {
+  const video = visual.querySelector(".service-video");
+  if (!video?.querySelector("source")) {
+    return;
+  }
+
+  visual.addEventListener("mouseenter", () => {
+    if (prefersReducedMotion.matches) {
+      return;
+    }
+
+    video.play().catch(() => {});
+  });
+
+  visual.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+});
+
+prefersReducedMotion.addEventListener("change", () => {
+  document.querySelectorAll(".service-video").forEach((video) => {
+    video.pause();
+    video.currentTime = 0;
+  });
+});
