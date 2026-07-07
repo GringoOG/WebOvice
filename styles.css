@@ -458,14 +458,15 @@ textarea {
 
 .hero-visual .container-loga {
   width: min(720px, 92vw);
-  height: min(720px, 92vw);
+  aspect-ratio: 1;
+  height: auto;
+  flex-shrink: 0;
   border-radius: 50%;
   overflow: hidden;
 }
 
 .hero-visual .tocici-logo {
   position: absolute;
-  inset: auto;
   left: 50%;
   top: 50%;
   width: 250%;
@@ -474,6 +475,8 @@ textarea {
   object-fit: cover;
   /* posun doprava — ořízne hvězdu vlevo nahoře ve videu */
   object-position: 57% 50%;
+  mix-blend-mode: screen;
+  filter: contrast(1.1);
   animation: rotaceLogaHero 15s linear infinite;
 }
 
@@ -676,7 +679,6 @@ textarea {
 
   .hero-visual .container-loga {
     width: min(760px, 100%);
-    height: min(760px, 100%);
     margin-inline: 0 0 auto;
     margin-top: -0.15rem;
   }
@@ -692,8 +694,7 @@ textarea {
   }
 
   .hero-visual .container-loga {
-    width: min(820px, 108%);
-    height: min(820px, 108%);
+    width: min(820px, 100%);
   }
 }
 
