@@ -934,6 +934,22 @@ textarea {
   cursor: pointer;
 }
 
+.service-visual:has(.service-video source)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: var(--service-poster);
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.service-visual.is-playing::before {
+  opacity: 0;
+}
+
 .service-visual img,
 .service-video {
   width: 100%;
@@ -952,22 +968,14 @@ textarea {
   transform-origin: top left;
 }
 
-.service-card-wide .service-visual .service-video:not(.service-video--zoom-in) {
+.service-card-wide .service-visual .service-video {
   transform: scale(1.13);
   transform-origin: 42% 48%;
   object-position: center 47%;
 }
 
-.service-visual .service-video--zoom-in {
-  object-position: 34% center;
-  transform: scale(1.16) translateX(4%);
-  transform-origin: 40% 50%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-visual.is-playing .service-video--zoom-in {
-    animation: none;
-  }
+.service-visual .service-video--frame-left {
+  object-position: 32% center;
 }
 
 .service-content {

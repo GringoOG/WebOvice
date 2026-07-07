@@ -357,7 +357,6 @@ function resetServiceVideoState(video) {
 
   visual?.classList.remove("is-playing");
   video.pause();
-  video.style.transform = "";
 
   if (video.readyState >= 1) {
     video.currentTime = 0;
@@ -370,30 +369,11 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
     return;
   }
 
-  resetServiceVideoState(video);
-
-  video.addEventListener("loadeddata", () => {
-    if (!visual.classList.contains("is-playing")) {
-      resetServiceVideoState(video);
-    }
-  });
-
-  if (video.classList.contains("service-video--zoom-in")) {
-    const updateZoomInFrame = () => {
-      if (video.paused || !visual.classList.contains("is-playing") || prefersReducedMotion.matches) {
-        return;
-      }
-
-      const duration = video.duration || 1;
-      const progress = Math.min(video.currentTime / duration, 1);
-      const scale = 1.16 + progress * 0.18;
-      const translateX = 4 - progress * 12;
-
-      video.style.transform = `scale(${scale}) translateX(${translateX}%)`;
-    };
-
-    video.addEventListener("timeupdate", updateZoomInFrame);
+  if (video.poster) {
+    visual.style.setProperty("--service-poster", `url("${video.poster}")`);
   }
+
+  resetServiceVideoState(video);
 
   visual.addEventListener("mouseenter", () => {
     if (prefersReducedMotion.matches) {
@@ -401,7 +381,6 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
     }
 
     video.currentTime = 0;
-    video.style.transform = "";
     visual.classList.add("is-playing");
     video.play().catch(() => {});
   });
