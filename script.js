@@ -359,11 +359,20 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
   }
 
   if (video.classList.contains("service-video--zoom-in")) {
-    video.addEventListener("loadedmetadata", () => {
-      if (Number.isFinite(video.duration) && video.duration > 0) {
-        visual.style.setProperty("--service-video-duration", `${video.duration}s`);
+    const updateZoomInFrame = () => {
+      if (video.paused || !visual.classList.contains("is-playing") || prefersReducedMotion.matches) {
+        return;
       }
-    });
+
+      const duration = video.duration || 1;
+      const progress = Math.min(video.currentTime / duration, 1);
+      const scale = 1.16 + progress * 0.18;
+      const translateX = 4 - progress * 12;
+
+      video.style.transform = `scale(${scale}) translateX(${translateX}%)`;
+    };
+
+    video.addEventListener("timeupdate", updateZoomInFrame);
   }
 
   visual.addEventListener("mouseenter", () => {
@@ -379,6 +388,7 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
     visual.classList.remove("is-playing");
     video.pause();
     video.currentTime = 0;
+    video.style.transform = "";
   });
 });
 
@@ -386,6 +396,7 @@ prefersReducedMotion.addEventListener("change", () => {
   document.querySelectorAll(".service-video").forEach((video) => {
     video.pause();
     video.currentTime = 0;
+    video.style.transform = "";
     video.closest(".service-visual")?.classList.remove("is-playing");
   });
 });

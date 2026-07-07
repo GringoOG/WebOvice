@@ -952,22 +952,16 @@ textarea {
   transform-origin: top left;
 }
 
+.service-card-wide .service-visual .service-video:not(.service-video--zoom-in) {
+  transform: scale(1.08);
+  transform-origin: center center;
+  object-position: center center;
+}
+
 .service-visual .service-video--zoom-in {
-  transform: scale(1.24);
-}
-
-.service-visual.is-playing .service-video--zoom-in {
-  animation: service-video-zoom-in var(--service-video-duration, 6s) linear forwards;
-}
-
-@keyframes service-video-zoom-in {
-  from {
-    transform: scale(1.24);
-  }
-
-  to {
-    transform: scale(1.44);
-  }
+  object-position: 34% center;
+  transform: scale(1.16);
+  transform-origin: 40% 50%;
 }
 
 @media (prefers-reduced-motion: reduce) {
