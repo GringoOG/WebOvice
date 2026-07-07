@@ -469,12 +469,12 @@ textarea {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 250%;
-  height: 250%;
+  width: 155%;
+  height: 155%;
   max-width: none;
   object-fit: cover;
-  /* posun doprava — ořízne hvězdu vlevo nahoře ve videu */
-  object-position: 57% 50%;
+  /* mírný posun doprava — hvězda mimo záběr, celý uzel viditelný */
+  object-position: 53% 50%;
   mix-blend-mode: screen;
   filter: contrast(1.1);
   animation: rotaceLogaHero 15s linear infinite;
