@@ -358,15 +358,25 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
     return;
   }
 
+  if (video.classList.contains("service-video--zoom-in")) {
+    video.addEventListener("loadedmetadata", () => {
+      if (Number.isFinite(video.duration) && video.duration > 0) {
+        visual.style.setProperty("--service-video-duration", `${video.duration}s`);
+      }
+    });
+  }
+
   visual.addEventListener("mouseenter", () => {
     if (prefersReducedMotion.matches) {
       return;
     }
 
+    visual.classList.add("is-playing");
     video.play().catch(() => {});
   });
 
   visual.addEventListener("mouseleave", () => {
+    visual.classList.remove("is-playing");
     video.pause();
     video.currentTime = 0;
   });
@@ -376,5 +386,6 @@ prefersReducedMotion.addEventListener("change", () => {
   document.querySelectorAll(".service-video").forEach((video) => {
     video.pause();
     video.currentTime = 0;
+    video.closest(".service-visual")?.classList.remove("is-playing");
   });
 });

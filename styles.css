@@ -952,6 +952,30 @@ textarea {
   transform-origin: top left;
 }
 
+.service-visual .service-video--zoom-in {
+  transform: scale(1.24);
+}
+
+.service-visual.is-playing .service-video--zoom-in {
+  animation: service-video-zoom-in var(--service-video-duration, 6s) linear forwards;
+}
+
+@keyframes service-video-zoom-in {
+  from {
+    transform: scale(1.24);
+  }
+
+  to {
+    transform: scale(1.44);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-visual.is-playing .service-video--zoom-in {
+    animation: none;
+  }
+}
+
 .service-content {
   padding: 1.35rem 1.5rem 1.5rem;
   text-align: left;
