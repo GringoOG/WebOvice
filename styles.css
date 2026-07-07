@@ -457,8 +457,33 @@ textarea {
 }
 
 .hero-visual .container-loga {
-  width: min(560px, 96vw);
-  height: min(560px, 96vw);
+  width: min(720px, 92vw);
+  height: min(720px, 92vw);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hero-visual .tocici-logo {
+  position: absolute;
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  width: 250%;
+  height: 250%;
+  max-width: none;
+  object-fit: cover;
+  /* posun doprava — ořízne hvězdu vlevo nahoře ve videu */
+  object-position: 57% 50%;
+  animation: rotaceLogaHero 15s linear infinite;
+}
+
+@keyframes rotaceLogaHero {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .hero-title {
@@ -621,6 +646,11 @@ textarea {
   .tocici-logo {
     animation: none;
   }
+
+  .hero-visual .tocici-logo {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* Desktop: split-screen — text vlevo, video vpravo */
@@ -645,8 +675,8 @@ textarea {
   }
 
   .hero-visual .container-loga {
-    width: min(580px, 100%);
-    height: min(580px, 100%);
+    width: min(760px, 100%);
+    height: min(760px, 100%);
     margin-inline: 0 0 auto;
     margin-top: -0.15rem;
   }
@@ -662,8 +692,8 @@ textarea {
   }
 
   .hero-visual .container-loga {
-    width: min(620px, 100%);
-    height: min(620px, 100%);
+    width: min(820px, 108%);
+    height: min(820px, 108%);
   }
 }
 
