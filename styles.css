@@ -589,6 +589,12 @@ textarea {
   background: transparent;
   overflow: visible;
   isolation: isolate;
+  animation: hero-badge-spin 18s linear infinite;
+}
+
+@keyframes hero-badge-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .hero-3d-video {
@@ -618,6 +624,10 @@ textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .torus-scene {
+    animation: none;
+  }
+
   .hero-3d-video { display: none; }
   .torus-glow { animation: none; }
 
