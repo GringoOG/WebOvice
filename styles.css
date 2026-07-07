@@ -42,6 +42,7 @@
   --radius: 18px;
   --nav-height: 72px;
   --max: 1140px;
+  --page-gutter: clamp(1rem, 4vw, 2rem);
 }
 
 *,
@@ -60,6 +61,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  overflow-x: clip;
 }
 
 img {
@@ -81,7 +83,7 @@ textarea {
 }
 
 .container {
-  width: min(var(--max), calc(100% - 2rem));
+  width: min(var(--max), calc(100% - (var(--page-gutter) * 2)));
   margin-inline: auto;
 }
 
@@ -91,6 +93,7 @@ textarea {
   top: 0;
   z-index: 50;
   height: var(--nav-height);
+  padding-inline: env(safe-area-inset-left, 0) env(safe-area-inset-right, 0);
   border-bottom: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
   backdrop-filter: blur(20px);
   background: color-mix(in srgb, var(--bg) 90%, transparent);
@@ -414,9 +417,9 @@ textarea {
 /* ── Hero ── */
 .hero {
   position: relative;
-  padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(3rem, 8vw, 5rem);
+  padding: clamp(2rem, 6vw, 4rem) 0 clamp(2.5rem, 8vw, 5rem);
   overflow: hidden;
-  min-height: calc(100vh - var(--nav-height));
+  min-height: min(calc(100vh - var(--nav-height)), 920px);
   display: flex;
   align-items: center;
   background: #06060c;
@@ -457,8 +460,8 @@ textarea {
 }
 
 .hero-visual .container-loga {
-  margin-inline: 0 0 auto;
-  margin-top: -0.15rem;
+  margin-inline: auto;
+  margin-top: 0;
 }
 
 .hero-title {
@@ -587,8 +590,8 @@ textarea {
 /* ── Točící se logo (komponenta) ── */
 .container-loga {
   position: relative;
-  width: 440px;
-  height: 440px;
+  width: min(440px, 86vw);
+  height: min(440px, 86vw);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -642,6 +645,11 @@ textarea {
     align-items: flex-start;
     justify-content: flex-end;
   }
+
+  .hero-visual .container-loga {
+    margin-inline: 0 0 auto;
+    margin-top: -0.15rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -656,7 +664,7 @@ textarea {
 
 /* ── Sections ── */
 .section {
-  padding: 5rem 0;
+  padding: clamp(3rem, 8vw, 5rem) 0;
 }
 
 .section-dark {
@@ -826,8 +834,16 @@ textarea {
 }
 
 @media (max-width: 767px) {
+  #vyzvy.vyzvy-scroll-track {
+    min-height: 260vh;
+  }
+
+  #vyzvy .pain-card-line {
+    white-space: normal;
+  }
+
   #vyzvy .pain-card {
-    max-width: min(280px, 86vw);
+    max-width: min(280px, calc(100vw - (var(--page-gutter) * 2)));
     text-align: center;
     transform:
       translateX(-50%)
@@ -1652,5 +1668,114 @@ textarea {
 @media (min-width: 1024px) {
   .trust-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── Mobile & tablet polish ── */
+@media (max-width: 479px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .brand-logo {
+    height: 30px;
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .btn-hero-orbit {
+    width: 100%;
+  }
+
+  .btn-orbit-inner {
+    justify-content: center;
+    text-align: center;
+    font-size: 0.88rem;
+  }
+
+  .hero-quote-rotator,
+  .hero-quote {
+    max-width: none;
+    align-self: stretch;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .works-grid,
+  .testimonials-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-card-wide,
+  .service-card-full {
+    grid-column: span 2;
+  }
+
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .section-head {
+    margin-bottom: 2rem;
+  }
+
+  .work-card,
+  .testimonial-card,
+  .price-card,
+  .form-card,
+  .trust-card {
+    padding: 1.35rem;
+  }
+
+  .service-content {
+    padding: 1.15rem 1.2rem 1.25rem;
+  }
+
+  .service-content h3 {
+    font-size: 1.05rem;
+  }
+
+  .footer-grid {
+    text-align: center;
+  }
+
+  .brand-footer,
+  .footer-copy {
+    justify-self: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    justify-self: center;
+  }
+
+  .footer-copy {
+    text-align: center;
+  }
+
+  .accordion-trigger {
+    padding: 1rem 1.1rem;
+  }
+
+  .accordion-trigger h3 {
+    font-size: 0.98rem;
   }
 }
