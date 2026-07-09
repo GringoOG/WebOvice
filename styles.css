@@ -1100,7 +1100,7 @@ textarea {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 70% 55% at 50% 45%, rgba(155, 111, 240, 0.12), transparent 70%),
+    radial-gradient(ellipse 70% 55% at 50% 45%, rgba(155, 111, 240, 0.16), transparent 70%),
     radial-gradient(ellipse 40% 35% at 20% 20%, rgba(110, 168, 255, 0.06), transparent 60%),
     var(--bg);
 }
@@ -1138,16 +1138,16 @@ textarea {
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.95rem;
+  gap: 1rem;
   align-items: center;
-  padding: 1.15rem 1.25rem;
-  border-radius: 16px;
-  border: 1px solid rgba(155, 111, 240, 0.28);
+  padding: 1.2rem 1.3rem;
+  border-radius: 18px;
+  border: 1px solid rgba(168, 130, 255, 0.35);
   background:
-    linear-gradient(160deg, rgba(28, 24, 48, 0.92) 0%, rgba(12, 12, 20, 0.96) 100%);
+    linear-gradient(155deg, rgba(24, 20, 42, 0.92) 0%, rgba(10, 10, 18, 0.96) 100%);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-    0 0 24px rgba(155, 111, 240, 0.08);
+    0 0 28px rgba(155, 111, 240, 0.12);
   text-align: left;
 }
 
@@ -1157,20 +1157,20 @@ textarea {
     content: "";
     position: absolute;
     top: 50%;
-    width: clamp(1.25rem, 3vw, 2.5rem);
-    height: 1.5px;
-    background: linear-gradient(90deg, transparent, #9b6ff0 40%, #6ea8ff);
-    box-shadow: 0 0 10px rgba(155, 111, 240, 0.65);
+    width: clamp(1.5rem, 3.5vw, 3rem);
+    height: 2px;
+    background: linear-gradient(90deg, rgba(155, 111, 240, 0.15), #b794f6 55%, #7dd3fc);
+    box-shadow: 0 0 12px rgba(155, 111, 240, 0.75);
     pointer-events: none;
   }
 
   .why-col--left .why-card::after {
-    left: 100%;
+    left: calc(100% + 2px);
     transform: translateY(-50%);
   }
 
   .why-col--right .why-card::before {
-    right: 100%;
+    right: calc(100% + 2px);
     transform: translateY(-50%) scaleX(-1);
   }
 }
@@ -1178,104 +1178,81 @@ textarea {
 .why-card-icon {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   color: #c4b5fd;
-  background: rgba(155, 111, 240, 0.12);
-  box-shadow: 0 0 18px rgba(155, 111, 240, 0.25);
+  background: radial-gradient(circle at 50% 40%, rgba(155, 111, 240, 0.22), rgba(155, 111, 240, 0.05));
+  box-shadow: 0 0 22px rgba(155, 111, 240, 0.3);
   flex-shrink: 0;
 }
 
 .why-card-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 34px;
+  height: 34px;
   filter: drop-shadow(0 0 6px rgba(155, 111, 240, 0.55));
 }
 
 .why-card h3 {
-  margin: 0 0 0.25rem;
-  font-size: 0.92rem;
+  margin: 0 0 0.28rem;
+  font-size: 0.86rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
+  white-space: nowrap;
 }
 
 .why-card p {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   line-height: 1.45;
-  color: var(--text-muted);
+  color: rgba(230, 230, 240, 0.82);
 }
 
 .why-hub {
   position: relative;
-  width: min(100%, 420px);
-  aspect-ratio: 1;
+  width: min(100%, 460px);
   margin-inline: auto;
   display: grid;
   place-items: center;
 }
 
-.why-circuit {
-  position: absolute;
-  inset: 0;
+.why-hub-visual {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 28px rgba(155, 111, 240, 0.35));
   pointer-events: none;
+  user-select: none;
 }
-
-.why-hub-label {
-  position: absolute;
-  z-index: 3;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.78);
-  text-shadow: 0 0 12px rgba(155, 111, 240, 0.55);
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.why-hub-label--web { top: 8%; left: 50%; transform: translateX(-50%); }
-.why-hub-label--app { top: 22%; right: 8%; }
-.why-hub-label--ai { bottom: 22%; right: 8%; }
-.why-hub-label--auto { bottom: 8%; left: 50%; transform: translateX(-50%); }
-.why-hub-label--learn { bottom: 22%; left: 6%; }
-.why-hub-label--ops { top: 22%; left: 8%; }
 
 @media (min-width: 980px) {
   .why-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px) minmax(0, 1fr);
-    gap: clamp(1rem, 2.5vw, 2rem);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 460px) minmax(0, 1fr);
+    gap: clamp(0.5rem, 1.8vw, 1.25rem);
   }
 
   .why-col {
     gap: 1.15rem;
   }
 
-  .why-col--left .why-card:nth-child(1) { transform: translateX(0.5rem); }
+  .why-col--left .why-card:nth-child(1) { transform: translateX(0.35rem); }
   .why-col--left .why-card:nth-child(2) { transform: translateX(0); }
-  .why-col--left .why-card:nth-child(3) { transform: translateX(0.5rem); }
-  .why-col--right .why-card:nth-child(1) { transform: translateX(-0.5rem); }
+  .why-col--left .why-card:nth-child(3) { transform: translateX(0.35rem); }
+  .why-col--right .why-card:nth-child(1) { transform: translateX(-0.35rem); }
   .why-col--right .why-card:nth-child(2) { transform: translateX(0); }
-  .why-col--right .why-card:nth-child(3) { transform: translateX(-0.5rem); }
+  .why-col--right .why-card:nth-child(3) { transform: translateX(-0.35rem); }
 }
 
 @media (max-width: 979px) {
   .why-hub {
     order: -1;
-    width: min(100%, 340px);
+    width: min(100%, 380px);
   }
 
-  .why-hub-label {
-    font-size: 0.62rem;
-  }
-
-  .why-circuit path[d^="M0"],
-  .why-circuit path[d^="M420"] {
-    opacity: 0.35;
+  .why-card h3 {
+    white-space: normal;
   }
 }
 
