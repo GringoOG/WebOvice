@@ -36,7 +36,7 @@
 
         <nav class="nav-links" aria-label="Hlavní menu">
           <a href="#sluzby">Služby</a>
-          <a href="#pripadove-studie">Případové studie</a>
+          <a href="pripadove-studie">Případové studie</a>
           <a href="#cenik">Ceník</a>
           <a href="#kontakt">Kontakt</a>
         </nav>
@@ -53,7 +53,7 @@
 
       <nav class="mobile-nav" id="mobile-nav" aria-label="Mobilní menu">
         <a href="#sluzby">Služby</a>
-        <a href="#pripadove-studie">Případové studie</a>
+        <a href="pripadove-studie">Případové studie</a>
         <a href="#cenik">Ceník</a>
         <a href="#omne">O mně</a>
         <a href="#faq">FAQ</a>
@@ -149,7 +149,7 @@
       </section>
 
       <!-- SERVICES / PILLARS -->
-      <section class="section section-dark" id="sluzby">
+      <section class="section section-dark reveal" id="sluzby">
         <div class="container">
           <div class="section-head">
             <p class="section-kicker">[ NAŠE ŘEŠENÍ ]</p>
@@ -159,7 +159,7 @@
             </p>
           </div>
 
-          <div class="services-grid services-bento">
+          <div class="services-grid services-bento reveal-stagger">
             <article class="service-card service-card-wide">
               <div class="service-visual">
                 <video
@@ -284,14 +284,14 @@
       </section>
 
       <!-- CASE STUDIES -->
-      <section class="section" id="pripadove-studie">
+      <section class="section reveal" id="pripadove-studie">
         <div class="container">
           <div class="section-head">
             <h2 class="section-title">Ukázky z praxe</h2>
             <p class="section-text">Reálné projekty s měřitelnými výsledky.</p>
           </div>
 
-          <div class="works-grid">
+          <div class="works-grid reveal-stagger">
             <article class="work-card">
               <span class="work-index">[ 0 1 ]</span>
               <h3>auto_mat — automatizace čtení měřidel</h3>
@@ -335,16 +335,20 @@
               </div>
             </article>
           </div>
+
+          <div style="margin-top: 2rem; text-align: center">
+            <a class="btn btn-outline" href="pripadove-studie">Všechny případové studie</a>
+          </div>
         </div>
       </section>
 
       <!-- TRUST -->
-      <section class="section section-dark">
+      <section class="section section-dark reveal">
         <div class="container">
           <div class="section-head center">
             <h2 class="section-title">Proč spolupracovat se mnou</h2>
           </div>
-          <div class="trust-grid">
+          <div class="trust-grid reveal-stagger">
             <article class="trust-card">
               <p class="trust-kicker">[ OVĚŘENÉ VÝSLEDKY ]</p>
               <h3>Měřitelné úspory času i nákladů</h3>
@@ -366,7 +370,7 @@
       </section>
 
       <!-- TECH STACK -->
-      <section class="section stack-section" id="technologie">
+      <section class="section stack-section reveal" id="technologie">
         <div class="stack-container">
           <div class="stack-header">
             <h2 class="section-title">Můj <span class="gradient">TECH STACK</span></h2>
@@ -484,13 +488,13 @@
       </section>
 
       <!-- TESTIMONIALS -->
-      <section class="section section-dark">
+      <section class="section section-dark reveal">
         <div class="container">
           <div class="section-head center">
             <p class="section-kicker">[ REFERENCE ]</p>
             <h2 class="section-title">Co říkají klienti</h2>
           </div>
-          <div class="testimonials-grid">
+          <div class="testimonials-grid reveal-stagger">
             <blockquote class="testimonial-card">
               <p>
                 „Automatizace čtení měřidel nám ušetřila <strong>desítky hodin týdně</strong>.
@@ -517,14 +521,14 @@
       </section>
 
       <!-- PRICING -->
-      <section class="section" id="cenik">
+      <section class="section reveal" id="cenik">
         <div class="container">
           <div class="section-head center">
             <h2 class="section-title">Ceník</h2>
             <p class="section-text">Orientační ceny — přesnou nabídku dostanete po krátkém probrání rozsahu.</p>
           </div>
 
-          <div class="pricing-grid">
+          <div class="pricing-grid reveal-stagger">
             <article class="price-card">
               <h3>Jednorázový projekt</h3>
               <p class="price-for">Ideální pro web, appku nebo automatizaci na klíč</p>
@@ -569,7 +573,7 @@
       </section>
 
       <!-- ABOUT -->
-      <section class="section section-dark" id="omne">
+      <section class="section section-dark reveal" id="omne">
         <div class="container about-grid">
           <div class="about-photo">
             <img
@@ -591,7 +595,7 @@
             </p>
             <ul class="contact-list">
               <li><strong>Email:</strong> <a href="mailto:weboviceDoUlice@gmail.com">weboviceDoUlice@gmail.com</a></li>
-              <li><strong>Telefon:</strong> doplňte své číslo</li>
+              <li><strong>Telefon:</strong> <a href="tel:+420731827981">+420 731 827 981</a></li>
             </ul>
             <a class="btn btn-hero btn-hero-dark" href="#kontakt" style="margin-top: 1.5rem">Domluvit konzultaci</a>
           </div>
@@ -599,7 +603,7 @@
       </section>
 
       <!-- FAQ -->
-      <section class="section" id="faq">
+      <section class="section reveal" id="faq">
         <div class="container">
           <div class="section-head center">
             <h2 class="section-title">Časté dotazy</h2>
@@ -678,7 +682,7 @@
       </section>
 
       <!-- CONTACT -->
-      <section class="section section-cta" id="kontakt">
+      <section class="section section-cta reveal" id="kontakt">
         <div class="container">
           <div class="section-head center">
             <p class="section-kicker">[ KONTAKT ]</p>
@@ -723,14 +727,17 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <a class="brand brand-footer" href="#domu">
-          <span class="brand-mark" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-          </span>
-          <span>WebOvice</span>
+          <img
+            class="brand-logo"
+            src="assets/webovice-logo.png"
+            alt="WebOvice"
+            width="180"
+            height="55"
+          />
         </a>
         <nav class="footer-links" aria-label="Patička">
           <a href="#sluzby">Služby</a>
-          <a href="#pripadove-studie">Případové studie</a>
+          <a href="pripadove-studie">Případové studie</a>
           <a href="#cenik">Ceník</a>
           <a href="#kontakt">Kontakt</a>
         </nav>
