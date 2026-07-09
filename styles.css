@@ -1263,7 +1263,10 @@ textarea {
 }
 
 .stack-icon--divi {
-  color: var(--stack-accent-2, #7b2cbf);
+  color: #8c43e6;
+  filter:
+    drop-shadow(0 0 10px rgba(140, 67, 230, 0.7))
+    drop-shadow(0 0 22px rgba(140, 67, 230, 0.35));
 }
 
 .stack-icon--python {
@@ -1274,11 +1277,10 @@ textarea {
 }
 
 .stack-icon--canva {
-  background: linear-gradient(135deg, #00c4cc 0%, #7d2ae8 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 16px rgba(125, 42, 232, 0.45));
+  color: #00c4cc;
+  filter:
+    drop-shadow(0 0 10px rgba(0, 196, 204, 0.7))
+    drop-shadow(0 0 22px rgba(125, 42, 232, 0.35));
 }
 
 .stack-card-label {
