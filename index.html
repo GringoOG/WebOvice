@@ -356,37 +356,165 @@
         </div>
       </section>
 
-      <!-- TRUST -->
-      <section class="section section-dark reveal">
+      <!-- TRUST / WHY -->
+      <section class="section why-section reveal" id="proc">
         <div class="container">
           <div class="section-head center">
+            <p class="section-kicker">[ DŮVODY ]</p>
             <h2 class="section-title">Proč spolupracovat se mnou</h2>
           </div>
-          <div class="trust-grid reveal-stagger">
-            <article class="trust-card">
-              <p class="trust-kicker">[ FÉR CENA ]</p>
-              <h3>Jasný rozsah, žádné skryté příplatky</h3>
-            </article>
-            <article class="trust-card">
-              <p class="trust-kicker">[ JEDEN PARTNER ]</p>
-              <h3>Web, appka i AI automatizace pod jednou střechou</h3>
-            </article>
-            <article class="trust-card">
-              <p class="trust-kicker">[ RYCHLÉ DODÁNÍ ]</p>
-              <h3>Od nápadu k fungujícímu řešení bez zbytečných kol</h3>
-            </article>
-            <article class="trust-card">
-              <p class="trust-kicker">[ ČISTÝ KÓD ]</p>
-              <h3>Přehledné řešení, které se dá dál rozvíjet</h3>
-            </article>
-            <article class="trust-card">
-              <p class="trust-kicker">[ PŘÍMÁ KOMUNIKACE ]</p>
-              <h3>Mluvíte se mnou, ne s call centrem</h3>
-            </article>
-            <article class="trust-card">
-              <p class="trust-kicker">[ FLEXIBILNÍ SPOLUPRÁCE ]</p>
-              <h3>Jednorázový projekt i dlouhodobý retainer</h3>
-            </article>
+
+          <div class="why-layout">
+            <div class="why-col why-col--left">
+              <article class="why-card">
+                <span class="why-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M12 3v18M7.5 7.5h6.2a2.8 2.8 0 0 1 0 5.6H7.5l7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h3>FÉR CENA</h3>
+                  <p>Jasný rozsah, žádné skryté příplatky</p>
+                </div>
+              </article>
+
+              <article class="why-card">
+                <span class="why-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z" stroke-linejoin="round"/>
+                    <path d="M4 7.5 12 12l8-4.5M12 12v9" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h3>JEDEN PARTNER</h3>
+                  <p>Web, appka i AI automatizace pod jednou střechou</p>
+                </div>
+              </article>
+
+              <article class="why-card">
+                <span class="why-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M5 13 9 17l10-10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="9"/>
+                  </svg>
+                </span>
+                <div>
+                  <h3>RYCHLÉ DODÁNÍ</h3>
+                  <p>Od nápadu k fungujícímu řešení bez zbytečných kol</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="why-hub" aria-hidden="true">
+              <svg class="why-circuit" viewBox="0 0 420 420" fill="none">
+                <defs>
+                  <linearGradient id="whyGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#9b6ff0"/>
+                    <stop offset="55%" stop-color="#6ea8ff"/>
+                    <stop offset="100%" stop-color="#d97fce"/>
+                  </linearGradient>
+                  <filter id="whySoftGlow" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <circle cx="210" cy="210" r="118" stroke="url(#whyGlow)" stroke-width="1.2" opacity="0.35"/>
+                <circle cx="210" cy="210" r="78" stroke="url(#whyGlow)" stroke-width="1" opacity="0.28"/>
+
+                <g stroke="url(#whyGlow)" stroke-width="1.6" filter="url(#whySoftGlow)" opacity="0.9">
+                  <path d="M210 92 C 150 110, 118 150, 108 210"/>
+                  <path d="M210 92 C 270 110, 302 150, 312 210"/>
+                  <path d="M108 210 C 118 270, 150 310, 210 328"/>
+                  <path d="M312 210 C 302 270, 270 310, 210 328"/>
+                  <path d="M140 140 C 170 120, 250 120, 280 140"/>
+                  <path d="M140 280 C 170 300, 250 300, 280 280"/>
+                  <path d="M160 170 L 210 210 L 260 170"/>
+                  <path d="M160 250 L 210 210 L 260 250"/>
+                </g>
+
+                <g filter="url(#whySoftGlow)">
+                  <circle cx="210" cy="92" r="18" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.5"/>
+                  <circle cx="312" cy="210" r="18" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.5"/>
+                  <circle cx="210" cy="328" r="18" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.5"/>
+                  <circle cx="108" cy="210" r="18" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.5"/>
+                  <circle cx="150" cy="140" r="14" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.2"/>
+                  <circle cx="270" cy="140" r="14" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.2"/>
+                  <circle cx="150" cy="280" r="14" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.2"/>
+                  <circle cx="270" cy="280" r="14" fill="#12121c" stroke="url(#whyGlow)" stroke-width="1.2"/>
+                </g>
+
+                <!-- connector stubs toward cards -->
+                <g stroke="url(#whyGlow)" stroke-width="1.4" opacity="0.75" filter="url(#whySoftGlow)">
+                  <path d="M0 90 H 78 L 108 120"/>
+                  <path d="M0 210 H 90"/>
+                  <path d="M0 330 H 78 L 108 300"/>
+                  <path d="M420 90 H 342 L 312 120"/>
+                  <path d="M420 210 H 330"/>
+                  <path d="M420 330 H 342 L 312 300"/>
+                </g>
+              </svg>
+
+              <div class="why-hub-core">
+                <div class="container-loga why-hub-logo">
+                  <video class="tocici-logo" autoplay loop muted playsinline>
+                    <source src="assets/logo-webovice-cc.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+
+              <span class="why-hub-label why-hub-label--web">Web</span>
+              <span class="why-hub-label why-hub-label--app">Appky</span>
+              <span class="why-hub-label why-hub-label--ai">AI</span>
+              <span class="why-hub-label why-hub-label--auto">Automatizace</span>
+              <span class="why-hub-label why-hub-label--learn">E-learning</span>
+              <span class="why-hub-label why-hub-label--ops">Provoz</span>
+            </div>
+
+            <div class="why-col why-col--right">
+              <article class="why-card">
+                <span class="why-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M8 8h8v8H8z" stroke-linejoin="round"/>
+                    <path d="M10 4v2M14 4v2M10 18v2M14 18v2M4 10h2M4 14h2M18 10h2M18 14h2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h3>ČISTÝ KÓD</h3>
+                  <p>Přehledné řešení, které se dá dál rozvíjet</p>
+                </div>
+              </article>
+
+              <article class="why-card">
+                <span class="why-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M4 18V8a2 2 0 0 1 2-2h7l3 3v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke-linejoin="round"/>
+                    <path d="M8 11h6M8 14h4" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h3>PŘÍMÁ KOMUNIKACE</h3>
+                  <p>Mluvíte se mnou, ne s call centrem</p>
+                </div>
+              </article>
+
+              <article class="why-card">
+                <span class="why-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M7 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM17 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke-linejoin="round"/>
+                    <path d="M3.5 20v-1.2A3.8 3.8 0 0 1 7.3 15h0a3.8 3.8 0 0 1 3.8 3.8V20" stroke-linecap="round"/>
+                    <path d="M12.9 20v-1.2A3.8 3.8 0 0 1 16.7 15h0a3.8 3.8 0 0 1 3.8 3.8V20" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <h3>FLEXIBILNÍ SPOLUPRÁCE</h3>
+                  <p>Jednorázový projekt i dlouhodobý retainer</p>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
