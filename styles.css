@@ -1880,11 +1880,22 @@ textarea {
   display: grid;
   place-items: center;
   line-height: 0;
+  isolation: isolate;
 }
 
 .footer-logo.container-loga {
   width: clamp(140px, 18vw, 220px);
   height: clamp(140px, 18vw, 220px);
+  overflow: hidden;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.footer-logo .tocici-logo {
+  width: 220%;
+  height: 220%;
+  mix-blend-mode: screen;
+  filter: contrast(1.35) brightness(1.05);
 }
 
 .footer-label {
