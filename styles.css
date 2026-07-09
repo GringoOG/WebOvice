@@ -1516,6 +1516,14 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.about-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1024 / 874;
+}
+
 .about-text {
   margin: 1rem 0 0;
   color: var(--text-muted);
