@@ -1127,7 +1127,7 @@ textarea {
 .stack-section {
   --stack-card-w: 220px;
   --stack-card-h: 270px;
-  --stack-glow-pad: 28px;
+  --stack-glow-pad: 16px;
   overflow: visible;
 }
 
@@ -1174,7 +1174,7 @@ textarea {
   background: transparent;
   overflow: visible;
   z-index: calc(20 - var(--card-index));
-  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--stack-accent, #9b6ff0) 35%, transparent));
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--stack-accent, #9b6ff0) 14%, transparent));
   transform:
     translateX(calc(var(--card-index) * 3px))
     rotate(calc(var(--card-index) * -1.8deg))
@@ -1207,11 +1207,11 @@ textarea {
   padding: 1.1rem 1rem 1.2rem;
   border-radius: calc(var(--stack-card-radius) - 2px);
   background:
-    radial-gradient(ellipse 90% 55% at 50% 0%, color-mix(in srgb, var(--stack-accent) 32%, transparent) 0%, transparent 72%),
+    radial-gradient(ellipse 90% 55% at 50% 0%, color-mix(in srgb, var(--stack-accent) 16%, transparent) 0%, transparent 72%),
     linear-gradient(165deg, rgba(20, 22, 38, 0.98) 0%, rgba(8, 9, 18, 0.99) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 -24px 48px color-mix(in srgb, var(--stack-accent) 14%, transparent);
+    inset 0 -24px 48px color-mix(in srgb, var(--stack-accent) 8%, transparent);
   pointer-events: none;
   user-select: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1243,8 +1243,8 @@ textarea {
   height: auto;
   color: var(--stack-accent);
   filter:
-    drop-shadow(0 0 10px color-mix(in srgb, var(--stack-accent) 70%, transparent))
-    drop-shadow(0 0 24px color-mix(in srgb, var(--stack-accent) 35%, transparent));
+    drop-shadow(0 0 6px color-mix(in srgb, var(--stack-accent) 28%, transparent))
+    drop-shadow(0 0 12px color-mix(in srgb, var(--stack-accent) 12%, transparent));
 }
 
 .stack-card-icon--duo .stack-icon {
@@ -1254,8 +1254,8 @@ textarea {
 .stack-icon--cursor {
   color: #ededed;
   filter:
-    drop-shadow(0 0 10px rgba(237, 237, 237, 0.45))
-    drop-shadow(0 0 22px rgba(155, 111, 240, 0.28));
+    drop-shadow(0 0 6px rgba(237, 237, 237, 0.2))
+    drop-shadow(0 0 12px rgba(155, 111, 240, 0.12));
 }
 
 .stack-icon--sql {
@@ -1265,22 +1265,22 @@ textarea {
 .stack-icon--divi {
   color: #8c43e6;
   filter:
-    drop-shadow(0 0 10px rgba(140, 67, 230, 0.7))
-    drop-shadow(0 0 22px rgba(140, 67, 230, 0.35));
+    drop-shadow(0 0 6px rgba(140, 67, 230, 0.28))
+    drop-shadow(0 0 12px rgba(140, 67, 230, 0.12));
 }
 
 .stack-icon--python {
   color: #3776ab;
   filter:
-    drop-shadow(0 0 10px rgba(55, 118, 171, 0.7))
-    drop-shadow(0 0 22px rgba(255, 212, 59, 0.28));
+    drop-shadow(0 0 6px rgba(55, 118, 171, 0.28))
+    drop-shadow(0 0 12px rgba(255, 212, 59, 0.1));
 }
 
 .stack-icon--canva {
   color: #00c4cc;
   filter:
-    drop-shadow(0 0 10px rgba(0, 196, 204, 0.7))
-    drop-shadow(0 0 22px rgba(125, 42, 232, 0.35));
+    drop-shadow(0 0 6px rgba(0, 196, 204, 0.28))
+    drop-shadow(0 0 12px rgba(125, 42, 232, 0.12));
 }
 
 .stack-card-label {
@@ -1292,7 +1292,7 @@ textarea {
   text-align: center;
   line-height: 1.35;
   color: rgba(255, 255, 255, 0.94);
-  text-shadow: 0 0 18px color-mix(in srgb, var(--stack-accent) 45%, transparent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--stack-accent) 18%, transparent);
 }
 
 .stack-deck:hover .stack-card,
@@ -1311,8 +1311,8 @@ textarea {
     translateY(-22px) !important;
   z-index: 99 !important;
   filter:
-    drop-shadow(0 0 26px color-mix(in srgb, var(--stack-accent) 55%, transparent))
-    drop-shadow(0 0 18px rgba(244, 207, 158, 0.2));
+    drop-shadow(0 0 12px color-mix(in srgb, var(--stack-accent) 22%, transparent))
+    drop-shadow(0 0 8px rgba(244, 207, 158, 0.08));
 }
 
 .stack-card:hover .stack-card-face,
@@ -1320,7 +1320,7 @@ textarea {
   transform: scale(1.02);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    inset 0 -28px 56px color-mix(in srgb, var(--stack-accent) 22%, transparent);
+    inset 0 -28px 56px color-mix(in srgb, var(--stack-accent) 12%, transparent);
 }
 
 @media (max-width: 1024px) {
