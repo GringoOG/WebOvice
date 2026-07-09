@@ -34,7 +34,7 @@ const heroQuoteAuthorEl = heroQuoteEl?.querySelector(".hero-quote-author");
 const heroQuotes = [
   {
     text: "90 % úspora času na přepisu měřidel.",
-    author: "Prokat Invest — projekt auto_mat",
+    author: "Prokat Invest — projekt Snap Meter",
   },
   {
     text: "Web online za pár dnů, správa obsahu bez kódu.",
@@ -432,8 +432,8 @@ prefersReducedMotion.addEventListener("change", () => {
       });
     },
     {
-      rootMargin: "0px 0px -8% 0px",
-      threshold: 0.12,
+      rootMargin: "0px 0px -18% 0px",
+      threshold: 0.18,
     }
   );
 
