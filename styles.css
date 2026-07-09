@@ -1732,15 +1732,26 @@ textarea {
 }
 
 .footer-panel {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: clamp(2.5rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: minmax(10rem, auto) minmax(0, 1fr) minmax(14rem, auto);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .footer-col {
   min-width: 10rem;
+}
+
+.footer-brand {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  line-height: 0;
+}
+
+.footer-logo.container-loga {
+  width: clamp(140px, 18vw, 220px);
+  height: clamp(140px, 18vw, 220px);
 }
 
 .footer-label {
@@ -1777,7 +1788,7 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
-  margin-left: auto;
+  justify-self: end;
   text-align: left;
 }
 
@@ -1955,12 +1966,24 @@ textarea {
   }
 
   .footer-panel {
+    display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 2.5rem;
   }
 
+  .footer-brand {
+    order: -1;
+    align-self: center;
+  }
+
+  .footer-logo.container-loga {
+    width: min(180px, 52vw);
+    height: min(180px, 52vw);
+  }
+
   .footer-contact {
-    margin-left: 0;
+    justify-self: start;
     width: 100%;
   }
 
