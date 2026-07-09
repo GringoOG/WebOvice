@@ -1251,17 +1251,26 @@ textarea {
   width: min(52px, 28%);
 }
 
-.stack-icon--claude,
-.stack-icon--sql,
+.stack-icon--cursor {
+  color: #ededed;
+  filter:
+    drop-shadow(0 0 10px rgba(237, 237, 237, 0.45))
+    drop-shadow(0 0 22px rgba(155, 111, 240, 0.28));
+}
+
+.stack-icon--sql {
+  color: #4169e1;
+}
+
 .stack-icon--divi {
-  color: var(--stack-accent-2, var(--stack-accent));
+  color: var(--stack-accent-2, #7b2cbf);
 }
 
 .stack-icon--python {
-  color: #3b82f6;
+  color: #3776ab;
   filter:
-    drop-shadow(0 0 10px rgba(59, 130, 246, 0.65))
-    drop-shadow(0 0 22px rgba(247, 223, 30, 0.25));
+    drop-shadow(0 0 10px rgba(55, 118, 171, 0.7))
+    drop-shadow(0 0 22px rgba(255, 212, 59, 0.28));
 }
 
 .stack-icon--canva {
