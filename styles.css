@@ -1132,7 +1132,7 @@ textarea {
 }
 
 .stack-container {
-  width: min(var(--max), calc(100% - 2rem));
+  width: min(var(--max), calc(100% - (var(--page-gutter) * 2)));
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -1151,7 +1151,7 @@ textarea {
 
 .stack-deck {
   position: relative;
-  width: min(100%, 1120px);
+  width: min(100%, 1240px);
   height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2);
   padding: var(--stack-glow-pad) clamp(1rem, 4vw, 2.5rem);
   margin-inline: auto;
@@ -1174,9 +1174,9 @@ textarea {
   background: transparent;
   overflow: visible;
   z-index: calc(20 - var(--card-index));
-  filter: drop-shadow(0 0 14px rgba(155, 111, 240, 0.22));
+  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--stack-accent, #9b6ff0) 35%, transparent));
   transform:
-    translateX(calc(var(--card-index) * 4px))
+    translateX(calc(var(--card-index) * 3px))
     rotate(calc(var(--card-index) * -1.8deg))
     translateY(calc(var(--card-index) * -5px));
   transform-origin: bottom center;
@@ -1195,26 +1195,99 @@ textarea {
   overflow: hidden;
 }
 
-.stack-card-img {
+.stack-card-face {
   position: relative;
   z-index: 1;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  padding: 1.1rem 1rem 1.2rem;
   border-radius: calc(var(--stack-card-radius) - 2px);
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 90% 55% at 50% 0%, color-mix(in srgb, var(--stack-accent) 32%, transparent) 0%, transparent 72%),
+    linear-gradient(165deg, rgba(20, 22, 38, 0.98) 0%, rgba(8, 9, 18, 0.99) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -24px 48px color-mix(in srgb, var(--stack-accent) 14%, transparent);
   pointer-events: none;
   user-select: none;
-  -webkit-user-drag: none;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stack-card-index {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.stack-card-icon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.stack-card-icon--duo {
+  gap: 0.85rem;
+}
+
+.stack-icon {
+  width: min(68px, 34%);
+  height: auto;
+  color: var(--stack-accent);
+  filter:
+    drop-shadow(0 0 10px color-mix(in srgb, var(--stack-accent) 70%, transparent))
+    drop-shadow(0 0 24px color-mix(in srgb, var(--stack-accent) 35%, transparent));
+}
+
+.stack-card-icon--duo .stack-icon {
+  width: min(52px, 28%);
+}
+
+.stack-icon--claude,
+.stack-icon--sql,
+.stack-icon--divi {
+  color: var(--stack-accent-2, var(--stack-accent));
+}
+
+.stack-icon--python {
+  color: #3b82f6;
+  filter:
+    drop-shadow(0 0 10px rgba(59, 130, 246, 0.65))
+    drop-shadow(0 0 22px rgba(247, 223, 30, 0.25));
+}
+
+.stack-icon--canva {
+  background: linear-gradient(135deg, #00c4cc 0%, #7d2ae8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px rgba(125, 42, 232, 0.45));
+}
+
+.stack-card-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--stack-accent) 45%, transparent);
 }
 
 .stack-deck:hover .stack-card,
 .stack-deck:focus-within .stack-card {
   transform:
-    translateX(calc((var(--card-index) - var(--fan-offset)) * 128px))
+    translateX(calc((var(--card-index) - var(--fan-offset)) * 138px))
     rotate(calc((var(--card-index) - var(--fan-offset)) * 6deg))
     translateY(calc((var(--card-index) - var(--fan-offset)) * (var(--card-index) - var(--fan-offset)) * 1.8px));
 }
@@ -1222,18 +1295,21 @@ textarea {
 .stack-card:hover,
 .stack-card:focus-visible {
   transform:
-    translateX(calc((var(--card-index) - var(--fan-offset)) * 128px))
+    translateX(calc((var(--card-index) - var(--fan-offset)) * 138px))
     rotate(calc((var(--card-index) - var(--fan-offset)) * 6deg))
     translateY(-22px) !important;
   z-index: 99 !important;
   filter:
-    drop-shadow(0 0 22px rgba(155, 111, 240, 0.38))
-    drop-shadow(0 0 18px rgba(244, 207, 158, 0.18));
+    drop-shadow(0 0 26px color-mix(in srgb, var(--stack-accent) 55%, transparent))
+    drop-shadow(0 0 18px rgba(244, 207, 158, 0.2));
 }
 
-.stack-card:hover .stack-card-img,
-.stack-card:focus-visible .stack-card-img {
+.stack-card:hover .stack-card-face,
+.stack-card:focus-visible .stack-card-face {
   transform: scale(1.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -28px 56px color-mix(in srgb, var(--stack-accent) 22%, transparent);
 }
 
 @media (max-width: 1024px) {
@@ -1254,7 +1330,7 @@ textarea {
     width: 100%;
     max-width: 240px;
     height: auto;
-    aspect-ratio: 774 / 1036;
+    aspect-ratio: 220 / 270;
     margin-inline: auto;
     margin-left: auto;
     transform: none !important;
@@ -1268,8 +1344,8 @@ textarea {
     transform: none !important;
   }
 
-  .stack-card:hover .stack-card-img,
-  .stack-card:focus-visible .stack-card-img {
+  .stack-card:hover .stack-card-face,
+  .stack-card:focus-visible .stack-card-face {
     transform: none;
   }
 }
@@ -1295,7 +1371,7 @@ textarea {
     width: 100%;
     max-width: 240px;
     height: auto;
-    aspect-ratio: 774 / 1036;
+    aspect-ratio: 220 / 270;
     margin-inline: auto;
     margin-left: auto;
     transform: none !important;
