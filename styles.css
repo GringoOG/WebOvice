@@ -1045,6 +1045,18 @@ img.tocici-logo,
   flex-direction: row;
 }
 
+.services-duo {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.services-duo .service-card {
+  height: 100%;
+}
+
 .service-card-full .service-visual {
   flex: 0 0 min(380px, 42%);
   aspect-ratio: auto;
@@ -1199,6 +1211,11 @@ img.tocici-logo,
   .service-card-full {
     grid-column: span 1;
     flex-direction: column;
+  }
+
+  .services-duo {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
   }
 
   .service-card-full .service-visual {
