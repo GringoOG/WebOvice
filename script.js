@@ -466,6 +466,63 @@ prefersReducedMotion.addEventListener("change", () => {
   revealEls.forEach((el) => observer.observe(el));
 })();
 
+/* ── Works timeline — scroll fade-in + progress line ── */
+(() => {
+  const timeline = document.getElementById("worksTimeline");
+  const progressEl = document.getElementById("worksTimelineProgress");
+  const items = timeline ? Array.from(timeline.querySelectorAll("[data-timeline-item]")) : [];
+
+  if (!timeline || !items.length) {
+    return;
+  }
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion) {
+    items.forEach((item) => item.classList.add("is-inview"));
+    if (progressEl) {
+      progressEl.style.height = "100%";
+    }
+    return;
+  }
+
+  const itemObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        entry.target.classList.add("is-inview");
+        itemObserver.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.28,
+    }
+  );
+
+  items.forEach((item) => itemObserver.observe(item));
+
+  if (!progressEl) {
+    return;
+  }
+
+  const updateProgress = () => {
+    const rect = timeline.getBoundingClientRect();
+    const viewH = window.innerHeight || 1;
+    const start = viewH * 0.72;
+    const end = viewH * 0.28;
+    const raw = (start - rect.top) / (rect.height + (start - end));
+    const clamped = Math.max(0, Math.min(1, raw));
+    progressEl.style.height = `${(clamped * 100).toFixed(2)}%`;
+  };
+
+  updateProgress();
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
+})();
+
 /* ── Hero logo — soft crossfade loop (bez viditelného restartu) ── */
 (() => {
   const stack = document.getElementById("heroLogoLoop");
