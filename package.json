@@ -1,0 +1,19 @@
+{
+  "name": "webovice",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:works": "vite",
+    "build": "vite build",
+    "preview:works": "vite preview"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^7.0.6"
+  }
+}

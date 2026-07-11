@@ -1,0 +1,527 @@
+.ws-section {
+  --ws-count: 4;
+  position: relative;
+  height: calc(var(--ws-count) * 100vh);
+  background:
+    radial-gradient(ellipse 80% 55% at 15% 20%, rgba(155, 111, 240, 0.16), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 80%, rgba(244, 207, 158, 0.1), transparent 50%),
+    #05040a;
+  color: #fff;
+  overflow: clip;
+}
+
+.ws-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding:
+    calc(var(--nav-height, 72px) + 0.65rem)
+    0
+    1rem;
+}
+
+.ws-head {
+  width: min(1200px, calc(100% - (var(--page-gutter, 2rem) * 2)));
+  margin: 0 auto 0.55rem;
+  position: relative;
+  z-index: 2;
+}
+
+.ws-head .section-title {
+  margin: 0.15rem 0 0.35rem;
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+}
+
+.ws-head-text {
+  margin: 0;
+  max-width: 36rem;
+  color: rgba(230, 230, 240, 0.62);
+  font-size: 0.96rem;
+}
+
+.ws-viewport {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.ws-track {
+  display: flex;
+  height: 100%;
+  width: calc(var(--ws-count) * 100vw);
+  will-change: transform;
+}
+
+.ws-slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+  display: grid;
+  place-items: stretch;
+  padding: 0.35rem clamp(0.75rem, 3vw, 2.25rem) 0.5rem;
+}
+
+.ws-panel {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: clamp(18px, 2.2vw, 32px);
+  cursor: pointer;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #07060e;
+}
+
+.ws-panel:focus-visible {
+  border-color: rgba(244, 207, 158, 0.7);
+  box-shadow: 0 0 0 2px rgba(155, 111, 240, 0.45);
+}
+
+.ws-panel-bg {
+  position: absolute;
+  inset: -8%;
+  z-index: 0;
+  background:
+    linear-gradient(
+      125deg,
+      rgba(88, 48, 150, 0.55) 0%,
+      rgba(10, 8, 20, 0.2) 42%,
+      rgba(244, 207, 158, 0.28) 100%
+    ),
+    radial-gradient(circle at 20% 80%, rgba(155, 111, 240, 0.45), transparent 45%),
+    radial-gradient(circle at 90% 15%, rgba(217, 127, 206, 0.35), transparent 40%);
+  background-size: 200% 200%, 100% 100%, 100% 100%;
+  animation: ws-gradient-flow 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@keyframes ws-gradient-flow {
+  from {
+    background-position: 0% 40%, 0 0, 0 0;
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    background-position: 100% 60%, 0 0, 0 0;
+    transform: scale(1.08) rotate(1.5deg);
+  }
+}
+
+.ws-panel-neon {
+  position: absolute;
+  inset: -2px;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(196, 181, 253, 0.45),
+    0 0 40px rgba(155, 111, 240, 0.55),
+    0 0 90px rgba(244, 207, 158, 0.22),
+    0 28px 80px rgba(0, 0, 0, 0.45);
+}
+
+.ws-panel-frame {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  height: 100%;
+  min-height: 0;
+}
+
+.ws-panel-media {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.ws-panel-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+}
+
+.ws-panel-media-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 40%, rgba(5, 4, 10, 0.75) 100%);
+  pointer-events: none;
+}
+
+.ws-panel-number {
+  position: absolute;
+  left: 3%;
+  bottom: 2%;
+  z-index: 3;
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 700;
+  line-height: 0.75;
+  letter-spacing: -0.08em;
+  color: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+  text-shadow: 0 0 40px rgba(155, 111, 240, 0.15);
+}
+
+.ws-panel-copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: clamp(1.5rem, 3.5vw, 2.8rem);
+  background: linear-gradient(195deg, rgba(8, 7, 16, 0.42) 0%, rgba(6, 5, 12, 0.92) 100%);
+  backdrop-filter: blur(14px);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ws-panel-badge {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 207, 158, 0.92);
+}
+
+.ws-panel-copy h3 {
+  margin: 0;
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+}
+
+.ws-panel-summary {
+  margin: 0;
+  color: rgba(230, 230, 240, 0.72);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  max-width: 28rem;
+}
+
+.ws-panel-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0.25rem 0 0;
+}
+
+.ws-panel-results dt {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, #fff, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ws-panel-results dd {
+  margin: 0.28rem 0 0;
+  font-size: 0.74rem;
+  color: rgba(230, 230, 240, 0.5);
+}
+
+.ws-panel-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.ws-panel-tech span {
+  font-size: 0.78rem;
+  color: rgba(230, 230, 240, 0.52);
+}
+
+.ws-panel-tech span:not(:last-child)::after {
+  content: "·";
+  margin-left: 0.45rem;
+  color: rgba(230, 230, 240, 0.28);
+}
+
+.ws-panel-cta {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f4cf9e;
+  letter-spacing: 0.01em;
+}
+
+.ws-progress {
+  width: min(1200px, calc(100% - (var(--page-gutter, 2rem) * 2)));
+  margin: 0.75rem auto 0;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.ws-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, #9b6ff0, #f4cf9e);
+}
+
+.ws-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.ws-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(3, 2, 8, 0.82);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+
+.ws-modal {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, 100%);
+  max-height: min(92vh, 960px);
+  overflow: auto;
+  border-radius: 26px;
+  border: 1px solid rgba(196, 181, 253, 0.3);
+  background: linear-gradient(165deg, #161328 0%, #08070f 100%);
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(155, 111, 240, 0.22);
+  padding: 1.25rem;
+}
+
+.ws-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(10, 10, 16, 0.75);
+  color: #fff;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+}
+
+.ws-modal-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.35rem;
+}
+
+.ws-modal-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ws-modal-hero-copy {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, transparent, rgba(5, 4, 10, 0.94));
+}
+
+.ws-modal-hero-copy h2 {
+  margin: 0.35rem 0 0.45rem;
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+
+.ws-modal-hero-copy p:last-child {
+  margin: 0;
+  color: rgba(230, 230, 240, 0.78);
+}
+
+.ws-modal-grid {
+  display: grid;
+  gap: 1.1rem;
+  margin-bottom: 1.35rem;
+}
+
+.ws-modal-grid h3 {
+  margin: 0 0 0.45rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(196, 181, 253, 0.92);
+}
+
+.ws-modal-grid p {
+  margin: 0;
+  color: rgba(230, 230, 240, 0.78);
+  line-height: 1.65;
+  font-size: 1.02rem;
+}
+
+.ws-modal-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 0 0 1.2rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ws-modal-results dt {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 700;
+}
+
+.ws-modal-results dd {
+  margin: 0.3rem 0 0;
+  color: rgba(230, 230, 240, 0.52);
+  font-size: 0.82rem;
+}
+
+.ws-modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.ws-modal-tech span {
+  padding: 0.38rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.78rem;
+  color: rgba(230, 230, 240, 0.78);
+}
+
+.ws-modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.ws-modal-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.ws-modal-link {
+  display: inline-flex;
+  color: #f4cf9e;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .ws-modal {
+    padding: 1.55rem;
+  }
+
+  .ws-modal-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 899px) {
+  .ws-section,
+  .ws-section.is-mobile {
+    height: auto;
+  }
+
+  .ws-pin {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 2.5rem;
+  }
+
+  .ws-viewport {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .ws-track {
+    display: grid;
+    width: 100%;
+    height: auto;
+    gap: 1.35rem;
+    transform: none !important;
+    padding: 0 var(--page-gutter, 1rem);
+  }
+
+  .ws-slide {
+    width: 100%;
+    flex: none;
+    height: auto;
+    padding: 0;
+  }
+
+  .ws-panel {
+    height: auto;
+  }
+
+  .ws-panel-frame {
+    grid-template-columns: 1fr;
+  }
+
+  .ws-panel-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .ws-panel-media-veil {
+    background: linear-gradient(180deg, transparent 35%, rgba(5, 4, 10, 0.75) 100%);
+  }
+
+  .ws-panel-copy {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .ws-panel-number {
+    top: 0.75rem;
+    bottom: auto;
+    left: auto;
+    right: 1rem;
+    font-size: 4.75rem;
+  }
+
+  .ws-progress {
+    display: none;
+  }
+
+  .ws-modal-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ws-modal-results {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ws-panel-bg {
+    animation: none;
+  }
+}
