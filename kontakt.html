@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#06060c" />
-    <meta name="robots" content="noindex" />
     <meta
       name="description"
-      content="Stránka nenalezena — WebOvice. Vraťte se na úvod nebo do kontaktů."
+      content="Kontakt WebOvice — napište, co potřebujete. Ozvu se s návrhem řešení webu, appky, AI nebo marketingu."
     />
-    <title>404 — stránka nenalezena | WebOvice</title>
+    <title>Kontakt — WebOvice</title>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3" />
     <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=3" />
@@ -40,7 +39,7 @@
           <a href="./#sluzby">Služby</a>
           <a href="moje-prace">Moje práce</a>
           <a href="./#cenik">Ceník</a>
-          <a href="kontakt">Kontakt</a>
+          <a href="kontakt" aria-current="page">Kontakt</a>
         </nav>
 
         <div class="nav-actions">
@@ -49,7 +48,7 @@
               <path d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
-          <a class="btn btn-nav" href="kontakt">
+          <a class="btn btn-nav" href="kontakt" aria-current="page">
             <span class="btn-nav-beam" aria-hidden="true"></span>
             <span class="btn-nav-inner">Spolupracujme</span>
           </a>
@@ -63,26 +62,49 @@
         <a href="./#cenik">Ceník</a>
         <a href="o-nas">O nás</a>
         <a href="./#faq">FAQ</a>
-        <a href="kontakt">Kontakt</a>
+        <a href="kontakt" aria-current="page">Kontakt</a>
       </nav>
     </header>
 
     <main>
-      <section class="error-page" aria-labelledby="error-title">
-        <div class="error-page-glow" aria-hidden="true"></div>
-        <div class="container error-page-inner">
-          <p class="section-kicker">[ PAGE NOT FOUND ]</p>
-          <p class="error-code" aria-hidden="true">404</p>
-          <h1 id="error-title" class="section-title error-title">
-            Tahle stránka <span class="gradient">neexistuje</span>
-          </h1>
-          <p class="section-text error-text">
-            Odkaz je neplatný, stránka se přesunula, nebo jste se sem dostali omylem.
-            Vraťte se na úvod — nebo se ozvěte, rád pomůžu.
-          </p>
-          <div class="error-actions">
-            <a class="btn btn-hero btn-hero-dark" href="./">Zpět na úvod</a>
-            <a class="btn btn-outline" href="kontakt">Kontakt</a>
+      <section class="section section-cta reveal" id="kontakt">
+        <div class="container">
+          <div class="section-head center">
+            <p class="section-kicker">[ KONTAKT ]</p>
+            <h1 class="section-title">Připraveni na digitální změnu?</h1>
+            <p class="section-text">Napište mi, co potřebujete — ozvu se s návrhem řešení.</p>
+          </div>
+
+          <div class="form-card">
+            <form id="contact-form" class="form-grid" novalidate>
+              <div>
+                <label for="name">Jméno a příjmení</label>
+                <input id="name" name="Jmeno" type="text" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="Email" type="email" autocomplete="email" required />
+              </div>
+              <div>
+                <label for="service">Co potřebujete?</label>
+                <select id="service" name="Sluzba" required>
+                  <option value="">Vyberte…</option>
+                  <option>Weby na míru</option>
+                  <option>Interní nástroje &amp; aplikace</option>
+                  <option>Provoz &amp; údržba</option>
+                  <option>Automatizace procesů (AI)</option>
+                  <option>E-learning na míru</option>
+                  <option>Online marketing</option>
+                  <option>Energetika &amp; technické systémy</option>
+                  <option>Jiné</option>
+                </select>
+              </div>
+              <div>
+                <label for="note">Poznámka (volitelná)</label>
+                <textarea id="note" name="Poznamka" placeholder="Stručně popište projekt…"></textarea>
+              </div>
+              <button class="btn btn-hero btn-hero-dark" type="submit">Odeslat poptávku</button>
+            </form>
           </div>
         </div>
       </section>
@@ -100,7 +122,7 @@
             <li><a href="o-nas">O nás</a></li>
             <li><a href="./#faq">FAQ</a></li>
             <li><a href="kontakt">Kontakt</a></li>
-            <li><a href="404" aria-current="page">404</a></li>
+            <li><a href="404">404</a></li>
           </ul>
         </nav>
 

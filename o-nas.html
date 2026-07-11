@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#06060c" />
-    <meta name="robots" content="noindex" />
     <meta
       name="description"
-      content="Stránka nenalezena — WebOvice. Vraťte se na úvod nebo do kontaktů."
+      content="O nás — WebOvice. Za projektem stojí Mirek: weby, appky, AI automatizace a technické řemeslo."
     />
-    <title>404 — stránka nenalezena | WebOvice</title>
+    <title>O nás — WebOvice</title>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3" />
     <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png?v=3" />
@@ -61,28 +60,38 @@
         <a href="./#sluzby">Služby</a>
         <a href="moje-prace">Moje práce</a>
         <a href="./#cenik">Ceník</a>
-        <a href="o-nas">O nás</a>
+        <a href="o-nas" aria-current="page">O nás</a>
         <a href="./#faq">FAQ</a>
         <a href="kontakt">Kontakt</a>
       </nav>
     </header>
 
     <main>
-      <section class="error-page" aria-labelledby="error-title">
-        <div class="error-page-glow" aria-hidden="true"></div>
-        <div class="container error-page-inner">
-          <p class="section-kicker">[ PAGE NOT FOUND ]</p>
-          <p class="error-code" aria-hidden="true">404</p>
-          <h1 id="error-title" class="section-title error-title">
-            Tahle stránka <span class="gradient">neexistuje</span>
-          </h1>
-          <p class="section-text error-text">
-            Odkaz je neplatný, stránka se přesunula, nebo jste se sem dostali omylem.
-            Vraťte se na úvod — nebo se ozvěte, rád pomůžu.
-          </p>
-          <div class="error-actions">
-            <a class="btn btn-hero btn-hero-dark" href="./">Zpět na úvod</a>
-            <a class="btn btn-outline" href="kontakt">Kontakt</a>
+      <section class="section section-dark reveal" id="o-nas">
+        <div class="container about-grid">
+          <div class="about-photo">
+            <img
+              src="assets/about-mirek.jpg"
+              alt="Mirek — WebOvice by Mircek"
+              width="1024"
+              height="874"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div>
+            <p class="section-kicker">[ O NÁS ]</p>
+            <h1 class="section-title">Za WebOvice stojí Mirek</h1>
+            <p class="about-text">
+              Absolvent elektro-průmyslovky, který zamířil do energetiky — realizace kotelen, tepelných čerpadel a FVE.
+              Cestou jsem si zamiloval i druhou stranu mince: <strong>kód</strong>. Dnes stavím weby, appky a AI
+              automatizace a technické řemeslo spojuju se softwarem tam, kde to dává smysl.
+            </p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:weboviceDoUlice@gmail.com">weboviceDoUlice@gmail.com</a></li>
+              <li><strong>Telefon:</strong> <a href="tel:+420731827981">+420 731 827 981</a></li>
+            </ul>
+            <a class="btn btn-hero btn-hero-dark" href="kontakt" style="margin-top: 1.5rem">Domluvit konzultaci</a>
           </div>
         </div>
       </section>
@@ -100,7 +109,7 @@
             <li><a href="o-nas">O nás</a></li>
             <li><a href="./#faq">FAQ</a></li>
             <li><a href="kontakt">Kontakt</a></li>
-            <li><a href="404" aria-current="page">404</a></li>
+            <li><a href="404">404</a></li>
           </ul>
         </nav>
 
