@@ -47,7 +47,10 @@
               <path d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
-          <a class="btn btn-nav" href="#kontakt">Spolupracujme</a>
+          <a class="btn btn-nav" href="#kontakt">
+            <span class="btn-nav-beam" aria-hidden="true"></span>
+            <span class="btn-nav-inner">Spolupracujme</span>
+          </a>
         </div>
       </div>
 
@@ -101,11 +104,15 @@
           </div>
 
           <div class="hero-visual">
-            <!-- Komponenta: točící se logo (černé pozadí videa → průhledné přes mix-blend-mode: screen) -->
             <div class="container-loga">
-              <video class="tocici-logo" autoplay loop muted playsinline>
-                <source src="assets/logo-webovice-cc.mp4" type="video/mp4" />
-              </video>
+              <img
+                class="tocici-logo"
+                src="assets/logo-webovice-bez.png"
+                alt=""
+                width="512"
+                height="500"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
@@ -403,9 +410,15 @@
             <div class="why-flow-core">
               <div class="why-core-halo" aria-hidden="true"></div>
               <div class="container-loga why-core-logo">
-                <video class="tocici-logo" autoplay loop muted playsinline>
-                  <source src="assets/logo-webovice-cc.mp4" type="video/mp4" />
-                </video>
+                <img
+                  class="tocici-logo"
+                  src="assets/logo-webovice-bez.png"
+                  alt=""
+                  width="160"
+                  height="156"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <p class="why-core-label">Partnerství</p>
             </div>
@@ -810,9 +823,15 @@
 
         <a class="footer-brand" href="#domu" aria-label="WebOvice — zpět nahoru">
           <div class="container-loga footer-logo">
-            <video class="tocici-logo" autoplay loop muted playsinline>
-              <source src="assets/logo-webovice-cc.mp4" type="video/mp4" />
-            </video>
+            <img
+              class="tocici-logo"
+              src="assets/logo-webovice-bez.png"
+              alt=""
+              width="220"
+              height="215"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </a>
 
