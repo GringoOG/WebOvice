@@ -1954,7 +1954,7 @@ img.tocici-logo,
 }
 
 .stack-card {
-  --fan-offset: 3.5;
+  --fan-offset: 4;
   --stack-card-radius: 18px;
   position: absolute;
   top: var(--stack-glow-pad);
@@ -2135,6 +2135,18 @@ img.tocici-logo,
     drop-shadow(0 0 12px rgba(43, 140, 238, 0.12));
 }
 
+.stack-plus {
+  display: block;
+  font-size: clamp(4.5rem, 8vw, 5.75rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-shadow:
+    0 0 18px rgba(255, 255, 255, 0.35),
+    0 0 36px rgba(255, 255, 255, 0.12);
+}
+
 .stack-card-label {
   margin: 0;
   font-size: 0.78rem;
@@ -2150,16 +2162,16 @@ img.tocici-logo,
 .stack-deck:hover .stack-card,
 .stack-deck:focus-within .stack-card {
   transform:
-    translateX(calc((var(--card-index) - var(--fan-offset)) * 138px))
-    rotate(calc((var(--card-index) - var(--fan-offset)) * 6deg))
-    translateY(calc((var(--card-index) - var(--fan-offset)) * (var(--card-index) - var(--fan-offset)) * 1.8px));
+    translateX(calc((var(--card-index) - var(--fan-offset)) * 118px))
+    rotate(calc((var(--card-index) - var(--fan-offset)) * 5.2deg))
+    translateY(calc((var(--card-index) - var(--fan-offset)) * (var(--card-index) - var(--fan-offset)) * 1.6px));
 }
 
 .stack-card:hover,
 .stack-card:focus-visible {
   transform:
-    translateX(calc((var(--card-index) - var(--fan-offset)) * 138px))
-    rotate(calc((var(--card-index) - var(--fan-offset)) * 6deg))
+    translateX(calc((var(--card-index) - var(--fan-offset)) * 118px))
+    rotate(calc((var(--card-index) - var(--fan-offset)) * 5.2deg))
     translateY(-22px) !important;
   z-index: 99 !important;
   filter:
