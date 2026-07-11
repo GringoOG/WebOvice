@@ -1608,9 +1608,9 @@ img.tocici-logo,
     transform 0.65s cubic-bezier(0.25, 1, 0.4, 1);
 }
 
-/* Překryv: další karta začíná ještě než skončí předchozí (žlutá linie ≈ vršek) */
+/* Mezera mezi kartami ≈ 1 cm (bez překryvu) */
 .works-timeline-item + .works-timeline-item {
-  margin-top: clamp(-7.25rem, -15vw, -5.5rem);
+  margin-top: 1cm;
 }
 
 .works-timeline-item:nth-of-type(1) {
@@ -1821,7 +1821,7 @@ img.tocici-logo,
   }
 
   .works-timeline-item + .works-timeline-item {
-    margin-top: 0.85rem;
+    margin-top: 1cm;
   }
 
   .works-timeline-node {
