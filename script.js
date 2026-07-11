@@ -598,7 +598,7 @@ prefersReducedMotion.addEventListener("change", () => {
   playSafe(videos[0]);
 })();
 
-/* ── Why-flow connectors: všechny karty → logo ── */
+/* ── Why-flow connectors: 1 svislá nit od loga + vodorovné větve ── */
 (() => {
   const flow = document.querySelector(".why-flow");
   const svg = flow?.querySelector(".why-flow-lines");
@@ -613,15 +613,36 @@ prefersReducedMotion.addEventListener("change", () => {
   let frame = 0;
   let looping = false;
 
-  const elbowPath = (startX, startY, endX, endY, fromLeft) => {
-    if (Math.abs(startY - endY) < 10) {
-      return `M ${startX} ${startY} H ${endX}`;
+  const ensurePaths = (specs) => {
+    let paths = Array.from(svg.querySelectorAll(".why-flow-path"));
+    if (
+      paths.length !== specs.length ||
+      specs.some((spec, i) => paths[i]?.getAttribute("data-role") !== spec.role)
+    ) {
+      svg.replaceChildren(
+        ...specs.map((spec) => {
+          const path = document.createElementNS(NS, "path");
+          path.setAttribute("class", `why-flow-path why-flow-path--${spec.role}`);
+          path.setAttribute("data-role", spec.role);
+          path.setAttribute("d", spec.d);
+          return path;
+        })
+      );
+      return;
     }
-    const reach = fromLeft
-      ? Math.min(startX + 36, (startX + endX) / 2)
-      : Math.max(startX - 36, (startX + endX) / 2);
-    return `M ${startX} ${startY} H ${reach} V ${endY} H ${endX}`;
+    paths.forEach((path, index) => {
+      path.setAttribute("d", specs[index].d);
+    });
   };
+
+  const collectBranches = (selector, flowRect, fromLeft) =>
+    Array.from(flow.querySelectorAll(selector)).map((card) => {
+      const r = card.getBoundingClientRect();
+      return {
+        x: fromLeft ? r.right - flowRect.left : r.left - flowRect.left,
+        y: r.top + r.height / 2 - flowRect.top,
+      };
+    });
 
   const draw = () => {
     if (mobileMq.matches) {
@@ -636,47 +657,51 @@ prefersReducedMotion.addEventListener("change", () => {
     const coreX = coreRect.left + coreRect.width / 2 - flowRect.left;
     const coreY = coreRect.top + coreRect.height / 2 - flowRect.top;
     const logoInset = Math.min(coreRect.width, coreRect.height) * 0.36;
+    const logoLeftX = coreX - logoInset;
+    const logoRightX = coreX + logoInset;
+    // Svislé niti sedí těsně u loga — větve se na ně jen napojují
+    const spineGap = 10;
+    const leftSpineX = logoLeftX - spineGap;
+    const rightSpineX = logoRightX + spineGap;
 
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
     svg.setAttribute("width", String(width));
     svg.setAttribute("height", String(height));
 
-    const segments = [];
+    const leftBranches = collectBranches(".why-flow-col--left .why-flow-card", flowRect, true);
+    const rightBranches = collectBranches(".why-flow-col--right .why-flow-card", flowRect, false);
+    const specs = [];
 
-    flow.querySelectorAll(".why-flow-col--left .why-flow-card").forEach((card) => {
-      const r = card.getBoundingClientRect();
-      const startX = r.right - flowRect.left;
-      const startY = r.top + r.height / 2 - flowRect.top;
-      const endX = coreX - logoInset;
-      const endY = coreY;
-      segments.push(elbowPath(startX, startY, endX, endY, true));
-    });
+    const addSide = (branches, spineX, logoX) => {
+      if (!branches.length) {
+        return;
+      }
+      const ys = branches.map((b) => b.y);
+      const topY = Math.min(...ys, coreY) - 8;
+      const bottomY = Math.max(...ys, coreY) + 8;
 
-    flow.querySelectorAll(".why-flow-col--right .why-flow-card").forEach((card) => {
-      const r = card.getBoundingClientRect();
-      const startX = r.left - flowRect.left;
-      const startY = r.top + r.height / 2 - flowRect.top;
-      const endX = coreX + logoInset;
-      const endY = coreY;
-      segments.push(elbowPath(startX, startY, endX, endY, false));
-    });
-
-    let paths = svg.querySelectorAll(".why-flow-path");
-    if (paths.length !== segments.length) {
-      svg.replaceChildren(
-        ...segments.map((d) => {
-          const path = document.createElementNS(NS, "path");
-          path.setAttribute("class", "why-flow-path");
-          path.setAttribute("d", d);
-          return path;
-        })
-      );
-      paths = svg.querySelectorAll(".why-flow-path");
-    } else {
-      paths.forEach((path, index) => {
-        path.setAttribute("d", segments[index]);
+      // Jedna svislá nit + krátký vodorovný stonek do loga
+      specs.push({
+        role: "spine",
+        d: `M ${spineX} ${topY} V ${bottomY}`,
       });
-    }
+      specs.push({
+        role: "stem",
+        d: `M ${spineX} ${coreY} H ${logoX}`,
+      });
+
+      // Větve od kartiček — jen vodorovně, jezdí po svislé niti
+      branches.forEach((branch) => {
+        specs.push({
+          role: "branch",
+          d: `M ${branch.x} ${branch.y} H ${spineX}`,
+        });
+      });
+    };
+
+    addSide(leftBranches, leftSpineX, logoLeftX);
+    addSide(rightBranches, rightSpineX, logoRightX);
+    ensurePaths(specs);
   };
 
   const tick = () => {
