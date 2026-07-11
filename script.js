@@ -466,61 +466,94 @@ prefersReducedMotion.addEventListener("change", () => {
   revealEls.forEach((el) => observer.observe(el));
 })();
 
-/* ── Works timeline — scroll fade-in + progress line ── */
+/* ── Works showcase — horizontal scroll + magnetic CTA ── */
 (() => {
-  const timeline = document.getElementById("worksTimeline");
-  const progressEl = document.getElementById("worksTimelineProgress");
-  const items = timeline ? Array.from(timeline.querySelectorAll("[data-timeline-item]")) : [];
-
-  if (!timeline || !items.length) {
+  const section = document.getElementById("moje-prace");
+  const track = document.getElementById("worksShowcaseTrack");
+  if (!section?.classList.contains("works-showcase") || !track) {
     return;
   }
 
+  const panels = Array.from(track.querySelectorAll("[data-works-panel]"));
+  const dots = Array.from(document.querySelectorAll("#worksShowcaseDots span"));
+  const magneticBtns = Array.from(section.querySelectorAll("[data-magnetic]"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mobileQuery = window.matchMedia("(max-width: 899px)");
 
-  if (reduceMotion) {
-    items.forEach((item) => item.classList.add("is-inview"));
-    if (progressEl) {
-      progressEl.style.height = "100%";
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+  let activeIndex = 0;
+
+  const setActive = (index) => {
+    if (index === activeIndex && panels[index]?.classList.contains("is-active")) {
+      return;
     }
-    return;
-  }
-
-  const itemObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        entry.target.classList.add("is-inview");
-        itemObserver.unobserve(entry.target);
-      });
-    },
-    {
-      rootMargin: "0px 0px -12% 0px",
-      threshold: 0.28,
-    }
-  );
-
-  items.forEach((item) => itemObserver.observe(item));
-
-  if (!progressEl) {
-    return;
-  }
-
-  const updateProgress = () => {
-    const rect = timeline.getBoundingClientRect();
-    const viewH = window.innerHeight || 1;
-    const start = viewH * 0.72;
-    const end = viewH * 0.28;
-    const raw = (start - rect.top) / (rect.height + (start - end));
-    const clamped = Math.max(0, Math.min(1, raw));
-    progressEl.style.height = `${(clamped * 100).toFixed(2)}%`;
+    activeIndex = index;
+    panels.forEach((panel, i) => {
+      panel.classList.toggle("is-active", i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === index);
+    });
   };
 
-  updateProgress();
-  window.addEventListener("scroll", updateProgress, { passive: true });
-  window.addEventListener("resize", updateProgress);
+  const updateHorizontal = () => {
+    if (reduceMotion || mobileQuery.matches) {
+      track.style.transform = "";
+      panels.forEach((panel) => panel.classList.add("is-active"));
+      return;
+    }
+
+    const scrollable = section.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) {
+      return;
+    }
+
+    const progress = clamp(-section.getBoundingClientRect().top / scrollable, 0, 1);
+    const maxX = track.scrollWidth - window.innerWidth;
+    track.style.transform = `translate3d(${(-progress * maxX).toFixed(2)}px, 0, 0)`;
+
+    const index = clamp(Math.round(progress * (panels.length - 1)), 0, panels.length - 1);
+    setActive(index);
+  };
+
+  updateHorizontal();
+  window.addEventListener("scroll", updateHorizontal, { passive: true });
+  window.addEventListener("resize", updateHorizontal);
+  mobileQuery.addEventListener?.("change", updateHorizontal);
+
+  if (reduceMotion || !magneticBtns.length) {
+    return;
+  }
+
+  magneticBtns.forEach((btn) => {
+    const label = btn.querySelector("span");
+    const strength = 28;
+    const labelStrength = 12;
+
+    const onMove = (event) => {
+      if (mobileQuery.matches) {
+        return;
+      }
+      const rect = btn.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${(x / rect.width) * strength}px, ${(y / rect.height) * strength}px)`;
+      if (label) {
+        label.style.transform = `translate(${(x / rect.width) * labelStrength}px, ${(y / rect.height) * labelStrength}px)`;
+      }
+    };
+
+    const onLeave = () => {
+      btn.style.transform = "";
+      if (label) {
+        label.style.transform = "";
+      }
+    };
+
+    btn.addEventListener("mousemove", onMove);
+    btn.addEventListener("mouseleave", onLeave);
+  });
 })();
 
 /* ── Hero logo — soft crossfade loop (bez viditelného restartu) ── */
