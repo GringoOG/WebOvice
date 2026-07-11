@@ -104,9 +104,29 @@
           </div>
 
           <div class="hero-visual">
-            <div class="container-loga">
+            <div class="container-loga container-loga--hero">
+              <div class="logo-video-stack" id="heroLogoLoop" data-logo-src="assets/logo-webovice-cc.mp4">
+                <video
+                  class="tocici-logo tocici-logo--video is-active"
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="assets/logo-webovice-cc.mp4" type="video/mp4" />
+                </video>
+                <video
+                  class="tocici-logo tocici-logo--video"
+                  muted
+                  playsinline
+                  preload="auto"
+                  aria-hidden="true"
+                >
+                  <source src="assets/logo-webovice-cc.mp4" type="video/mp4" />
+                </video>
+              </div>
               <img
-                class="tocici-logo"
+                class="tocici-logo tocici-logo--fallback"
                 src="assets/logo-webovice-bez.png"
                 alt=""
                 width="512"
@@ -408,7 +428,6 @@
             </div>
 
             <div class="why-flow-core">
-              <div class="why-core-halo" aria-hidden="true"></div>
               <div class="container-loga why-core-logo">
                 <img
                   class="tocici-logo"
@@ -420,7 +439,6 @@
                   decoding="async"
                 />
               </div>
-              <p class="why-core-label">Partnerství</p>
             </div>
 
             <div class="why-flow-col why-flow-col--right">

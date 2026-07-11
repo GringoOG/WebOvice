@@ -465,3 +465,78 @@ prefersReducedMotion.addEventListener("change", () => {
 
   revealEls.forEach((el) => observer.observe(el));
 })();
+
+/* ── Hero logo — soft crossfade loop (bez viditelného restartu) ── */
+(() => {
+  const stack = document.getElementById("heroLogoLoop");
+  if (!stack) {
+    return;
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const videos = Array.from(stack.querySelectorAll("video.tocici-logo--video"));
+  if (videos.length < 2) {
+    return;
+  }
+
+  const FADE_LEAD = 0.55;
+  let activeIndex = 0;
+  let swapping = false;
+
+  const playSafe = (video) => {
+    const playPromise = video.play();
+    if (playPromise?.catch) {
+      playPromise.catch(() => {});
+    }
+  };
+
+  const swap = () => {
+    if (swapping) {
+      return;
+    }
+    swapping = true;
+
+    const current = videos[activeIndex];
+    const next = videos[(activeIndex + 1) % videos.length];
+
+    next.currentTime = 0;
+    playSafe(next);
+    next.classList.add("is-active");
+    current.classList.remove("is-active");
+
+    window.setTimeout(() => {
+      current.pause();
+      activeIndex = (activeIndex + 1) % videos.length;
+      swapping = false;
+    }, 480);
+  };
+
+  videos.forEach((video, index) => {
+    video.loop = false;
+    video.muted = true;
+    video.playsInline = true;
+
+    video.addEventListener("timeupdate", () => {
+      if (index !== activeIndex || swapping) {
+        return;
+      }
+      if (!Number.isFinite(video.duration) || video.duration <= 0) {
+        return;
+      }
+      if (video.currentTime >= video.duration - FADE_LEAD) {
+        swap();
+      }
+    });
+
+    video.addEventListener("ended", () => {
+      if (index === activeIndex) {
+        swap();
+      }
+    });
+  });
+
+  playSafe(videos[0]);
+})();

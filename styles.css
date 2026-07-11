@@ -670,7 +670,7 @@ textarea {
   align-self: flex-end;
 }
 
-/* ── Točící se logo (PNG bez pozadí + CSS rotace) ── */
+/* ── Točící se logo ── */
 .container-loga {
   position: relative;
   width: min(440px, 86vw);
@@ -686,10 +686,51 @@ textarea {
   height: 100%;
   object-fit: contain;
   transform-origin: center center;
-  animation: rotaceLoga 15s linear infinite;
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+/* PNG verze (footer / Tok hodnoty) — CSS rotace, bez pozadí */
+img.tocici-logo,
+.tocici-logo--fallback {
+  animation: rotaceLoga 15s linear infinite;
+}
+
+/* Hero video — pohyb a odlesky jsou ve videu, ne v CSS */
+.container-loga--hero {
+  overflow: hidden;
+}
+
+.logo-video-stack {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.logo-video-stack .tocici-logo--video {
+  grid-area: 1 / 1;
+  width: 205%;
+  height: 205%;
+  mix-blend-mode: screen;
+  filter: contrast(1.08);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  animation: none;
+}
+
+.logo-video-stack .tocici-logo--video.is-active {
+  opacity: 1;
+}
+
+.container-loga--hero .tocici-logo--fallback {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: none;
 }
 
 @keyframes rotaceLoga {
@@ -702,7 +743,17 @@ textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tocici-logo {
+  img.tocici-logo,
+  .tocici-logo--fallback {
+    animation: none;
+  }
+
+  .logo-video-stack {
+    display: none;
+  }
+
+  .container-loga--hero .tocici-logo--fallback {
+    opacity: 1;
     animation: none;
   }
 }
@@ -1374,22 +1425,7 @@ textarea {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
   padding: 0.5rem;
-}
-
-.why-core-halo {
-  position: absolute;
-  width: min(190px, 42vw);
-  height: min(190px, 42vw);
-  border-radius: 50%;
-  border: 1px solid rgba(196, 181, 253, 0.55);
-  box-shadow:
-    0 0 0 10px rgba(155, 111, 240, 0.06),
-    0 0 36px rgba(168, 130, 255, 0.45),
-    0 0 72px rgba(124, 58, 237, 0.25);
-  animation: why-core-pulse 3.2s ease-in-out infinite;
-  pointer-events: none;
 }
 
 .why-core-logo.container-loga {
@@ -1397,33 +1433,14 @@ textarea {
   z-index: 1;
   width: min(148px, 34vw);
   height: min(148px, 34vw);
-  overflow: hidden;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 40%, rgba(88, 40, 160, 0.55), transparent 68%),
-    rgba(12, 6, 28, 0.92);
-  box-shadow:
-    0 0 0 2px rgba(196, 181, 253, 0.55),
-    0 0 0 6px rgba(124, 58, 237, 0.18),
-    0 0 42px rgba(155, 111, 240, 0.45);
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
 }
 
 .why-core-logo .tocici-logo {
-  width: 92%;
-  height: 92%;
-}
-
-.why-core-label {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(244, 207, 158, 0.95);
-  text-shadow: 0 0 18px rgba(155, 111, 240, 0.4);
-  animation: why-label-pulse 3.2s ease-in-out infinite;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes why-flow-drift {
@@ -1446,33 +1463,9 @@ textarea {
   }
 }
 
-@keyframes why-core-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.85;
-  }
-  50% {
-    transform: scale(1.04);
-    opacity: 1;
-  }
-}
-
-@keyframes why-label-pulse {
-  0%,
-  100% {
-    opacity: 0.82;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .why-flow-card,
-  .why-flow-line,
-  .why-core-halo,
-  .why-core-label {
+  .why-flow-line {
     animation: none !important;
   }
 }
