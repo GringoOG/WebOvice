@@ -1602,19 +1602,19 @@ img.tocici-logo,
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 1rem;
 }
 
 .works-timeline-col--left {
   grid-column: 1;
   align-items: flex-end;
-  padding-right: 0.15rem;
+  padding-right: 0;
 }
 
 .works-timeline-col--right {
   grid-column: 3;
   align-items: flex-start;
-  padding-left: 0.15rem;
+  padding-left: 0;
   /* Zigzag: pravý sloupec začíná cca v polovině první levé karty */
   padding-top: clamp(5.5rem, 12vw, 7.25rem);
 }
@@ -1650,6 +1650,7 @@ img.tocici-logo,
 }
 
 .works-timeline-node {
+  position: relative;
   flex: 0 0 auto;
   width: 14px;
   height: 14px;
@@ -1659,21 +1660,31 @@ img.tocici-logo,
   box-shadow:
     0 0 0 4px rgba(155, 111, 240, 0.12),
     0 0 18px rgba(155, 111, 240, 0.55);
-  z-index: 2;
-  transform: scale(0.6);
+  z-index: 3;
+  /* 14px = půl středového gutteru → střed kolečka na timeline */
   transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
 }
 
 .works-timeline-item--left .works-timeline-node {
-  margin-right: -8px;
+  transform: translateX(21px) scale(0.6);
+  margin: 0;
 }
 
 .works-timeline-item--right .works-timeline-node {
-  margin-left: -8px;
+  transform: translateX(-21px) scale(0.6);
+  margin: 0;
 }
 
-.works-timeline-item.is-inview .works-timeline-node {
-  transform: scale(1);
+.works-timeline-item--left.is-inview .works-timeline-node {
+  transform: translateX(21px) scale(1);
+  border-color: #f4cf9e;
+  box-shadow:
+    0 0 0 5px rgba(244, 207, 158, 0.12),
+    0 0 22px rgba(155, 111, 240, 0.7);
+}
+
+.works-timeline-item--right.is-inview .works-timeline-node {
+  transform: translateX(-21px) scale(1);
   border-color: #f4cf9e;
   box-shadow:
     0 0 0 5px rgba(244, 207, 158, 0.12),
@@ -1808,8 +1819,14 @@ img.tocici-logo,
     width: clamp(1.25rem, 4vw, 2.75rem);
   }
 
-  .works-timeline-item .works-timeline-node {
-    transform: scale(1);
+  .works-timeline-item--left .works-timeline-node,
+  .works-timeline-item--left.is-inview .works-timeline-node {
+    transform: translateX(21px) scale(1);
+  }
+
+  .works-timeline-item--right .works-timeline-node,
+  .works-timeline-item--right.is-inview .works-timeline-node {
+    transform: translateX(-21px) scale(1);
   }
 }
 
@@ -1837,11 +1854,7 @@ img.tocici-logo,
   .works-timeline-item {
     width: 100%;
     padding-left: 1.6rem;
-    margin-top: 0.85rem;
-  }
-
-  .works-timeline-item:first-child {
-    margin-top: 0;
+    margin-top: 1rem;
   }
 
   .works-timeline-col--left .works-timeline-item:first-child {
@@ -1868,10 +1881,16 @@ img.tocici-logo,
     justify-content: flex-start;
   }
 
-  .works-timeline-node {
+  .works-timeline-node,
+  .works-timeline-item--left .works-timeline-node,
+  .works-timeline-item--right .works-timeline-node,
+  .works-timeline-item--left.is-inview .works-timeline-node,
+  .works-timeline-item--right.is-inview .works-timeline-node {
     position: absolute;
     left: -0.05rem;
     top: 1.55rem;
+    transform: scale(1);
+    margin: 0;
   }
 
   .works-timeline-branch {
