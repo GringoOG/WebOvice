@@ -1541,16 +1541,16 @@ img.tocici-logo,
   grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
   align-items: center;
   gap: 0;
-  margin: 0 0 clamp(2rem, 4vw, 3.25rem);
+  margin: 0 0 clamp(0.75rem, 1.6vw, 1.15rem);
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(18px);
   transition:
     opacity 0.65s ease,
     transform 0.65s cubic-bezier(0.25, 1, 0.4, 1);
 }
 
 .works-timeline-item:last-of-type {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .works-timeline-item.is-inview {
@@ -1701,7 +1701,7 @@ img.tocici-logo,
 }
 
 .works-more {
-  margin-top: 2.25rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
 
