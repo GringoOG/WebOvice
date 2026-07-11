@@ -1600,12 +1600,30 @@ img.tocici-logo,
   grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr);
   align-items: center;
   gap: 0;
-  margin: 0 0 clamp(0.75rem, 1.6vw, 1.15rem);
+  margin: 0;
   opacity: 0;
   transform: translateY(18px);
   transition:
     opacity 0.65s ease,
     transform 0.65s cubic-bezier(0.25, 1, 0.4, 1);
+}
+
+/* Překryv: další karta začíná ještě než skončí předchozí (žlutá linie ≈ vršek) */
+.works-timeline-item + .works-timeline-item {
+  margin-top: clamp(-7.25rem, -15vw, -5.5rem);
+}
+
+.works-timeline-item:nth-of-type(1) {
+  z-index: 1;
+}
+.works-timeline-item:nth-of-type(2) {
+  z-index: 2;
+}
+.works-timeline-item:nth-of-type(3) {
+  z-index: 3;
+}
+.works-timeline-item:nth-of-type(4) {
+  z-index: 4;
 }
 
 .works-timeline-item:last-of-type {
@@ -1800,6 +1818,10 @@ img.tocici-logo,
   .works-timeline-item {
     display: block;
     padding-left: 1.6rem;
+  }
+
+  .works-timeline-item + .works-timeline-item {
+    margin-top: 0.85rem;
   }
 
   .works-timeline-node {
