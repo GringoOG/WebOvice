@@ -540,3 +540,93 @@ prefersReducedMotion.addEventListener("change", () => {
 
   playSafe(videos[0]);
 })();
+
+/* ── Why-flow connectors: všechny karty → logo ── */
+(() => {
+  const flow = document.querySelector(".why-flow");
+  const svg = flow?.querySelector(".why-flow-lines");
+  const core = flow?.querySelector(".why-flow-core");
+  if (!flow || !svg || !core) {
+    return;
+  }
+
+  const NS = "http://www.w3.org/2000/svg";
+  const mobileMq = window.matchMedia("(max-width: 899px)");
+  let frame = 0;
+
+  const elbowPath = (startX, startY, endX, endY, fromLeft) => {
+    if (Math.abs(startY - endY) < 10) {
+      return `M ${startX} ${startY} H ${endX}`;
+    }
+    const reach = fromLeft
+      ? Math.min(startX + 36, (startX + endX) / 2)
+      : Math.max(startX - 36, (startX + endX) / 2);
+    return `M ${startX} ${startY} H ${reach} V ${endY} H ${endX}`;
+  };
+
+  const draw = () => {
+    frame = 0;
+    if (mobileMq.matches) {
+      svg.replaceChildren();
+      return;
+    }
+
+    const flowRect = flow.getBoundingClientRect();
+    const coreRect = core.getBoundingClientRect();
+    const width = Math.max(1, flowRect.width);
+    const height = Math.max(1, flowRect.height);
+    const coreX = coreRect.left + coreRect.width / 2 - flowRect.left;
+    const coreY = coreRect.top + coreRect.height / 2 - flowRect.top;
+    const logoInset = Math.min(coreRect.width, coreRect.height) * 0.36;
+
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    svg.setAttribute("width", String(width));
+    svg.setAttribute("height", String(height));
+
+    const segments = [];
+
+    flow.querySelectorAll(".why-flow-col--left .why-flow-card").forEach((card) => {
+      const r = card.getBoundingClientRect();
+      const startX = r.right - flowRect.left;
+      const startY = r.top + r.height / 2 - flowRect.top;
+      const endX = coreX - logoInset;
+      const endY = coreY;
+      segments.push(elbowPath(startX, startY, endX, endY, true));
+    });
+
+    flow.querySelectorAll(".why-flow-col--right .why-flow-card").forEach((card) => {
+      const r = card.getBoundingClientRect();
+      const startX = r.left - flowRect.left;
+      const startY = r.top + r.height / 2 - flowRect.top;
+      const endX = coreX + logoInset;
+      const endY = coreY;
+      segments.push(elbowPath(startX, startY, endX, endY, false));
+    });
+
+    svg.replaceChildren(
+      ...segments.map((d) => {
+        const path = document.createElementNS(NS, "path");
+        path.setAttribute("class", "why-flow-path");
+        path.setAttribute("d", d);
+        return path;
+      })
+    );
+  };
+
+  const schedule = () => {
+    if (frame) {
+      return;
+    }
+    frame = requestAnimationFrame(draw);
+  };
+
+  draw();
+  window.addEventListener("resize", schedule, { passive: true });
+  mobileMq.addEventListener("change", schedule);
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(schedule);
+  }
+
+  window.addEventListener("load", schedule, { once: true });
+})();
