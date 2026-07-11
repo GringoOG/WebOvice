@@ -2922,80 +2922,28 @@ img.tocici-logo,
 }
 
 .accordion-item {
-  --faq-beam-accent: #9b6ff0;
-  --faq-beam-accent-2: #c4b5fd;
   position: relative;
-  border: none;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
   border-radius: var(--radius);
-  padding: 1.5px;
+  padding: 0;
   overflow: hidden;
   isolation: isolate;
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition:
     box-shadow 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .accordion-beam {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  overflow: hidden;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.accordion-beam::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 220%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 8deg,
-    color-mix(in srgb, var(--faq-beam-accent-2) 0%, transparent) 10deg,
-    var(--faq-beam-accent-2) 16deg,
-    var(--faq-beam-accent) 28deg,
-    color-mix(in srgb, var(--faq-beam-accent) 0%, transparent) 34deg,
-    transparent 36deg,
-    transparent 188deg,
-    color-mix(in srgb, var(--faq-beam-accent) 0%, transparent) 190deg,
-    var(--faq-beam-accent) 198deg,
-    var(--faq-beam-accent-2) 210deg,
-    color-mix(in srgb, var(--faq-beam-accent-2) 0%, transparent) 216deg,
-    transparent 218deg,
-    transparent 360deg
-  );
-  filter: blur(0.4px);
-  animation: faq-beam-spin 3.2s linear infinite;
-  animation-delay: calc(var(--faq-i, 0) * -0.45s);
-}
-
-.accordion-item:nth-child(1) {
-  --faq-i: 0;
-}
-.accordion-item:nth-child(2) {
-  --faq-i: 1;
-}
-.accordion-item:nth-child(3) {
-  --faq-i: 2;
-}
-.accordion-item:nth-child(4) {
-  --faq-i: 3;
-}
-.accordion-item:nth-child(5) {
-  --faq-i: 4;
+  display: none;
 }
 
 .accordion-item-inner {
   position: relative;
   z-index: 1;
-  border-radius: calc(var(--radius) - 1px);
+  border-radius: inherit;
   background: color-mix(in srgb, var(--bg) 88%, #16122a);
   backdrop-filter: blur(12px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -3008,21 +2956,12 @@ img.tocici-logo,
 .accordion-item:hover,
 .accordion-item:focus-within {
   transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
   box-shadow:
     0 0 16px rgba(155, 111, 240, 0.55),
     0 0 36px rgba(155, 111, 240, 0.32),
     0 0 56px rgba(139, 108, 246, 0.18),
     0 10px 32px rgba(139, 108, 246, 0.45);
-}
-
-.accordion-item:hover .accordion-beam,
-.accordion-item:focus-within .accordion-beam {
-  opacity: 0;
-}
-
-.accordion-item:hover .accordion-beam::before,
-.accordion-item:focus-within .accordion-beam::before {
-  animation-play-state: paused;
 }
 
 .accordion-item:hover .accordion-item-inner,
@@ -3033,17 +2972,7 @@ img.tocici-logo,
     0 0 0 1px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
-@keyframes faq-beam-spin {
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .accordion-beam::before {
-    animation: none;
-  }
-
   .accordion-item:hover,
   .accordion-item:focus-within {
     transform: none;
