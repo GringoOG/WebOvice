@@ -403,35 +403,50 @@
         </div>
       </section>
 
-      <!-- MOJE PRÁCE — premium case cards -->
-      <section class="section works-premium reveal" id="moje-prace" aria-label="Ukázky z praxe">
-        <div class="container">
-          <div class="section-head">
-            <p class="section-kicker">[ PORTFOLIO ]</p>
+      <!-- MOJE PRÁCE — agency case studies -->
+      <section class="section works-agency" id="moje-prace" aria-label="Ukázky z praxe">
+        <div class="container works-agency-container">
+          <div class="section-head works-agency-head reveal">
+            <p class="section-kicker">[ CASE STUDIES ]</p>
             <h2 class="section-title">Ukázky z praxe</h2>
-            <p class="section-text">Vybrané projekty s měřitelným dopadem — od AI automatizace po weby a e-learning.</p>
+            <p class="section-text">Vybrané projekty s jasným problémem, řešením a měřitelným výsledkem.</p>
           </div>
 
-          <div class="works-premium-grid reveal-stagger">
-            <article class="case-premium">
-              <div class="case-premium-media">
+          <div class="works-agency-list">
+            <article class="agency-case reveal">
+              <div class="agency-case-media">
                 <img
                   src="assets/solution-1.png"
                   alt=""
-                  width="960"
-                  height="600"
+                  width="1200"
+                  height="800"
                   loading="lazy"
                   decoding="async"
                 />
-                <span class="case-premium-num">01</span>
-                <span class="case-premium-badge">AI</span>
               </div>
-              <div class="case-premium-body">
+              <div class="agency-case-copy">
+                <span class="agency-case-index">01</span>
                 <h3>Snap Meter</h3>
-                <p>Automatizace čtení měřidel pro Prokat Invest — méně ruční práce, žádné AI halucinace.</p>
-                <dl class="case-premium-stats">
+                <p class="agency-case-lead">
+                  Automatizace čtení měřidel pro Prokat Invest — méně ruční práce, spolehlivá data.
+                </p>
+                <ol class="agency-case-flow">
+                  <li>
+                    <span>Problém</span>
+                    <p>Ruční přepis měřidel brzdil provoz a zanášílo chyby do Excelu.</p>
+                  </li>
+                  <li>
+                    <span>Řešení</span>
+                    <p>History-First AI / OCR systém s validací a zápisem přímo do master souboru.</p>
+                  </li>
+                  <li>
+                    <span>Výsledek</span>
+                    <p>Měřitelná úspora času a data bez AI halucinací.</p>
+                  </li>
+                </ol>
+                <dl class="agency-case-stats">
                   <div>
-                    <dt>+90&nbsp;%</dt>
+                    <dt>90&nbsp;%</dt>
                     <dd>úspora času</dd>
                   </div>
                   <div>
@@ -439,38 +454,53 @@
                     <dd>AI halucinací</dd>
                   </div>
                   <div>
-                    <dt>OCR</dt>
-                    <dd>+ Excel</dd>
+                    <dt>100&nbsp;%</dt>
+                    <dd>automatizovaný zápis</dd>
                   </div>
                 </dl>
-                <div class="case-premium-footer">
+                <div class="agency-case-meta">
                   <div class="work-tags">
                     <span>Python</span>
                     <span>OpenAI</span>
                     <span>OCR</span>
                   </div>
-                  <a class="case-premium-link" href="moje-prace">Zobrazit případovou studii <span aria-hidden="true">→</span></a>
+                  <a class="agency-case-cta" href="moje-prace">Prohlédnout detail projektu <span aria-hidden="true">→</span></a>
                 </div>
               </div>
             </article>
 
-            <article class="case-premium">
-              <div class="case-premium-media">
+            <article class="agency-case agency-case--flip reveal">
+              <div class="agency-case-media">
                 <img
                   src="assets/solution-2.png"
                   alt=""
-                  width="960"
-                  height="600"
+                  width="1200"
+                  height="800"
                   loading="lazy"
                   decoding="async"
                 />
-                <span class="case-premium-num">02</span>
-                <span class="case-premium-badge">Web</span>
               </div>
-              <div class="case-premium-body">
+              <div class="agency-case-copy">
+                <span class="agency-case-index">02</span>
                 <h3>onlineskolení.eu</h3>
-                <p>Prodejní web pro online školení s přehlednou nabídkou kurzů a snadnou správou obsahu.</p>
-                <dl class="case-premium-stats">
+                <p class="agency-case-lead">
+                  Prodejní web, který dělá z nabídky kurzů přehledný a spravovatelný produkt.
+                </p>
+                <ol class="agency-case-flow">
+                  <li>
+                    <span>Problém</span>
+                    <p>Školení bylo těžké prezentovat a obsah se spravoval zbytečně složitě.</p>
+                  </li>
+                  <li>
+                    <span>Řešení</span>
+                    <p>Moderní prezentační web s jasnou strukturou kurzů a správou bez zásahu do kódu.</p>
+                  </li>
+                  <li>
+                    <span>Výsledek</span>
+                    <p>Lepší prodejní cesta a obsah, který klient zvládne udržovat sám.</p>
+                  </li>
+                </ol>
+                <dl class="agency-case-stats">
                   <div>
                     <dt>100&nbsp;%</dt>
                     <dd>responzivní</dd>
@@ -480,38 +510,53 @@
                     <dd>bez kódu</dd>
                   </div>
                   <div>
-                    <dt>Kurzový</dt>
-                    <dd>katalog</dd>
+                    <dt>1</dt>
+                    <dd>jasná nabídka</dd>
                   </div>
                 </dl>
-                <div class="case-premium-footer">
+                <div class="agency-case-meta">
                   <div class="work-tags">
                     <span>WordPress</span>
                     <span>Divi</span>
                     <span>E-learning</span>
                   </div>
-                  <a class="case-premium-link" href="moje-prace">Zobrazit případovou studii <span aria-hidden="true">→</span></a>
+                  <a class="agency-case-cta" href="moje-prace">Prohlédnout detail projektu <span aria-hidden="true">→</span></a>
                 </div>
               </div>
             </article>
 
-            <article class="case-premium">
-              <div class="case-premium-media">
+            <article class="agency-case reveal">
+              <div class="agency-case-media">
                 <img
                   src="assets/solution-3.png"
                   alt=""
-                  width="960"
-                  height="600"
+                  width="1200"
+                  height="800"
                   loading="lazy"
                   decoding="async"
                 />
-                <span class="case-premium-num">03</span>
-                <span class="case-premium-badge">Enterprise</span>
               </div>
-              <div class="case-premium-body">
+              <div class="agency-case-copy">
+                <span class="agency-case-index">03</span>
                 <h3>Prokat Invest</h3>
-                <p>Firemní web pro energetiku — důvěryhodná prezentace služeb a jasná cesta k poptávce.</p>
-                <dl class="case-premium-stats">
+                <p class="agency-case-lead">
+                  Firemní web pro energetiku — důvěra, služby a přímá cesta k poptávce.
+                </p>
+                <ol class="agency-case-flow">
+                  <li>
+                    <span>Problém</span>
+                    <p>Technická B2B firma potřebovala silnější online prezentaci služeb.</p>
+                  </li>
+                  <li>
+                    <span>Řešení</span>
+                    <p>Přehledný firemní web s důvěryhodným designem a jasnými CTA.</p>
+                  </li>
+                  <li>
+                    <span>Výsledek</span>
+                    <p>Profesionální dojem a rychlejší cesta od návštěvy k poptávce.</p>
+                  </li>
+                </ol>
+                <dl class="agency-case-stats">
                   <div>
                     <dt>B2B</dt>
                     <dd>prezentace</dd>
@@ -521,64 +566,79 @@
                     <dd>k poptávce</dd>
                   </div>
                   <div>
-                    <dt>Mobil</dt>
-                    <dd>first</dd>
+                    <dt>24/7</dt>
+                    <dd>dostupnost</dd>
                   </div>
                 </dl>
-                <div class="case-premium-footer">
+                <div class="agency-case-meta">
                   <div class="work-tags">
                     <span>Weby</span>
                     <span>B2B</span>
                     <span>Energetika</span>
                   </div>
-                  <a class="case-premium-link" href="moje-prace">Zobrazit případovou studii <span aria-hidden="true">→</span></a>
+                  <a class="agency-case-cta" href="moje-prace">Prohlédnout detail projektu <span aria-hidden="true">→</span></a>
                 </div>
               </div>
             </article>
 
-            <article class="case-premium">
-              <div class="case-premium-media">
+            <article class="agency-case agency-case--flip reveal">
+              <div class="agency-case-media">
                 <img
                   src="assets/solution-4.png"
                   alt=""
-                  width="960"
-                  height="600"
+                  width="1200"
+                  height="800"
                   loading="lazy"
                   decoding="async"
                 />
-                <span class="case-premium-num">04</span>
-                <span class="case-premium-badge">Automatizace</span>
               </div>
-              <div class="case-premium-body">
+              <div class="agency-case-copy">
+                <span class="agency-case-index">04</span>
                 <h3>BOZP e-learning</h3>
-                <p>Aplikace pro zákonná školení — testy, evidence a certifikace na jednom místě.</p>
-                <dl class="case-premium-stats">
+                <p class="agency-case-lead">
+                  Aplikace pro zákonná školení — od testů přes evidenci až po certifikáty.
+                </p>
+                <ol class="agency-case-flow">
+                  <li>
+                    <span>Problém</span>
+                    <p>Školení a evidence byly roztříštěné a administrativně náročné.</p>
+                  </li>
+                  <li>
+                    <span>Řešení</span>
+                    <p>LMS aplikace s kurzy, testy, evidencí a automatickým vydáváním osvědčení.</p>
+                  </li>
+                  <li>
+                    <span>Výsledek</span>
+                    <p>Méně papírování, vyšší přehled a compliance na jednom místě.</p>
+                  </li>
+                </ol>
+                <dl class="agency-case-stats">
                   <div>
                     <dt>Testy</dt>
                     <dd>online</dd>
                   </div>
                   <div>
-                    <dt>Evidence</dt>
-                    <dd>kurzů</dd>
+                    <dt>1 místo</dt>
+                    <dd>pro evidenci</dd>
                   </div>
                   <div>
-                    <dt>Certifikáty</dt>
-                    <dd>automaticky</dd>
+                    <dt>Auto</dt>
+                    <dd>certifikáty</dd>
                   </div>
                 </dl>
-                <div class="case-premium-footer">
+                <div class="agency-case-meta">
                   <div class="work-tags">
                     <span>LMS</span>
                     <span>Compliance</span>
                     <span>E-learning</span>
                   </div>
-                  <a class="case-premium-link" href="moje-prace">Zobrazit případovou studii <span aria-hidden="true">→</span></a>
+                  <a class="agency-case-cta" href="moje-prace">Prohlédnout detail projektu <span aria-hidden="true">→</span></a>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="works-more">
+          <div class="works-more reveal">
             <a class="btn btn-outline" href="moje-prace">Všechny moje práce</a>
           </div>
         </div>
