@@ -1304,8 +1304,8 @@ img.tocici-logo,
     0 14px 32px rgba(0, 0, 0, 0.35),
     0 0 22px rgba(155, 111, 240, 0.12);
   backdrop-filter: blur(10px);
-  animation: why-flow-drift 7s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.55s);
+  animation: why-flow-drift 5.2s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.75s);
 }
 
 .why-flow-col--left .why-flow-card {
@@ -1405,10 +1405,25 @@ img.tocici-logo,
 @keyframes why-flow-drift {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+.why-flow-col--left .why-flow-card:nth-child(odd),
+.why-flow-col--right .why-flow-card:nth-child(even) {
+  animation-name: why-flow-drift-alt;
+}
+
+@keyframes why-flow-drift-alt {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 12px, 0);
   }
 }
 

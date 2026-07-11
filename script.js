@@ -552,7 +552,9 @@ prefersReducedMotion.addEventListener("change", () => {
 
   const NS = "http://www.w3.org/2000/svg";
   const mobileMq = window.matchMedia("(max-width: 899px)");
+  const reducedMq = window.matchMedia("(prefers-reduced-motion: reduce)");
   let frame = 0;
+  let looping = false;
 
   const elbowPath = (startX, startY, endX, endY, fromLeft) => {
     if (Math.abs(startY - endY) < 10) {
@@ -565,7 +567,6 @@ prefersReducedMotion.addEventListener("change", () => {
   };
 
   const draw = () => {
-    frame = 0;
     if (mobileMq.matches) {
       svg.replaceChildren();
       return;
@@ -603,30 +604,77 @@ prefersReducedMotion.addEventListener("change", () => {
       segments.push(elbowPath(startX, startY, endX, endY, false));
     });
 
-    svg.replaceChildren(
-      ...segments.map((d) => {
-        const path = document.createElementNS(NS, "path");
-        path.setAttribute("class", "why-flow-path");
-        path.setAttribute("d", d);
-        return path;
-      })
-    );
+    let paths = svg.querySelectorAll(".why-flow-path");
+    if (paths.length !== segments.length) {
+      svg.replaceChildren(
+        ...segments.map((d) => {
+          const path = document.createElementNS(NS, "path");
+          path.setAttribute("class", "why-flow-path");
+          path.setAttribute("d", d);
+          return path;
+        })
+      );
+      paths = svg.querySelectorAll(".why-flow-path");
+    } else {
+      paths.forEach((path, index) => {
+        path.setAttribute("d", segments[index]);
+      });
+    }
   };
 
-  const schedule = () => {
+  const tick = () => {
+    frame = 0;
+    draw();
+    if (looping && !mobileMq.matches && !reducedMq.matches) {
+      frame = requestAnimationFrame(tick);
+    }
+  };
+
+  const startLoop = () => {
+    looping = true;
+    if (!frame) {
+      frame = requestAnimationFrame(tick);
+    }
+  };
+
+  const stopLoop = () => {
+    looping = false;
     if (frame) {
+      cancelAnimationFrame(frame);
+      frame = 0;
+    }
+    draw();
+  };
+
+  const syncLoop = () => {
+    if (mobileMq.matches || reducedMq.matches) {
+      stopLoop();
       return;
     }
-    frame = requestAnimationFrame(draw);
+    startLoop();
   };
 
-  draw();
-  window.addEventListener("resize", schedule, { passive: true });
-  mobileMq.addEventListener("change", schedule);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.some((entry) => entry.isIntersecting);
+      if (visible) {
+        syncLoop();
+      } else {
+        stopLoop();
+      }
+    },
+    { threshold: 0.05 }
+  );
+
+  observer.observe(flow);
+  window.addEventListener("resize", () => draw(), { passive: true });
+  mobileMq.addEventListener("change", syncLoop);
+  reducedMq.addEventListener("change", syncLoop);
 
   if (document.fonts?.ready) {
-    document.fonts.ready.then(schedule);
+    document.fonts.ready.then(draw);
   }
 
-  window.addEventListener("load", schedule, { once: true });
+  window.addEventListener("load", draw, { once: true });
+  draw();
 })();
