@@ -1,0 +1,12 @@
+node_modules
+.git
+.vercel
+src
+vite.config.js
+package.json
+package-lock.json
+*.md
+prompts
+ikony_proc_ja
+foto_founder.png
+Gemini_Generated_Image_lot15dlot15dlot1.png
