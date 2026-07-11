@@ -1193,6 +1193,14 @@ textarea {
   filter: drop-shadow(0 0 6px rgba(155, 111, 240, 0.55));
 }
 
+.why-card-icon img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  display: block;
+}
+
 .why-card h3 {
   margin: 0 0 0.28rem;
   font-size: 0.86rem;
