@@ -2008,16 +2008,16 @@ img.tocici-logo,
     from 0deg,
     transparent 0deg,
     transparent 8deg,
-    color-mix(in srgb, var(--stack-accent-2, var(--accent-3)) 0%, transparent) 10deg,
-    var(--stack-accent-2, #f4cf9e) 16deg,
+    color-mix(in srgb, var(--stack-accent-2, var(--stack-accent)) 0%, transparent) 10deg,
+    var(--stack-accent-2, var(--stack-accent)) 16deg,
     var(--stack-accent, #9b6ff0) 28deg,
     color-mix(in srgb, var(--stack-accent, #9b6ff0) 0%, transparent) 34deg,
     transparent 36deg,
     transparent 188deg,
     color-mix(in srgb, var(--stack-accent, #9b6ff0) 0%, transparent) 190deg,
     var(--stack-accent, #9b6ff0) 198deg,
-    var(--stack-accent-2, #f4cf9e) 210deg,
-    color-mix(in srgb, var(--stack-accent-2, var(--accent-3)) 0%, transparent) 216deg,
+    var(--stack-accent-2, var(--stack-accent)) 210deg,
+    color-mix(in srgb, var(--stack-accent-2, var(--stack-accent)) 0%, transparent) 216deg,
     transparent 218deg,
     transparent 360deg
   );
@@ -2088,15 +2088,37 @@ img.tocici-logo,
   width: min(52px, 28%);
 }
 
-.stack-icon--cursor {
-  color: #ededed;
+.stack-icon--cursor,
+.stack-icon--claude,
+.stack-icon--openai,
+.stack-icon--vercel,
+.stack-icon--framer {
+  color: #ffffff;
   filter:
-    drop-shadow(0 0 6px rgba(237, 237, 237, 0.2))
-    drop-shadow(0 0 12px rgba(155, 111, 240, 0.12));
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.22))
+    drop-shadow(0 0 12px rgba(255, 255, 255, 0.1));
 }
 
+.stack-icon--supabase {
+  color: #3ecf8e;
+  filter:
+    drop-shadow(0 0 6px rgba(62, 207, 142, 0.3))
+    drop-shadow(0 0 12px rgba(62, 207, 142, 0.12));
+}
+
+.stack-icon--python,
 .stack-icon--sql {
-  color: #4169e1;
+  color: #3776ab;
+  filter:
+    drop-shadow(0 0 6px rgba(55, 118, 171, 0.3))
+    drop-shadow(0 0 12px rgba(55, 118, 171, 0.12));
+}
+
+.stack-icon--wordpress {
+  color: #21759b;
+  filter:
+    drop-shadow(0 0 6px rgba(33, 117, 155, 0.3))
+    drop-shadow(0 0 12px rgba(33, 117, 155, 0.12));
 }
 
 .stack-icon--divi {
@@ -2106,18 +2128,11 @@ img.tocici-logo,
     drop-shadow(0 0 12px rgba(140, 67, 230, 0.12));
 }
 
-.stack-icon--python {
-  color: #3776ab;
-  filter:
-    drop-shadow(0 0 6px rgba(55, 118, 171, 0.28))
-    drop-shadow(0 0 12px rgba(255, 212, 59, 0.1));
-}
-
 .stack-icon--canva {
-  color: #00c4cc;
+  color: #2b8cee;
   filter:
-    drop-shadow(0 0 6px rgba(0, 196, 204, 0.28))
-    drop-shadow(0 0 12px rgba(125, 42, 232, 0.12));
+    drop-shadow(0 0 6px rgba(43, 140, 238, 0.3))
+    drop-shadow(0 0 12px rgba(43, 140, 238, 0.12));
 }
 
 .stack-card-label {
