@@ -110,14 +110,16 @@ textarea {
 .brand {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .brand-logo {
   display: block;
-  height: 34px;
+  height: calc(var(--nav-height) - 12px);
   width: auto;
-  max-width: min(190px, 46vw);
+  max-width: min(420px, 58vw);
+  object-fit: contain;
 }
 
 .brand-mark {
@@ -2369,7 +2371,8 @@ textarea {
   }
 
   .brand-logo {
-    height: 30px;
+    height: calc(var(--nav-height) - 14px);
+    max-width: min(280px, 72vw);
   }
 
   .hero-cta-row {
