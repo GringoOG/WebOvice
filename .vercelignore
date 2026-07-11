@@ -1,10 +1,8 @@
-node_modules
-.git
-.vercel
 src
 vite.config.js
 package.json
 package-lock.json
+node_modules
 *.md
 prompts
 ikony_proc_ja
