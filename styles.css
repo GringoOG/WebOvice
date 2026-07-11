@@ -1082,6 +1082,38 @@ img.tocici-logo,
   border-color: color-mix(in srgb, var(--accent-3) 35%, rgba(255, 255, 255, 0.08));
 }
 
+.service-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-topics li {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 181, 253, 0.28);
+  background: rgba(155, 111, 240, 0.1);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(230, 230, 240, 0.88);
+}
+
+.service-visual--placeholder {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(155, 111, 240, 0.18), transparent 70%),
+    #0a0614;
+}
+
+.service-visual--placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .service-visual {
   position: relative;
   width: 100%;
@@ -2368,10 +2400,132 @@ img.tocici-logo,
 }
 
 .accordion-item {
-  border: 1px solid var(--border);
+  --faq-beam-accent: #9b6ff0;
+  --faq-beam-accent-2: #c4b5fd;
+  position: relative;
+  border: none;
   border-radius: var(--radius);
-  background: var(--bg-card);
+  padding: 1.5px;
   overflow: hidden;
+  isolation: isolate;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.accordion-beam {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.accordion-beam::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 8deg,
+    color-mix(in srgb, var(--faq-beam-accent-2) 0%, transparent) 10deg,
+    var(--faq-beam-accent-2) 16deg,
+    var(--faq-beam-accent) 28deg,
+    color-mix(in srgb, var(--faq-beam-accent) 0%, transparent) 34deg,
+    transparent 36deg,
+    transparent 188deg,
+    color-mix(in srgb, var(--faq-beam-accent) 0%, transparent) 190deg,
+    var(--faq-beam-accent) 198deg,
+    var(--faq-beam-accent-2) 210deg,
+    color-mix(in srgb, var(--faq-beam-accent-2) 0%, transparent) 216deg,
+    transparent 218deg,
+    transparent 360deg
+  );
+  filter: blur(0.4px);
+  animation: faq-beam-spin 3.2s linear infinite;
+  animation-delay: calc(var(--faq-i, 0) * -0.45s);
+}
+
+.accordion-item:nth-child(1) {
+  --faq-i: 0;
+}
+.accordion-item:nth-child(2) {
+  --faq-i: 1;
+}
+.accordion-item:nth-child(3) {
+  --faq-i: 2;
+}
+.accordion-item:nth-child(4) {
+  --faq-i: 3;
+}
+.accordion-item:nth-child(5) {
+  --faq-i: 4;
+}
+
+.accordion-item-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(var(--radius) - 1px);
+  background: color-mix(in srgb, var(--bg) 88%, #16122a);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.accordion-item:hover,
+.accordion-item:focus-within {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 16px rgba(155, 111, 240, 0.55),
+    0 0 36px rgba(155, 111, 240, 0.32),
+    0 0 56px rgba(139, 108, 246, 0.18),
+    0 10px 32px rgba(139, 108, 246, 0.45);
+}
+
+.accordion-item:hover .accordion-beam,
+.accordion-item:focus-within .accordion-beam {
+  opacity: 0;
+}
+
+.accordion-item:hover .accordion-beam::before,
+.accordion-item:focus-within .accordion-beam::before {
+  animation-play-state: paused;
+}
+
+.accordion-item:hover .accordion-item-inner,
+.accordion-item:focus-within .accordion-item-inner {
+  background: color-mix(in srgb, var(--accent) 24%, rgba(18, 14, 32, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(155, 111, 240, 0.35),
+    0 0 0 1px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+@keyframes faq-beam-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-beam::before {
+    animation: none;
+  }
+
+  .accordion-item:hover,
+  .accordion-item:focus-within {
+    transform: none;
+  }
 }
 
 .accordion-trigger {
@@ -2399,11 +2553,22 @@ img.tocici-logo,
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: grid;
   place-items: center;
   font-size: 1.1rem;
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+.accordion-item:hover .accordion-icon,
+.accordion-item:focus-within .accordion-icon {
+  border-color: rgba(155, 111, 240, 0.55);
+  color: #c4b5fd;
+  box-shadow: 0 0 12px rgba(155, 111, 240, 0.35);
 }
 
 .accordion-item.open .accordion-icon {

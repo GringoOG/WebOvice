@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Online marketing  placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16122a"/>
+      <stop offset="100%" stop-color="#0a0614"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9b6ff0"/>
+      <stop offset="100%" stop-color="#f4cf9e"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <rect x="48" y="48" width="864" height="444" rx="24" fill="none" stroke="rgba(196,181,253,0.35)" stroke-width="2" stroke-dasharray="10 10"/>
+  <text x="480" y="250" text-anchor="middle" fill="#c4b5fd" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Online marketing</text>
+  <text x="480" y="292" text-anchor="middle" fill="rgba(230,230,240,0.55)" font-family="system-ui,sans-serif" font-size="16">Vlo~te cover.png nebo loop.mp4</text>
+  <rect x="380" y="330" width="200" height="4" rx="2" fill="url(#accent)"/>
+</svg>
