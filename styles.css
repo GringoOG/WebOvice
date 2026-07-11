@@ -340,6 +340,17 @@ textarea {
     0 0 0 1px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
+.btn-nav-inline {
+  display: inline-flex;
+}
+
+.works-more {
+  display: flex;
+  justify-content: center;
+  padding: 0 1.25rem 3.25rem;
+  background: #05040a;
+}
+
 @keyframes nav-beam-spin {
   to {
     transform: translate(-50%, -50%) rotate(360deg);
