@@ -167,7 +167,7 @@
                   loop
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   aria-hidden="true"
                 >
                   <source src="assets/service-1-loop.mp4?v=2" type="video/mp4" />
@@ -186,7 +186,7 @@
                   loop
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   aria-hidden="true"
                   data-service-slot="2"
                 >
@@ -206,7 +206,7 @@
                   loop
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   aria-hidden="true"
                   data-service-slot="3"
                 >
@@ -226,7 +226,7 @@
                   loop
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   aria-hidden="true"
                   data-service-slot="4"
                 >
@@ -246,7 +246,7 @@
                   loop
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   aria-hidden="true"
                   data-service-slot="5"
                 >
@@ -266,7 +266,7 @@
                   loop
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   aria-hidden="true"
                   data-service-slot="6"
                 >
@@ -413,15 +413,40 @@
             </div>
 
             <div class="why-hub" aria-hidden="true">
-              <img
-                class="why-hub-visual"
-                src="assets/why-hub.png"
-                alt=""
-                width="349"
-                height="341"
-                loading="lazy"
-                decoding="async"
-              />
+              <div class="why-orbit">
+                <svg class="why-orbit-svg" viewBox="0 0 360 360" fill="none">
+                  <defs>
+                    <linearGradient id="whyOrbitStroke" x1="40" y1="40" x2="320" y2="320">
+                      <stop offset="0%" stop-color="#9b6ff0"/>
+                      <stop offset="50%" stop-color="#d97fce"/>
+                      <stop offset="100%" stop-color="#f4cf9e"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="why-orbit-ring" cx="180" cy="180" r="118" stroke="url(#whyOrbitStroke)"/>
+                  <circle class="why-orbit-ring why-orbit-ring--inner" cx="180" cy="180" r="78" stroke="url(#whyOrbitStroke)"/>
+                  <g class="why-orbit-spokes" stroke="url(#whyOrbitStroke)">
+                    <path d="M180 62 L180 102"/>
+                    <path d="M282 118 L252 138"/>
+                    <path d="M282 242 L252 222"/>
+                    <path d="M180 298 L180 258"/>
+                    <path d="M78 242 L108 222"/>
+                    <path d="M78 118 L108 138"/>
+                  </g>
+                </svg>
+
+                <div class="why-orbit-core">
+                  <span class="why-orbit-core-kicker">WebOvice</span>
+                  <strong>1 partner</strong>
+                  <span>web · app · AI</span>
+                </div>
+
+                <span class="why-orbit-node" style="--i: 0">Web</span>
+                <span class="why-orbit-node" style="--i: 1">Appky</span>
+                <span class="why-orbit-node" style="--i: 2">AI</span>
+                <span class="why-orbit-node" style="--i: 3">Automatizace</span>
+                <span class="why-orbit-node" style="--i: 4">E-learning</span>
+                <span class="why-orbit-node" style="--i: 5">Provoz</span>
+              </div>
             </div>
 
             <div class="why-col why-col--right">

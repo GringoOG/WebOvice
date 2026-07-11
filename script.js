@@ -352,14 +352,46 @@ if (techStackDeck) {
 /* ── Service cards — video hraje jen při hoveru ── */
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+function showServiceVideoFrame(video) {
+  video.pause();
+
+  if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+    return;
+  }
+
+  try {
+    if (video.currentTime < 0.001) {
+      video.currentTime = 0.001;
+    }
+  } catch (_) {
+    // Ignore seek errors while the browser is still buffering.
+  }
+}
+
 function resetServiceVideoState(video) {
   const visual = video.closest(".service-visual");
 
   visual?.classList.remove("is-playing");
-  video.pause();
+  showServiceVideoFrame(video);
+}
 
-  if (video.readyState >= 1) {
-    video.currentTime = 0;
+function primeServiceVideoPreview(video) {
+  const prime = () => {
+    if (!video.closest(".service-visual")?.classList.contains("is-playing")) {
+      showServiceVideoFrame(video);
+    }
+  };
+
+  video.addEventListener("loadeddata", prime);
+  video.addEventListener("seeked", prime);
+
+  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+    prime();
+    return;
+  }
+
+  if (video.networkState === HTMLMediaElement.NETWORK_EMPTY) {
+    video.load();
   }
 }
 
@@ -369,13 +401,7 @@ document.querySelectorAll(".service-visual").forEach((visual) => {
     return;
   }
 
-  resetServiceVideoState(video);
-
-  video.addEventListener("loadeddata", () => {
-    if (!visual.classList.contains("is-playing")) {
-      resetServiceVideoState(video);
-    }
-  });
+  primeServiceVideoPreview(video);
 
   visual.addEventListener("mouseenter", () => {
     if (prefersReducedMotion.matches) {
