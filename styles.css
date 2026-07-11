@@ -1608,9 +1608,9 @@ img.tocici-logo,
     transform 0.65s cubic-bezier(0.25, 1, 0.4, 1);
 }
 
-/* Mezera mezi kartami ≈ 1 cm (bez překryvu) */
+/* Zigzag podle žlutých rámečků: další karta ≈ v polovině předchozí */
 .works-timeline-item + .works-timeline-item {
-  margin-top: 1cm;
+  margin-top: clamp(-9.5rem, -22vw, -7rem);
 }
 
 .works-timeline-item:nth-of-type(1) {
@@ -1821,7 +1821,7 @@ img.tocici-logo,
   }
 
   .works-timeline-item + .works-timeline-item {
-    margin-top: 1cm;
+    margin-top: 1rem;
   }
 
   .works-timeline-node {
