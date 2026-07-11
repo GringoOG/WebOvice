@@ -295,7 +295,7 @@ if (techStackDeck) {
       return;
     }
 
-    stackRotationId = window.setInterval(rotateStackOnce, 3200);
+    stackRotationId = window.setInterval(rotateStackOnce, 1600);
   };
 
   const stopStackRotation = () => {
