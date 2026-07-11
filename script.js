@@ -656,11 +656,12 @@ prefersReducedMotion.addEventListener("change", () => {
     const height = Math.max(1, flowRect.height);
     const coreX = coreRect.left + coreRect.width / 2 - flowRect.left;
     const coreY = coreRect.top + coreRect.height / 2 - flowRect.top;
-    const logoInset = Math.min(coreRect.width, coreRect.height) * 0.36;
+    const logoSize = Math.min(coreRect.width, coreRect.height);
+    // Napojení ke kraji loga (ne dovnitř) + větší odstup svislé niti
+    const logoInset = logoSize * 0.5;
     const logoLeftX = coreX - logoInset;
     const logoRightX = coreX + logoInset;
-    // Svislé niti sedí těsně u loga — větve se na ně jen napojují
-    const spineGap = 10;
+    const spineGap = Math.max(36, logoSize * 0.14);
     const leftSpineX = logoLeftX - spineGap;
     const rightSpineX = logoRightX + spineGap;
 
@@ -677,8 +678,9 @@ prefersReducedMotion.addEventListener("change", () => {
         return;
       }
       const ys = branches.map((b) => b.y);
-      const topY = Math.min(...ys, coreY) - 8;
-      const bottomY = Math.max(...ys, coreY) + 8;
+      // Přesně na krajní větve = čisté L-rohy (bez přetahů)
+      const topY = Math.min(...ys);
+      const bottomY = Math.max(...ys);
 
       // Jedna svislá nit + krátký vodorovný stonek do loga
       specs.push({

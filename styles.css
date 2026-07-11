@@ -1302,8 +1302,8 @@ img.tocici-logo,
   fill: none;
   stroke: rgba(196, 181, 253, 0.55);
   stroke-width: 1.25;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
   filter: drop-shadow(0 0 6px rgba(155, 111, 240, 0.45));
   opacity: 0.55;
   animation: why-flow-pulse 4.5s ease-in-out infinite;
@@ -1317,6 +1317,7 @@ img.tocici-logo,
 
 .why-flow-path--stem {
   stroke: rgba(196, 181, 253, 0.8);
+  stroke-linecap: butt;
   opacity: 0.85;
   animation-delay: 0.35s;
 }
