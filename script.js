@@ -466,61 +466,66 @@ prefersReducedMotion.addEventListener("change", () => {
   revealEls.forEach((el) => observer.observe(el));
 })();
 
-/* ── Works timeline — scroll fade-in + progress line ── */
+/* ── Scroll timelines — fade-in + progress line (works + refs) ── */
 (() => {
-  const timeline = document.getElementById("worksTimeline");
-  const progressEl = document.getElementById("worksTimelineProgress");
-  const items = timeline ? Array.from(timeline.querySelectorAll("[data-timeline-item]")) : [];
+  const initScrollTimeline = (timelineId, progressId, itemSelector) => {
+    const timeline = document.getElementById(timelineId);
+    const progressEl = document.getElementById(progressId);
+    const items = timeline ? Array.from(timeline.querySelectorAll(itemSelector)) : [];
 
-  if (!timeline || !items.length) {
-    return;
-  }
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (reduceMotion) {
-    items.forEach((item) => item.classList.add("is-inview"));
-    if (progressEl) {
-      progressEl.style.height = "100%";
+    if (!timeline || !items.length) {
+      return;
     }
-    return;
-  }
 
-  const itemObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        entry.target.classList.add("is-inview");
-        itemObserver.unobserve(entry.target);
-      });
-    },
-    {
-      rootMargin: "0px 0px -12% 0px",
-      threshold: 0.28,
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      items.forEach((item) => item.classList.add("is-inview"));
+      if (progressEl) {
+        progressEl.style.height = "100%";
+      }
+      return;
     }
-  );
 
-  items.forEach((item) => itemObserver.observe(item));
+    const itemObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          entry.target.classList.add("is-inview");
+          itemObserver.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.28,
+      }
+    );
 
-  if (!progressEl) {
-    return;
-  }
+    items.forEach((item) => itemObserver.observe(item));
 
-  const updateProgress = () => {
-    const rect = timeline.getBoundingClientRect();
-    const viewH = window.innerHeight || 1;
-    const start = viewH * 0.72;
-    const end = viewH * 0.28;
-    const raw = (start - rect.top) / (rect.height + (start - end));
-    const clamped = Math.max(0, Math.min(1, raw));
-    progressEl.style.height = `${(clamped * 100).toFixed(2)}%`;
+    if (!progressEl) {
+      return;
+    }
+
+    const updateProgress = () => {
+      const rect = timeline.getBoundingClientRect();
+      const viewH = window.innerHeight || 1;
+      const start = viewH * 0.72;
+      const end = viewH * 0.28;
+      const raw = (start - rect.top) / (rect.height + (start - end));
+      const clamped = Math.max(0, Math.min(1, raw));
+      progressEl.style.height = `${(clamped * 100).toFixed(2)}%`;
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
   };
 
-  updateProgress();
-  window.addEventListener("scroll", updateProgress, { passive: true });
-  window.addEventListener("resize", updateProgress);
+  initScrollTimeline("worksTimeline", "worksTimelineProgress", "[data-timeline-item]");
+  initScrollTimeline("refsTimeline", "refsTimelineProgress", "[data-refs-item]");
 })();
 
 /* ── Hero logo — soft crossfade loop (bez viditelného restartu) ── */
