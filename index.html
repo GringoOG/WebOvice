@@ -227,7 +227,7 @@
                   aria-hidden="true"
                   data-service-slot="2"
                 >
-                  <source src="assets/service-2-loop.mp4" type="video/mp4" />
+                  <source src="assets/service-2-loop.mp4?v=3" type="video/mp4" />
                 </video>
               </div>
               <div class="service-content">
@@ -330,19 +330,17 @@
 
             <div class="services-duo">
               <article class="service-card" id="online-marketing">
-                <div
-                  class="service-visual service-visual--placeholder"
-                  data-asset-slot="online-marketing"
-                >
-                  <!-- Podklady: assets/services/online-marketing/ (cover.png / loop.mp4) -->
-                  <img
-                    src="assets/services/online-marketing/cover.svg"
-                    alt=""
-                    width="960"
-                    height="540"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <div class="service-visual">
+                  <video
+                    class="service-video"
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata"
+                    aria-hidden="true"
+                  >
+                    <source src="assets/services/online-marketing/loop.mp4" type="video/mp4" />
+                  </video>
                 </div>
                 <div class="service-content">
                   <p class="service-kicker">Růst &amp; akvizice</p>
