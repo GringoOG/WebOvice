@@ -527,7 +527,7 @@ prefersReducedMotion.addEventListener("change", () => {
   initScrollTimeline("worksTimeline", "worksTimelineProgress", "[data-timeline-item]");
 })();
 
-/* ── Refs showcase — horizontal scroll + magnetic CTA ── */
+/* ── Refs showcase — manual carousel + magnetic CTA ── */
 (() => {
   const section = document.getElementById("reference");
   const track = document.getElementById("refsShowcaseTrack");
@@ -537,51 +537,32 @@ prefersReducedMotion.addEventListener("change", () => {
 
   const panels = Array.from(track.querySelectorAll("[data-refs-panel]"));
   const dots = Array.from(document.querySelectorAll("#refsShowcaseDots span"));
+  const nextBtns = Array.from(section.querySelectorAll("[data-refs-next]"));
   const magneticBtns = Array.from(section.querySelectorAll("[data-magnetic]"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const mobileQuery = window.matchMedia("(max-width: 899px)");
 
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-
-  let activeIndex = 0;
+  let activeIndex = -1;
 
   const setActive = (index) => {
-    if (index === activeIndex && panels[index]?.classList.contains("is-active")) {
-      return;
-    }
     activeIndex = index;
+    track.style.transform = `translate3d(-${index * (100 / panels.length)}%, 0, 0)`;
+
     panels.forEach((panel, i) => {
       panel.classList.toggle("is-active", i === index);
+      panel.inert = i !== index;
     });
     dots.forEach((dot, i) => {
       dot.classList.toggle("is-active", i === index);
     });
   };
 
-  const updateHorizontal = () => {
-    if (reduceMotion || mobileQuery.matches) {
-      track.style.transform = "";
-      panels.forEach((panel) => panel.classList.add("is-active"));
-      return;
-    }
-
-    const scrollable = section.offsetHeight - window.innerHeight;
-    if (scrollable <= 0) {
-      return;
-    }
-
-    const progress = clamp(-section.getBoundingClientRect().top / scrollable, 0, 1);
-    const maxX = track.scrollWidth - window.innerWidth;
-    track.style.transform = `translate3d(${(-progress * maxX).toFixed(2)}px, 0, 0)`;
-
-    const index = clamp(Math.round(progress * (panels.length - 1)), 0, panels.length - 1);
-    setActive(index);
-  };
-
-  updateHorizontal();
-  window.addEventListener("scroll", updateHorizontal, { passive: true });
-  window.addEventListener("resize", updateHorizontal);
-  mobileQuery.addEventListener?.("change", updateHorizontal);
+  setActive(0);
+  nextBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setActive((activeIndex + 1) % panels.length);
+    });
+  });
 
   if (reduceMotion || !magneticBtns.length) {
     return;
