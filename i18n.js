@@ -333,8 +333,8 @@
       "meta.404.title": "404 — page not found | WebOvice",
       "meta.404.description": "Page not found — WebOvice. Go back home or to contact.",
 
-      "hero.title.line1": "I’ll turn your business",
-      "hero.title.line2": "into a digitally powered machine.",
+      "hero.title.line1": "Turning Business into",
+      "hero.title.line2": "AI-Powered Machine.",
       "hero.subtitle":
         "A results-focused partner — I’ll help you <strong>automate processes</strong>, <strong>optimize operations</strong>, and scale faster with <strong>websites, apps, and AI solutions</strong>.",
       "hero.cta": "Free, no-obligation consultation",
