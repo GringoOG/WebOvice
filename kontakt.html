@@ -21,7 +21,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-i18n-title="meta.contact.title" data-i18n-description="meta.contact.description">
     <header class="site-header">
       <div class="container nav">
         <a class="brand" href="./">
@@ -34,35 +34,44 @@
           />
         </a>
 
-        <nav class="nav-links" aria-label="Hlavní menu">
-          <a href="./">Domů</a>
-          <a href="./#sluzby">Služby</a>
-          <a href="moje-prace">Moje práce</a>
-          <a href="./#cenik">Ceník</a>
-          <a href="kontakt" aria-current="page">Kontakt</a>
+        <nav class="nav-links" data-i18n-aria-label="a11y.nav.main" aria-label="Hlavní menu">
+          <a href="./" data-i18n="nav.home">Domů</a>
+          <a href="./#sluzby" data-i18n="nav.services">Služby</a>
+          <a href="moje-prace" data-i18n="nav.work">Moje práce</a>
+          <a href="./#cenik" data-i18n="nav.pricing">Ceník</a>
+          <a href="kontakt" aria-current="page" data-i18n="nav.contact">Kontakt</a>
         </nav>
 
         <div class="nav-actions">
-          <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Otevřít menu">
+          <button class="icon-btn menu-btn" id="menu-toggle" type="button" data-i18n-aria-label="a11y.nav.openMenu" aria-label="Otevřít menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M4 7h16M4 12h16M4 17h16" />
             </svg>
           </button>
+          <div class="lang-switch" role="group" data-i18n-aria-label="a11y.lang" aria-label="Jazyk">
+            <button type="button" class="lang-btn is-active" data-lang-set="cs" aria-pressed="true">CZ</button>
+            <button type="button" class="lang-btn" data-lang-set="en" aria-pressed="false">EN</button>
+          </div>
           <a class="btn btn-nav" href="kontakt" aria-current="page">
             <span class="btn-nav-beam" aria-hidden="true"></span>
-            <span class="btn-nav-inner">Spolupracujme</span>
+            <span class="btn-nav-inner" data-i18n="nav.cta">Spolupracujme</span>
           </a>
         </div>
       </div>
 
-      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobilní menu">
-        <a href="./">Domů</a>
-        <a href="./#sluzby">Služby</a>
-        <a href="moje-prace">Moje práce</a>
-        <a href="./#cenik">Ceník</a>
-        <a href="o-nas">O nás</a>
-        <a href="./#faq">FAQ</a>
-        <a href="kontakt" aria-current="page">Kontakt</a>
+      <nav class="mobile-nav" id="mobile-nav" data-i18n-aria-label="a11y.nav.mobile" aria-label="Mobilní menu">
+        <div class="lang-switch lang-switch--mobile" role="group" data-i18n-aria-label="a11y.lang" aria-label="Jazyk">
+          <button type="button" class="lang-btn is-active" data-lang-set="cs" aria-pressed="true">CZ</button>
+          <button type="button" class="lang-btn" data-lang-set="en" aria-pressed="false">EN</button>
+        </div>
+
+        <a href="./" data-i18n="nav.home">Domů</a>
+        <a href="./#sluzby" data-i18n="nav.services">Služby</a>
+        <a href="moje-prace" data-i18n="nav.work">Moje práce</a>
+        <a href="./#cenik" data-i18n="nav.pricing">Ceník</a>
+        <a href="o-nas" data-i18n="nav.about">O nás</a>
+        <a href="./#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="kontakt" aria-current="page" data-i18n="nav.contact">Kontakt</a>
       </nav>
     </header>
 
@@ -70,40 +79,40 @@
       <section class="section section-cta reveal" id="kontakt">
         <div class="container">
           <div class="section-head center">
-            <p class="section-kicker">[ KONTAKT ]</p>
-            <h1 class="section-title">Připraveni na digitální změnu?</h1>
-            <p class="section-text">Napište mi, co potřebujete — ozvu se s návrhem řešení.</p>
+            <p class="section-kicker" data-i18n="contact.kicker">[ KONTAKT ]</p>
+            <h1 class="section-title" data-i18n="contact.title">Připraveni na digitální změnu?</h1>
+            <p class="section-text" data-i18n="contact.intro">Napište mi, co potřebujete — ozvu se s návrhem řešení.</p>
           </div>
 
           <div class="form-card">
             <form id="contact-form" class="form-grid" novalidate>
               <div>
-                <label for="name">Jméno a příjmení</label>
+                <label for="name" data-i18n="contact.form.name">Jméno a příjmení</label>
                 <input id="name" name="Jmeno" type="text" autocomplete="name" required />
               </div>
               <div>
-                <label for="email">Email</label>
+                <label for="email" data-i18n="contact.form.email">Email</label>
                 <input id="email" name="Email" type="email" autocomplete="email" required />
               </div>
               <div>
-                <label for="service">Co potřebujete?</label>
-                <select id="service" name="Sluzba" required>
-                  <option value="">Vyberte…</option>
-                  <option>Weby na míru</option>
-                  <option>Interní nástroje &amp; aplikace</option>
-                  <option>Provoz &amp; údržba</option>
-                  <option>Automatizace procesů (AI)</option>
-                  <option>E-learning na míru</option>
-                  <option>Online marketing</option>
-                  <option>Energetika &amp; technické systémy</option>
-                  <option>Jiné</option>
+                <label for="service" data-i18n="contact.form.service">Co potřebujete?</label>
+                                <select id="service" name="Sluzba" required>
+                  <option value="" data-i18n="contact.form.service.placeholder">Vyberte…</option>
+                  <option value="Weby na míru" data-i18n="contact.form.opt.web">Weby na míru</option>
+                  <option value="Interní nástroje & aplikace" data-i18n="contact.form.opt.apps">Interní nástroje &amp; aplikace</option>
+                  <option value="Provoz & údržba" data-i18n="contact.form.opt.ops">Provoz &amp; údržba</option>
+                  <option value="Automatizace procesů (AI)" data-i18n="contact.form.opt.ai">Automatizace procesů (AI)</option>
+                  <option value="E-learning na míru" data-i18n="contact.form.opt.elearning">E-learning na míru</option>
+                  <option value="Online marketing" data-i18n="contact.form.opt.marketing">Online marketing</option>
+                  <option value="Energetika & technické systémy" data-i18n="contact.form.opt.energy">Energetika &amp; technické systémy</option>
+                  <option value="Jiné" data-i18n="contact.form.opt.other">Jiné</option>
                 </select>
               </div>
               <div>
-                <label for="note">Poznámka (volitelná)</label>
-                <textarea id="note" name="Poznamka" placeholder="Stručně popište projekt…"></textarea>
+                <label for="note" data-i18n="contact.form.note">Poznámka (volitelná)</label>
+                <textarea id="note" name="Poznamka" data-i18n-placeholder="contact.form.note.placeholder" placeholder="Stručně popište projekt…"></textarea>
               </div>
-              <button class="btn btn-hero btn-hero-dark" type="submit">Odeslat poptávku</button>
+              <button class="btn btn-hero btn-hero-dark" type="submit" data-i18n="contact.form.submit">Odeslat poptávku</button>
             </form>
           </div>
         </div>
@@ -112,21 +121,21 @@
 
     <footer class="site-footer">
       <div class="container footer-panel">
-        <nav class="footer-col" aria-label="Navigace">
-          <p class="footer-label">[ NAVIGACE ]</p>
+        <nav class="footer-col" data-i18n-aria-label="a11y.footer.nav" aria-label="Navigace">
+          <p class="footer-label" data-i18n="footer.nav.label">[ NAVIGACE ]</p>
           <ul class="footer-list">
-            <li><a href="./">Domů</a></li>
-            <li><a href="./#sluzby">Služby</a></li>
-            <li><a href="moje-prace">Moje práce</a></li>
-            <li><a href="./#cenik">Ceník</a></li>
-            <li><a href="o-nas">O nás</a></li>
-            <li><a href="./#faq">FAQ</a></li>
-            <li><a href="kontakt">Kontakt</a></li>
+            <li><a href="./" data-i18n="nav.home">Domů</a></li>
+            <li><a href="./#sluzby" data-i18n="nav.services">Služby</a></li>
+            <li><a href="moje-prace" data-i18n="nav.work">Moje práce</a></li>
+            <li><a href="./#cenik" data-i18n="nav.pricing">Ceník</a></li>
+            <li><a href="o-nas" data-i18n="nav.about">O nás</a></li>
+            <li><a href="./#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li><a href="kontakt" data-i18n="nav.contact">Kontakt</a></li>
             <li><a href="404">404</a></li>
           </ul>
         </nav>
 
-        <a class="footer-brand" href="./" aria-label="WebOvice — zpět na úvod">
+        <a class="footer-brand" href="./" data-i18n-aria-label="a11y.footer.brandHome" aria-label="WebOvice — zpět na úvod">
           <div class="container-loga footer-logo">
             <img
               class="tocici-logo"
@@ -142,11 +151,11 @@
 
         <div class="footer-contact">
           <div class="footer-contact-row">
-            <p class="footer-label">[ ZAVOLEJTE ]</p>
+            <p class="footer-label" data-i18n="footer.call.label">[ ZAVOLEJTE ]</p>
             <a class="footer-phone" href="tel:+420731827981">+420 731 827 981</a>
           </div>
           <div class="footer-contact-row">
-            <p class="footer-label">[ NAPIŠTE ]</p>
+            <p class="footer-label" data-i18n="footer.write.label">[ NAPIŠTE ]</p>
             <a class="footer-email" href="mailto:weboviceDoUlice@gmail.com">weboviceDoUlice@gmail.com</a>
           </div>
         </div>
@@ -156,6 +165,7 @@
       </div>
     </footer>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -31,33 +31,43 @@ const heroQuoteEl = document.getElementById("hero-quote");
 const heroQuoteTextEl = heroQuoteEl?.querySelector(".hero-quote-text");
 const heroQuoteAuthorEl = heroQuoteEl?.querySelector(".hero-quote-author");
 
-const heroQuotes = [
-  {
-    text: "90 % úspora času na přepisu měřidel.",
-    author: "Prokat Invest — projekt Snap Meter",
-  },
-  {
-    text: "Web online za pár dnů, správa obsahu bez kódu.",
-    author: "Klient — firemní web ve Frameru",
-  },
-  {
-    text: "0 % halucinací AI — data rovnou v Excelu.",
-    author: "Prokat Invest — AI automatizace",
-  },
-  {
-    text: "Měsíční retainer = web běží bez starostí.",
-    author: "Klient — správa & údržba",
-  },
-];
+const getHeroQuotes = () => {
+  const t = window.WebOviceI18n?.t;
+  if (typeof t === "function") {
+    return [0, 1, 2, 3].map((i) => ({
+      text: t(`hero.quotes.${i}.text`),
+      author: t(`hero.quotes.${i}.author`),
+    }));
+  }
+  return [
+    {
+      text: "90 % úspora času na přepisu měřidel.",
+      author: "Prokat Invest — projekt Snap Meter",
+    },
+    {
+      text: "Web online za pár dnů, správa obsahu bez kódu.",
+      author: "Klient — firemní web ve Frameru",
+    },
+    {
+      text: "0 % halucinací AI — data rovnou v Excelu.",
+      author: "Prokat Invest — AI automatizace",
+    },
+    {
+      text: "Měsíční retainer = web běží bez starostí.",
+      author: "Klient — správa & údržba",
+    },
+  ];
+};
 
-if (heroQuoteEl && heroQuoteTextEl && heroQuoteAuthorEl && heroQuotes.length) {
+if (heroQuoteEl && heroQuoteTextEl && heroQuoteAuthorEl) {
   let heroQuoteIndex = 0;
   const quoteIntervalMs = 4500;
   const quoteFadeMs = 450;
   let quoteTimerId = null;
 
   const setHeroQuoteContent = (index) => {
-    const quote = heroQuotes[index];
+    const quotes = getHeroQuotes();
+    const quote = quotes[index % quotes.length];
     heroQuoteTextEl.textContent = `„${quote.text}"`;
     heroQuoteAuthorEl.textContent = quote.author;
   };
@@ -66,7 +76,8 @@ if (heroQuoteEl && heroQuoteTextEl && heroQuoteAuthorEl && heroQuotes.length) {
     heroQuoteEl.classList.add("is-leaving");
 
     window.setTimeout(() => {
-      heroQuoteIndex = (heroQuoteIndex + 1) % heroQuotes.length;
+      const quotes = getHeroQuotes();
+      heroQuoteIndex = (heroQuoteIndex + 1) % quotes.length;
       setHeroQuoteContent(heroQuoteIndex);
       heroQuoteEl.classList.remove("is-leaving");
       heroQuoteEl.classList.add("is-entering");
@@ -102,6 +113,10 @@ if (heroQuoteEl && heroQuoteTextEl && heroQuoteAuthorEl && heroQuotes.length) {
       startHeroQuoteRotation();
     }
   });
+
+  window.addEventListener("webovice:langchange", () => {
+    setHeroQuoteContent(heroQuoteIndex);
+  });
 }
 
 /* ── Kontaktní formulář ── */
@@ -109,7 +124,7 @@ const contactForm = document.getElementById("contact-form");
 
 if (contactForm) {
   const submitBtn = contactForm.querySelector('button[type="submit"]');
-  const defaultBtnText = submitBtn?.textContent ?? "Odeslat poptávku";
+  const tForm = (key, fallback) => window.WebOviceI18n?.t?.(key) ?? fallback;
 
   let statusEl = document.getElementById("form-status");
   if (!statusEl) {
@@ -137,7 +152,9 @@ if (contactForm) {
   const setSubmitting = (isSubmitting) => {
     if (submitBtn) {
       submitBtn.disabled = isSubmitting;
-      submitBtn.textContent = isSubmitting ? "Odesílám..." : defaultBtnText;
+      submitBtn.textContent = isSubmitting
+        ? tForm("contact.form.submitting", "Odesílám...")
+        : tForm("contact.form.submit", "Odeslat poptávku");
     }
   };
 
@@ -184,10 +201,16 @@ if (contactForm) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       contactForm.reset();
-      showStatus("Díky za poptávku, brzy se ozvu!");
+      showStatus(tForm("contact.form.success", "Díky za poptávku, brzy se ozvu!"));
     } catch (error) {
       console.error("Chyba při odesílání formuláře:", error);
-      showStatus("Odeslání se nezdařilo. Zkuste to prosím znovu, nebo napište na email.", "error");
+      showStatus(
+        tForm(
+          "contact.form.error",
+          "Odeslání se nezdařilo. Zkuste to prosím znovu, nebo napište na email."
+        ),
+        "error"
+      );
     } finally {
       setSubmitting(false);
     }
