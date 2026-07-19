@@ -657,89 +657,164 @@ function primeServiceVideoPreview(video) {
   initScrollTimeline("worksTimeline", "worksTimelineProgress", "[data-timeline-item]");
 })();
 
-/* ── Refs showcase — manual carousel + magnetic CTA ── */
+/* ── Refs showcase — infinite marquee + drag ── */
 (() => {
   const section = document.getElementById("reference");
+  const viewport = section?.querySelector("[data-refs-marquee]");
   const track = document.getElementById("refsShowcaseTrack");
-  if (!section?.classList.contains("refs-showcase") || !track) {
+  if (!section?.classList.contains("refs-showcase") || !viewport || !track) {
     return;
   }
 
-  const panels = Array.from(track.querySelectorAll("[data-refs-panel]"));
-  const prevBtns = Array.from(section.querySelectorAll("[data-refs-prev]"));
-  const nextBtns = Array.from(section.querySelectorAll("[data-refs-next]"));
-  const magneticBtns = Array.from(section.querySelectorAll("[data-magnetic]"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mobileQuery = window.matchMedia("(max-width: 899px)");
+  const originals = Array.from(track.querySelectorAll("[data-refs-card]"));
+  if (originals.length < 2) {
+    return;
+  }
 
-  let activeIndex = -1;
-
-  const setActive = (index) => {
-    const nextIndex = ((index % panels.length) + panels.length) % panels.length;
-    activeIndex = nextIndex;
-    track.style.transform = `translate3d(-${nextIndex * (100 / panels.length)}%, 0, 0)`;
-
-    panels.forEach((panel, i) => {
-      panel.classList.toggle("is-active", i === nextIndex);
-      panel.inert = i !== nextIndex;
+  // Duplicate once for seamless loop
+  originals.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.querySelectorAll("[data-i18n], [data-i18n-html]").forEach((el) => {
+      el.removeAttribute("data-i18n");
+      el.removeAttribute("data-i18n-html");
     });
+    track.appendChild(clone);
+  });
+
+  let offset = 0;
+  let loopWidth = 0;
+  let paused = false;
+  let dragging = false;
+  let dragStartX = 0;
+  let dragStartOffset = 0;
+  let lastTs = 0;
+  let rafId = 0;
+  const speed = 28; // px per second
+
+  const measure = () => {
+    const cards = track.querySelectorAll("[data-refs-card]");
+    const half = Math.floor(cards.length / 2);
+    if (half < 1) {
+      return;
+    }
+    const first = cards[0];
+    const mid = cards[half];
+    loopWidth = mid.offsetLeft - first.offsetLeft;
+    if (loopWidth > 0) {
+      offset = ((offset % loopWidth) + loopWidth) % loopWidth;
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+    }
   };
 
-  setActive(0);
+  const wrapOffset = () => {
+    if (loopWidth <= 0) {
+      return;
+    }
+    offset = ((offset % loopWidth) + loopWidth) % loopWidth;
+  };
 
-  prevBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      setActive(activeIndex - 1);
-    });
+  const tick = (ts) => {
+    if (!lastTs) {
+      lastTs = ts;
+    }
+    const dt = Math.min(32, ts - lastTs) / 1000;
+    lastTs = ts;
+
+    if (!paused && !dragging && !reduceMotion && loopWidth > 0) {
+      offset += speed * dt;
+      wrapOffset();
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+    }
+
+    rafId = requestAnimationFrame(tick);
+  };
+
+  const onPointerDown = (event) => {
+    if (event.button !== undefined && event.button !== 0) {
+      return;
+    }
+    dragging = true;
+    paused = true;
+    dragStartX = event.clientX;
+    dragStartOffset = offset;
+    viewport.classList.add("is-dragging");
+    viewport.setPointerCapture?.(event.pointerId);
+  };
+
+  const onPointerMove = (event) => {
+    if (!dragging) {
+      return;
+    }
+    const dx = event.clientX - dragStartX;
+    offset = dragStartOffset - dx;
+    wrapOffset();
+    track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+  };
+
+  const onPointerUp = (event) => {
+    if (!dragging) {
+      return;
+    }
+    dragging = false;
+    viewport.classList.remove("is-dragging");
+    try {
+      viewport.releasePointerCapture?.(event.pointerId);
+    } catch {
+      /* ignore */
+    }
+    paused = reduceMotion || viewport.matches(":hover");
+    viewport.classList.toggle("is-paused", paused && !reduceMotion);
+  };
+
+  viewport.addEventListener("pointerdown", onPointerDown);
+  viewport.addEventListener("pointermove", onPointerMove);
+  viewport.addEventListener("pointerup", onPointerUp);
+  viewport.addEventListener("pointercancel", onPointerUp);
+
+  viewport.addEventListener("mouseenter", () => {
+    paused = true;
+    viewport.classList.add("is-paused");
   });
-
-  nextBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      setActive(activeIndex + 1);
-    });
-  });
-
-  section.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      setActive(activeIndex - 1);
-    } else if (event.key === "ArrowRight") {
-      event.preventDefault();
-      setActive(activeIndex + 1);
+  viewport.addEventListener("mouseleave", () => {
+    if (!dragging) {
+      paused = reduceMotion;
+      viewport.classList.remove("is-paused");
     }
   });
 
-  if (reduceMotion || !magneticBtns.length) {
-    return;
+  measure();
+  window.addEventListener("resize", measure);
+  if (!reduceMotion) {
+    rafId = requestAnimationFrame(tick);
   }
 
-  magneticBtns.forEach((btn) => {
-    const label = btn.querySelector("span");
-    const strength = 28;
-    const labelStrength = 12;
+  // Re-measure after fonts/images settle
+  requestAnimationFrame(() => {
+    measure();
+    setTimeout(measure, 300);
+  });
 
-    const onMove = (event) => {
-      if (mobileQuery.matches) {
-        return;
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+      if (document.hidden) {
+        lastTs = 0;
       }
-      const rect = btn.getBoundingClientRect();
-      const x = event.clientX - rect.left - rect.width / 2;
-      const y = event.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate(${(x / rect.width) * strength}px, ${(y / rect.height) * strength}px)`;
-      if (label) {
-        label.style.transform = `translate(${(x / rect.width) * labelStrength}px, ${(y / rect.height) * labelStrength}px)`;
-      }
-    };
+    },
+    { passive: true }
+  );
 
-    const onLeave = () => {
-      btn.style.transform = "";
-      if (label) {
-        label.style.transform = "";
-      }
-    };
-
-    btn.addEventListener("mousemove", onMove);
-    btn.addEventListener("mouseleave", onLeave);
+  // Keep clone text in sync when language switches
+  window.addEventListener("webovice:langchange", () => {
+    const cards = Array.from(track.querySelectorAll("[data-refs-card]"));
+    const half = Math.floor(cards.length / 2);
+    for (let i = 0; i < half; i += 1) {
+      cards[half + i].innerHTML = cards[i].innerHTML;
+      cards[half + i].setAttribute("aria-hidden", "true");
+    }
+    measure();
   });
 })();
 

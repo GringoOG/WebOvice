@@ -177,18 +177,28 @@
       "refs.title": "Co říkají klienti",
       "refs.1.quote":
         "„Ušetřilo nám to <strong>desítky hodin týdně</strong>. Data rovnou v Excelu.\"",
+      "refs.1.name": "Florian Crha",
+      "refs.1.role": "technik, Farm Therm",
       "refs.1.author": "Florian Crha (technik) — Farm Therm",
       "refs.2.quote":
         "„Design působí profesionálně a <strong>správa obsahu je jednoduchá</strong>.\"",
+      "refs.2.name": "Karel Hrbek",
+      "refs.2.role": "majitel, Onlineškolení.eu",
       "refs.2.author": "Karel Hrbek (majitel) — Onlineškolení.eu",
       "refs.3.quote":
         "„Aktualizace i drobné opravy — <strong>vše řeší WebOvice</strong>.\"",
+      "refs.3.name": "Vladimír Škrlant",
+      "refs.3.role": "majitel, Web Prokat Invest",
       "refs.3.author": "Vladimír Škrlant (majitel) — Web Prokat Invest",
       "refs.4.quote":
         "„Školení, testy i certifikáty — <strong>compliance bez papírování</strong>.\"",
+      "refs.4.name": "Karel Hrbek",
+      "refs.4.role": "majitel, e-learning BOZP",
       "refs.4.author": "Karel Hrbek (majitel) — e-learning BOZP",
       "refs.5.quote":
         "„Sofisticator nám <strong>zpřehlednil revize zařízení</strong> a ušetřil spoustu papírování.\"",
+      "refs.5.name": "Karel Hrbek",
+      "refs.5.role": "majitel, Sofisticator",
       "refs.5.author": "Karel Hrbek (majitel) — Sofisticator",
       "refs.tag.websites": "Weby",
 
@@ -457,18 +467,28 @@
       "refs.title": "What clients say",
       "refs.1.quote":
         "“It saved us <strong>dozens of hours a week</strong>. Data straight into Excel.”",
+      "refs.1.name": "Florian Crha",
+      "refs.1.role": "technician, Farm Therm",
       "refs.1.author": "Florian Crha (technician) — Farm Therm",
       "refs.2.quote":
         "“The design looks professional and <strong>content management is simple</strong>.”",
+      "refs.2.name": "Karel Hrbek",
+      "refs.2.role": "owner, Onlineškolení.eu",
       "refs.2.author": "Karel Hrbek (owner) — Onlineškolení.eu",
       "refs.3.quote":
         "“Updates and small fixes — <strong>WebOvice handles it all</strong>.”",
+      "refs.3.name": "Vladimír Škrlant",
+      "refs.3.role": "owner, Prokat Invest website",
       "refs.3.author": "Vladimír Škrlant (owner) — Prokat Invest website",
       "refs.4.quote":
         "“Training, tests, and certificates — <strong>compliance without paperwork</strong>.”",
+      "refs.4.name": "Karel Hrbek",
+      "refs.4.role": "owner, OHS e-learning",
       "refs.4.author": "Karel Hrbek (owner) — OHS e-learning",
       "refs.5.quote":
         "“Sofisticator <strong>clarified our equipment revisions</strong> and saved us a lot of paperwork.”",
+      "refs.5.name": "Karel Hrbek",
+      "refs.5.role": "owner, Sofisticator",
       "refs.5.author": "Karel Hrbek (owner) — Sofisticator",
       "refs.tag.websites": "Websites",
 

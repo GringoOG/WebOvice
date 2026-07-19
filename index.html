@@ -744,7 +744,7 @@
         </div>
       </section>
 
-      <!-- TESTIMONIALS — Prompt 3: Immersive horizontal showroom -->
+      <!-- TESTIMONIALS — infinite marquee cards -->
       <section class="refs-showcase" id="reference" data-i18n-aria-label="a11y.refs" aria-label="Co říkají klienti">
         <div class="refs-showcase-pin">
           <div class="refs-showcase-top">
@@ -752,67 +752,97 @@
             <h2 class="section-title" data-i18n="refs.title">Co říkají klienti</h2>
           </div>
 
-          <div class="refs-showcase-viewport">
-            <div class="refs-showcase-track" id="refsShowcaseTrack">
-              <article class="refs-panel is-active" data-refs-panel>
-                <div class="refs-quote-card">
-                  <blockquote class="refs-panel-quote">
+          <div class="refs-marquee" data-refs-marquee>
+            <div class="refs-marquee-track" id="refsShowcaseTrack">
+              <article class="refs-card" data-refs-card data-stagger="0">
+                <div class="refs-card-main">
+                  <div class="refs-card-stars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <blockquote class="refs-card-quote">
                     <p data-i18n-html="refs.1.quote">„Ušetřilo nám to <strong>desítky hodin týdně</strong>. Data rovnou v Excelu."</p>
                   </blockquote>
-                  <footer class="refs-quote-author" data-i18n="refs.1.author">Florian Crha (technik) — Farm Therm</footer>
                 </div>
+                <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-1.png')">
+                  <div class="refs-card-meta">
+                    <strong data-i18n="refs.1.name">Florian Crha</strong>
+                    <span data-i18n="refs.1.role">technik, Farm Therm</span>
+                  </div>
+                  <span class="refs-card-avatar" aria-hidden="true">FC</span>
+                </footer>
               </article>
 
-              <article class="refs-panel" data-refs-panel>
-                <div class="refs-quote-card">
-                  <blockquote class="refs-panel-quote">
+              <article class="refs-card" data-refs-card data-stagger="1">
+                <div class="refs-card-main">
+                  <div class="refs-card-stars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <blockquote class="refs-card-quote">
                     <p data-i18n-html="refs.2.quote">„Design působí profesionálně a <strong>správa obsahu je jednoduchá</strong>."</p>
                   </blockquote>
-                  <footer class="refs-quote-author" data-i18n="refs.2.author">Karel Hrbek (majitel) — Onlineškolení.eu</footer>
                 </div>
+                <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-2.png')">
+                  <div class="refs-card-meta">
+                    <strong data-i18n="refs.2.name">Karel Hrbek</strong>
+                    <span data-i18n="refs.2.role">majitel, Onlineškolení.eu</span>
+                  </div>
+                  <span class="refs-card-avatar" aria-hidden="true">KH</span>
+                </footer>
               </article>
 
-              <article class="refs-panel" data-refs-panel>
-                <div class="refs-quote-card">
-                  <blockquote class="refs-panel-quote">
+              <article class="refs-card" data-refs-card data-stagger="2">
+                <div class="refs-card-main">
+                  <div class="refs-card-stars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <blockquote class="refs-card-quote">
                     <p data-i18n-html="refs.3.quote">„Aktualizace i drobné opravy — <strong>vše řeší WebOvice</strong>."</p>
                   </blockquote>
-                  <footer class="refs-quote-author" data-i18n="refs.3.author">Vladimír Škrlant (majitel) — Web Prokat Invest</footer>
                 </div>
+                <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-3.png')">
+                  <div class="refs-card-meta">
+                    <strong data-i18n="refs.3.name">Vladimír Škrlant</strong>
+                    <span data-i18n="refs.3.role">majitel, Web Prokat Invest</span>
+                  </div>
+                  <span class="refs-card-avatar" aria-hidden="true">VŠ</span>
+                </footer>
               </article>
 
-              <article class="refs-panel" data-refs-panel>
-                <div class="refs-quote-card">
-                  <blockquote class="refs-panel-quote">
+              <article class="refs-card" data-refs-card data-stagger="0">
+                <div class="refs-card-main">
+                  <div class="refs-card-stars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <blockquote class="refs-card-quote">
                     <p data-i18n-html="refs.4.quote">„Školení, testy i certifikáty — <strong>compliance bez papírování</strong>."</p>
                   </blockquote>
-                  <footer class="refs-quote-author" data-i18n="refs.4.author">Karel Hrbek (majitel) — e-learning BOZP</footer>
                 </div>
+                <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-4.png')">
+                  <div class="refs-card-meta">
+                    <strong data-i18n="refs.4.name">Karel Hrbek</strong>
+                    <span data-i18n="refs.4.role">majitel, e-learning BOZP</span>
+                  </div>
+                  <span class="refs-card-avatar" aria-hidden="true">KH</span>
+                </footer>
               </article>
 
-              <article class="refs-panel" data-refs-panel>
-                <div class="refs-quote-card">
-                  <blockquote class="refs-panel-quote">
+              <article class="refs-card" data-refs-card data-stagger="1">
+                <div class="refs-card-main">
+                  <div class="refs-card-stars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <blockquote class="refs-card-quote">
                     <p data-i18n-html="refs.5.quote">„Sofisticator nám <strong>zpřehlednil revize zařízení</strong> a ušetřil spoustu papírování."</p>
                   </blockquote>
-                  <footer class="refs-quote-author" data-i18n="refs.5.author">Karel Hrbek (majitel) — Sofisticator</footer>
                 </div>
+                <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-5.png')">
+                  <div class="refs-card-meta">
+                    <strong data-i18n="refs.5.name">Karel Hrbek</strong>
+                    <span data-i18n="refs.5.role">majitel, Sofisticator</span>
+                  </div>
+                  <span class="refs-card-avatar" aria-hidden="true">KH</span>
+                </footer>
               </article>
-            </div>
-          </div>
-
-          <div class="refs-showcase-footer">
-            <div class="refs-arrows" role="group" data-i18n-aria-label="a11y.refs.nav" aria-label="Procházení referencí">
-              <button class="refs-arrow" type="button" data-refs-prev data-i18n-aria-label="a11y.refs.prev" aria-label="Předchozí reference">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M15 6l-6 6 6 6" />
-                </svg>
-              </button>
-              <button class="refs-arrow" type="button" data-refs-next data-i18n-aria-label="a11y.refs.next" aria-label="Další reference">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M9 6l6 6-6 6" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
