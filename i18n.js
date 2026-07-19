@@ -197,7 +197,6 @@
         "„Školení, testy i certifikáty — <strong>compliance bez papírování</strong>.\"",
       "refs.4.problem": "zákonná školení a evidence byly roztříštěné.",
       "refs.4.solution": "LMS aplikace — testy, evidence i certifikáty na jednom místě.",
-      "refs.all": "Všechny reference",
       "refs.tag.websites": "Weby",
 
       "pricing.title": "Ceník",
@@ -485,7 +484,6 @@
         "“Training, tests, and certificates — <strong>compliance without paperwork</strong>.”",
       "refs.4.problem": "mandatory training and records were fragmented.",
       "refs.4.solution": "LMS app — tests, records, and certificates in one place.",
-      "refs.all": "All references",
       "refs.tag.websites": "Websites",
 
       "pricing.title": "Pricing",
