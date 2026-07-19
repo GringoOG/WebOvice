@@ -12,6 +12,9 @@
       "a11y.footer.brandHome": "WebOvice — zpět na úvod",
       "a11y.stack.deck": "Tech stack — najeďte myší pro rozbalení",
       "a11y.refs": "Co říkají klienti",
+      "a11y.refs.nav": "Procházení referencí",
+      "a11y.refs.prev": "Předchozí reference",
+      "a11y.refs.next": "Další reference",
       "a11y.why.flow": "Tok hodnoty",
 
       "nav.home": "Domů",
@@ -194,8 +197,7 @@
         "„Školení, testy i certifikáty — <strong>compliance bez papírování</strong>.\"",
       "refs.4.problem": "zákonná školení a evidence byly roztříštěné.",
       "refs.4.solution": "LMS aplikace — testy, evidence i certifikáty na jednom místě.",
-      "refs.next": "Další reference",
-      "refs.cta": "Chci podobný výsledek",
+      "refs.all": "Všechny reference",
       "refs.tag.websites": "Weby",
 
       "pricing.title": "Ceník",
@@ -298,6 +300,9 @@
       "a11y.footer.brandHome": "WebOvice — back to home",
       "a11y.stack.deck": "Tech stack — hover to expand",
       "a11y.refs": "What clients say",
+      "a11y.refs.nav": "Browse testimonials",
+      "a11y.refs.prev": "Previous testimonial",
+      "a11y.refs.next": "Next testimonial",
       "a11y.why.flow": "Value flow",
 
       "nav.home": "Home",
@@ -480,8 +485,7 @@
         "“Training, tests, and certificates — <strong>compliance without paperwork</strong>.”",
       "refs.4.problem": "mandatory training and records were fragmented.",
       "refs.4.solution": "LMS app — tests, records, and certificates in one place.",
-      "refs.next": "Next testimonial",
-      "refs.cta": "I want a similar result",
+      "refs.all": "All references",
       "refs.tag.websites": "Websites",
 
       "pricing.title": "Pricing",

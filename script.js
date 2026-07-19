@@ -559,7 +559,7 @@ prefersReducedMotion.addEventListener("change", () => {
   }
 
   const panels = Array.from(track.querySelectorAll("[data-refs-panel]"));
-  const dots = Array.from(document.querySelectorAll("#refsShowcaseDots span"));
+  const prevBtns = Array.from(section.querySelectorAll("[data-refs-prev]"));
   const nextBtns = Array.from(section.querySelectorAll("[data-refs-next]"));
   const magneticBtns = Array.from(section.querySelectorAll("[data-magnetic]"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -568,23 +568,38 @@ prefersReducedMotion.addEventListener("change", () => {
   let activeIndex = -1;
 
   const setActive = (index) => {
-    activeIndex = index;
-    track.style.transform = `translate3d(-${index * (100 / panels.length)}%, 0, 0)`;
+    const nextIndex = ((index % panels.length) + panels.length) % panels.length;
+    activeIndex = nextIndex;
+    track.style.transform = `translate3d(-${nextIndex * (100 / panels.length)}%, 0, 0)`;
 
     panels.forEach((panel, i) => {
-      panel.classList.toggle("is-active", i === index);
-      panel.inert = i !== index;
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("is-active", i === index);
+      panel.classList.toggle("is-active", i === nextIndex);
+      panel.inert = i !== nextIndex;
     });
   };
 
   setActive(0);
+
+  prevBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setActive(activeIndex - 1);
+    });
+  });
+
   nextBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      setActive((activeIndex + 1) % panels.length);
+      setActive(activeIndex + 1);
     });
+  });
+
+  section.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      setActive(activeIndex - 1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      setActive(activeIndex + 1);
+    }
   });
 
   if (reduceMotion || !magneticBtns.length) {

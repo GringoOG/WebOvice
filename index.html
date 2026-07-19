@@ -760,9 +760,9 @@
                     <span>AI / OCR</span>
                     <span>Enterprise</span>
                   </div>
-                  <button class="btn refs-magnetic-btn" type="button" data-magnetic data-refs-next>
-                    <span data-i18n="refs.next">Další reference</span>
-                  </button>
+                  <a class="btn refs-magnetic-btn" href="moje-prace" data-magnetic>
+                    <span data-i18n="refs.all">Všechny reference</span>
+                  </a>
                 </div>
               </article>
 
@@ -792,9 +792,9 @@
                     <span data-i18n="works.tag.websites">Weby</span>
                     <span>SME</span>
                   </div>
-                  <button class="btn refs-magnetic-btn" type="button" data-magnetic data-refs-next>
-                    <span data-i18n="refs.next">Další reference</span>
-                  </button>
+                  <a class="btn refs-magnetic-btn" href="moje-prace" data-magnetic>
+                    <span data-i18n="refs.all">Všechny reference</span>
+                  </a>
                 </div>
               </article>
 
@@ -824,9 +824,9 @@
                     <span>Monitoring</span>
                     <span>Retainer</span>
                   </div>
-                  <button class="btn refs-magnetic-btn" type="button" data-magnetic data-refs-next>
-                    <span data-i18n="refs.next">Další reference</span>
-                  </button>
+                  <a class="btn refs-magnetic-btn" href="moje-prace" data-magnetic>
+                    <span data-i18n="refs.all">Všechny reference</span>
+                  </a>
                 </div>
               </article>
 
@@ -854,21 +854,27 @@
                     <span>LMS</span>
                     <span>Compliance</span>
                   </div>
-                  <button class="btn refs-magnetic-btn" type="button" data-magnetic data-refs-next>
-                    <span data-i18n="refs.next">Další reference</span>
-                  </button>
+                  <a class="btn refs-magnetic-btn" href="moje-prace" data-magnetic>
+                    <span data-i18n="refs.all">Všechny reference</span>
+                  </a>
                 </div>
               </article>
             </div>
           </div>
 
           <div class="refs-showcase-footer">
-            <div class="refs-showcase-dots" id="refsShowcaseDots" aria-hidden="true">
-              <span class="is-active"></span><span></span><span></span><span></span>
+            <div class="refs-arrows" role="group" data-i18n-aria-label="a11y.refs.nav" aria-label="Procházení referencí">
+              <button class="refs-arrow" type="button" data-refs-prev data-i18n-aria-label="a11y.refs.prev" aria-label="Předchozí reference">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M15 6l-6 6 6 6" />
+                </svg>
+              </button>
+              <button class="refs-arrow" type="button" data-refs-next data-i18n-aria-label="a11y.refs.next" aria-label="Další reference">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
             </div>
-            <a class="btn refs-magnetic-btn" href="kontakt" data-magnetic>
-              <span data-i18n="refs.cta">Chci podobný výsledek</span>
-            </a>
           </div>
         </div>
       </section>
