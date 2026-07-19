@@ -1928,7 +1928,7 @@ img.tocici-logo,
     margin-top: 0;
   }
 
-  /* Keep visual order 01, 02, 03, 04 on mobile */
+  /* Keep visual order 01–05 on mobile */
   .works-timeline-col--left .works-timeline-item:nth-child(1) {
     order: 1;
   }
@@ -1940,6 +1940,9 @@ img.tocici-logo,
   }
   .works-timeline-col--right .works-timeline-item:nth-child(2) {
     order: 4;
+  }
+  .works-timeline-col--left .works-timeline-item:nth-child(3) {
+    order: 5;
   }
 
   .works-timeline-item--left,
@@ -2326,7 +2329,7 @@ img.tocici-logo,
 
 /* ── Testimonials — Immersive horizontal showroom (Prompt 3) ── */
 .refs-showcase {
-  --refs-panels: 4;
+  --refs-panels: 5;
   position: relative;
   background:
     radial-gradient(ellipse 50% 40% at 20% 30%, rgba(88, 48, 150, 0.18), transparent 60%),

@@ -161,6 +161,11 @@
       "works.item4.title": "E-learningová aplikace BOZP",
       "works.item4.body":
         "Školení BOZP a zákonných kurzů — <strong>testy, evidence i certifikáty</strong> na jednom místě.",
+      "works.item5.statValue": "Revize",
+      "works.item5.stat": "pod kontrolou",
+      "works.item5.title": "Sofisticator — správa a generování revizí",
+      "works.item5.body":
+        "Aplikace na <strong>správu a generování revizí zařízení</strong> — evidence, dokumenty a výstupy na jednom místě.",
       "works.tag.websites": "Weby",
       "works.tag.energy": "Energetika",
       "works.cta": "Všechny moje práce",
@@ -172,16 +177,19 @@
       "refs.title": "Co říkají klienti",
       "refs.1.quote":
         "„Ušetřilo nám to <strong>desítky hodin týdně</strong>. Data rovnou v Excelu.\"",
-      "refs.1.author": "Prokat Invest — Snap Meter",
+      "refs.1.author": "Florian Crha (technik) — Farm Therm",
       "refs.2.quote":
         "„Design působí profesionálně a <strong>správa obsahu je jednoduchá</strong>.\"",
-      "refs.2.author": "Klient — firemní web",
+      "refs.2.author": "Karel Hrbek (majitel) — Onlineškolení.eu",
       "refs.3.quote":
         "„Aktualizace i drobné opravy — <strong>vše řeší WebOvice</strong>.\"",
-      "refs.3.author": "Klient — správa webu",
+      "refs.3.author": "Vladimír Škrlant (majitel) — Web Prokat Invest",
       "refs.4.quote":
         "„Školení, testy i certifikáty — <strong>compliance bez papírování</strong>.\"",
-      "refs.4.author": "Klient — BOZP e-learning",
+      "refs.4.author": "Karel Hrbek (majitel) — e-learning BOZP",
+      "refs.5.quote":
+        "„Sofisticator nám <strong>zpřehlednil revize zařízení</strong> a ušetřil spoustu papírování.\"",
+      "refs.5.author": "Karel Hrbek (majitel) — Sofisticator",
       "refs.tag.websites": "Weby",
 
       "pricing.title": "Ceník",
@@ -433,6 +441,11 @@
       "works.item4.title": "OHS e-learning app",
       "works.item4.body":
         "OHS and mandatory course training — <strong>tests, records, and certificates</strong> in one place.",
+      "works.item5.statValue": "Revisions",
+      "works.item5.stat": "under control",
+      "works.item5.title": "Sofisticator — revision management & generation",
+      "works.item5.body":
+        "An app for <strong>managing and generating equipment revisions</strong> — records, documents, and outputs in one place.",
       "works.tag.websites": "Websites",
       "works.tag.energy": "Energy",
       "works.cta": "All my work",
@@ -444,16 +457,19 @@
       "refs.title": "What clients say",
       "refs.1.quote":
         "“It saved us <strong>dozens of hours a week</strong>. Data straight into Excel.”",
-      "refs.1.author": "Prokat Invest — Snap Meter",
+      "refs.1.author": "Florian Crha (technician) — Farm Therm",
       "refs.2.quote":
         "“The design looks professional and <strong>content management is simple</strong>.”",
-      "refs.2.author": "Client — company website",
+      "refs.2.author": "Karel Hrbek (owner) — Onlineškolení.eu",
       "refs.3.quote":
         "“Updates and small fixes — <strong>WebOvice handles it all</strong>.”",
-      "refs.3.author": "Client — website maintenance",
+      "refs.3.author": "Vladimír Škrlant (owner) — Prokat Invest website",
       "refs.4.quote":
         "“Training, tests, and certificates — <strong>compliance without paperwork</strong>.”",
-      "refs.4.author": "Client — OHS e-learning",
+      "refs.4.author": "Karel Hrbek (owner) — OHS e-learning",
+      "refs.5.quote":
+        "“Sofisticator <strong>clarified our equipment revisions</strong> and saved us a lot of paperwork.”",
+      "refs.5.author": "Karel Hrbek (owner) — Sofisticator",
       "refs.tag.websites": "Websites",
 
       "pricing.title": "Pricing",
