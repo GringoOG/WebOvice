@@ -372,7 +372,7 @@ if (techStackDeck) {
   });
 }
 
-/* ── Service cards — video hraje jen při hoveru ── */
+/* ── Service cards — video na hover, lazy preload ── */
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function showServiceVideoFrame(video) {
@@ -398,6 +398,75 @@ function resetServiceVideoState(video) {
   showServiceVideoFrame(video);
 }
 
+function ensureServiceVideoSource(video) {
+  if (video.dataset.srcReady === "1") {
+    return;
+  }
+
+  const sources = video.querySelectorAll("source[data-src]");
+  if (!sources.length) {
+    video.dataset.srcReady = "1";
+    return;
+  }
+
+  sources.forEach((source) => {
+    const src = source.getAttribute("data-src");
+    if (src && !source.getAttribute("src")) {
+      source.setAttribute("src", src);
+    }
+  });
+
+  video.dataset.srcReady = "1";
+  video.load();
+}
+
+function warmServiceVideo(video) {
+  ensureServiceVideoSource(video);
+
+  if (video.preload !== "auto") {
+    video.preload = "auto";
+  }
+
+  if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+    video.load();
+  }
+}
+
+function playServiceVideo(video) {
+  ensureServiceVideoSource(video);
+
+  const start = () => {
+    video.play().catch(() => {});
+  };
+
+  // Seek only when the clip is near the end / not yet started — avoids
+  // rebuffer delay on every hover when the file is already warm.
+  const nearEnd =
+    Number.isFinite(video.duration) &&
+    video.duration > 0 &&
+    video.currentTime > Math.max(0.2, video.duration - 0.35);
+
+  if (nearEnd || video.ended || video.currentTime < 0.05) {
+    try {
+      video.currentTime = 0;
+    } catch (_) {
+      // Ignore seek race while metadata is still loading.
+    }
+  }
+
+  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+    start();
+    return;
+  }
+
+  const onReady = () => {
+    video.removeEventListener("canplay", onReady);
+    start();
+  };
+  video.addEventListener("canplay", onReady, { once: true });
+  video.load();
+}
+
 function primeServiceVideoPreview(video) {
   const prime = () => {
     if (!video.closest(".service-visual")?.classList.contains("is-playing")) {
@@ -410,53 +479,91 @@ function primeServiceVideoPreview(video) {
 
   if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
     prime();
-    return;
-  }
-
-  if (video.networkState === HTMLMediaElement.NETWORK_EMPTY) {
-    video.load();
   }
 }
 
-document.querySelectorAll(".service-visual").forEach((visual) => {
-  const video = visual.querySelector(".service-video");
-  if (!video?.querySelector("source")) {
+(() => {
+  const visuals = Array.from(document.querySelectorAll(".service-visual")).filter((visual) =>
+    visual.querySelector(".service-video source")
+  );
+
+  if (!visuals.length) {
     return;
   }
 
-  primeServiceVideoPreview(video);
-
-  visual.addEventListener("mouseenter", () => {
-    if (prefersReducedMotion.matches) {
+  visuals.forEach((visual) => {
+    const video = visual.querySelector(".service-video");
+    if (!video) {
       return;
     }
 
-    video.currentTime = 0;
-    visual.classList.add("is-playing");
-    video.play().catch(() => {});
+    video.preload = "none";
+    primeServiceVideoPreview(video);
+
+    visual.addEventListener("mouseenter", () => {
+      if (prefersReducedMotion.matches) {
+        return;
+      }
+
+      visual.classList.add("is-playing");
+      playServiceVideo(video);
+    });
+
+    visual.addEventListener("mouseleave", () => {
+      resetServiceVideoState(video);
+    });
+
+    // Touch: first tap warms + plays; leave on scroll away via observer below.
+    visual.addEventListener(
+      "pointerenter",
+      () => {
+        if (prefersReducedMotion.matches) {
+          return;
+        }
+        warmServiceVideo(video);
+      },
+      { passive: true }
+    );
   });
 
-  visual.addEventListener("mouseleave", () => {
-    resetServiceVideoState(video);
+  const warmObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        const video = entry.target.querySelector(".service-video");
+        if (video) {
+          warmServiceVideo(video);
+        }
+        warmObserver.unobserve(entry.target);
+      });
+    },
+    {
+      rootMargin: "220px 0px",
+      threshold: 0.05,
+    }
+  );
+
+  visuals.forEach((visual) => warmObserver.observe(visual));
+
+  window.addEventListener("pageshow", (event) => {
+    if (!event.persisted) {
+      return;
+    }
+
+    document.querySelectorAll(".service-video").forEach((video) => {
+      resetServiceVideoState(video);
+    });
   });
-});
 
-window.addEventListener("pageshow", (event) => {
-  if (!event.persisted) {
-    return;
-  }
-
-  document.querySelectorAll(".service-video").forEach((video) => {
-    resetServiceVideoState(video);
+  prefersReducedMotion.addEventListener("change", () => {
+    document.querySelectorAll(".service-video").forEach((video) => {
+      resetServiceVideoState(video);
+    });
   });
-});
-
-prefersReducedMotion.addEventListener("change", () => {
-  document.querySelectorAll(".service-video").forEach((video) => {
-    resetServiceVideoState(video);
-  });
-});
-
+})();
 /* ── Scroll reveal — sekce se pozvolna objeví ── */
 (() => {
   const revealEls = document.querySelectorAll(".reveal, .reveal-stagger");

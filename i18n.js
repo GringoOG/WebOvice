@@ -170,33 +170,18 @@
 
       "refs.kicker": "[ REFERENCE ]",
       "refs.title": "Co říkají klienti",
-      "refs.label.problem": "Problém:",
-      "refs.label.solution": "Řešení:",
-      "refs.1.title": "Od ručního přepisu k automatizaci",
       "refs.1.quote":
         "„Ušetřilo nám to <strong>desítky hodin týdně</strong>. Data rovnou v Excelu.\"",
-      "refs.1.problem": "ruční čtení měřidel brzdilo provoz a zanášílo chyby.",
-      "refs.1.solution":
-        "History-First AI — <em>90&nbsp;% úspora času</em>, 0&nbsp;% AI halucinací.",
-      "refs.2.index": "[ 02 ] · FIREMNÍ WEB",
-      "refs.2.title": "Online za pár dnů",
+      "refs.1.author": "Prokat Invest — Snap Meter",
       "refs.2.quote":
         "„Design působí profesionálně a <strong>správa obsahu je jednoduchá</strong>.\"",
-      "refs.2.problem": "potřebovali rychlý, důvěryhodný web bez složité správy.",
-      "refs.2.solution": "moderní prezentační web — obsah pod kontrolou klienta, bez kódu.",
-      "refs.3.index": "[ 03 ] · RETAINER · SPRÁVA",
-      "refs.3.title": "0 starostí o provoz",
+      "refs.2.author": "Klient — firemní web",
       "refs.3.quote":
         "„Aktualizace i drobné opravy — <strong>vše řeší WebOvice</strong>.\"",
-      "refs.3.problem": "tým nechtěl řešit údržbu, monitoring ani drobné změny.",
-      "refs.3.solution": "měsíční retainer — web běží, klient se soustředí na byznys.",
-      "refs.3.tag.admin": "Správa",
-      "refs.4.index": "[ 04 ] · BOZP E-LEARNING",
-      "refs.4.title": "Evidence a certifikace",
+      "refs.3.author": "Klient — správa webu",
       "refs.4.quote":
         "„Školení, testy i certifikáty — <strong>compliance bez papírování</strong>.\"",
-      "refs.4.problem": "zákonná školení a evidence byly roztříštěné.",
-      "refs.4.solution": "LMS aplikace — testy, evidence i certifikáty na jednom místě.",
+      "refs.4.author": "Klient — BOZP e-learning",
       "refs.tag.websites": "Weby",
 
       "pricing.title": "Ceník",
@@ -457,33 +442,18 @@
 
       "refs.kicker": "[ TESTIMONIALS ]",
       "refs.title": "What clients say",
-      "refs.label.problem": "Problem:",
-      "refs.label.solution": "Solution:",
-      "refs.1.title": "From manual entry to automation",
       "refs.1.quote":
         "“It saved us <strong>dozens of hours a week</strong>. Data straight into Excel.”",
-      "refs.1.problem": "manual meter reading slowed operations and introduced errors.",
-      "refs.1.solution":
-        "History-First AI — <em>90&nbsp;% time saved</em>, 0&nbsp;% AI hallucinations.",
-      "refs.2.index": "[ 02 ] · COMPANY WEBSITE",
-      "refs.2.title": "Online in a few days",
+      "refs.1.author": "Prokat Invest — Snap Meter",
       "refs.2.quote":
         "“The design looks professional and <strong>content management is simple</strong>.”",
-      "refs.2.problem": "they needed a fast, trustworthy site without complex admin.",
-      "refs.2.solution": "a modern presentation site — client-controlled content, no code.",
-      "refs.3.index": "[ 03 ] · RETAINER · MAINTENANCE",
-      "refs.3.title": "Zero ops worries",
+      "refs.2.author": "Client — company website",
       "refs.3.quote":
         "“Updates and small fixes — <strong>WebOvice handles it all</strong>.”",
-      "refs.3.problem": "the team didn’t want to deal with maintenance, monitoring, or small changes.",
-      "refs.3.solution": "monthly retainer — the site runs, the client focuses on business.",
-      "refs.3.tag.admin": "Maintenance",
-      "refs.4.index": "[ 04 ] · OHS E-LEARNING",
-      "refs.4.title": "Records and certification",
+      "refs.3.author": "Client — website maintenance",
       "refs.4.quote":
         "“Training, tests, and certificates — <strong>compliance without paperwork</strong>.”",
-      "refs.4.problem": "mandatory training and records were fragmented.",
-      "refs.4.solution": "LMS app — tests, records, and certificates in one place.",
+      "refs.4.author": "Client — OHS e-learning",
       "refs.tag.websites": "Websites",
 
       "pricing.title": "Pricing",

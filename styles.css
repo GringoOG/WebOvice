@@ -1761,7 +1761,8 @@ img.tocici-logo,
 .works-timeline-card {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 1.35rem 1.4rem;
+  padding: 0;
+  overflow: hidden;
   border-radius: 16px;
   border: 1px solid rgba(168, 130, 255, 0.28);
   background:
@@ -1769,6 +1770,24 @@ img.tocici-logo,
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.03) inset,
     0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+.works-timeline-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: rgba(8, 6, 16, 0.9);
+  overflow: hidden;
+}
+
+.works-timeline-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.works-timeline-body {
+  padding: 1.35rem 1.4rem;
 }
 
 .works-timeline-item--left .works-timeline-card {
@@ -2341,7 +2360,7 @@ img.tocici-logo,
 .refs-showcase-viewport {
   position: relative;
   flex: 0 1 auto;
-  min-height: 28rem;
+  min-height: 16rem;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
@@ -2350,7 +2369,7 @@ img.tocici-logo,
 .refs-showcase-track {
   display: flex;
   align-items: stretch;
-  min-height: 28rem;
+  min-height: 16rem;
   width: calc(var(--refs-panels) * 100%);
   will-change: transform;
   transform: translate3d(0, 0, 0);
@@ -2361,135 +2380,59 @@ img.tocici-logo,
   position: relative;
   flex: 0 0 calc(100% / var(--refs-panels));
   width: calc(100% / var(--refs-panels));
-  min-height: 28rem;
+  min-height: 16rem;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  align-items: center;
-  gap: clamp(1.25rem, 3vw, 3rem);
-  padding: 0.5rem clamp(1.25rem, 5vw, 4.5rem) 1rem;
+  place-items: center;
+  padding: 1rem clamp(1.25rem, 5vw, 4.5rem);
   isolation: isolate;
 }
 
-.refs-panel-num {
-  position: absolute;
-  right: 4%;
-  top: 42%;
-  z-index: 0;
-  font-size: clamp(8rem, 22vw, 18rem);
-  font-weight: 700;
-  line-height: 0.8;
-  letter-spacing: -0.06em;
-  color: rgba(196, 181, 253, 0.07);
-  pointer-events: none;
-  user-select: none;
-  transform: translateY(-50%);
-}
-
-.refs-panel-visual,
-.refs-panel-copy {
-  position: relative;
-  z-index: 1;
-}
-
-.refs-panel-visual {
-  display: grid;
-  place-items: center;
+.refs-quote-card {
+  width: min(42rem, 100%);
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.35rem, 3vw, 2rem);
+  border-radius: 18px;
+  border: 1px solid rgba(168, 130, 255, 0.28);
+  background:
+    linear-gradient(160deg, rgba(24, 18, 42, 0.95) 0%, rgba(10, 8, 18, 0.96) 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 16px 36px rgba(0, 0, 0, 0.28);
   opacity: 0.35;
-  transform: translateX(-28px) scale(0.96);
+  transform: translateY(18px) scale(0.98);
   transition:
     opacity 0.55s ease,
     transform 0.7s cubic-bezier(0.25, 1, 0.4, 1);
 }
 
-.refs-panel-copy {
-  max-width: 34rem;
-  opacity: 0.25;
-  transform: translateY(24px);
-  transition:
-    opacity 0.55s ease,
-    transform 0.7s cubic-bezier(0.25, 1, 0.4, 1);
-}
-
-.refs-panel.is-active .refs-panel-visual {
+.refs-panel.is-active .refs-quote-card {
   opacity: 1;
-  transform: translateX(0) scale(1);
-}
-
-.refs-panel.is-active .refs-panel-copy {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.refs-panel-index {
-  display: block;
-  margin-bottom: 0.75rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: rgba(244, 207, 158, 0.85);
-}
-
-.refs-panel-copy h3 {
-  margin: 0 0 0.85rem;
-  font-size: clamp(1.55rem, 3.2vw, 2.45rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: #fff;
+  transform: translateY(0) scale(1);
 }
 
 .refs-panel-quote {
-  margin: 0 0 1rem;
+  margin: 0 0 1.15rem;
   padding: 0;
   border: 0;
 }
 
 .refs-panel-quote p {
   margin: 0;
-  color: rgba(230, 230, 240, 0.88);
-  font-size: 1.02rem;
-  line-height: 1.55;
+  color: rgba(230, 230, 240, 0.92);
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
 }
 
 .refs-panel-quote strong {
   color: #fff;
 }
 
-.refs-panel-story {
-  display: grid;
-  gap: 0.55rem;
-  margin-bottom: 1.1rem;
-}
-
-.refs-panel-story p {
+.refs-quote-author {
   margin: 0;
-  color: rgba(230, 230, 240, 0.72);
-  font-size: 0.94rem;
-  line-height: 1.6;
-}
-
-.refs-panel-story strong {
-  color: #fff;
-}
-
-.refs-panel-story em {
-  font-style: normal;
-  color: #f4cf9e;
-}
-
-.refs-panel-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin: 0 0 1.35rem;
-}
-
-.refs-panel-tags span {
-  padding: 0.28rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  font-size: 0.74rem;
-  color: rgba(230, 230, 240, 0.75);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(244, 207, 158, 0.9);
 }
 
 .refs-magnetic-btn {
@@ -2662,8 +2605,7 @@ img.tocici-logo,
     transition: none;
   }
 
-  .refs-panel-visual,
-  .refs-panel-copy {
+  .refs-quote-card {
     opacity: 1;
     transform: none;
   }
@@ -2675,35 +2617,19 @@ img.tocici-logo,
     padding-bottom: 1.75rem;
   }
 
-  .refs-showcase-viewport {
-    min-height: 36rem;
-  }
-
+  .refs-showcase-viewport,
   .refs-showcase-track,
   .refs-panel {
-    min-height: 36rem;
+    min-height: 14rem;
   }
 
   .refs-panel {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 0 var(--page-gutter) 1rem;
+    padding: 0.75rem var(--page-gutter) 0.5rem;
   }
 
-  .refs-panel-num {
-    font-size: 6.5rem;
-    top: 8%;
-    right: 0;
-  }
-
-  .refs-panel-visual,
-  .refs-panel-copy {
+  .refs-quote-card {
     opacity: 1;
     transform: none;
-  }
-
-  .device-mockup--laptop {
-    width: min(100%, 420px);
   }
 
   .refs-showcase-footer {

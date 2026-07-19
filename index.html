@@ -199,15 +199,15 @@
           <div class="services-grid services-bento reveal-stagger">
             <article class="service-card service-card-wide">
               <div class="service-visual">
-                <video
+                <video poster="assets/services/posters/service-1-loop.jpg"
                   class="service-video"
                   loop
                   muted
                   playsinline
-                  preload="auto"
+                  preload="none"
                   aria-hidden="true"
                 >
-                  <source src="assets/service-1-loop.mp4?v=2" type="video/mp4" />
+                  <source data-src="assets/service-1-loop.mp4?v=4" type="video/mp4" />
                 </video>
               </div>
               <div class="service-content">
@@ -226,16 +226,16 @@
 
             <article class="service-card">
               <div class="service-visual">
-                <video
+                <video poster="assets/services/posters/service-2-loop.jpg"
                   class="service-video service-video--frame-left"
                   loop
                   muted
                   playsinline
-                  preload="auto"
+                  preload="none"
                   aria-hidden="true"
                   data-service-slot="2"
                 >
-                  <source src="assets/service-2-loop.mp4?v=3" type="video/mp4" />
+                  <source data-src="assets/service-2-loop.mp4?v=4" type="video/mp4" />
                 </video>
               </div>
               <div class="service-content">
@@ -254,16 +254,16 @@
 
             <article class="service-card">
               <div class="service-visual">
-                <video
+                <video poster="assets/services/posters/service-3-loop.jpg"
                   class="service-video"
                   loop
                   muted
                   playsinline
-                  preload="auto"
+                  preload="none"
                   aria-hidden="true"
                   data-service-slot="3"
                 >
-                  <source src="assets/service-3-loop.mp4" type="video/mp4" />
+                  <source data-src="assets/service-3-loop.mp4?v=4" type="video/mp4" />
                 </video>
               </div>
               <div class="service-content">
@@ -282,16 +282,16 @@
 
             <article class="service-card service-card-accent">
               <div class="service-visual">
-                <video
+                <video poster="assets/services/posters/service-4-loop.jpg"
                   class="service-video"
                   loop
                   muted
                   playsinline
-                  preload="auto"
+                  preload="none"
                   aria-hidden="true"
                   data-service-slot="4"
                 >
-                  <source src="assets/service-4-loop.mp4" type="video/mp4" />
+                  <source data-src="assets/service-4-loop.mp4?v=4" type="video/mp4" />
                 </video>
               </div>
               <div class="service-content">
@@ -310,16 +310,16 @@
 
             <article class="service-card">
               <div class="service-visual">
-                <video
+                <video poster="assets/services/posters/service-5-loop.jpg"
                   class="service-video"
                   loop
                   muted
                   playsinline
-                  preload="auto"
+                  preload="none"
                   aria-hidden="true"
                   data-service-slot="5"
                 >
-                  <source src="assets/service-5-loop.mp4" type="video/mp4" />
+                  <source data-src="assets/service-5-loop.mp4?v=4" type="video/mp4" />
                 </video>
               </div>
               <div class="service-content">
@@ -339,15 +339,15 @@
             <div class="services-duo">
               <article class="service-card" id="online-marketing">
                 <div class="service-visual">
-                  <video
+                  <video poster="assets/services/posters/online-marketing.jpg"
                     class="service-video"
                     loop
                     muted
                     playsinline
-                    preload="metadata"
+                    preload="none"
                     aria-hidden="true"
                   >
-                    <source src="assets/services/online-marketing/loop.mp4" type="video/mp4" />
+                    <source data-src="assets/services/online-marketing/loop.mp4?v=4" type="video/mp4" />
                   </video>
                 </div>
                 <div class="service-content">
@@ -370,16 +370,16 @@
 
               <article class="service-card service-card-bonus">
                 <div class="service-visual">
-                  <video
+                  <video poster="assets/services/posters/service-6-loop.jpg"
                     class="service-video"
                     loop
                     muted
                     playsinline
-                    preload="auto"
+                    preload="none"
                     aria-hidden="true"
                     data-service-slot="6"
                   >
-                    <source src="assets/service-6-loop.mp4" type="video/mp4" />
+                    <source data-src="assets/service-6-loop.mp4?v=4" type="video/mp4" />
                   </video>
                 </div>
                 <div class="service-content">
@@ -506,17 +506,22 @@
             <div class="works-timeline-col works-timeline-col--left">
               <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
                 <div class="works-timeline-card">
-                  <span class="work-index">[ 01 ]</span>
-                  <p class="works-stat"><span class="works-stat-value">90&nbsp;%</span> <span data-i18n="works.item1.stat">úspora času</span></p>
-                  <h3 data-i18n="works.item1.title">Snap Meter — automatizace čtení měřidel</h3>
-                  <p data-i18n-html="works.item1.body">
-                    Hybridní systém pro Prokat Invest: méně ruční práce,
-                    <strong>0&nbsp;% halucinací AI</strong> a data rovnou v Excelu.
-                  </p>
-                  <div class="work-tags">
-                    <span>Python</span>
-                    <span>AI / OCR</span>
-                    <span>Enterprise</span>
+                  <div class="works-timeline-media">
+                    <img src="assets/solution-1.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 01 ]</span>
+                    <p class="works-stat"><span class="works-stat-value">90&nbsp;%</span> <span data-i18n="works.item1.stat">úspora času</span></p>
+                    <h3 data-i18n="works.item1.title">Snap Meter — automatizace čtení měřidel</h3>
+                    <p data-i18n-html="works.item1.body">
+                      Hybridní systém pro Prokat Invest: méně ruční práce,
+                      <strong>0&nbsp;% halucinací AI</strong> a data rovnou v Excelu.
+                    </p>
+                    <div class="work-tags">
+                      <span>Python</span>
+                      <span>AI / OCR</span>
+                      <span>Enterprise</span>
+                    </div>
                   </div>
                 </div>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
@@ -525,17 +530,22 @@
 
               <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
                 <div class="works-timeline-card">
-                  <span class="work-index">[ 03 ]</span>
-                  <p class="works-stat"><span class="works-stat-value" data-i18n="works.item3.statValue">Jasná</span> <span data-i18n="works.item3.stat">cesta k poptávce</span></p>
-                  <h3 data-i18n="works.item3.title">Web Prokat Invest</h3>
-                  <p data-i18n-html="works.item3.body">
-                    Firemní web pro energetiku —
-                    <strong>profesionální prezentace služeb</strong> a rychlý kontakt.
-                  </p>
-                  <div class="work-tags">
-                    <span data-i18n="works.tag.websites">Weby</span>
-                    <span>B2B</span>
-                    <span data-i18n="works.tag.energy">Energetika</span>
+                  <div class="works-timeline-media">
+                    <img src="assets/solution-3.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 03 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item3.statValue">Jasná</span> <span data-i18n="works.item3.stat">cesta k poptávce</span></p>
+                    <h3 data-i18n="works.item3.title">Web Prokat Invest</h3>
+                    <p data-i18n-html="works.item3.body">
+                      Firemní web pro energetiku —
+                      <strong>profesionální prezentace služeb</strong> a rychlý kontakt.
+                    </p>
+                    <div class="work-tags">
+                      <span data-i18n="works.tag.websites">Weby</span>
+                      <span>B2B</span>
+                      <span data-i18n="works.tag.energy">Energetika</span>
+                    </div>
                   </div>
                 </div>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
@@ -548,17 +558,22 @@
                 <span class="works-timeline-node" aria-hidden="true"></span>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
                 <div class="works-timeline-card">
-                  <span class="work-index">[ 02 ]</span>
-                  <p class="works-stat"><span class="works-stat-value" data-i18n="works.item2.statValue">Kurzový</span> <span data-i18n="works.item2.stat">prodejní web</span></p>
-                  <h3 data-i18n="works.item2.title">Web onlineskolení.eu</h3>
-                  <p data-i18n-html="works.item2.body">
-                    Prezentační web, který prodává školení —
-                    <strong>přehledná nabídka</strong> a správa obsahu bez kódu.
-                  </p>
-                  <div class="work-tags">
-                    <span data-i18n="works.tag.websites">Weby</span>
-                    <span>E-learning</span>
-                    <span>SME</span>
+                  <div class="works-timeline-media">
+                    <img src="assets/solution-2.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 02 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item2.statValue">Kurzový</span> <span data-i18n="works.item2.stat">prodejní web</span></p>
+                    <h3 data-i18n="works.item2.title">Web onlineskolení.eu</h3>
+                    <p data-i18n-html="works.item2.body">
+                      Prezentační web, který prodává školení —
+                      <strong>přehledná nabídka</strong> a správa obsahu bez kódu.
+                    </p>
+                    <div class="work-tags">
+                      <span data-i18n="works.tag.websites">Weby</span>
+                      <span>E-learning</span>
+                      <span>SME</span>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -567,17 +582,22 @@
                 <span class="works-timeline-node" aria-hidden="true"></span>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
                 <div class="works-timeline-card">
-                  <span class="work-index">[ 04 ]</span>
-                  <p class="works-stat"><span class="works-stat-value" data-i18n="works.item4.statValue">Evidence</span> <span data-i18n="works.item4.stat">a certifikace</span></p>
-                  <h3 data-i18n="works.item4.title">E-learningová aplikace BOZP</h3>
-                  <p data-i18n-html="works.item4.body">
-                    Školení BOZP a zákonných kurzů —
-                    <strong>testy, evidence i certifikáty</strong> na jednom místě.
-                  </p>
-                  <div class="work-tags">
-                    <span>E-learning</span>
-                    <span>LMS</span>
-                    <span>Compliance</span>
+                  <div class="works-timeline-media">
+                    <img src="assets/solution-4.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 04 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item4.statValue">Evidence</span> <span data-i18n="works.item4.stat">a certifikace</span></p>
+                    <h3 data-i18n="works.item4.title">E-learningová aplikace BOZP</h3>
+                    <p data-i18n-html="works.item4.body">
+                      Školení BOZP a zákonných kurzů —
+                      <strong>testy, evidence i certifikáty</strong> na jednom místě.
+                    </p>
+                    <div class="work-tags">
+                      <span>E-learning</span>
+                      <span>LMS</span>
+                      <span>Compliance</span>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -735,116 +755,38 @@
           <div class="refs-showcase-viewport">
             <div class="refs-showcase-track" id="refsShowcaseTrack">
               <article class="refs-panel is-active" data-refs-panel>
-                <span class="refs-panel-num" aria-hidden="true">01</span>
-                <div class="refs-panel-visual">
-                  <div class="device-mockup device-mockup--laptop">
-                    <div class="device-mockup-chrome" aria-hidden="true"></div>
-                    <div class="device-mockup-screen">
-                      <img src="assets/solution-1.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
-                    </div>
-                    <div class="device-mockup-base" aria-hidden="true"></div>
-                  </div>
-                </div>
-                <div class="refs-panel-copy">
-                  <span class="refs-panel-index">[ 01 ] · SNAP METER · PROKAT INVEST</span>
-                  <h3 data-i18n="refs.1.title">Od ručního přepisu k automatizaci</h3>
+                <div class="refs-quote-card">
                   <blockquote class="refs-panel-quote">
                     <p data-i18n-html="refs.1.quote">„Ušetřilo nám to <strong>desítky hodin týdně</strong>. Data rovnou v Excelu."</p>
                   </blockquote>
-                  <div class="refs-panel-story">
-                    <p><strong data-i18n="refs.label.problem">Problém:</strong> <span data-i18n="refs.1.problem">ruční čtení měřidel brzdilo provoz a zanášílo chyby.</span></p>
-                    <p><strong data-i18n="refs.label.solution">Řešení:</strong> <span data-i18n-html="refs.1.solution">History-First AI — <em>90&nbsp;% úspora času</em>, 0&nbsp;% AI halucinací.</span></p>
-                  </div>
-                  <div class="refs-panel-tags">
-                    <span>Python</span>
-                    <span>AI / OCR</span>
-                    <span>Enterprise</span>
-                  </div>
+                  <footer class="refs-quote-author" data-i18n="refs.1.author">Prokat Invest — Snap Meter</footer>
                 </div>
               </article>
 
               <article class="refs-panel" data-refs-panel>
-                <span class="refs-panel-num" aria-hidden="true">02</span>
-                <div class="refs-panel-visual">
-                  <div class="device-mockup device-mockup--laptop">
-                    <div class="device-mockup-chrome" aria-hidden="true"></div>
-                    <div class="device-mockup-screen">
-                      <img src="assets/solution-2.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
-                    </div>
-                    <div class="device-mockup-base" aria-hidden="true"></div>
-                  </div>
-                </div>
-                <div class="refs-panel-copy">
-                  <span class="refs-panel-index" data-i18n="refs.2.index">[ 02 ] · FIREMNÍ WEB</span>
-                  <h3 data-i18n="refs.2.title">Online za pár dnů</h3>
+                <div class="refs-quote-card">
                   <blockquote class="refs-panel-quote">
                     <p data-i18n-html="refs.2.quote">„Design působí profesionálně a <strong>správa obsahu je jednoduchá</strong>."</p>
                   </blockquote>
-                  <div class="refs-panel-story">
-                    <p><strong data-i18n="refs.label.problem">Problém:</strong> <span data-i18n="refs.2.problem">potřebovali rychlý, důvěryhodný web bez složité správy.</span></p>
-                    <p><strong data-i18n="refs.label.solution">Řešení:</strong> <span data-i18n="refs.2.solution">moderní prezentační web — obsah pod kontrolou klienta, bez kódu.</span></p>
-                  </div>
-                  <div class="refs-panel-tags">
-                    <span>Framer</span>
-                    <span data-i18n="works.tag.websites">Weby</span>
-                    <span>SME</span>
-                  </div>
+                  <footer class="refs-quote-author" data-i18n="refs.2.author">Klient — firemní web</footer>
                 </div>
               </article>
 
               <article class="refs-panel" data-refs-panel>
-                <span class="refs-panel-num" aria-hidden="true">03</span>
-                <div class="refs-panel-visual">
-                  <div class="device-mockup device-mockup--laptop">
-                    <div class="device-mockup-chrome" aria-hidden="true"></div>
-                    <div class="device-mockup-screen">
-                      <img src="assets/solution-3.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
-                    </div>
-                    <div class="device-mockup-base" aria-hidden="true"></div>
-                  </div>
-                </div>
-                <div class="refs-panel-copy">
-                  <span class="refs-panel-index" data-i18n="refs.3.index">[ 03 ] · RETAINER · SPRÁVA</span>
-                  <h3 data-i18n="refs.3.title">0 starostí o provoz</h3>
+                <div class="refs-quote-card">
                   <blockquote class="refs-panel-quote">
                     <p data-i18n-html="refs.3.quote">„Aktualizace i drobné opravy — <strong>vše řeší WebOvice</strong>."</p>
                   </blockquote>
-                  <div class="refs-panel-story">
-                    <p><strong data-i18n="refs.label.problem">Problém:</strong> <span data-i18n="refs.3.problem">tým nechtěl řešit údržbu, monitoring ani drobné změny.</span></p>
-                    <p><strong data-i18n="refs.label.solution">Řešení:</strong> <span data-i18n="refs.3.solution">měsíční retainer — web běží, klient se soustředí na byznys.</span></p>
-                  </div>
-                  <div class="refs-panel-tags">
-                    <span data-i18n="refs.3.tag.admin">Správa</span>
-                    <span>Monitoring</span>
-                    <span>Retainer</span>
-                  </div>
+                  <footer class="refs-quote-author" data-i18n="refs.3.author">Klient — správa webu</footer>
                 </div>
               </article>
 
               <article class="refs-panel" data-refs-panel>
-                <span class="refs-panel-num" aria-hidden="true">04</span>
-                <div class="refs-panel-visual">
-                  <div class="device-mockup device-mockup--phone">
-                    <div class="device-mockup-screen">
-                      <img src="assets/solution-4.png" alt="" width="480" height="860" loading="lazy" decoding="async" />
-                    </div>
-                  </div>
-                </div>
-                <div class="refs-panel-copy">
-                  <span class="refs-panel-index" data-i18n="refs.4.index">[ 04 ] · BOZP E-LEARNING</span>
-                  <h3 data-i18n="refs.4.title">Evidence a certifikace</h3>
+                <div class="refs-quote-card">
                   <blockquote class="refs-panel-quote">
                     <p data-i18n-html="refs.4.quote">„Školení, testy i certifikáty — <strong>compliance bez papírování</strong>."</p>
                   </blockquote>
-                  <div class="refs-panel-story">
-                    <p><strong data-i18n="refs.label.problem">Problém:</strong> <span data-i18n="refs.4.problem">zákonná školení a evidence byly roztříštěné.</span></p>
-                    <p><strong data-i18n="refs.label.solution">Řešení:</strong> <span data-i18n="refs.4.solution">LMS aplikace — testy, evidence i certifikáty na jednom místě.</span></p>
-                  </div>
-                  <div class="refs-panel-tags">
-                    <span>E-learning</span>
-                    <span>LMS</span>
-                    <span>Compliance</span>
-                  </div>
+                  <footer class="refs-quote-author" data-i18n="refs.4.author">Klient — BOZP e-learning</footer>
                 </div>
               </article>
             </div>
