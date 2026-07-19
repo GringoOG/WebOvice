@@ -1928,7 +1928,7 @@ img.tocici-logo,
     margin-top: 0;
   }
 
-  /* Keep visual order 01–05 on mobile */
+  /* Keep visual order 01–05 on mobile (L1, R1, L2, R2, L3) */
   .works-timeline-col--left .works-timeline-item:nth-child(1) {
     order: 1;
   }
