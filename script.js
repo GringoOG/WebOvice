@@ -650,6 +650,7 @@ prefersReducedMotion.addEventListener("change", () => {
     video.loop = false;
     video.muted = true;
     video.playsInline = true;
+    video.playbackRate = 1.5;
 
     video.addEventListener("timeupdate", () => {
       if (index !== activeIndex || swapping) {
