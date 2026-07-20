@@ -562,7 +562,7 @@ textarea {
   background: #06060c;
 }
 
-/* Full-bleed video za textem — Luděk drží vlevo, černá zmizí screeneem */
+/* Full-bleed video za textem — Luděk vpravo, text vlevo, černá zmizí screeneem */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -575,7 +575,7 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: right center;
   display: block;
   background: transparent;
   mix-blend-mode: screen;
@@ -862,29 +862,30 @@ img.tocici-logo,
   }
 }
 
-/* Desktop: text vpravo, video full-bleed za ním (Luděk vlevo) */
+/* Desktop: text vlevo, video full-bleed za ním (Luděk vpravo) */
 @media (min-width: 768px) {
   .hero-grid {
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: clamp(2rem, 4vw, 4rem);
   }
 
   .hero-copy {
     flex: 0 1 42rem;
-    max-width: min(42rem, 48%);
-    margin-left: auto;
+    max-width: min(42rem, 52%);
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .hero-ludek {
-    object-position: 18% center;
+    object-position: 78% center;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-copy {
-    max-width: min(40rem, 44%);
+    max-width: min(40rem, 50%);
   }
 
   .container-loga--hero {
@@ -893,13 +894,13 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    object-position: 12% center;
+    object-position: 82% center;
   }
 }
 
 @media (min-width: 1280px) {
   .hero-copy {
-    max-width: min(38rem, 40%);
+    max-width: min(38rem, 46%);
   }
 }
 
