@@ -554,9 +554,9 @@ textarea {
 /* ── Hero ── */
 .hero {
   position: relative;
-  padding: clamp(2rem, 6vw, 4rem) 0 clamp(2.5rem, 8vw, 5rem);
+  padding: clamp(1.5rem, 5vw, 3.5rem) 0 clamp(2rem, 7vw, 4.5rem);
   overflow: hidden;
-  min-height: min(calc(100vh - var(--nav-height)), 920px);
+  min-height: min(calc(100vh - var(--nav-height)), 980px);
   display: flex;
   align-items: center;
   background: #06060c;
@@ -603,40 +603,23 @@ textarea {
 
 .hero-stage {
   position: relative;
-  width: min(560px, 94vw);
-  min-height: min(520px, 92vw);
+  width: min(640px, 100%);
   display: grid;
   place-items: center;
   margin-inline: auto;
 }
 
-.hero-knot {
-  position: absolute;
-  right: -4%;
-  top: 50%;
-  width: min(78%, 440px);
-  height: auto;
-  transform: translateY(-50%);
-  object-fit: contain;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  z-index: 0;
-  opacity: 0.92;
-  filter: drop-shadow(0 0 32px rgba(155, 111, 240, 0.45));
-}
-
 .hero-ludek {
   position: relative;
   z-index: 1;
-  width: min(88%, 480px);
+  width: min(100%, 640px);
   height: auto;
   object-fit: contain;
   margin-inline: auto;
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 0 28px rgba(155, 111, 240, 0.35));
+  filter: drop-shadow(0 0 40px rgba(155, 111, 240, 0.4));
 }
 
 .hero-title {
@@ -880,36 +863,41 @@ img.tocici-logo,
   }
 
   .hero-copy {
-    flex: 1 1 52%;
+    flex: 1 1 42%;
     order: 0;
+    max-width: 36rem;
   }
 
   .hero-visual {
-    flex: 1 1 48%;
+    flex: 1 1 58%;
     order: 0;
     align-items: center;
     justify-content: center;
+    overflow: visible;
   }
 
   .hero-visual .container-loga,
   .hero-stage {
     margin-inline: auto;
-    margin-top: -0.15rem;
+    margin-top: -1rem;
   }
 
-  .hero-knot {
-    right: -8%;
-    width: min(82%, 460px);
+  .hero-stage {
+    width: min(760px, 54vw);
+  }
+
+  .hero-ludek {
+    width: min(760px, 54vw);
   }
 }
 
 @media (min-width: 1024px) {
   .hero-copy {
-    flex-basis: 55%;
+    flex-basis: 40%;
   }
 
   .hero-visual {
-    flex-basis: 45%;
+    flex-basis: 60%;
   }
 
   .container-loga--hero {
@@ -918,8 +906,18 @@ img.tocici-logo,
   }
 
   .hero-stage {
-    width: min(620px, 42vw);
-    min-height: min(620px, 42vw);
+    width: min(860px, 52vw);
+  }
+
+  .hero-ludek {
+    width: min(860px, 52vw);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-stage,
+  .hero-ludek {
+    width: min(920px, 50vw);
   }
 }
 
