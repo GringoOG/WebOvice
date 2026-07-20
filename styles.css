@@ -584,18 +584,18 @@ textarea {
   overflow: hidden;
   /* větší světlé jádro, fade jen na okrajích (schová čtverec bez ztmavení postavy) */
   -webkit-mask-image: radial-gradient(
-    ellipse 88% 98% at 70% 48%,
-    #000 52%,
-    rgba(0, 0, 0, 0.95) 68%,
-    rgba(0, 0, 0, 0.55) 82%,
-    transparent 94%
+    ellipse 92% 100% at 72% 48%,
+    #000 58%,
+    rgba(0, 0, 0, 0.96) 74%,
+    rgba(0, 0, 0, 0.6) 88%,
+    transparent 98%
   );
   mask-image: radial-gradient(
-    ellipse 88% 98% at 70% 48%,
-    #000 52%,
-    rgba(0, 0, 0, 0.95) 68%,
-    rgba(0, 0, 0, 0.55) 82%,
-    transparent 94%
+    ellipse 92% 100% at 72% 48%,
+    #000 58%,
+    rgba(0, 0, 0, 0.96) 74%,
+    rgba(0, 0, 0, 0.6) 88%,
+    transparent 98%
   );
 }
 
@@ -607,8 +607,8 @@ textarea {
   display: block;
   background: transparent;
   mix-blend-mode: screen;
-  /* rovnováha: dost jasu, mírný contrast stále drží near-black pryč */
-  filter: contrast(1.12) brightness(1.14) saturate(1.08);
+  /* víc jasu — near-black drží crush ve videu + mírný contrast */
+  filter: contrast(1.08) brightness(1.32) saturate(1.1);
 }
 
 .hero-beam {
