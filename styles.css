@@ -582,6 +582,21 @@ textarea {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  /* změkčí okraje videa, ať není vidět „čtverec“ kolem scény */
+  -webkit-mask-image: radial-gradient(
+    ellipse 78% 92% at 68% 48%,
+    #000 38%,
+    rgba(0, 0, 0, 0.92) 55%,
+    rgba(0, 0, 0, 0.45) 72%,
+    transparent 88%
+  );
+  mask-image: radial-gradient(
+    ellipse 78% 92% at 68% 48%,
+    #000 38%,
+    rgba(0, 0, 0, 0.92) 55%,
+    rgba(0, 0, 0, 0.45) 72%,
+    transparent 88%
+  );
 }
 
 .hero-ludek {
@@ -592,7 +607,8 @@ textarea {
   display: block;
   background: transparent;
   mix-blend-mode: screen;
-  filter: none;
+  /* contrast spálí zbylé near-black pixely, co tvoří rámeček */
+  filter: contrast(1.28) brightness(1.04) saturate(1.05);
 }
 
 .hero-beam {
@@ -626,9 +642,24 @@ textarea {
 }
 
 @media (max-width: 767px) {
+  .hero-bg {
+    -webkit-mask-image: radial-gradient(
+      ellipse 95% 80% at 50% 55%,
+      #000 42%,
+      rgba(0, 0, 0, 0.85) 62%,
+      transparent 88%
+    );
+    mask-image: radial-gradient(
+      ellipse 95% 80% at 50% 55%,
+      #000 42%,
+      rgba(0, 0, 0, 0.85) 62%,
+      transparent 88%
+    );
+  }
+
   .hero-ludek {
     object-position: center 30%;
-    opacity: 0.9;
+    opacity: 0.95;
   }
 
   .hero-copy {
@@ -794,8 +825,10 @@ img.tocici-logo,
   animation: rotaceLoga 15s linear infinite;
   mix-blend-mode: screen;
   background: transparent;
-  /* jemně zvedne fialovou a ještě víc „spálí“ zbylou tmavou */
-  filter: contrast(1.12) brightness(1.06);
+  filter: contrast(1.35) brightness(1.08) saturate(1.06);
+  /* měkké okraje — schová zbytek čtvercového pozadí PNG */
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 74%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 74%);
 }
 
 .container-loga,
