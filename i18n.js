@@ -151,6 +151,7 @@
       "works.item2.title": "Web onlineskolení.eu",
       "works.item2.body":
         "Prezentační web, který prodává školení — <strong>přehledná nabídka</strong> a správa obsahu bez kódu.",
+      "works.item2.linkLabel": "Otevřít web onlineskolení.eu",
       "works.item3.statValue": "Jasná",
       "works.item3.stat": "cesta k poptávce",
       "works.item3.title": "Web Prokat Invest",
@@ -441,6 +442,7 @@
       "works.item2.title": "onlineskolení.eu website",
       "works.item2.body":
         "A presentation site that sells training — <strong>clear offer</strong> and code-free content management.",
+      "works.item2.linkLabel": "Open onlineskolení.eu website",
       "works.item3.statValue": "Clear",
       "works.item3.stat": "path to inquiry",
       "works.item3.title": "Prokat Invest website",

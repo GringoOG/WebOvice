@@ -115,8 +115,17 @@
           </div>
 
           <div class="hero-visual">
-            <div class="container-loga container-loga--hero">
-              <div class="logo-video-stack" id="heroLogoLoop" data-logo-src="assets/logo-webovice-seamless.mp4">
+            <div class="container-loga container-loga--hero container-loga--ludek">
+              <!-- Trial: Ludek GIF místo točícího loga (původní video skryté) -->
+              <img
+                class="tocici-logo tocici-logo--ludek"
+                src="assets/ludek-hero.gif"
+                alt=""
+                width="480"
+                height="438"
+                decoding="async"
+              />
+              <div class="logo-video-stack" id="heroLogoLoop" data-logo-src="assets/logo-webovice-seamless.mp4" hidden>
                 <video
                   class="tocici-logo tocici-logo--video is-active"
                   muted
@@ -143,6 +152,7 @@
                 width="512"
                 height="500"
                 decoding="async"
+                hidden
               />
             </div>
           </div>
@@ -529,7 +539,14 @@
               </article>
 
               <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <div class="works-timeline-card">
+                <a
+                  class="works-timeline-card works-timeline-card--link"
+                  href="https://www.onlineskoleni.eu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n-aria-label="works.item2.linkLabel"
+                  aria-label="Otevřít web onlineskolení.eu"
+                >
                   <div class="works-timeline-media">
                     <img src="assets/solution-2.jpg" alt="" width="960" height="493" loading="lazy" decoding="async" />
                   </div>
@@ -547,7 +564,7 @@
                       <span>SME</span>
                     </div>
                   </div>
-                </div>
+                </a>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
                 <span class="works-timeline-node" aria-hidden="true"></span>
               </article>
