@@ -818,80 +818,101 @@ function primeServiceVideoPreview(video) {
   });
 })();
 
-/* ── Hero logo — soft crossfade loop (bez viditelného restartu) ── */
+/* ── Hero Ludek — pořád dokola, bez restartu při scrollu nahoru ── */
 (() => {
-  const stack = document.getElementById("heroLogoLoop");
-  if (!stack) {
+  const video = document.querySelector("video.hero-ludek");
+  if (!video) {
     return;
   }
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.removeAttribute("autoplay");
+    video.pause();
     return;
   }
 
-  const videos = Array.from(stack.querySelectorAll("video.tocici-logo--video"));
-  if (videos.length < 2) {
-    return;
-  }
+  video.loop = true;
+  video.muted = true;
+  video.playsInline = true;
+  video.preload = "auto";
 
-  const FADE_LEAD = 0.55;
-  let activeIndex = 0;
-  let swapping = false;
+  let savedTime = 0;
+  let pausedByBrowser = false;
 
-  const playSafe = (video) => {
-    const playPromise = video.play();
-    if (playPromise?.catch) {
-      playPromise.catch(() => {});
+  const rememberTime = () => {
+    if (Number.isFinite(video.currentTime)) {
+      savedTime = video.currentTime;
     }
   };
 
-  const swap = () => {
-    if (swapping) {
+  const resumeWithoutRestart = () => {
+    if (document.hidden) {
       return;
     }
-    swapping = true;
 
-    const current = videos[activeIndex];
-    const next = videos[(activeIndex + 1) % videos.length];
+    // Jen když prohlížeč video zastavil a případně seeknul na 0 — ne při přirozeném loopu.
+    if (
+      pausedByBrowser &&
+      savedTime > 0.25 &&
+      video.currentTime < 0.15 &&
+      Number.isFinite(video.duration) &&
+      video.duration > 1
+    ) {
+      try {
+        video.currentTime = savedTime;
+      } catch {
+        /* ignore seek errors before metadata */
+      }
+    }
 
-    next.currentTime = 0;
-    playSafe(next);
-    next.classList.add("is-active");
-    current.classList.remove("is-active");
-
-    window.setTimeout(() => {
-      current.pause();
-      activeIndex = (activeIndex + 1) % videos.length;
-      swapping = false;
-    }, 480);
+    if (video.paused) {
+      video.play().catch(() => {});
+    }
   };
 
-  videos.forEach((video, index) => {
-    video.loop = false;
-    video.muted = true;
-    video.playsInline = true;
-    video.playbackRate = 1.5;
+  video.addEventListener("timeupdate", rememberTime);
 
-    video.addEventListener("timeupdate", () => {
-      if (index !== activeIndex || swapping) {
-        return;
-      }
-      if (!Number.isFinite(video.duration) || video.duration <= 0) {
-        return;
-      }
-      if (video.currentTime >= video.duration - FADE_LEAD) {
-        swap();
-      }
-    });
-
-    video.addEventListener("ended", () => {
-      if (index === activeIndex) {
-        swap();
-      }
-    });
+  video.addEventListener("pause", () => {
+    rememberTime();
+    // ended + loop může krátce pausnout — to neber jako browser pause
+    if (!video.ended) {
+      pausedByBrowser = true;
+    }
   });
 
-  playSafe(videos[0]);
+  video.addEventListener("play", () => {
+    pausedByBrowser = false;
+  });
+
+  // NEpauzovat při odscrollování. Když prohlížeč video stejně pozastaví,
+  // při návratu / keepalive jen play() bez resetu na začátek.
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          resumeWithoutRestart();
+        }
+      }
+    },
+    { threshold: 0 }
+  );
+  observer.observe(video);
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      resumeWithoutRestart();
+    } else {
+      rememberTime();
+    }
+  });
+
+  window.setInterval(() => {
+    if (!document.hidden) {
+      resumeWithoutRestart();
+    }
+  }, 2000);
+
+  resumeWithoutRestart();
 })();
 
 /* ── Why-flow connectors: 1 svislá nit od loga + vodorovné větve ── */
