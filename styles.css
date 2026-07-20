@@ -603,10 +603,25 @@ textarea {
 
 .hero-stage {
   position: relative;
-  width: min(420px, 88vw);
+  width: min(480px, 90vw);
   display: grid;
   place-items: center;
   margin-inline: auto;
+}
+
+.hero-knot {
+  position: absolute;
+  inset: 0;
+  width: 92%;
+  height: auto;
+  margin: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  z-index: 0;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 36px rgba(155, 111, 240, 0.45));
 }
 
 .hero-ludek {
