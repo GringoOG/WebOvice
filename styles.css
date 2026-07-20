@@ -623,9 +623,9 @@ textarea {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-  /* Černé pozadí zmizí; brightness drží barvy světlejší než minule */
+  /* Černé pozadí zmizí; bez silného brightenu — ten video zbytečně „vyšisoval“ */
   mix-blend-mode: screen;
-  filter: brightness(1.12) contrast(1.02);
+  filter: none;
 }
 
 .hero-title {
