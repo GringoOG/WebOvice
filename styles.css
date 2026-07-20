@@ -582,20 +582,20 @@ textarea {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  /* změkčí okraje videa, ať není vidět „čtverec“ kolem scény */
+  /* větší světlé jádro, fade jen na okrajích (schová čtverec bez ztmavení postavy) */
   -webkit-mask-image: radial-gradient(
-    ellipse 78% 92% at 68% 48%,
-    #000 38%,
-    rgba(0, 0, 0, 0.92) 55%,
-    rgba(0, 0, 0, 0.45) 72%,
-    transparent 88%
+    ellipse 88% 98% at 70% 48%,
+    #000 52%,
+    rgba(0, 0, 0, 0.95) 68%,
+    rgba(0, 0, 0, 0.55) 82%,
+    transparent 94%
   );
   mask-image: radial-gradient(
-    ellipse 78% 92% at 68% 48%,
-    #000 38%,
-    rgba(0, 0, 0, 0.92) 55%,
-    rgba(0, 0, 0, 0.45) 72%,
-    transparent 88%
+    ellipse 88% 98% at 70% 48%,
+    #000 52%,
+    rgba(0, 0, 0, 0.95) 68%,
+    rgba(0, 0, 0, 0.55) 82%,
+    transparent 94%
   );
 }
 
@@ -607,8 +607,8 @@ textarea {
   display: block;
   background: transparent;
   mix-blend-mode: screen;
-  /* contrast spálí zbylé near-black pixely, co tvoří rámeček */
-  filter: contrast(1.28) brightness(1.04) saturate(1.05);
+  /* rovnováha: dost jasu, mírný contrast stále drží near-black pryč */
+  filter: contrast(1.12) brightness(1.14) saturate(1.08);
 }
 
 .hero-beam {
@@ -644,22 +644,22 @@ textarea {
 @media (max-width: 767px) {
   .hero-bg {
     -webkit-mask-image: radial-gradient(
-      ellipse 95% 80% at 50% 55%,
-      #000 42%,
-      rgba(0, 0, 0, 0.85) 62%,
-      transparent 88%
+      ellipse 98% 88% at 50% 52%,
+      #000 48%,
+      rgba(0, 0, 0, 0.9) 70%,
+      transparent 92%
     );
     mask-image: radial-gradient(
-      ellipse 95% 80% at 50% 55%,
-      #000 42%,
-      rgba(0, 0, 0, 0.85) 62%,
-      transparent 88%
+      ellipse 98% 88% at 50% 52%,
+      #000 48%,
+      rgba(0, 0, 0, 0.9) 70%,
+      transparent 92%
     );
   }
 
   .hero-ludek {
     object-position: center 30%;
-    opacity: 0.95;
+    opacity: 1;
   }
 
   .hero-copy {
