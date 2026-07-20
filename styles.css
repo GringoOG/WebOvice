@@ -601,6 +601,44 @@ textarea {
   margin-top: 0;
 }
 
+.hero-stage {
+  position: relative;
+  width: min(560px, 94vw);
+  min-height: min(520px, 92vw);
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+}
+
+.hero-knot {
+  position: absolute;
+  right: -4%;
+  top: 50%;
+  width: min(78%, 440px);
+  height: auto;
+  transform: translateY(-50%);
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  z-index: 0;
+  opacity: 0.92;
+  filter: drop-shadow(0 0 32px rgba(155, 111, 240, 0.45));
+}
+
+.hero-ludek {
+  position: relative;
+  z-index: 1;
+  width: min(88%, 480px);
+  height: auto;
+  object-fit: contain;
+  margin-inline: auto;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 0 28px rgba(155, 111, 240, 0.35));
+}
+
 .hero-title {
   margin: 0;
   font-size: clamp(2.5rem, 6.5vw, 4.25rem);
@@ -805,6 +843,8 @@ img.tocici-logo,
   filter: drop-shadow(0 0 28px rgba(155, 111, 240, 0.35));
 }
 
+/* Legacy — ponecháno pro případné starší markup */
+
 @keyframes rotaceLoga {
   from {
     transform: rotate(0deg);
@@ -847,13 +887,19 @@ img.tocici-logo,
   .hero-visual {
     flex: 1 1 48%;
     order: 0;
-    align-items: flex-start;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
   }
 
-  .hero-visual .container-loga {
-    margin-inline: 0 0 auto;
+  .hero-visual .container-loga,
+  .hero-stage {
+    margin-inline: auto;
     margin-top: -0.15rem;
+  }
+
+  .hero-knot {
+    right: -8%;
+    width: min(82%, 460px);
   }
 }
 
@@ -869,6 +915,11 @@ img.tocici-logo,
   .container-loga--hero {
     width: min(620px, 42vw);
     height: min(620px, 42vw);
+  }
+
+  .hero-stage {
+    width: min(620px, 42vw);
+    min-height: min(620px, 42vw);
   }
 }
 
@@ -1209,27 +1260,28 @@ img.tocici-logo,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   display: block;
 }
 
+/* Zoom do vnitřní „obrazovky“ ve videu — ořízne okolní 3D scénu */
 .service-visual .service-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  transform: scale(1.18);
-  transform-origin: top left;
+  transform: scale(1.62);
+  transform-origin: center center;
 }
 
 .service-card-wide .service-visual .service-video {
-  transform: scale(1.13);
-  transform-origin: 42% 48%;
-  object-position: center 47%;
+  /* Širší slot (21:9) — o něco méně zoomu, ať text na tabletu zůstane čitelný */
+  transform: scale(1.48);
+  transform-origin: center center;
 }
 
 .service-visual .service-video--frame-left {
-  object-position: 32% center;
+  object-position: center center;
 }
 
 .service-content {

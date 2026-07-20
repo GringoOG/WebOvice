@@ -114,45 +114,23 @@
             </div>
           </div>
 
-          <div class="hero-visual">
-            <div class="container-loga container-loga--hero container-loga--ludek">
-              <!-- Trial: Ludek GIF místo točícího loga (původní video skryté) -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-stage">
               <img
-                class="tocici-logo tocici-logo--ludek"
+                class="hero-knot"
+                src="assets/webovice-knot.svg"
+                alt=""
+                width="420"
+                height="237"
+                decoding="async"
+              />
+              <img
+                class="hero-ludek"
                 src="assets/ludek-hero.gif"
                 alt=""
                 width="480"
                 height="438"
                 decoding="async"
-              />
-              <div class="logo-video-stack" id="heroLogoLoop" data-logo-src="assets/logo-webovice-seamless.mp4" hidden>
-                <video
-                  class="tocici-logo tocici-logo--video is-active"
-                  muted
-                  playsinline
-                  preload="auto"
-                  aria-hidden="true"
-                >
-                  <source src="assets/logo-webovice-seamless.mp4" type="video/mp4" />
-                </video>
-                <video
-                  class="tocici-logo tocici-logo--video"
-                  muted
-                  playsinline
-                  preload="auto"
-                  aria-hidden="true"
-                >
-                  <source src="assets/logo-webovice-seamless.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <img
-                class="tocici-logo tocici-logo--fallback"
-                src="assets/logo-webovice-bez.png"
-                alt=""
-                width="512"
-                height="500"
-                decoding="async"
-                hidden
               />
             </div>
           </div>
