@@ -30,8 +30,8 @@ export const projects = [
       "Školení bylo těžké prezentovat a obsah se spravoval zbytečně složitě.",
     solution:
       "Moderní prezentační web s jasnou strukturou kurzů a správou obsahu bez zásahu do kódu.",
-    cover: "assets/solution-2.png",
-    gallery: ["assets/solution-2.png", "assets/solution-3.png", "assets/solution-4.png"],
+    cover: "assets/solution-2.jpg",
+    gallery: ["assets/solution-2.jpg", "assets/solution-3.png", "assets/solution-4.png"],
     results: [
       { value: "100 %", label: "responzivní" },
       { value: "CMS", label: "bez kódu" },
@@ -51,7 +51,7 @@ export const projects = [
     solution:
       "Přehledný firemní web s důvěryhodným designem a jasnými CTA k poptávce.",
     cover: "assets/solution-3.png",
-    gallery: ["assets/solution-3.png", "assets/solution-1.png", "assets/solution-2.png"],
+    gallery: ["assets/solution-3.png", "assets/solution-1.png", "assets/solution-2.jpg"],
     results: [
       { value: "B2B", label: "prezentace" },
       { value: "1 klik", label: "k poptávce" },
