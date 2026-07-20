@@ -603,7 +603,7 @@ textarea {
 
 .hero-stage {
   position: relative;
-  width: min(480px, 90vw);
+  width: min(640px, 94vw);
   display: grid;
   place-items: center;
   margin-inline: auto;
@@ -614,8 +614,9 @@ textarea {
 .hero-ludek {
   position: relative;
   z-index: 1;
-  width: min(100%, 420px);
+  width: min(100%, 640px);
   height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: contain;
   margin-inline: auto;
   display: block;
@@ -623,7 +624,7 @@ textarea {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-  /* Černé pozadí zmizí; bez silného brightenu — ten video zbytečně „vyšisoval“ */
+  /* Černé pozadí zmizí — 16:9 má víc místa na prskance */
   mix-blend-mode: screen;
   filter: none;
 }
@@ -889,21 +890,21 @@ img.tocici-logo,
   }
 
   .hero-stage {
-    width: min(480px, 40vw);
+    width: min(640px, 48vw);
   }
 
   .hero-ludek {
-    width: min(480px, 40vw);
+    width: min(640px, 48vw);
   }
 }
 
 @media (min-width: 1024px) {
   .hero-copy {
-    flex-basis: 55%;
+    flex-basis: 50%;
   }
 
   .hero-visual {
-    flex-basis: 45%;
+    flex-basis: 50%;
   }
 
   .container-loga--hero {
@@ -912,18 +913,18 @@ img.tocici-logo,
   }
 
   .hero-stage {
-    width: min(520px, 36vw);
+    width: min(720px, 46vw);
   }
 
   .hero-ludek {
-    width: min(520px, 36vw);
+    width: min(720px, 46vw);
   }
 }
 
 @media (min-width: 1280px) {
   .hero-stage,
   .hero-ludek {
-    width: min(560px, 34vw);
+    width: min(800px, 44vw);
   }
 }
 
