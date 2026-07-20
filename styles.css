@@ -621,7 +621,9 @@ textarea {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 0 32px rgba(155, 111, 240, 0.35));
+  /* Černé pozadí videa zmizí na tmavém hero — robot vypadá jako ořez */
+  mix-blend-mode: screen;
+  filter: contrast(1.06) drop-shadow(0 0 28px rgba(155, 111, 240, 0.28));
 }
 
 .hero-title {
