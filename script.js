@@ -383,9 +383,7 @@ function showServiceVideoFrame(video) {
   }
 
   try {
-    if (video.currentTime < 0.001) {
-      video.currentTime = 0.001;
-    }
+    video.currentTime = 0;
   } catch (_) {
     // Ignore seek errors while the browser is still buffering.
   }
@@ -435,33 +433,23 @@ function warmServiceVideo(video) {
 function playServiceVideo(video) {
   ensureServiceVideoSource(video);
 
-  const start = () => {
-    video.play().catch(() => {});
-  };
-
-  // Seek only when the clip is near the end / not yet started — avoids
-  // rebuffer delay on every hover when the file is already warm.
-  const nearEnd =
-    Number.isFinite(video.duration) &&
-    video.duration > 0 &&
-    video.currentTime > Math.max(0.2, video.duration - 0.35);
-
-  if (nearEnd || video.ended || video.currentTime < 0.05) {
+  const startFromBeginning = () => {
     try {
       video.currentTime = 0;
     } catch (_) {
       // Ignore seek race while metadata is still loading.
     }
-  }
+    video.play().catch(() => {});
+  };
 
   if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-    start();
+    startFromBeginning();
     return;
   }
 
   const onReady = () => {
     video.removeEventListener("canplay", onReady);
-    start();
+    startFromBeginning();
   };
   video.addEventListener("canplay", onReady, { once: true });
   video.load();

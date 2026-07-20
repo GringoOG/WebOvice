@@ -1268,19 +1268,18 @@ img.tocici-logo,
   display: block;
 }
 
-/* Zoom do vnitřní „obrazovky“ ve videu — ořízne okolní 3D scénu */
+/* Mírný zoom do středu — vidět víc scény kolem „tabletů“ */
 .service-visual .service-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  transform: scale(1.62);
+  transform: scale(1.18);
   transform-origin: center center;
 }
 
 .service-card-wide .service-visual .service-video {
-  /* Širší slot (21:9) — o něco méně zoomu, ať text na tabletu zůstane čitelný */
-  transform: scale(1.48);
+  transform: scale(1.12);
   transform-origin: center center;
 }
 
