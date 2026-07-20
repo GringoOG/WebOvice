@@ -565,9 +565,13 @@ textarea {
 }
 
 .hero > .container {
-  width: min(var(--max), calc(100% - (var(--page-gutter) * 2)));
-  margin-inline: auto;
-  padding-inline: clamp(0.35rem, 1.2vw, 0.85rem);
+  /* šířka jako dřív, ale vlevo jen ~polovina centrálního odskoku */
+  width: min(var(--max), calc(100% - (var(--page-gutter) * 1.5)));
+  margin-left: calc(
+    (var(--page-gutter) * 0.5) + max(0px, (100vw - var(--max)) / 4)
+  );
+  margin-right: auto;
+  padding-inline: 0;
   box-sizing: border-box;
 }
 
@@ -617,8 +621,6 @@ textarea {
   z-index: 2;
   min-width: 0;
   max-width: 36rem;
-  /* odskok od boční strany — stejný rytmus jako dřív u split layoutu */
-  padding-inline: clamp(0.25rem, 1.5vw, 0.75rem);
   /* jemný stín, ať text zůstane čitelný přes jiskry */
   text-shadow: 0 2px 24px rgba(6, 6, 12, 0.85);
 }
