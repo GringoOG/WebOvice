@@ -586,20 +586,20 @@ textarea {
   overflow: hidden;
   /* screen na wrapperu — NE na stejném prvku jako filter (Safari black screen) */
   mix-blend-mode: screen;
-  /* větší světlé jádro, fade jen na okrajích (schová čtverec bez ztmavení postavy) */
+  /* maska sleduje zmenšeného / posunutého Luděka */
   -webkit-mask-image: radial-gradient(
-    ellipse 92% 100% at 52% 48%,
-    #000 58%,
-    rgba(0, 0, 0, 0.96) 74%,
-    rgba(0, 0, 0, 0.6) 88%,
-    transparent 98%
+    ellipse 85% 95% at 48% 48%,
+    #000 52%,
+    rgba(0, 0, 0, 0.96) 70%,
+    rgba(0, 0, 0, 0.55) 84%,
+    transparent 96%
   );
   mask-image: radial-gradient(
-    ellipse 92% 100% at 52% 48%,
-    #000 58%,
-    rgba(0, 0, 0, 0.96) 74%,
-    rgba(0, 0, 0, 0.6) 88%,
-    transparent 98%
+    ellipse 85% 95% at 48% 48%,
+    #000 52%,
+    rgba(0, 0, 0, 0.96) 70%,
+    rgba(0, 0, 0, 0.55) 84%,
+    transparent 96%
   );
 }
 
@@ -607,10 +607,13 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 55% center;
+  object-position: 78% center;
   display: block;
   background: transparent;
   mix-blend-mode: normal;
+  /* −15 % velikost + posun ke středu (k textu) */
+  transform: scale(0.85) translateX(-16%);
+  transform-origin: center center;
   /* jas jen na videu; blend je na .hero-bg */
   filter: contrast(1.08) brightness(1.28) saturate(1.1);
 }
@@ -666,6 +669,7 @@ textarea {
   .hero-ludek {
     object-position: center 30%;
     opacity: 1;
+    transform: scale(0.9) translateX(0);
   }
 
   .hero-copy {
@@ -942,8 +946,8 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    /* blíž ke středu — levý okraj vizuálu ~u textu */
-    object-position: 48% center;
+    object-position: 80% center;
+    transform: scale(0.85) translateX(-20%);
   }
 }
 
@@ -958,13 +962,18 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    object-position: 50% center;
+    object-position: 82% center;
+    transform: scale(0.85) translateX(-22%);
   }
 }
 
 @media (min-width: 1280px) {
   .hero-copy {
     max-width: min(38rem, 46%);
+  }
+
+  .hero-ludek {
+    transform: scale(0.85) translateX(-24%);
   }
 }
 
