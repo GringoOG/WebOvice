@@ -588,14 +588,14 @@ textarea {
   mix-blend-mode: screen;
   /* větší světlé jádro, fade jen na okrajích (schová čtverec bez ztmavení postavy) */
   -webkit-mask-image: radial-gradient(
-    ellipse 92% 100% at 64% 48%,
+    ellipse 92% 100% at 52% 48%,
     #000 58%,
     rgba(0, 0, 0, 0.96) 74%,
     rgba(0, 0, 0, 0.6) 88%,
     transparent 98%
   );
   mask-image: radial-gradient(
-    ellipse 92% 100% at 64% 48%,
+    ellipse 92% 100% at 52% 48%,
     #000 58%,
     rgba(0, 0, 0, 0.96) 74%,
     rgba(0, 0, 0, 0.6) 88%,
@@ -607,7 +607,7 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 85% center;
+  object-position: 55% center;
   display: block;
   background: transparent;
   mix-blend-mode: normal;
@@ -942,7 +942,8 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    object-position: 68% center;
+    /* blíž ke středu — levý okraj vizuálu ~u textu */
+    object-position: 48% center;
   }
 }
 
@@ -957,7 +958,7 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    object-position: 72% center;
+    object-position: 50% center;
   }
 }
 
