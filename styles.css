@@ -586,16 +586,16 @@ textarea {
   overflow: hidden;
   /* screen na wrapperu — NE na stejném prvku jako filter (Safari black screen) */
   mix-blend-mode: screen;
-  /* maska sleduje zmenšeného / posunutého Luděka */
+  /* maska u pravého okraje (video je pinované doprava) */
   -webkit-mask-image: radial-gradient(
-    ellipse 85% 95% at 48% 48%,
+    ellipse 85% 95% at 72% 48%,
     #000 52%,
     rgba(0, 0, 0, 0.96) 70%,
     rgba(0, 0, 0, 0.55) 84%,
     transparent 96%
   );
   mask-image: radial-gradient(
-    ellipse 85% 95% at 48% 48%,
+    ellipse 85% 95% at 72% 48%,
     #000 52%,
     rgba(0, 0, 0, 0.96) 70%,
     rgba(0, 0, 0, 0.55) 84%,
@@ -607,13 +607,13 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 78% center;
+  object-position: 82% center;
   display: block;
   background: transparent;
   mix-blend-mode: normal;
-  /* −15 % velikost + posun ke středu (k textu) */
-  transform: scale(0.85) translateX(-16%);
-  transform-origin: center center;
+  /* −15 %; pravý okraj videa sedí na hraně obrazovky */
+  transform: scale(0.85);
+  transform-origin: right center;
   /* jas jen na videu; blend je na .hero-bg */
   filter: contrast(1.08) brightness(1.28) saturate(1.1);
 }
@@ -669,7 +669,8 @@ textarea {
   .hero-ludek {
     object-position: center 30%;
     opacity: 1;
-    transform: scale(0.9) translateX(0);
+    transform: scale(0.9);
+    transform-origin: center center;
   }
 
   .hero-copy {
@@ -946,8 +947,9 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    object-position: 80% center;
-    transform: scale(0.85) translateX(-20%);
+    object-position: 82% center;
+    transform: scale(0.85);
+    transform-origin: right center;
   }
 }
 
@@ -962,8 +964,9 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    object-position: 82% center;
-    transform: scale(0.85) translateX(-22%);
+    object-position: 84% center;
+    transform: scale(0.85);
+    transform-origin: right center;
   }
 }
 
@@ -973,7 +976,8 @@ img.tocici-logo,
   }
 
   .hero-ludek {
-    transform: scale(0.85) translateX(-24%);
+    transform: scale(0.85);
+    transform-origin: right center;
   }
 }
 
