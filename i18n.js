@@ -41,7 +41,7 @@
         "Moje práce WebOvice — Snap Meter, weby onlineskolení.eu a Prokat Invest, e-learningová aplikace BOZP.",
       "meta.about.title": "O nás — WebOvice",
       "meta.about.description":
-        "O nás — WebOvice. Za projektem stojí Mirek: weby, appky, AI automatizace a technické řemeslo.",
+        "O nás — WebOvice. Za projektem stojí Miroslav Pěček: weby, appky, AI automatizace a technické řemeslo.",
       "meta.404.title": "404 — stránka nenalezena | WebOvice",
       "meta.404.description": "Stránka nenalezena — WebOvice. Vraťte se na úvod nebo do kontaktů.",
 
@@ -230,9 +230,9 @@
 
       "about.kicker": "[ O MNĚ ]",
       "aboutPage.kicker": "[ O NÁS ]",
-      "about.title": "Za WebOvice stojí Mirek",
+      "about.title": "Za WebOvice stojí Miroslav Pěček",
       "about.body":
-        "Absolvent elektro-průmyslovky, který zamířil do energetiky — realizace kotelen, tepelných čerpadel a FVE. Cestou jsem si zamiloval i druhou stranu mince: <strong>kód</strong>. Dnes stavím weby, appky a AI automatizace a technické řemeslo spojuju se softwarem tam, kde to dává smysl.",
+        "Absolvent elektro-průmyslovky, který zamířil do energetiky — správa kotelen, tepelných čerpadel a FVE, dálkové odečty měřidel, vzdálený dohled a ovládání i instalace elektrických prvků v rozvaděčích MaR. Cestou jsem si zamiloval i druhou stranu mince: <strong>kód</strong>. Dnes stavím weby, appky a AI automatizace a technické řemeslo spojuju se softwarem tam, kde to dává smysl.",
       "about.label.email": "Email:",
       "about.label.phone": "Telefon:",
       "about.cta": "Domluvit konzultaci",
@@ -332,7 +332,7 @@
         "WebOvice work — Snap Meter, onlineskolení.eu and Prokat Invest websites, OHS e-learning app.",
       "meta.about.title": "About — WebOvice",
       "meta.about.description":
-        "About WebOvice. Behind the project is Mirek: websites, apps, AI automation, and technical craft.",
+        "About WebOvice. Behind the project is Miroslav Pěček: websites, apps, AI automation, and technical craft.",
       "meta.404.title": "404 — page not found | WebOvice",
       "meta.404.description": "Page not found — WebOvice. Go back home or to contact.",
 
@@ -521,9 +521,9 @@
 
       "about.kicker": "[ ABOUT ME ]",
       "aboutPage.kicker": "[ ABOUT US ]",
-      "about.title": "Behind WebOvice is Mirek",
+      "about.title": "Behind WebOvice is Miroslav Pěček",
       "about.body":
-        "An electrical trade-school graduate who moved into energy — boiler rooms, heat pumps, and PV. Along the way I fell for the other side of the coin: <strong>code</strong>. Today I build websites, apps, and AI automation, and I connect technical craft with software where it makes sense.",
+        "An electrical trade-school graduate who moved into energy — operating boiler rooms, heat pumps, and PV, plus remote meter reading, remote monitoring and control, and installing electrical components in MaR switchboards. Along the way I fell for the other side of the coin: <strong>code</strong>. Today I build websites, apps, and AI automation, and I connect technical craft with software where it makes sense.",
       "about.label.email": "Email:",
       "about.label.phone": "Phone:",
       "about.cta": "Book a consultation",
