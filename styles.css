@@ -1191,18 +1191,10 @@ img.tocici-logo,
   gap: 24px;
 }
 
-/* Poslední samotná karta vyplní řádek — žádná prázdná díra */
+/* Poslední samotná karta = stejná velikost jako ostatní, vycentrovaná */
 @media (min-width: 992px) {
   .services-grid > .service-card:last-child:nth-child(3n + 1) {
-    grid-column: 1 / -1;
-  }
-
-  .services-grid > .service-card:last-child:nth-child(3n + 1) .service-visual {
-    aspect-ratio: 21 / 9;
-  }
-
-  .services-grid > .service-card:last-child:nth-child(3n + 1) .service-video {
-    transform: scale(1.12);
+    grid-column: 2;
   }
 }
 
@@ -3415,13 +3407,12 @@ textarea {
     grid-column: span 2;
   }
 
-  /* 7 karet / 2 sloupce: poslední samotná vyplní šířku */
+  /* 7 karet / 2 sloupce: poslední = stejná velikost, vycentrovaná */
   .services-grid > .service-card:last-child:nth-child(2n + 1) {
     grid-column: 1 / -1;
-  }
-
-  .services-grid > .service-card:last-child:nth-child(2n + 1) .service-visual {
-    aspect-ratio: 21 / 9;
+    max-width: calc((100% - 24px) / 2);
+    width: 100%;
+    justify-self: center;
   }
 
   .testimonials-grid,
