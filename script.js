@@ -42,7 +42,7 @@ const getHeroQuotes = () => {
   return [
     {
       text: "90 % úspora času na přepisu měřidel.",
-      author: "Prokat Invest — projekt Snap Meter",
+      author: "Energetika — projekt Snap Meter",
     },
     {
       text: "Web online za pár dnů, správa obsahu bez kódu.",
@@ -50,7 +50,7 @@ const getHeroQuotes = () => {
     },
     {
       text: "0 % halucinací AI — data rovnou v Excelu.",
-      author: "Prokat Invest — AI automatizace",
+      author: "Snap Meter — AI automatizace",
     },
     {
       text: "Měsíční retainer = web běží bez starostí.",

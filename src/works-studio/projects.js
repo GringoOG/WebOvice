@@ -5,13 +5,13 @@ export const projects = [
     title: "Snap Meter",
     badge: "AI · Enterprise",
     summary:
-      "Automatizace čtení měřidel pro Prokat Invest — méně ruční práce, spolehlivá data.",
+      "Z fotek rovnou do Excelu — pro energetiky i kohokoli, kdo přepisuje hodnoty ručně.",
     challenge:
-      "Ruční přepis měřidel brzdil provoz, zanášílo chyby a blokoval tým od vyšší práce.",
+      "Ruční přepis stavů z fotek brzdí provoz, zanáší chyby a žere čas techniků i administrativy.",
     solution:
       "History-First AI / OCR systém s validací a přímým zápisem do master Excelu — bez mezikroků.",
     cover: "assets/solution-1.png",
-    gallery: ["assets/solution-1.png", "assets/solution-5.png", "assets/solution-6.png"],
+    gallery: ["assets/solution-1.png", "assets/solution-5.jpg", "assets/solution-6.png"],
     results: [
       { value: "90 %", label: "úspora času" },
       { value: "0 %", label: "AI halucinací" },
@@ -25,16 +25,16 @@ export const projects = [
     title: "onlineskolení.eu",
     badge: "Web · E-learning",
     summary:
-      "Prodejní web, který dělá z nabídky kurzů přehledný a spravovatelný produkt.",
+      "E-learningový systém školení s automatickým generováním certifikátů — vše snadno a rychle.",
     challenge:
-      "Školení bylo těžké prezentovat a obsah se spravoval zbytečně složitě.",
+      "Zákonná školení potřebovala být online, s přehlednou nabídkou a bez ruční administrativy certifikátů.",
     solution:
-      "Moderní prezentační web s jasnou strukturou kurzů a správou obsahu bez zásahu do kódu.",
+      "Web s e-learningem: kurzy, testy a automatické vydávání certifikátů — od objednávky po osvědčení bez zbytečných kroků.",
     cover: "assets/solution-2.jpg",
-    gallery: ["assets/solution-2.jpg", "assets/solution-3.png", "assets/solution-4.png"],
+    gallery: ["assets/solution-2.jpg", "assets/solution-3.jpg", "assets/solution-5.jpg"],
     results: [
       { value: "100 %", label: "responzivní" },
-      { value: "CMS", label: "bez kódu" },
+      { value: "Auto", label: "certifikáty" },
       { value: "1", label: "jasná nabídka" },
     ],
     tech: ["WordPress", "Divi", "E-learning"],
@@ -44,14 +44,15 @@ export const projects = [
     number: "03",
     title: "Prokat Invest",
     badge: "Web · B2B",
+    url: "https://www.prokat.cz",
     summary:
       "Firemní web pro energetiku — důvěra, služby a přímá cesta k poptávce.",
     challenge:
       "Technická B2B firma potřebovala silnější online prezentaci služeb.",
     solution:
       "Přehledný firemní web s důvěryhodným designem a jasnými CTA k poptávce.",
-    cover: "assets/solution-3.png",
-    gallery: ["assets/solution-3.png", "assets/solution-1.png", "assets/solution-2.jpg"],
+    cover: "assets/solution-3.jpg",
+    gallery: ["assets/solution-3.jpg", "assets/solution-1.png", "assets/solution-2.jpg"],
     results: [
       { value: "B2B", label: "prezentace" },
       { value: "1 klik", label: "k poptávce" },
@@ -60,23 +61,24 @@ export const projects = [
     tech: ["Weby", "B2B", "Energetika"],
   },
   {
-    id: "bozp",
+    id: "andestay",
     number: "04",
-    title: "BOZP e-learning",
-    badge: "Automatizace · LMS",
+    title: "AndeStay Hostel",
+    badge: "Web · Travel",
+    url: "https://www.andestay.com",
     summary:
-      "Aplikace pro zákonná školení — od testů přes evidenci až po certifikáty.",
+      "Web horského hostelu v Peru s vlastním rezervačním systémem — přímé online booking bez zbytečných poplatků platformám.",
     challenge:
-      "Školení a evidence byly roztříštěné a administrativně náročné.",
+      "Hostel potřeboval vlastní rezervační systém, aby hosté bookovali přímo a ne přes drahé bookingové platformy.",
     solution:
-      "LMS aplikace s kurzy, testy, evidencí a automatickým vydáváním osvědčení.",
-    cover: "assets/solution-4.png",
-    gallery: ["assets/solution-4.png", "assets/solution-6.png", "assets/solution-5.png"],
+      "Moderní web s vestavěným rezervačním systémem — dostupnost, rezervace a přímý booking na jednom místě.",
+    cover: "assets/solution-andestay.jpg",
+    gallery: ["assets/solution-andestay.jpg", "assets/solution-2.jpg", "assets/solution-3.jpg"],
     results: [
-      { value: "Testy", label: "online" },
-      { value: "1 místo", label: "pro evidenci" },
-      { value: "Auto", label: "certifikáty" },
+      { value: "Vlastní", label: "rezervační systém" },
+      { value: "Direct", label: "online booking" },
+      { value: "−20 %", label: "vs platformy" },
     ],
-    tech: ["LMS", "Compliance", "E-learning"],
+    tech: ["Weby", "Turistika", "Rezervace"],
   },
 ];
