@@ -38,7 +38,7 @@
         "Kontakt WebOvice — napište, co potřebujete. Ozvu se s návrhem řešení webu, appky, AI nebo marketingu.",
       "meta.work.title": "Moje práce — WebOvice",
       "meta.work.description":
-        "Moje práce WebOvice — Snap Meter, onlineskolení.eu, Prokat Invest, Sofisticator a AndeStay Hostel.",
+        "Moje práce WebOvice — Snap Meter, onlineskolení.eu, Prokat Invest, Sofisticator, AndeStay Hostel a Refugio de Mery.",
       "meta.about.title": "O nás — WebOvice",
       "meta.about.description":
         "O nás — WebOvice. Za projektem stojí Miroslav Pěček: weby, appky, AI automatizace a technické řemeslo.",
@@ -169,6 +169,12 @@
       "works.item6.title": "Web AndeStay Hostel",
       "works.item6.body":
         "Web horského hostelu v Peru s <strong>vlastním rezervačním systémem</strong> — hosté bookují přímo online, bez zbytečných poplatků platformám.",
+      "works.item7.linkLabel": "Otevřít web Refugio de Mery",
+      "works.item7.statValue": "Přímé",
+      "works.item7.stat": "bookování online",
+      "works.item7.title": "Web Refugio de Mery",
+      "works.item7.body":
+        "Coffee farm stay na Salkantay Trek — web s <strong>přímou rezervací</strong>, pokoji, Tour de Café i jídlem z farmy.",
       "works.tag.websites": "Weby",
       "works.tag.energy": "Energetika",
       "works.tag.travel": "Turistika",
@@ -204,6 +210,11 @@
       "refs.6.name": "AndeStay Hostel",
       "refs.6.role": "majitel, AndeStay Hostel",
       "refs.6.author": "AndeStay Hostel — majitel",
+      "refs.7.quote":
+        "„Hosté si rezervují přímo u nás a platíme méně Booking.com. Web jasně ukáže farmu, pokoje i Tour de Café — <strong>přímé rezervace rostou</strong>.\"",
+      "refs.7.name": "Refugio de Mery",
+      "refs.7.role": "majitel, Refugio de Mery",
+      "refs.7.author": "Refugio de Mery — majitel",
       "refs.tag.websites": "Weby",
 
       "pricing.title": "Ceník",
@@ -332,7 +343,7 @@
         "Contact WebOvice — tell me what you need. I’ll reply with a proposed solution for a website, app, AI, or marketing.",
       "meta.work.title": "My work — WebOvice",
       "meta.work.description":
-        "WebOvice work — Snap Meter, onlineskolení.eu, Prokat Invest, Sofisticator and AndeStay Hostel.",
+        "WebOvice work — Snap Meter, onlineskolení.eu, Prokat Invest, Sofisticator, AndeStay Hostel and Refugio de Mery.",
       "meta.about.title": "About — WebOvice",
       "meta.about.description":
         "About WebOvice. Behind the project is Miroslav Pěček: websites, apps, AI automation, and technical craft.",
@@ -463,6 +474,12 @@
       "works.item6.title": "AndeStay Hostel website",
       "works.item6.body":
         "A mountain hostel site in Peru with a <strong>built-in reservation system</strong> — guests book directly online, without unnecessary platform fees.",
+      "works.item7.linkLabel": "Open Refugio de Mery website",
+      "works.item7.statValue": "Direct",
+      "works.item7.stat": "online booking",
+      "works.item7.title": "Refugio de Mery website",
+      "works.item7.body":
+        "A coffee farm stay on the Salkantay Trek — site with <strong>direct booking</strong>, rooms, Tour de Café, and farm meals.",
       "works.tag.websites": "Websites",
       "works.tag.energy": "Energy",
       "works.tag.travel": "Travel",
@@ -498,6 +515,11 @@
       "refs.6.name": "AndeStay Hostel",
       "refs.6.role": "owner, AndeStay Hostel",
       "refs.6.author": "AndeStay Hostel — owner",
+      "refs.7.quote":
+        "“Guests book directly with us and we pay less to Booking.com. The site clearly shows the farm, rooms, and Tour de Café — <strong>direct bookings are growing</strong>.”",
+      "refs.7.name": "Refugio de Mery",
+      "refs.7.role": "owner, Refugio de Mery",
+      "refs.7.author": "Refugio de Mery — owner",
       "refs.tag.websites": "Websites",
 
       "pricing.title": "Pricing",

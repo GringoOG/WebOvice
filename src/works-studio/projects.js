@@ -81,4 +81,25 @@ export const projects = [
     ],
     tech: ["Weby", "Turistika", "Rezervace"],
   },
+  {
+    id: "refugio-mery",
+    number: "05",
+    title: "Refugio de Mery",
+    badge: "Web · Travel",
+    url: "https://refugio-de-mery.vercel.app",
+    summary:
+      "Coffee farm stay na Salkantay Trek — web s přímou rezervací, Tour de Café a jídlem z farmy.",
+    challenge:
+      "Rodinná kávová farma potřebovala vlastní web, aby hosté bookovali přímo místo přes Booking.com.",
+    solution:
+      "Prezentační web s přímým bookováním — pokoje, Tour de Café, jídlo a jasná cesta k rezervaci.",
+    cover: "assets/solution-refugio-mery.jpg",
+    gallery: ["assets/solution-refugio-mery.jpg", "assets/solution-andestay.jpg", "assets/solution-2.jpg"],
+    results: [
+      { value: "Direct", label: "booking" },
+      { value: "Café", label: "Tour de Café" },
+      { value: "−$", label: "vs Booking.com" },
+    ],
+    tech: ["Weby", "Turistika", "Rezervace"],
+  },
 ];
