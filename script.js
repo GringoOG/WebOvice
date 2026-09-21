@@ -24,6 +24,38 @@ document.querySelectorAll(".accordion-item").forEach((item) => {
   });
 });
 
+/* ── Pricing: marketing packages toggle ── */
+(() => {
+  const toggle = document.getElementById("pricing-packages-toggle");
+  const panel = document.getElementById("pricing-packages");
+  const label = toggle?.querySelector("[data-pricing-cta-label]");
+  if (!toggle || !panel || !label) return;
+
+  const syncLabel = () => {
+    const open = !panel.hasAttribute("hidden");
+    const key = open
+      ? toggle.getAttribute("data-i18n-close")
+      : toggle.getAttribute("data-i18n-open");
+    const text = key && window.WebOviceI18n?.t ? window.WebOviceI18n.t(key) : null;
+    if (text) {
+      label.textContent = text;
+      label.setAttribute("data-i18n", key);
+    }
+    toggle.setAttribute("aria-expanded", String(open));
+  };
+
+  toggle.addEventListener("click", () => {
+    const willOpen = panel.hasAttribute("hidden");
+    panel.toggleAttribute("hidden", !willOpen);
+    syncLabel();
+    if (willOpen) {
+      panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  });
+
+  window.addEventListener("webovice:langchange", syncLabel);
+})();
+
 document.getElementById("year").textContent = String(new Date().getFullYear());
 
 /* ── Hero badge — rotující citáty ── */
@@ -124,7 +156,18 @@ const contactForm = document.getElementById("contact-form");
 
 if (contactForm) {
   const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const serviceInputs = Array.from(contactForm.querySelectorAll('input[name="Sluzba"]'));
   const tForm = (key, fallback) => window.WebOviceI18n?.t?.(key) ?? fallback;
+  const SERVICE_LABEL_KEYS = {
+    ai: "contact.form.opt.ai",
+    elearning: "contact.form.opt.elearning",
+    energy: "contact.form.opt.energy",
+    apps: "contact.form.opt.apps",
+    marketing: "contact.form.opt.marketing",
+    ops: "contact.form.opt.ops",
+    web: "contact.form.opt.web",
+    other: "contact.form.opt.other",
+  };
 
   let statusEl = document.getElementById("form-status");
   if (!statusEl) {
@@ -158,18 +201,64 @@ if (contactForm) {
     }
   };
 
+  const getSelectedServices = () =>
+    serviceInputs.filter((input) => input.checked).map((input) => input.value);
+
+  const syncServiceValidity = () => {
+    const message =
+      getSelectedServices().length > 0
+        ? ""
+        : tForm("contact.form.service.required", "Vyberte alespoň jednu službu.");
+    serviceInputs.forEach((input, index) => {
+      input.setCustomValidity(index === 0 ? message : "");
+    });
+  };
+
+  const applyServiceQuery = () => {
+    const raw = new URLSearchParams(window.location.search).get("service");
+    if (!raw) return;
+
+    const requested = raw
+      .split(",")
+      .map((value) => value.trim().toLowerCase())
+      .filter(Boolean);
+
+    if (!requested.length) return;
+
+    serviceInputs.forEach((input) => {
+      input.checked = requested.includes(input.value);
+    });
+    syncServiceValidity();
+  };
+
+  serviceInputs.forEach((input) => {
+    input.addEventListener("change", syncServiceValidity);
+  });
+
+  applyServiceQuery();
+  syncServiceValidity();
+
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     hideStatus();
+    syncServiceValidity();
 
     if (!contactForm.reportValidity()) {
+      serviceInputs[0]?.focus();
       return;
     }
+
+    const selected = getSelectedServices();
+    const labels = selected.map((value) => {
+      const key = SERVICE_LABEL_KEYS[value];
+      return key ? tForm(key, value) : value;
+    });
 
     const payload = {
       jmeno: contactForm.elements.Jmeno?.value.trim() ?? "",
       email: contactForm.elements.Email?.value.trim() ?? "",
-      sluzba: contactForm.elements.Sluzba?.value ?? "",
+      sluzby: labels,
+      sluzba: labels.join(", "),
       poznamka: contactForm.elements.Poznamka?.value.trim() ?? "",
     };
 
@@ -201,6 +290,7 @@ if (contactForm) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       contactForm.reset();
+      syncServiceValidity();
       showStatus(tForm("contact.form.success", "Díky za poptávku, brzy se ozvu!"));
     } catch (error) {
       console.error("Chyba při odesílání formuláře:", error);
@@ -823,9 +913,21 @@ function primeServiceVideoPreview(video) {
   video.muted = true;
   video.playsInline = true;
   video.preload = "auto";
+  video.setAttribute("muted", "");
+  video.setAttribute("playsinline", "");
+  video.setAttribute("webkit-playsinline", "");
 
   let savedTime = 0;
   let pausedByBrowser = false;
+
+  const tryPlayNow = () => {
+    if (document.hidden) {
+      return;
+    }
+    if (video.paused) {
+      video.play().catch(() => {});
+    }
+  };
 
   const rememberTime = () => {
     if (Number.isFinite(video.currentTime)) {
@@ -853,9 +955,7 @@ function primeServiceVideoPreview(video) {
       }
     }
 
-    if (video.paused) {
-      video.play().catch(() => {});
-    }
+    tryPlayNow();
   };
 
   video.addEventListener("timeupdate", rememberTime);
@@ -871,6 +971,11 @@ function primeServiceVideoPreview(video) {
   video.addEventListener("play", () => {
     pausedByBrowser = false;
   });
+
+  // Spusť hned, jakmile jsou data — ať je pohyb vidět po načtení stránky.
+  video.addEventListener("loadeddata", tryPlayNow);
+  video.addEventListener("canplay", tryPlayNow);
+  video.addEventListener("canplaythrough", tryPlayNow);
 
   // NEpauzovat při odscrollování. Když prohlížeč video stejně pozastaví,
   // při návratu / keepalive jen play() bez resetu na začátek.

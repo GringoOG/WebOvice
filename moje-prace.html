@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#06060c" />
     <meta
       name="description"
-      content="Moje práce WebOvice — Snap Meter, onlineskolení.eu, Prokat Invest, Sofisticator, AndeStay Hostel a Refugio de Mery."
+      content="Moje práce WebOvice — Prokat Invest, onlineskolení.eu, WebOvice, Snap Meter, AndeStay Hostel a Refugio de Mery."
     />
     <title>Moje práce — WebOvice</title>
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -21,7 +21,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body data-i18n-title="meta.work.title" data-i18n-description="meta.work.description">
+  <body class="page-works" data-i18n-title="meta.work.title" data-i18n-description="meta.work.description">
     <header class="site-header">
       <div class="container nav">
         <a class="brand" href="./">
@@ -84,24 +84,14 @@
             <p class="section-text" data-i18n="works.intro">Cesta měřitelných výsledků — od automatizace po weby a e-learning.</p>
           </div>
 
-          <div class="works-timeline" id="worksTimeline">
+          <div class="works-timeline works-timeline--expandable" id="worksTimeline">
             <div class="works-timeline-track" aria-hidden="true">
               <span class="works-timeline-progress" id="worksTimelineProgress"></span>
             </div>
 
             <div class="works-timeline-col works-timeline-col--left">
               <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <a
-                  class="works-timeline-card works-timeline-card--link"
-                  href="https://www.prokat.cz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n-aria-label="works.item3.linkLabel"
-                  aria-label="Otevřít web Prokat Invest"
-                >
-                  <div class="works-timeline-media">
-                    <img src="assets/solution-3.jpg" alt="" width="1024" height="557" loading="lazy" decoding="async" />
-                  </div>
+                <div class="works-timeline-card works-timeline-card--expandable">
                   <div class="works-timeline-body">
                     <span class="work-index">[ 01 ]</span>
                     <p class="works-stat"><span class="works-stat-value" data-i18n="works.item3.statValue">Jasná</span> <span data-i18n="works.item3.stat">cesta k poptávce</span></p>
@@ -116,25 +106,89 @@
                       <span data-i18n="works.tag.energy">Energetika</span>
                     </div>
                   </div>
-                </a>
+                  <a
+                    class="works-timeline-media works-timeline-media--link"
+                    href="https://www.prokat.cz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n-aria-label="works.item3.linkLabel"
+                    aria-label="Otevřít web Prokat Invest"
+                  >
+                    <img src="assets/solution-3.jpg" alt="" width="1024" height="557" loading="lazy" decoding="async" />
+                  </a>
+                </div>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
                 <span class="works-timeline-node" aria-hidden="true"></span>
               </article>
 
               <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <a
-                  class="works-timeline-card works-timeline-card--link"
-                  href="https://www.onlineskoleni.eu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n-aria-label="works.item2.linkLabel"
-                  aria-label="Otevřít web onlineskolení.eu"
-                >
-                  <div class="works-timeline-media">
-                    <img src="assets/solution-2.jpg" alt="" width="960" height="493" loading="lazy" decoding="async" />
-                  </div>
+                <div class="works-timeline-card works-timeline-card--expandable">
                   <div class="works-timeline-body">
                     <span class="work-index">[ 03 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item8.statValue">Vlastní</span> <span data-i18n="works.item8.stat">portfolio web</span></p>
+                    <h3 data-i18n="works.item8.title">Web WebOvice</h3>
+                    <p data-i18n-html="works.item8.body">
+                      Prezentační web agentury —
+                      <strong>služby, práce i kontakt</strong> na jednom místě, rychlé načítání a bilingvní obsah.
+                    </p>
+                    <div class="work-tags">
+                      <span data-i18n="works.tag.websites">Weby</span>
+                      <span>Portfolio</span>
+                      <span>CS / EN</span>
+                    </div>
+                  </div>
+                  <a
+                    class="works-timeline-media works-timeline-media--link"
+                    href="./"
+                    data-i18n-aria-label="works.item8.linkLabel"
+                    aria-label="Otevřít web WebOvice"
+                  >
+                    <img src="assets/solution-webovice.jpg" alt="" width="1024" height="544" loading="lazy" decoding="async" />
+                  </a>
+                </div>
+                <span class="works-timeline-branch" aria-hidden="true"></span>
+                <span class="works-timeline-node" aria-hidden="true"></span>
+              </article>
+
+              <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
+                <div class="works-timeline-card works-timeline-card--expandable">
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 05 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item6.statValue">QloApps</span> <span data-i18n="works.item6.stat">+ systém ve vývoji</span></p>
+                    <h3 data-i18n="works.item6.title">Web AndeStay Hostel</h3>
+                    <p data-i18n-html="works.item6.body">
+                      Web horského hostelu v Peru s online rezervací přes
+                      <strong>QloApps</strong> — vlastní rezervační systém je ve vývoji.
+                    </p>
+                    <div class="work-tags">
+                      <span data-i18n="works.tag.websites">Weby</span>
+                      <span data-i18n="works.tag.travel">Turistika</span>
+                      <span>QloApps</span>
+                    </div>
+                  </div>
+                  <a
+                    class="works-timeline-media works-timeline-media--link"
+                    href="https://www.andestay.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n-aria-label="works.item6.linkLabel"
+                    aria-label="Otevřít web AndeStay Hostel"
+                  >
+                    <img src="assets/solution-andestay.jpg" alt="" width="1024" height="587" loading="lazy" decoding="async" />
+                  </a>
+                </div>
+                <span class="works-timeline-branch" aria-hidden="true"></span>
+                <span class="works-timeline-node" aria-hidden="true"></span>
+              </article>
+            </div>
+
+            <div class="works-timeline-col works-timeline-col--right">
+              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
+                <span class="works-timeline-node" aria-hidden="true"></span>
+                <span class="works-timeline-branch" aria-hidden="true"></span>
+                <div class="works-timeline-card works-timeline-card--expandable">
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 02 ]</span>
                     <p class="works-stat"><span class="works-stat-value" data-i18n="works.item2.statValue">E-learning</span> <span data-i18n="works.item2.stat">s certifikáty</span></p>
                     <h3 data-i18n="works.item2.title">Web onlineskolení.eu</h3>
                     <p data-i18n-html="works.item2.body">
@@ -147,49 +201,25 @@
                       <span>SME</span>
                     </div>
                   </div>
-                </a>
-                <span class="works-timeline-branch" aria-hidden="true"></span>
-                <span class="works-timeline-node" aria-hidden="true"></span>
+                  <a
+                    class="works-timeline-media works-timeline-media--link"
+                    href="https://www.onlineskoleni.eu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n-aria-label="works.item2.linkLabel"
+                    aria-label="Otevřít web onlineskolení.eu"
+                  >
+                    <img src="assets/solution-2.jpg" alt="" width="960" height="493" loading="lazy" decoding="async" />
+                  </a>
+                </div>
               </article>
 
-              <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <a
-                  class="works-timeline-card works-timeline-card--link"
-                  href="https://refugio-de-mery.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n-aria-label="works.item7.linkLabel"
-                  aria-label="Otevřít web Refugio de Mery"
-                >
-                  <div class="works-timeline-media">
-                    <img src="assets/solution-refugio-mery.jpg" alt="" width="1024" height="593" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="works-timeline-body">
-                    <span class="work-index">[ 05 ]</span>
-                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item7.statValue">Přímé</span> <span data-i18n="works.item7.stat">bookování online</span></p>
-                    <h3 data-i18n="works.item7.title">Web Refugio de Mery</h3>
-                    <p data-i18n-html="works.item7.body">
-                      Coffee farm stay na Salkantay Trek — web s
-                      <strong>přímou rezervací</strong>, pokoji, Tour de Café i jídlem z farmy.
-                    </p>
-                    <div class="work-tags">
-                      <span data-i18n="works.tag.websites">Weby</span>
-                      <span data-i18n="works.tag.travel">Turistika</span>
-                      <span>Rezervace</span>
-                    </div>
-                  </div>
-                </a>
-                <span class="works-timeline-branch" aria-hidden="true"></span>
+              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
                 <span class="works-timeline-node" aria-hidden="true"></span>
-              </article>
-
-              <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <div class="works-timeline-card">
-                  <div class="works-timeline-media">
-                    <img src="assets/solution-1.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
-                  </div>
+                <span class="works-timeline-branch" aria-hidden="true"></span>
+                <div class="works-timeline-card works-timeline-card--expandable">
                   <div class="works-timeline-body">
-                    <span class="work-index">[ 06 ]</span>
+                    <span class="work-index">[ 04 ]</span>
                     <p class="works-stat"><span class="works-stat-value">90&nbsp;%</span> <span data-i18n="works.item1.stat">úspora času</span></p>
                     <h3 data-i18n="works.item1.title">Snap Meter — z fotek do Excelu</h3>
                     <p data-i18n-html="works.item1.body">
@@ -202,33 +232,8 @@
                       <span data-i18n="works.tag.energy">Energetika</span>
                     </div>
                   </div>
-                </div>
-                <span class="works-timeline-branch" aria-hidden="true"></span>
-                <span class="works-timeline-node" aria-hidden="true"></span>
-              </article>
-            </div>
-
-            <div class="works-timeline-col works-timeline-col--right">
-              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
-                <span class="works-timeline-node" aria-hidden="true"></span>
-                <span class="works-timeline-branch" aria-hidden="true"></span>
-                <div class="works-timeline-card">
                   <div class="works-timeline-media">
-                    <img src="assets/solution-5.jpg" alt="" width="1024" height="578" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="works-timeline-body">
-                    <span class="work-index">[ 02 ]</span>
-                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item5.statValue">Pár kliků</span> <span data-i18n="works.item5.stat">od revize po protokol</span></p>
-                    <h3 data-i18n="works.item5.title">Sofisticator — správa a generování revizí</h3>
-                    <p data-i18n-html="works.item5.body">
-                      Od revize až po protokol k zákazníkovi —
-                      <strong>vše automatizované na pár kliknutí</strong>. Evidence, termíny i výstupy na jednom místě.
-                    </p>
-                    <div class="work-tags">
-                      <span>App</span>
-                      <span>Python</span>
-                      <span>Enterprise</span>
-                    </div>
+                    <img src="assets/solution-1.png" alt="" width="960" height="600" loading="lazy" decoding="async" />
                   </div>
                 </div>
               </article>
@@ -236,32 +241,32 @@
               <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
                 <span class="works-timeline-node" aria-hidden="true"></span>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
-                <a
-                  class="works-timeline-card works-timeline-card--link"
-                  href="https://www.andestay.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n-aria-label="works.item6.linkLabel"
-                  aria-label="Otevřít web AndeStay Hostel"
-                >
-                  <div class="works-timeline-media">
-                    <img src="assets/solution-andestay.jpg" alt="" width="1024" height="587" loading="lazy" decoding="async" />
-                  </div>
+                <div class="works-timeline-card works-timeline-card--expandable">
                   <div class="works-timeline-body">
-                    <span class="work-index">[ 04 ]</span>
-                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item6.statValue">Vlastní</span> <span data-i18n="works.item6.stat">rezervační systém</span></p>
-                    <h3 data-i18n="works.item6.title">Web AndeStay Hostel</h3>
-                    <p data-i18n-html="works.item6.body">
-                      Web horského hostelu v Peru s
-                      <strong>vlastním rezervačním systémem</strong> — hosté bookují přímo online, bez zbytečných poplatků platformám.
+                    <span class="work-index">[ 06 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item7.statValue">QloApps</span> <span data-i18n="works.item7.stat">+ systém ve vývoji</span></p>
+                    <h3 data-i18n="works.item7.title">Web Refugio de Mery</h3>
+                    <p data-i18n-html="works.item7.body">
+                      Coffee farm stay na Salkantay Trek — rezervace přes
+                      <strong>QloApps</strong>, vlastní systém ve vývoji. Pokoje, Tour de Café i jídlo z farmy.
                     </p>
                     <div class="work-tags">
                       <span data-i18n="works.tag.websites">Weby</span>
                       <span data-i18n="works.tag.travel">Turistika</span>
-                      <span>Rezervace</span>
+                      <span>QloApps</span>
                     </div>
                   </div>
-                </a>
+                  <a
+                    class="works-timeline-media works-timeline-media--link"
+                    href="https://refugio-de-mery.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n-aria-label="works.item7.linkLabel"
+                    aria-label="Otevřít web Refugio de Mery"
+                  >
+                    <img src="assets/solution-refugio-mery.jpg" alt="" width="1024" height="593" loading="lazy" decoding="async" />
+                  </a>
+                </div>
               </article>
             </div>
           </div>
@@ -294,7 +299,6 @@
             <li><a href="o-nas" data-i18n="nav.about">O nás</a></li>
             <li><a href="./#faq" data-i18n="nav.faq">FAQ</a></li>
             <li><a href="kontakt" data-i18n="nav.contact">Kontakt</a></li>
-            <li><a href="404">404</a></li>
           </ul>
         </nav>
 

@@ -94,20 +94,44 @@
                 <label for="email" data-i18n="contact.form.email">Email</label>
                 <input id="email" name="Email" type="email" autocomplete="email" required />
               </div>
-              <div>
-                <label for="service" data-i18n="contact.form.service">Co potřebujete?</label>
-                                <select id="service" name="Sluzba" required>
-                  <option value="" data-i18n="contact.form.service.placeholder">Vyberte…</option>
-                  <option value="Automatizace procesů (AI)" data-i18n="contact.form.opt.ai">Automatizace procesů (AI)</option>
-                  <option value="E-learning na míru" data-i18n="contact.form.opt.elearning">E-learning na míru</option>
-                  <option value="Energetika & technické systémy" data-i18n="contact.form.opt.energy">Energetika &amp; technické systémy</option>
-                  <option value="Interní nástroje & aplikace" data-i18n="contact.form.opt.apps">Interní nástroje &amp; aplikace</option>
-                  <option value="Online marketing" data-i18n="contact.form.opt.marketing">Online marketing</option>
-                  <option value="Provoz & údržba" data-i18n="contact.form.opt.ops">Provoz &amp; údržba</option>
-                  <option value="Weby na míru" data-i18n="contact.form.opt.web">Weby na míru</option>
-                  <option value="Jiné" data-i18n="contact.form.opt.other">Jiné</option>
-                </select>
-              </div>
+              <fieldset class="form-services">
+                <legend data-i18n="contact.form.service">Co potřebujete?</legend>
+                <p class="form-hint" data-i18n="contact.form.service.hint">Můžete vybrat více služeb.</p>
+                <div class="form-checkboxes" id="service-options">
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="ai" />
+                    <span data-i18n="contact.form.opt.ai">Automatizace procesů (AI)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="elearning" />
+                    <span data-i18n="contact.form.opt.elearning">E-learning na míru</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="energy" />
+                    <span data-i18n="contact.form.opt.energy">Energetika &amp; technické systémy</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="apps" />
+                    <span data-i18n="contact.form.opt.apps">Interní nástroje &amp; aplikace</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="marketing" />
+                    <span data-i18n="contact.form.opt.marketing">Online marketing</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="ops" />
+                    <span data-i18n="contact.form.opt.ops">Provoz &amp; údržba</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="web" />
+                    <span data-i18n="contact.form.opt.web">Weby na míru</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="other" />
+                    <span data-i18n="contact.form.opt.other">Jiné</span>
+                  </label>
+                </div>
+              </fieldset>
               <div>
                 <label for="note" data-i18n="contact.form.note">Poznámka (volitelná)</label>
                 <textarea id="note" name="Poznamka" data-i18n-placeholder="contact.form.note.placeholder" placeholder="Stručně popište projekt…"></textarea>
@@ -131,7 +155,6 @@
             <li><a href="o-nas" data-i18n="nav.about">O nás</a></li>
             <li><a href="./#faq" data-i18n="nav.faq">FAQ</a></li>
             <li><a href="kontakt" data-i18n="nav.contact">Kontakt</a></li>
-            <li><a href="404">404</a></li>
           </ul>
         </nav>
 

@@ -20,6 +20,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" as="video" href="assets/ludek-hero.mp4?v=14" type="video/mp4" />
   </head>
   <body data-i18n-title="meta.index.title" data-i18n-description="meta.index.description">
     <header class="site-header">
@@ -81,7 +82,7 @@
         <div class="hero-bg" aria-hidden="true">
           <video
             class="hero-ludek"
-            poster="assets/ludek-hero-poster.png?v=13"
+            poster="assets/ludek-hero-poster.png?v=14"
             autoplay
             muted
             loop
@@ -90,7 +91,7 @@
             width="1920"
             height="1080"
           >
-            <source src="assets/ludek-hero.mp4?v=13" type="video/mp4" />
+            <source src="assets/ludek-hero.mp4?v=14" type="video/mp4" />
           </video>
         </div>
         <div class="hero-beam" aria-hidden="true"></div>
@@ -180,6 +181,7 @@
 
           <div class="services-grid services-bento reveal-stagger">
             <article class="service-card service-card-accent">
+              <a class="service-card-hit" href="kontakt?service=ai" data-i18n-aria-label="services.ai.title" aria-label="Automatizace procesů (AI)"></a>
               <div class="service-visual">
                 <video poster="assets/services/posters/service-4-loop.jpg?v=8"
                   class="service-video"
@@ -208,6 +210,7 @@
             </article>
 
             <article class="service-card">
+              <a class="service-card-hit" href="kontakt?service=elearning" data-i18n-aria-label="services.elearning.title" aria-label="E-learning na míru"></a>
               <div class="service-visual">
                 <video poster="assets/services/posters/service-5-loop.jpg"
                   class="service-video"
@@ -236,6 +239,7 @@
             </article>
 
             <article class="service-card service-card-bonus">
+              <a class="service-card-hit" href="kontakt?service=energy" data-i18n-aria-label="services.energy.title" aria-label="Energetika & technické systémy"></a>
               <div class="service-visual">
                 <video poster="assets/services/posters/service-6-loop.jpg"
                   class="service-video"
@@ -265,6 +269,7 @@
             </article>
 
             <article class="service-card">
+              <a class="service-card-hit" href="kontakt?service=apps" data-i18n-aria-label="services.apps.title" aria-label="Interní nástroje & aplikace"></a>
               <div class="service-visual">
                 <video poster="assets/services/posters/service-2-loop.jpg"
                   class="service-video service-video--frame-left"
@@ -293,6 +298,7 @@
             </article>
 
             <article class="service-card" id="online-marketing">
+              <a class="service-card-hit" href="kontakt?service=marketing" data-i18n-aria-label="services.marketing.title" aria-label="Online marketing"></a>
               <div class="service-visual">
                 <video poster="assets/services/posters/online-marketing.jpg"
                   class="service-video"
@@ -324,6 +330,7 @@
             </article>
 
             <article class="service-card">
+              <a class="service-card-hit" href="kontakt?service=ops" data-i18n-aria-label="services.ops.title" aria-label="Provoz & údržba"></a>
               <div class="service-visual">
                 <video poster="assets/services/posters/service-3-loop.jpg"
                   class="service-video"
@@ -352,6 +359,7 @@
             </article>
 
             <article class="service-card">
+              <a class="service-card-hit" href="kontakt?service=web" data-i18n-aria-label="services.web.title" aria-label="Weby na míru"></a>
               <div class="service-visual">
                 <video poster="assets/services/posters/service-1-loop.jpg?v=8"
                   class="service-video"
@@ -516,78 +524,12 @@
               </article>
 
               <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <a
-                  class="works-timeline-card works-timeline-card--link"
-                  href="https://www.onlineskoleni.eu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n-aria-label="works.item2.linkLabel"
-                  aria-label="Otevřít web onlineskolení.eu"
-                >
-                  <div class="works-timeline-media">
-                    <img src="assets/solution-2.jpg" alt="" width="960" height="493" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="works-timeline-body">
-                    <span class="work-index">[ 03 ]</span>
-                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item2.statValue">E-learning</span> <span data-i18n="works.item2.stat">s certifikáty</span></p>
-                    <h3 data-i18n="works.item2.title">Web onlineskolení.eu</h3>
-                    <p data-i18n-html="works.item2.body">
-                      E-learningový systém školení s
-                      <strong>automatickým generováním certifikátů</strong> — vše snadno a rychle, od kurzu po osvědčení.
-                    </p>
-                    <div class="work-tags">
-                      <span data-i18n="works.tag.websites">Weby</span>
-                      <span>E-learning</span>
-                      <span>SME</span>
-                    </div>
-                  </div>
-                </a>
-                <span class="works-timeline-branch" aria-hidden="true"></span>
-                <span class="works-timeline-node" aria-hidden="true"></span>
-              </article>
-
-              <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <a
-                  class="works-timeline-card works-timeline-card--link"
-                  href="https://refugio-de-mery.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-i18n-aria-label="works.item7.linkLabel"
-                  aria-label="Otevřít web Refugio de Mery"
-                >
-                  <div class="works-timeline-media">
-                    <img src="assets/solution-refugio-mery.jpg" alt="" width="1024" height="593" loading="lazy" decoding="async" />
-                  </div>
-                  <div class="works-timeline-body">
-                    <span class="work-index">[ 05 ]</span>
-                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item7.statValue">Přímé</span> <span data-i18n="works.item7.stat">bookování online</span></p>
-                    <h3 data-i18n="works.item7.title">Web Refugio de Mery</h3>
-                    <p data-i18n-html="works.item7.body">
-                      Coffee farm stay na Salkantay Trek — web s
-                      <strong>přímou rezervací</strong>, pokoji, Tour de Café i jídlem z farmy.
-                    </p>
-                    <div class="work-tags">
-                      <span data-i18n="works.tag.websites">Weby</span>
-                      <span data-i18n="works.tag.travel">Turistika</span>
-                      <span>Rezervace</span>
-                    </div>
-                  </div>
-                </a>
-                <span class="works-timeline-branch" aria-hidden="true"></span>
-                <span class="works-timeline-node" aria-hidden="true"></span>
-              </article>
-            </div>
-
-            <div class="works-timeline-col works-timeline-col--right">
-              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
-                <span class="works-timeline-node" aria-hidden="true"></span>
-                <span class="works-timeline-branch" aria-hidden="true"></span>
                 <div class="works-timeline-card">
                   <div class="works-timeline-media">
                     <img src="assets/solution-5.jpg" alt="" width="1024" height="578" loading="lazy" decoding="async" />
                   </div>
                   <div class="works-timeline-body">
-                    <span class="work-index">[ 02 ]</span>
+                    <span class="work-index">[ 03 ]</span>
                     <p class="works-stat"><span class="works-stat-value" data-i18n="works.item5.statValue">Pár kliků</span> <span data-i18n="works.item5.stat">od revize po protokol</span></p>
                     <h3 data-i18n="works.item5.title">Sofisticator — správa a generování revizí</h3>
                     <p data-i18n-html="works.item5.body">
@@ -601,6 +543,41 @@
                     </div>
                   </div>
                 </div>
+                <span class="works-timeline-branch" aria-hidden="true"></span>
+                <span class="works-timeline-node" aria-hidden="true"></span>
+              </article>
+            </div>
+
+            <div class="works-timeline-col works-timeline-col--right">
+              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
+                <span class="works-timeline-node" aria-hidden="true"></span>
+                <span class="works-timeline-branch" aria-hidden="true"></span>
+                <a
+                  class="works-timeline-card works-timeline-card--link"
+                  href="https://www.onlineskoleni.eu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n-aria-label="works.item2.linkLabel"
+                  aria-label="Otevřít web onlineskolení.eu"
+                >
+                  <div class="works-timeline-media">
+                    <img src="assets/solution-2.jpg" alt="" width="960" height="493" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 02 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item2.statValue">E-learning</span> <span data-i18n="works.item2.stat">s certifikáty</span></p>
+                    <h3 data-i18n="works.item2.title">Web onlineskolení.eu</h3>
+                    <p data-i18n-html="works.item2.body">
+                      E-learningový systém školení s
+                      <strong>automatickým generováním certifikátů</strong> — vše snadno a rychle, od kurzu po osvědčení.
+                    </p>
+                    <div class="work-tags">
+                      <span data-i18n="works.tag.websites">Weby</span>
+                      <span>E-learning</span>
+                      <span>SME</span>
+                    </div>
+                  </div>
+                </a>
               </article>
 
               <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
@@ -608,27 +585,27 @@
                 <span class="works-timeline-branch" aria-hidden="true"></span>
                 <a
                   class="works-timeline-card works-timeline-card--link"
-                  href="https://www.andestay.com"
+                  href="https://refugio-de-mery.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-i18n-aria-label="works.item6.linkLabel"
-                  aria-label="Otevřít web AndeStay Hostel"
+                  data-i18n-aria-label="works.item7.linkLabel"
+                  aria-label="Otevřít web Refugio de Mery"
                 >
                   <div class="works-timeline-media">
-                    <img src="assets/solution-andestay.jpg" alt="" width="1024" height="587" loading="lazy" decoding="async" />
+                    <img src="assets/solution-refugio-mery.jpg" alt="" width="1024" height="593" loading="lazy" decoding="async" />
                   </div>
                   <div class="works-timeline-body">
                     <span class="work-index">[ 04 ]</span>
-                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item6.statValue">Vlastní</span> <span data-i18n="works.item6.stat">rezervační systém</span></p>
-                    <h3 data-i18n="works.item6.title">Web AndeStay Hostel</h3>
-                    <p data-i18n-html="works.item6.body">
-                      Web horského hostelu v Peru s
-                      <strong>vlastním rezervačním systémem</strong> — hosté bookují přímo online, bez zbytečných poplatků platformám.
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item7.statValue">QloApps</span> <span data-i18n="works.item7.stat">+ systém ve vývoji</span></p>
+                    <h3 data-i18n="works.item7.title">Web Refugio de Mery</h3>
+                    <p data-i18n-html="works.item7.body">
+                      Coffee farm stay na Salkantay Trek — rezervace přes
+                      <strong>QloApps</strong>, vlastní systém ve vývoji. Pokoje, Tour de Café i jídlo z farmy.
                     </p>
                     <div class="work-tags">
                       <span data-i18n="works.tag.websites">Weby</span>
                       <span data-i18n="works.tag.travel">Turistika</span>
-                      <span>Rezervace</span>
+                      <span>QloApps</span>
                     </div>
                   </div>
                 </a>
@@ -797,10 +774,10 @@
                 </div>
                 <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-1.png')">
                   <div class="refs-card-meta">
-                    <strong data-i18n="refs.1.name">Florian Crha</strong>
-                    <span data-i18n="refs.1.role">technik, Farm Therm</span>
+                    <strong data-i18n="refs.1.name">Miroslav Pěček</strong>
+                    <span data-i18n="refs.1.role">technik</span>
                   </div>
-                  <span class="refs-card-avatar" aria-hidden="true">FC</span>
+                  <span class="refs-card-avatar" aria-hidden="true">MP</span>
                 </footer>
               </article>
 
@@ -810,7 +787,7 @@
                     <span></span><span></span><span></span><span></span><span></span>
                   </div>
                   <blockquote class="refs-card-quote">
-                    <p data-i18n-html="refs.2.quote">„Online školení i <strong>automatické certifikáty</strong> máme na jednom místě. Web vypadá profesionálně a obsah aktualizujeme sami — snadno a rychle, bez čekání na vývojáře."</p>
+                    <p data-i18n-html="refs.2.quote">„Vývoj webu zabral opravdu krátkou dobu. Web funguje lépe, než jsme předpokládali. Proces školení je opravdu jednoduchý a automatizovaný pro rychlé generování certifikátů — <strong>od objednávky k certifikátu během několika chvil</strong>. WebOvice se nám také stará o marketing. Můžeme jen doporučit."</p>
                   </blockquote>
                 </div>
                 <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-2.jpg')">
@@ -846,7 +823,7 @@
                     <span></span><span></span><span></span><span></span><span></span>
                   </div>
                   <blockquote class="refs-card-quote">
-                    <p data-i18n-html="refs.5.quote">„Sofisticator nám <strong>zpřehlednil revize zařízení</strong> od evidence až po generování dokumentů. Ušetřil spoustu papírování a máme jistotu, že nic důležitého neunikne."</p>
+                    <p data-i18n-html="refs.5.quote">„Sofisticator nám velkým způsobem ulehčil celý proces revizí. Nejen, že je eviduje a hlídá termíny, ale automaticky generuje a posílá platné protokoly. <strong>Dvěma kliknutími letí protokol přímo ke klientovi.</strong> Přidání jakékoliv funkce je pro nás otázka jednoho telefonátu :)."</p>
                   </blockquote>
                 </div>
                 <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-5.jpg')">
@@ -864,7 +841,7 @@
                     <span></span><span></span><span></span><span></span><span></span>
                   </div>
                   <blockquote class="refs-card-quote">
-                    <p data-i18n-html="refs.6.quote">„Máme vlastní <strong>rezervační systém</strong> přímo na webu — hosté bookují u nás a my platíme méně bookingovým platformám. Přesně to jsme potřebovali."</p>
+                    <p data-i18n-html="refs.6.quote">„Od naší první schůzky byl web online <strong>asi za 2 týdny</strong>. Spolupráce s vývojářem byla opravdu příjemná a vše splnil dle našich požadavků. Rozhodně budeme udržovat vztah i do časů budoucích."</p>
                   </blockquote>
                 </div>
                 <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-andestay.jpg')">
@@ -882,7 +859,7 @@
                     <span></span><span></span><span></span><span></span><span></span>
                   </div>
                   <blockquote class="refs-card-quote">
-                    <p data-i18n-html="refs.7.quote">„Hosté si rezervují přímo u nás a platíme méně Booking.com. Web jasně ukáže farmu, pokoje i Tour de Café — <strong>přímé rezervace rostou</strong>."</p>
+                    <p data-i18n-html="refs.7.quote">„Hosté si rezervují přímo u nás a platíme méně na jiných platformách. Webovice nám doručili tento systém. <strong>Spolupráce byla rychlá a bez problémů.</strong> Nejvíce si vážíme přímočarosti a ochoty vývojáře splnit všechny naše požadavky za krátkou dobu."</p>
                   </blockquote>
                 </div>
                 <footer class="refs-card-footer" style="--refs-footer-img: url('assets/solution-refugio-mery.jpg')">
@@ -903,46 +880,105 @@
         <div class="container">
           <div class="section-head center">
             <h2 class="section-title" data-i18n="pricing.title">Ceník</h2>
-            <p class="section-text" data-i18n="pricing.intro">Většina projektů je na míru. Pevně naceněná je správa webu — u zbytku dostanete konkrétní nabídku po krátkém probrání.
-            </p>
+            <p class="section-text" data-i18n="pricing.intro">Čtyři jasné směry — správa webu, web na míru, online marketing a AI automatizace. U marketingu si vyberete balíček START, RŮST nebo KOMPLET.</p>
           </div>
 
-          <div class="pricing-grid pricing-grid--duo reveal-stagger">
+          <div class="pricing-grid pricing-grid--quad reveal-stagger">
+            <article class="price-card">
+              <h3 data-i18n="pricing.maint.title">Správa webu</h3>
+              <div class="price-options">
+                <p class="price-value"><span data-i18n-html="pricing.maint.month">od 1&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.month">/ měsíc</span></p>
+                <p class="price-alt"><span data-i18n-html="pricing.maint.year">od 10&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.year">/ rok</span></p>
+              </div>
+              <a class="btn btn-hero btn-hero-dark" href="kontakt?service=ops" data-i18n="pricing.maint.cta">Chci správu webu</a>
+            </article>
+
             <article class="price-card price-card-popular">
               <span class="price-card-beam" aria-hidden="true"></span>
               <div class="price-card-inner">
-                <p class="price-badge" data-i18n="pricing.maint.badge">Pevná cena</p>
-                <h3 data-i18n="pricing.maint.title">Správa webu</h3>
-                <p class="price-for" data-i18n="pricing.maint.for">Pravidelná péče o váš web — aktualizace, monitoring a drobné úpravy</p>
-                <div class="price-options">
-                  <p class="price-value"><span data-i18n-html="pricing.maint.month">od 1&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.month">/ měsíc</span></p>
-                  <p class="price-alt"><span data-i18n-html="pricing.maint.year">nebo od 10&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.year">/ rok</span></p>
-                </div>
-                <ul class="price-list">
-                  <li data-i18n="pricing.maint.f1">Aktualizace a monitoring</li>
-                  <li data-i18n="pricing.maint.f2">Drobné úpravy a opravy</li>
-                  <li data-i18n="pricing.maint.f3">Prioritní podpora</li>
-                  <li data-i18n="pricing.maint.f4">Měsíční přehled o stavu</li>
-                </ul>
-                <a class="btn btn-hero btn-hero-dark" href="kontakt" data-i18n="pricing.maint.cta">Chci správu webu</a>
+                <h3 data-i18n="pricing.web.title">Web na míru</h3>
+                <p class="price-value"><span data-i18n-html="pricing.web.price">od 10&nbsp;000&nbsp;Kč</span></p>
+                <p class="price-scope" data-i18n="pricing.web.scope">Firemní weby • landing pages • rezervace • e-learning</p>
+                <a class="btn btn-hero btn-hero-dark" href="kontakt?service=web" data-i18n="pricing.web.cta">Chci nový web</a>
               </div>
             </article>
 
             <article class="price-card">
-              <h3 data-i18n="pricing.custom.title">Projekt na míru</h3>
-              <p class="price-for" data-i18n="pricing.custom.for">Web, appka, AI automatizace nebo online marketing — podle rozsahu a cíle</p>
-              <p class="price-value price-value--soft" data-i18n="pricing.custom.price">individuální nabídka</p>
-              <ul class="price-list">
-                <li data-i18n="pricing.custom.f1">Návrh a realizace dle zadání</li>
-                <li data-i18n="pricing.custom.f2">Testování před spuštěním</li>
-                <li data-i18n="pricing.custom.f3">Zdrojové soubory a dokumentace</li>
-                <li data-i18n="pricing.custom.f4">Krátká podpora po spuštění</li>
-              </ul>
-              <a class="btn btn-nav btn-nav-inline" href="kontakt">
+              <h3 data-i18n="pricing.mkt.title">Online marketing</h3>
+              <p class="price-value"><span data-i18n-html="pricing.mkt.price">od 4&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.month">/ měsíc</span></p>
+              <p class="price-scope" data-i18n="pricing.mkt.scope">Google Ads • Meta • SEO • obsah • analytika</p>
+              <button
+                class="btn btn-nav btn-nav-inline"
+                type="button"
+                id="pricing-packages-toggle"
+                aria-expanded="false"
+                aria-controls="pricing-packages"
+                data-i18n-open="pricing.mkt.cta"
+                data-i18n-close="pricing.mkt.ctaHide"
+              >
                 <span class="btn-nav-beam" aria-hidden="true"></span>
-                <span class="btn-nav-inner" data-i18n="pricing.custom.cta">Chci nabídku</span>
-              </a>
+                <span class="btn-nav-inner" data-pricing-cta-label data-i18n="pricing.mkt.cta">Zobrazit balíčky</span>
+              </button>
             </article>
+
+            <article class="price-card">
+              <h3 data-i18n="pricing.ai.title">AI &amp; automatizace</h3>
+              <p class="price-value price-value--soft" data-i18n="pricing.ai.price">Individuální nabídka</p>
+              <p class="price-scope" data-i18n="pricing.ai.scope">OCR • API • AI workflow • interní aplikace • data</p>
+              <a class="btn btn-hero btn-hero-dark" href="kontakt?service=ai" data-i18n="pricing.ai.cta">Chci automatizovat firmu</a>
+            </article>
+          </div>
+
+          <div class="pricing-packages" id="pricing-packages" hidden>
+            <div class="pricing-packages-head">
+              <h3 data-i18n="pricing.packs.title">Online marketing — balíčky</h3>
+            </div>
+            <div class="pricing-packages-grid">
+              <article class="price-pack">
+                <p class="price-pack-name" data-i18n="pricing.packs.start.name">START</p>
+                <p class="price-pack-price"><span data-i18n-html="pricing.packs.start.price">od 4&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.month">/ měsíc</span></p>
+                <p class="price-pack-for" data-i18n="pricing.packs.start.for">Pro menší firmy, které potřebují začít.</p>
+                <ul class="price-list">
+                  <li data-i18n="pricing.packs.start.f1">Google Ads / Meta Ads</li>
+                  <li data-i18n="pricing.packs.start.f2">Základní správa kampaní</li>
+                  <li data-i18n="pricing.packs.start.f3">Měření konverzí</li>
+                  <li data-i18n="pricing.packs.start.f4">Měsíční optimalizace</li>
+                  <li data-i18n="pricing.packs.start.f5">Jednoduchý report</li>
+                </ul>
+              </article>
+
+              <article class="price-pack price-pack-featured">
+                <p class="price-pack-name" data-i18n="pricing.packs.growth.name">RŮST</p>
+                <p class="price-pack-price"><span data-i18n-html="pricing.packs.growth.price">od 8&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.month">/ měsíc</span></p>
+                <p class="price-pack-for" data-i18n="pricing.packs.growth.for">Pro firmy, které chtějí aktivně získávat zákazníky.</p>
+                <ul class="price-list">
+                  <li data-i18n="pricing.packs.growth.f1">Google Ads + Meta</li>
+                  <li data-i18n="pricing.packs.growth.f2">Správa a optimalizace kampaní</li>
+                  <li data-i18n="pricing.packs.growth.f3">SEO základ</li>
+                  <li data-i18n="pricing.packs.growth.f4">Analytika a konverze</li>
+                  <li data-i18n="pricing.packs.growth.f5">Tvorba reklamních kreativ</li>
+                  <li data-i18n="pricing.packs.growth.f6">Pravidelný report</li>
+                </ul>
+              </article>
+
+              <article class="price-pack">
+                <p class="price-pack-name" data-i18n="pricing.packs.full.name">KOMPLET</p>
+                <p class="price-pack-price"><span data-i18n-html="pricing.packs.full.price">od 15&nbsp;000&nbsp;Kč</span> <span data-i18n="pricing.per.month">/ měsíc</span></p>
+                <p class="price-pack-for" data-i18n="pricing.packs.full.for">Externí digitální oddělení pro firmu.</p>
+                <ul class="price-list">
+                  <li data-i18n="pricing.packs.full.f1">Google Ads + Meta</li>
+                  <li data-i18n="pricing.packs.full.f2">SEO</li>
+                  <li data-i18n="pricing.packs.full.f3">Sociální sítě</li>
+                  <li data-i18n="pricing.packs.full.f4">E-mail marketing</li>
+                  <li data-i18n="pricing.packs.full.f5">Obsah</li>
+                  <li data-i18n="pricing.packs.full.f6">AI tvorba reklamních kreativ</li>
+                  <li data-i18n="pricing.packs.full.f7">Analytika</li>
+                  <li data-i18n="pricing.packs.full.f8">Pravidelné optimalizace</li>
+                  <li data-i18n="pricing.packs.full.f9">Konzultace</li>
+                </ul>
+              </article>
+            </div>
+            <p class="pricing-budget-note" data-i18n="pricing.packs.budgetNote">Reklamní rozpočet není součástí ceny.</p>
           </div>
         </div>
       </section>
@@ -1129,7 +1165,6 @@
             <li><a href="o-nas" data-i18n="nav.about">O nás</a></li>
             <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
             <li><a href="kontakt" data-i18n="nav.contact">Kontakt</a></li>
-            <li><a href="404">404</a></li>
           </ul>
         </nav>
 
