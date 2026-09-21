@@ -3153,6 +3153,14 @@ a.works-timeline-media--link:focus-visible {
   align-items: center;
 }
 
+.about-solo {
+  max-width: 42rem;
+}
+
+.about-solo .section-title {
+  max-width: 28ch;
+}
+
 .about-photo {
   border-radius: calc(var(--radius) + 6px);
   overflow: hidden;
@@ -3172,6 +3180,14 @@ a.works-timeline-media--link:focus-visible {
   color: var(--text-muted);
   font-size: 1rem;
   line-height: 1.7;
+}
+
+.about-text p {
+  margin: 0 0 1rem;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
 }
 
 .about-text strong {

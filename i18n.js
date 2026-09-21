@@ -41,7 +41,7 @@
         "Moje práce WebOvice — Prokat Invest, onlineskolení.eu, WebOvice, Snap Meter, AndeStay Hostel a Refugio de Mery.",
       "meta.about.title": "O nás — WebOvice",
       "meta.about.description":
-        "O nás — WebOvice. Za projektem stojí Miroslav Pěček: weby, appky, AI automatizace a technické řemeslo.",
+        "O nás — WebOvice. Technologie, které dávají smysl: weby, aplikace, automatizace a digitální růst firem.",
       "meta.404.title": "404 — stránka nenalezena | WebOvice",
       "meta.404.description": "Stránka nenalezena — WebOvice. Vraťte se na úvod nebo do kontaktů.",
 
@@ -282,6 +282,9 @@
       "about.title": "Za WebOvice stojí Miroslav Pěček",
       "about.body":
         "Absolvent elektro-průmyslovky, který zamířil do energetiky — správa kotelen, tepelných čerpadel a FVE, dálkové odečty měřidel, vzdálený dohled a ovládání i instalace elektrických prvků v rozvaděčích MaR. Cestou jsem si zamiloval i druhou stranu mince: <strong>kód</strong>. Dnes stavím weby, appky a AI automatizace a technické řemeslo spojuju se softwarem tam, kde to dává smysl.",
+      "aboutPage.title": "Technologie nás baví. Ještě víc nás baví, když dávají smysl.",
+      "aboutPage.body":
+        "<p>WebOvice spojuje lidi se silným technickým základem a dlouholetými zkušenostmi v oblasti IT, online marketingu a energetiky. Díky propojení těchto světů se na firmy nedíváme jen pohledem webu nebo jedné aplikace. Hledáme místa, kde mohou technologie ušetřit práci, zjednodušit procesy a pomoci podnikání růst.</p><p>Stavíme weby a aplikace, automatizujeme rutinní práci, propojujeme systémy a pomáháme firmám s jejich fungováním v digitálním prostředí. Když už něco vytváříme, chceme, aby to mělo skutečný přínos – ne aby to byla technologie jen pro technologii.</p><p><strong>Nejsme továrna na weby.</strong> Ke každému projektu přistupujeme individuálně a nejdříve chceme pochopit, co má technologie skutečně vyřešit.</p>",
       "about.label.email": "Email:",
       "about.label.phone": "Telefon:",
       "about.cta": "Domluvit konzultaci",
@@ -383,7 +386,7 @@
         "WebOvice work — Prokat Invest, onlineskolení.eu, WebOvice, Snap Meter, AndeStay Hostel and Refugio de Mery.",
       "meta.about.title": "About — WebOvice",
       "meta.about.description":
-        "About WebOvice. Behind the project is Miroslav Pěček: websites, apps, AI automation, and technical craft.",
+        "About WebOvice. Technology that makes sense: websites, apps, automation, and digital growth for businesses.",
       "meta.404.title": "404 — page not found | WebOvice",
       "meta.404.description": "Page not found — WebOvice. Go back home or to contact.",
 
@@ -624,6 +627,9 @@
       "about.title": "Behind WebOvice is Miroslav Pěček",
       "about.body":
         "An electrical trade-school graduate who moved into energy — operating boiler rooms, heat pumps, and PV, plus remote meter reading, remote monitoring and control, and installing electrical components in MaR switchboards. Along the way I fell for the other side of the coin: <strong>code</strong>. Today I build websites, apps, and AI automation, and I connect technical craft with software where it makes sense.",
+      "aboutPage.title": "We love technology. Even more when it makes sense.",
+      "aboutPage.body":
+        "<p>WebOvice brings together people with a strong technical foundation and years of experience in IT, online marketing, and energy. By connecting these worlds, we don’t look at companies through the lens of a website or a single app alone. We look for places where technology can save work, simplify processes, and help a business grow.</p><p>We build websites and applications, automate routine work, connect systems, and help companies operate in the digital environment. When we create something, we want it to deliver real value — not technology for technology’s sake.</p><p><strong>We’re not a website factory.</strong> We approach every project individually and first want to understand what the technology should actually solve.</p>",
       "about.label.email": "Email:",
       "about.label.phone": "Phone:",
       "about.cta": "Book a consultation",
