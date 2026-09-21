@@ -29,6 +29,7 @@
       "footer.nav.label": "[ NAVIGACE ]",
       "footer.call.label": "[ ZAVOLEJTE ]",
       "footer.write.label": "[ NAPIŠTE ]",
+      "footer.rights": "Všechna práva vyhrazena.",
 
       "meta.index.title": "WebOvice — weby, appky, AI & marketing",
       "meta.index.description":
@@ -208,9 +209,9 @@
       "refs.3.author": "Vladimír Škrlant (majitel) — Web Prokat Invest",
       "refs.5.quote":
         "„Sofisticator nám velkým způsobem ulehčil celý proces revizí. Nejen, že je eviduje a hlídá termíny, ale automaticky generuje a posílá platné protokoly. <strong>Dvěma kliknutími letí protokol přímo ke klientovi.</strong> Přidání jakékoliv funkce je pro nás otázka jednoho telefonátu :).\"",
-      "refs.5.name": "Karel Hrbek",
-      "refs.5.role": "majitel, Sofisticator",
-      "refs.5.author": "Karel Hrbek (majitel) — Sofisticator",
+      "refs.5.name": "Karel H.",
+      "refs.5.role": "Uživatel Sofisticatoru",
+      "refs.5.author": "Karel H. (uživatel) — Sofisticator",
       "refs.6.quote":
         "„Od naší první schůzky byl web online <strong>asi za 2 týdny</strong>. Spolupráce s vývojářem byla opravdu příjemná a vše splnil dle našich požadavků. Rozhodně budeme udržovat vztah i do časů budoucích.\"",
       "refs.6.name": "AndeStay Hostel",
@@ -415,6 +416,7 @@
       "footer.nav.label": "[ NAVIGATION ]",
       "footer.call.label": "[ CALL ]",
       "footer.write.label": "[ WRITE ]",
+      "footer.rights": "All rights reserved.",
 
       "meta.index.title": "WebOvice — websites, apps, AI & marketing",
       "meta.index.description":
@@ -594,9 +596,9 @@
       "refs.3.author": "Vladimír Škrlant (owner) — Prokat Invest website",
       "refs.5.quote":
         "“Sofisticator made our whole revision process much easier. It not only records them and tracks deadlines, but also automatically generates and sends valid protocols. <strong>With two clicks, the protocol goes straight to the client.</strong> Adding any feature is just one phone call for us :).”",
-      "refs.5.name": "Karel Hrbek",
-      "refs.5.role": "owner, Sofisticator",
-      "refs.5.author": "Karel Hrbek (owner) — Sofisticator",
+      "refs.5.name": "Karel H.",
+      "refs.5.role": "Sofisticator user",
+      "refs.5.author": "Karel H. (user) — Sofisticator",
       "refs.6.quote":
         "“From our first meeting, the site was online in <strong>about 2 weeks</strong>. Working with the developer was really pleasant and everything matched our requirements. We’ll definitely keep the relationship going into the future.”",
       "refs.6.name": "AndeStay Hostel",
