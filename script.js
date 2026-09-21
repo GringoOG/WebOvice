@@ -160,6 +160,10 @@ if (contactForm) {
   const marketingInput = contactForm.querySelector('#service-marketing, input[name="Sluzba"][value="marketing"]');
   const packsField = document.getElementById("marketing-packs");
   const packInputs = Array.from(contactForm.querySelectorAll('input[name="Balicek"]'));
+  const servicesField = document.getElementById("form-services");
+  const servicesToggle = document.getElementById("services-menu-toggle");
+  const servicesDone = document.getElementById("services-menu-done");
+  const servicesToggleLabel = servicesToggle?.querySelector("[data-services-toggle-label]");
   const tForm = (key, fallback) => window.WebOviceI18n?.t?.(key) ?? fallback;
   const SERVICE_LABEL_KEYS = {
     ai: "contact.form.opt.ai",
@@ -226,6 +230,35 @@ if (contactForm) {
     }
   };
 
+  const isServicesOpen = () => Boolean(servicesField?.classList.contains("is-open"));
+
+  const syncServicesToggleLabel = () => {
+    if (!servicesToggleLabel) return;
+    const open = isServicesOpen();
+    const count = getSelectedServices().length;
+    let key = "contact.form.service.toggle";
+    let fallback = "Vybrat služby";
+    if (open) {
+      key = "contact.form.service.toggleClose";
+      fallback = "Sbalit výběr";
+    } else if (count > 0) {
+      key = "contact.form.service.toggleEdit";
+      fallback = "Upravit výběr";
+    }
+    const text = tForm(key, fallback);
+    servicesToggleLabel.textContent = text;
+    servicesToggleLabel.setAttribute("data-i18n", key);
+    servicesToggle?.setAttribute("aria-expanded", String(open));
+    if (servicesDone) {
+      servicesDone.hidden = !open;
+    }
+  };
+
+  const setServicesOpen = (open) => {
+    servicesField?.classList.toggle("is-open", open);
+    syncServicesToggleLabel();
+  };
+
   const syncServiceValidity = () => {
     const message =
       getSelectedServices().length > 0
@@ -265,7 +298,16 @@ if (contactForm) {
 
     syncPackVisibility();
     syncServiceValidity();
+    setServicesOpen(false);
   };
+
+  servicesToggle?.addEventListener("click", () => {
+    setServicesOpen(!isServicesOpen());
+  });
+
+  servicesDone?.addEventListener("click", () => {
+    setServicesOpen(false);
+  });
 
   serviceInputs.forEach((input) => {
     input.addEventListener("change", () => {
@@ -273,11 +315,15 @@ if (contactForm) {
         syncPackVisibility();
       }
       syncServiceValidity();
+      syncServicesToggleLabel();
     });
   });
 
+  window.addEventListener("webovice:langchange", syncServicesToggleLabel);
+
   applyServiceQuery();
   syncServiceValidity();
+  syncServicesToggleLabel();
 
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -336,6 +382,7 @@ if (contactForm) {
       contactForm.reset();
       syncPackVisibility();
       syncServiceValidity();
+      setServicesOpen(false);
       showStatus(tForm("contact.form.success", "Díky za poptávku, brzy se ozvu!"));
     } catch (error) {
       console.error("Chyba při odesílání formuláře:", error);

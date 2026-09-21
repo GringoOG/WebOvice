@@ -95,9 +95,19 @@
                 <label for="email" data-i18n="contact.form.email">Email</label>
                 <input id="email" name="Email" type="email" autocomplete="email" required />
               </div>
-              <fieldset class="form-services">
+              <fieldset class="form-services" id="form-services">
                 <legend data-i18n="contact.form.service">Co potřebujete?</legend>
                 <p class="form-hint" data-i18n="contact.form.service.hint">Můžete vybrat více služeb.</p>
+                <button
+                  type="button"
+                  class="form-services-toggle"
+                  id="services-menu-toggle"
+                  aria-expanded="false"
+                  aria-controls="service-options"
+                >
+                  <span data-services-toggle-label data-i18n="contact.form.service.toggle">Vybrat služby</span>
+                  <span class="form-services-chevron" aria-hidden="true"></span>
+                </button>
                 <div class="form-checkboxes" id="service-options">
                   <label class="form-check">
                     <input type="checkbox" name="Sluzba" value="ai" />
@@ -150,6 +160,7 @@
                     <span data-i18n="contact.form.opt.other">Jiné</span>
                   </label>
                 </div>
+                <button type="button" class="form-services-done" id="services-menu-done" hidden data-i18n="contact.form.service.done">Hotovo</button>
               </fieldset>
               <div>
                 <label for="note" data-i18n="contact.form.note">Poznámka (volitelná)</label>
