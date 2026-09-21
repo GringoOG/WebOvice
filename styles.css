@@ -2747,6 +2747,13 @@ a.works-timeline-media--link:focus-visible {
   z-index: 0;
 }
 
+.refs-card-footer--brand::before {
+  background:
+    linear-gradient(180deg, rgba(8, 6, 16, 0.45) 0%, rgba(8, 6, 16, 0.78) 100%),
+    var(--refs-footer-img) center / contain no-repeat;
+  background-color: #f7f7f9;
+}
+
 .refs-card-meta {
   position: relative;
   z-index: 1;

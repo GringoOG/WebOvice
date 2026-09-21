@@ -73,8 +73,8 @@ export const projects = [
       "Ruční přepis stavů z fotek brzdí provoz, zanáší chyby a žere čas techniků i administrativy.",
     solution:
       "History-First AI / OCR systém s validací a přímým zápisem do master Excelu — bez mezikroků.",
-    cover: "assets/solution-1.png",
-    gallery: ["assets/solution-1.png", "assets/solution-5.jpg", "assets/solution-6.png"],
+    cover: "assets/solution-snapmeter.jpg",
+    gallery: ["assets/solution-snapmeter.jpg", "assets/solution-5.jpg", "assets/solution-6.png"],
     results: [
       { value: "90 %", label: "úspora času" },
       { value: "0 %", label: "AI halucinací" },
