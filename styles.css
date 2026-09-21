@@ -2958,8 +2958,15 @@ a.works-timeline-media--link:focus-visible {
 }
 
 .price-pack .price-list {
-  margin: 0;
+  margin: 0 0 1.25rem;
   flex: 1;
+}
+
+.price-pack .btn {
+  margin-top: auto;
+  align-self: stretch;
+  text-align: center;
+  justify-content: center;
 }
 
 .pricing-budget-note {
@@ -3423,6 +3430,37 @@ a.works-timeline-media--link:focus-visible {
 .form-checkboxes {
   display: grid;
   gap: 0.45rem;
+}
+
+.form-checkboxes--compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-packs {
+  margin: 0.15rem 0 0.35rem;
+  padding: 0.75rem 0.85rem 0.85rem;
+  border: 1px solid color-mix(in srgb, #9b6ff0 28%, var(--border));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, #9b6ff0 8%, transparent);
+  min-width: 0;
+}
+
+.form-packs[hidden] {
+  display: none;
+}
+
+.form-packs legend {
+  padding: 0 0.25rem;
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+@media (max-width: 520px) {
+  .form-checkboxes--compact {
+    grid-template-columns: 1fr;
+  }
 }
 
 .form-check {

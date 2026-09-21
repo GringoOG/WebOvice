@@ -116,9 +116,27 @@
                     <span data-i18n="contact.form.opt.apps">Interní nástroje &amp; aplikace</span>
                   </label>
                   <label class="form-check">
-                    <input type="checkbox" name="Sluzba" value="marketing" />
+                    <input type="checkbox" name="Sluzba" value="marketing" id="service-marketing" />
                     <span data-i18n="contact.form.opt.marketing">Online marketing</span>
                   </label>
+                  <fieldset class="form-packs" id="marketing-packs" hidden>
+                    <legend data-i18n="contact.form.pack">Marketingový balíček</legend>
+                    <p class="form-hint" data-i18n="contact.form.pack.hint">Volitelné — vyberte konkrétní balíček.</p>
+                    <div class="form-checkboxes form-checkboxes--compact">
+                      <label class="form-check">
+                        <input type="radio" name="Balicek" value="start" />
+                        <span data-i18n="pricing.packs.start.name">START</span>
+                      </label>
+                      <label class="form-check">
+                        <input type="radio" name="Balicek" value="growth" />
+                        <span data-i18n="pricing.packs.growth.name">RŮST</span>
+                      </label>
+                      <label class="form-check">
+                        <input type="radio" name="Balicek" value="full" />
+                        <span data-i18n="pricing.packs.full.name">KOMPLET</span>
+                      </label>
+                    </div>
+                  </fieldset>
                   <label class="form-check">
                     <input type="checkbox" name="Sluzba" value="ops" />
                     <span data-i18n="contact.form.opt.ops">Provoz &amp; údržba</span>

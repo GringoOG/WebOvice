@@ -939,6 +939,7 @@
                   <li data-i18n="pricing.packs.start.f4">Měsíční optimalizace</li>
                   <li data-i18n="pricing.packs.start.f5">Jednoduchý report</li>
                 </ul>
+                <a class="btn btn-hero btn-hero-dark" href="kontakt?service=marketing&amp;pack=start" data-i18n="pricing.packs.start.cta">Chci START</a>
               </article>
 
               <article class="price-pack price-pack-featured">
@@ -953,6 +954,7 @@
                   <li data-i18n="pricing.packs.growth.f5">Tvorba reklamních kreativ</li>
                   <li data-i18n="pricing.packs.growth.f6">Pravidelný report</li>
                 </ul>
+                <a class="btn btn-hero btn-hero-dark" href="kontakt?service=marketing&amp;pack=growth" data-i18n="pricing.packs.growth.cta">Chci RŮST</a>
               </article>
 
               <article class="price-pack">
@@ -970,6 +972,7 @@
                   <li data-i18n="pricing.packs.full.f8">Pravidelné optimalizace</li>
                   <li data-i18n="pricing.packs.full.f9">Konzultace</li>
                 </ul>
+                <a class="btn btn-hero btn-hero-dark" href="kontakt?service=marketing&amp;pack=full" data-i18n="pricing.packs.full.cta">Chci KOMPLET</a>
               </article>
             </div>
             <p class="pricing-budget-note" data-i18n="pricing.packs.budgetNote">Reklamní rozpočet není součástí ceny.</p>
@@ -1120,20 +1123,62 @@
                 <label for="email" data-i18n="contact.form.email">Email</label>
                 <input id="email" name="Email" type="email" autocomplete="email" required />
               </div>
-              <div>
-                <label for="service" data-i18n="contact.form.service">Co potřebujete?</label>
-                                <select id="service" name="Sluzba" required>
-                  <option value="" data-i18n="contact.form.service.placeholder">Vyberte…</option>
-                  <option value="Automatizace procesů (AI)" data-i18n="contact.form.opt.ai">Automatizace procesů (AI)</option>
-                  <option value="E-learning na míru" data-i18n="contact.form.opt.elearning">E-learning na míru</option>
-                  <option value="Energetika & technické systémy" data-i18n="contact.form.opt.energy">Energetika &amp; technické systémy</option>
-                  <option value="Interní nástroje & aplikace" data-i18n="contact.form.opt.apps">Interní nástroje &amp; aplikace</option>
-                  <option value="Online marketing" data-i18n="contact.form.opt.marketing">Online marketing</option>
-                  <option value="Provoz & údržba" data-i18n="contact.form.opt.ops">Provoz &amp; údržba</option>
-                  <option value="Weby na míru" data-i18n="contact.form.opt.web">Weby na míru</option>
-                  <option value="Jiné" data-i18n="contact.form.opt.other">Jiné</option>
-                </select>
-              </div>
+              <fieldset class="form-services">
+                <legend data-i18n="contact.form.service">Co potřebujete?</legend>
+                <p class="form-hint" data-i18n="contact.form.service.hint">Můžete vybrat více služeb.</p>
+                <div class="form-checkboxes" id="service-options">
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="ai" />
+                    <span data-i18n="contact.form.opt.ai">Automatizace procesů (AI)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="elearning" />
+                    <span data-i18n="contact.form.opt.elearning">E-learning na míru</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="energy" />
+                    <span data-i18n="contact.form.opt.energy">Energetika &amp; technické systémy</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="apps" />
+                    <span data-i18n="contact.form.opt.apps">Interní nástroje &amp; aplikace</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="marketing" id="service-marketing" />
+                    <span data-i18n="contact.form.opt.marketing">Online marketing</span>
+                  </label>
+                  <fieldset class="form-packs" id="marketing-packs" hidden>
+                    <legend data-i18n="contact.form.pack">Marketingový balíček</legend>
+                    <p class="form-hint" data-i18n="contact.form.pack.hint">Volitelné — vyberte konkrétní balíček.</p>
+                    <div class="form-checkboxes form-checkboxes--compact">
+                      <label class="form-check">
+                        <input type="radio" name="Balicek" value="start" />
+                        <span data-i18n="pricing.packs.start.name">START</span>
+                      </label>
+                      <label class="form-check">
+                        <input type="radio" name="Balicek" value="growth" />
+                        <span data-i18n="pricing.packs.growth.name">RŮST</span>
+                      </label>
+                      <label class="form-check">
+                        <input type="radio" name="Balicek" value="full" />
+                        <span data-i18n="pricing.packs.full.name">KOMPLET</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="ops" />
+                    <span data-i18n="contact.form.opt.ops">Provoz &amp; údržba</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="web" />
+                    <span data-i18n="contact.form.opt.web">Weby na míru</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="Sluzba" value="other" />
+                    <span data-i18n="contact.form.opt.other">Jiné</span>
+                  </label>
+                </div>
+              </fieldset>
               <div>
                 <label for="note" data-i18n="contact.form.note">Poznámka (volitelná)</label>
                 <textarea id="note" name="Poznamka" data-i18n-placeholder="contact.form.note.placeholder" placeholder="Stručně popište projekt…"></textarea>

@@ -157,6 +157,9 @@ const contactForm = document.getElementById("contact-form");
 if (contactForm) {
   const submitBtn = contactForm.querySelector('button[type="submit"]');
   const serviceInputs = Array.from(contactForm.querySelectorAll('input[name="Sluzba"]'));
+  const marketingInput = contactForm.querySelector('#service-marketing, input[name="Sluzba"][value="marketing"]');
+  const packsField = document.getElementById("marketing-packs");
+  const packInputs = Array.from(contactForm.querySelectorAll('input[name="Balicek"]'));
   const tForm = (key, fallback) => window.WebOviceI18n?.t?.(key) ?? fallback;
   const SERVICE_LABEL_KEYS = {
     ai: "contact.form.opt.ai",
@@ -167,6 +170,11 @@ if (contactForm) {
     ops: "contact.form.opt.ops",
     web: "contact.form.opt.web",
     other: "contact.form.opt.other",
+  };
+  const PACK_LABEL_KEYS = {
+    start: "pricing.packs.start.name",
+    growth: "pricing.packs.growth.name",
+    full: "pricing.packs.full.name",
   };
 
   let statusEl = document.getElementById("form-status");
@@ -204,6 +212,20 @@ if (contactForm) {
   const getSelectedServices = () =>
     serviceInputs.filter((input) => input.checked).map((input) => input.value);
 
+  const getSelectedPack = () => packInputs.find((input) => input.checked)?.value ?? "";
+
+  const syncPackVisibility = () => {
+    const show = Boolean(marketingInput?.checked);
+    if (packsField) {
+      packsField.hidden = !show;
+    }
+    if (!show) {
+      packInputs.forEach((input) => {
+        input.checked = false;
+      });
+    }
+  };
+
   const syncServiceValidity = () => {
     const message =
       getSelectedServices().length > 0
@@ -215,24 +237,43 @@ if (contactForm) {
   };
 
   const applyServiceQuery = () => {
-    const raw = new URLSearchParams(window.location.search).get("service");
-    if (!raw) return;
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get("service");
+    const pack = (params.get("pack") || "").trim().toLowerCase();
 
-    const requested = raw
-      .split(",")
-      .map((value) => value.trim().toLowerCase())
-      .filter(Boolean);
+    if (raw) {
+      const requested = raw
+        .split(",")
+        .map((value) => value.trim().toLowerCase())
+        .filter(Boolean);
 
-    if (!requested.length) return;
+      if (requested.length) {
+        serviceInputs.forEach((input) => {
+          input.checked = requested.includes(input.value);
+        });
+      }
+    }
 
-    serviceInputs.forEach((input) => {
-      input.checked = requested.includes(input.value);
-    });
+    if (pack && PACK_LABEL_KEYS[pack]) {
+      if (marketingInput) {
+        marketingInput.checked = true;
+      }
+      packInputs.forEach((input) => {
+        input.checked = input.value === pack;
+      });
+    }
+
+    syncPackVisibility();
     syncServiceValidity();
   };
 
   serviceInputs.forEach((input) => {
-    input.addEventListener("change", syncServiceValidity);
+    input.addEventListener("change", () => {
+      if (input === marketingInput || input.value === "marketing") {
+        syncPackVisibility();
+      }
+      syncServiceValidity();
+    });
   });
 
   applyServiceQuery();
@@ -253,12 +294,15 @@ if (contactForm) {
       const key = SERVICE_LABEL_KEYS[value];
       return key ? tForm(key, value) : value;
     });
+    const pack = getSelectedPack();
+    const packLabel = pack ? tForm(PACK_LABEL_KEYS[pack], pack) : "";
 
     const payload = {
       jmeno: contactForm.elements.Jmeno?.value.trim() ?? "",
       email: contactForm.elements.Email?.value.trim() ?? "",
       sluzby: labels,
       sluzba: labels.join(", "),
+      balicek: packLabel,
       poznamka: contactForm.elements.Poznamka?.value.trim() ?? "",
     };
 
@@ -290,6 +334,7 @@ if (contactForm) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       contactForm.reset();
+      syncPackVisibility();
       syncServiceValidity();
       showStatus(tForm("contact.form.success", "Díky za poptávku, brzy se ozvu!"));
     } catch (error) {
