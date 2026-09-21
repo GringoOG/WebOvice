@@ -1215,25 +1215,19 @@ img.tocici-logo,
   min-width: 0;
 }
 
-.service-card-hit {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  border-radius: inherit;
+.service-card[data-service] {
+  cursor: pointer;
 }
 
-.service-card-hit:focus-visible {
+.service-card[data-service]:focus-visible {
   outline: 2px solid color-mix(in srgb, #9b6ff0 80%, white);
-  outline-offset: -2px;
+  outline-offset: 2px;
+  border-color: rgba(155, 111, 240, 0.45);
 }
 
 .service-card:hover {
   border-color: rgba(255, 255, 255, 0.14);
   transform: translateY(-2px);
-}
-
-.service-card:has(.service-card-hit:focus-visible) {
-  border-color: rgba(155, 111, 240, 0.45);
 }
 
 .service-card-wide {
@@ -1971,9 +1965,10 @@ a.works-timeline-card--link:focus-visible {
   display: flex;
   flex-direction: column;
   transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease,
+    padding-top 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .works-timeline--expandable .works-timeline-card--expandable .works-timeline-body {
@@ -2014,15 +2009,17 @@ a.works-timeline-media--link:focus-visible {
     left: 0;
     right: 0;
     height: 15%;
+    max-height: 5.5rem;
     aspect-ratio: auto;
-    max-height: none;
     transition:
-      height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-      top 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      height 1s cubic-bezier(0.22, 1, 0.36, 1),
+      max-height 1s cubic-bezier(0.22, 1, 0.36, 1),
+      top 1s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .works-timeline--expandable .works-timeline-card--expandable .works-timeline-media img {
     object-position: center top;
+    transition: object-position 1s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .works-timeline--expandable .works-timeline-card--expandable:hover,
@@ -2040,6 +2037,7 @@ a.works-timeline-media--link:focus-visible {
   .works-timeline--expandable .works-timeline-card--expandable:focus-within .works-timeline-media {
     position: relative;
     height: auto;
+    max-height: 28rem;
     aspect-ratio: 16 / 9;
   }
 }

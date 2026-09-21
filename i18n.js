@@ -225,7 +225,7 @@
 
       "pricing.title": "Ceník",
       "pricing.intro":
-        "Čtyři jasné směry — správa webu, web na míru, online marketing a AI automatizace. U marketingu si vyberete balíček START, RŮST nebo KOMPLET.",
+        "Neváhejte se nás zeptat na individuální nabídku.",
       "pricing.per.month": "/ měsíc",
       "pricing.per.year": "/ rok",
       "pricing.maint.title": "Správa webu",
@@ -244,7 +244,7 @@
       "pricing.ai.title": "AI & automatizace",
       "pricing.ai.price": "Individuální nabídka",
       "pricing.ai.scope": "OCR • API • AI workflow • interní aplikace • data",
-      "pricing.ai.cta": "Chci automatizovat firmu",
+      "pricing.ai.cta": "Chci nabídku",
       "pricing.packs.title": "Online marketing — balíčky",
       "pricing.packs.budgetNote": "Reklamní rozpočet není součástí ceny.",
       "pricing.packs.start.name": "START",
@@ -567,7 +567,7 @@
 
       "pricing.title": "Pricing",
       "pricing.intro":
-        "Four clear directions — website maintenance, custom websites, online marketing, and AI automation. For marketing, choose START, GROWTH, or COMPLETE.",
+        "Feel free to ask us for a custom quote.",
       "pricing.per.month": "/ month",
       "pricing.per.year": "/ year",
       "pricing.maint.title": "Website maintenance",
@@ -586,7 +586,7 @@
       "pricing.ai.title": "AI & automation",
       "pricing.ai.price": "Custom quote",
       "pricing.ai.scope": "OCR • API • AI workflows • internal apps • data",
-      "pricing.ai.cta": "I want to automate my business",
+      "pricing.ai.cta": "I want a quote",
       "pricing.packs.title": "Online marketing — packages",
       "pricing.packs.budgetNote": "Ad spend is not included in the price.",
       "pricing.packs.start.name": "START",

@@ -604,6 +604,21 @@ function primeServiceVideoPreview(video) {
     );
   });
 
+  document.querySelectorAll(".service-card[data-service]").forEach((card) => {
+    const goToContact = () => {
+      const service = card.getAttribute("data-service");
+      if (!service) return;
+      window.location.href = `kontakt?service=${encodeURIComponent(service)}`;
+    };
+
+    card.addEventListener("click", goToContact);
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      goToContact();
+    });
+  });
+
   const warmObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
