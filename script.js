@@ -66,10 +66,14 @@ const heroQuoteAuthorEl = heroQuoteEl?.querySelector(".hero-quote-author");
 const getHeroQuotes = () => {
   const t = window.WebOviceI18n?.t;
   if (typeof t === "function") {
-    return [0, 1, 2, 3].map((i) => ({
-      text: t(`hero.quotes.${i}.text`),
-      author: t(`hero.quotes.${i}.author`),
-    }));
+    const quotes = [];
+    for (let i = 0; i < 20; i += 1) {
+      const text = t(`hero.quotes.${i}.text`);
+      const author = t(`hero.quotes.${i}.author`);
+      if (!text || text === `hero.quotes.${i}.text`) break;
+      quotes.push({ text, author });
+    }
+    if (quotes.length) return quotes;
   }
   return [
     {
@@ -77,16 +81,24 @@ const getHeroQuotes = () => {
       author: "Energetika — projekt Snap Meter",
     },
     {
-      text: "Web online za pár dnů, správa obsahu bez kódu.",
-      author: "Klient — firemní web ve Frameru",
+      text: "Web online za pár dnů, moderně a bez starostí.",
+      author: "Klient — firemní web",
     },
     {
-      text: "0 % halucinací AI — data rovnou v Excelu.",
+      text: "Bez halucinací AI — data rovnou v Excelu.",
       author: "Snap Meter — AI automatizace",
     },
     {
       text: "Měsíční retainer = web běží bez starostí.",
       author: "Klient — správa & údržba",
+    },
+    {
+      text: "Web s rezervačním systémem za 2 týdny.",
+      author: "Klient — hotelový web",
+    },
+    {
+      text: "Konec starostí s termíny a certifikáty.",
+      author: "Klient — Sofisticator",
     },
   ];
 };
