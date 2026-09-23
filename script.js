@@ -642,9 +642,11 @@ function playServiceVideo(video) {
   }
 
   const onReady = () => {
+    video.removeEventListener("loadeddata", onReady);
     video.removeEventListener("canplay", onReady);
     startFromBeginning();
   };
+  video.addEventListener("loadeddata", onReady, { once: true });
   video.addEventListener("canplay", onReady, { once: true });
   video.load();
 }
@@ -738,12 +740,30 @@ function primeServiceVideoPreview(video) {
       });
     },
     {
-      rootMargin: "220px 0px",
-      threshold: 0.05,
+      // Start fetching well before the cards enter the viewport.
+      rootMargin: "480px 0px",
+      threshold: 0.01,
     }
   );
 
   visuals.forEach((visual) => warmObserver.observe(visual));
+
+  // After first paint / idle, quietly warm the first service videos
+  // so hover feels instant once the user reaches the section.
+  const warmEarly = () => {
+    visuals.slice(0, 4).forEach((visual) => {
+      const video = visual.querySelector(".service-video");
+      if (video) {
+        warmServiceVideo(video);
+      }
+    });
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(warmEarly, { timeout: 1800 });
+  } else {
+    window.setTimeout(warmEarly, 900);
+  }
 
   window.addEventListener("pageshow", (event) => {
     if (!event.persisted) {
