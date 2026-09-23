@@ -196,6 +196,7 @@ textarea {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .lang-switch {
@@ -2201,7 +2202,7 @@ a.works-timeline-media--link:focus-visible {
     margin-top: 0;
   }
 
-  /* Keep visual order 01–05 on mobile (L1, R1, L2, R2, L3) */
+  /* Keep visual order 01–06 on mobile (L1, R1, L2, R2, L3, R3) */
   .works-timeline-col--left .works-timeline-item:nth-child(1) {
     order: 1;
   }
@@ -2216,6 +2217,28 @@ a.works-timeline-media--link:focus-visible {
   }
   .works-timeline-col--left .works-timeline-item:nth-child(3) {
     order: 5;
+  }
+  .works-timeline-col--right .works-timeline-item:nth-child(3) {
+    order: 6;
+  }
+
+  /* On phones: always show full project image (no hover-peek collapse). */
+  .works-timeline--expandable .works-timeline-card--expandable {
+    padding-top: 0;
+  }
+
+  .works-timeline--expandable .works-timeline-card--expandable .works-timeline-media {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 16 / 9;
+  }
+
+  .works-timeline--expandable .works-timeline-card--expandable .works-timeline-media img {
+    object-position: center top;
   }
 
   .works-timeline-item--left,
@@ -3904,9 +3927,12 @@ textarea {
     --nav-height: 64px;
   }
 
+  .brand {
+    max-width: calc(100% - 9.5rem);
+  }
+
   .brand-logo {
     height: calc(var(--nav-height) - 14px);
-    max-width: min(280px, 72vw);
   }
 
   .hero-cta-row {
@@ -3929,6 +3955,17 @@ textarea {
   .hero-quote {
     max-width: none;
     align-self: stretch;
+  }
+}
+
+@media (max-width: 359px) {
+  /* Extra-narrow phones: language lives in the hamburger menu. */
+  .nav-actions .lang-switch {
+    display: none;
+  }
+
+  .brand {
+    max-width: calc(100% - 3.75rem);
   }
 }
 
@@ -3972,6 +4009,15 @@ textarea {
 }
 
 @media (max-width: 767px) {
+  .brand {
+    flex: 1 1 auto;
+    max-width: calc(100% - 10rem);
+  }
+
+  .brand-logo {
+    max-width: 100%;
+  }
+
   .section-head {
     margin-bottom: 2rem;
   }
