@@ -484,6 +484,7 @@ if (techStackDeck) {
   const stackCards = Array.from(techStackDeck.querySelectorAll(".stack-card"));
   const stackCardCount = stackCards.length;
   const stackReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const stackFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   let stackRotationId = null;
   let stackDeckHovered = false;
 
@@ -494,8 +495,11 @@ if (techStackDeck) {
     });
   };
 
+  const isStackExpanded = () =>
+    stackDeckHovered || techStackDeck.classList.contains("is-expanded");
+
   const rotateStackOnce = () => {
-    if (stackDeckHovered || stackCardCount < 2) {
+    if (isStackExpanded() || stackCardCount < 2) {
       return;
     }
 
@@ -508,7 +512,7 @@ if (techStackDeck) {
   };
 
   const startStackRotation = () => {
-    if (stackReducedMotion || window.innerWidth <= 1024 || stackRotationId) {
+    if (stackReducedMotion || stackRotationId || isStackExpanded()) {
       return;
     }
 
@@ -522,28 +526,57 @@ if (techStackDeck) {
     }
   };
 
+  const expandStack = () => {
+    techStackDeck.classList.add("is-expanded");
+    techStackDeck.setAttribute("aria-expanded", "true");
+    stackDeckHovered = true;
+    stopStackRotation();
+    resetStackOrder();
+  };
+
+  const collapseStack = () => {
+    techStackDeck.classList.remove("is-expanded");
+    techStackDeck.setAttribute("aria-expanded", "false");
+    stackDeckHovered = false;
+    resetStackOrder();
+    startStackRotation();
+  };
+
   resetStackOrder();
+  techStackDeck.setAttribute("aria-expanded", "false");
   startStackRotation();
 
   techStackDeck.addEventListener("mouseenter", () => {
+    if (!stackFinePointer.matches) {
+      return;
+    }
     stackDeckHovered = true;
     stopStackRotation();
     resetStackOrder();
   });
 
   techStackDeck.addEventListener("mouseleave", () => {
+    if (!stackFinePointer.matches) {
+      return;
+    }
     stackDeckHovered = false;
     resetStackOrder();
     startStackRotation();
   });
 
   techStackDeck.addEventListener("focusin", () => {
+    if (!stackFinePointer.matches) {
+      return;
+    }
     stackDeckHovered = true;
     stopStackRotation();
     resetStackOrder();
   });
 
   techStackDeck.addEventListener("focusout", (event) => {
+    if (!stackFinePointer.matches) {
+      return;
+    }
     if (techStackDeck.contains(event.relatedTarget)) {
       return;
     }
@@ -553,14 +586,40 @@ if (techStackDeck) {
     startStackRotation();
   });
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth <= 1024) {
-      stopStackRotation();
-      resetStackOrder();
+  /* Touch / coarse pointer: tap toggles fan expand */
+  techStackDeck.addEventListener("click", (event) => {
+    if (stackFinePointer.matches) {
       return;
     }
 
-    if (!stackDeckHovered) {
+    event.preventDefault();
+    if (techStackDeck.classList.contains("is-expanded")) {
+      collapseStack();
+    } else {
+      expandStack();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (stackFinePointer.matches) {
+      return;
+    }
+    if (!techStackDeck.classList.contains("is-expanded")) {
+      return;
+    }
+    if (techStackDeck.contains(event.target)) {
+      return;
+    }
+    collapseStack();
+  });
+
+  window.addEventListener("resize", () => {
+    if (stackFinePointer.matches) {
+      techStackDeck.classList.remove("is-expanded");
+      techStackDeck.setAttribute("aria-expanded", "false");
+    }
+
+    if (!isStackExpanded()) {
       startStackRotation();
     }
   });

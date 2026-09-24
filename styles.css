@@ -2293,6 +2293,9 @@ a.works-timeline-media--link:focus-visible {
   --stack-card-w: 220px;
   --stack-card-h: 270px;
   --stack-glow-pad: 16px;
+  --stack-fan-step: 118px;
+  --stack-fan-tilt: 5.2deg;
+  --stack-fan-arc: 1.6px;
   overflow: visible;
 }
 
@@ -2532,69 +2535,98 @@ a.works-timeline-media--link:focus-visible {
   text-shadow: 0 0 10px color-mix(in srgb, var(--stack-accent) 18%, transparent);
 }
 
-.stack-deck:hover .stack-card,
-.stack-deck:focus-within .stack-card {
-  transform:
-    translateX(calc((var(--card-index) - var(--fan-offset)) * 118px))
-    rotate(calc((var(--card-index) - var(--fan-offset)) * 5.2deg))
-    translateY(calc((var(--card-index) - var(--fan-offset)) * (var(--card-index) - var(--fan-offset)) * 1.6px));
-}
-
-.stack-card:hover,
-.stack-card:focus-visible {
-  transform:
-    translateX(calc((var(--card-index) - var(--fan-offset)) * 118px))
-    rotate(calc((var(--card-index) - var(--fan-offset)) * 5.2deg))
-    translateY(-22px) !important;
-  z-index: 99 !important;
-  filter:
-    drop-shadow(0 0 12px color-mix(in srgb, var(--stack-accent) 22%, transparent))
-    drop-shadow(0 0 8px rgba(244, 207, 158, 0.08));
-}
-
-.stack-card:hover .stack-card-face,
-.stack-card:focus-visible .stack-card-face {
-  transform: scale(1.02);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    inset 0 -28px 56px color-mix(in srgb, var(--stack-accent) 12%, transparent);
-}
-
-@media (max-width: 1024px) {
-  .stack-deck {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.25rem;
-    width: 100%;
-    height: auto;
-    padding: var(--stack-glow-pad) 0;
-    cursor: default;
-  }
-
-  .stack-card {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    max-width: 240px;
-    height: auto;
-    aspect-ratio: 220 / 270;
-    margin-inline: auto;
-    margin-left: auto;
-    transform: none !important;
-    z-index: 1 !important;
-  }
-
+@media (hover: hover) and (pointer: fine) {
   .stack-deck:hover .stack-card,
-  .stack-deck:focus-within .stack-card,
+  .stack-deck:focus-within .stack-card {
+    transform:
+      translateX(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-step)))
+      rotate(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-tilt)))
+      translateY(calc((var(--card-index) - var(--fan-offset)) * (var(--card-index) - var(--fan-offset)) * var(--stack-fan-arc)));
+  }
+
   .stack-card:hover,
   .stack-card:focus-visible {
-    transform: none !important;
+    transform:
+      translateX(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-step)))
+      rotate(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-tilt)))
+      translateY(-22px) !important;
+    z-index: 99 !important;
+    filter:
+      drop-shadow(0 0 12px color-mix(in srgb, var(--stack-accent) 22%, transparent))
+      drop-shadow(0 0 8px rgba(244, 207, 158, 0.08));
   }
 
   .stack-card:hover .stack-card-face,
   .stack-card:focus-visible .stack-card-face {
-    transform: none;
+    transform: scale(1.02);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -28px 56px color-mix(in srgb, var(--stack-accent) 12%, transparent);
+  }
+}
+
+.stack-deck.is-expanded .stack-card {
+  transform:
+    translateX(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-step)))
+    rotate(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-tilt)))
+    translateY(calc((var(--card-index) - var(--fan-offset)) * (var(--card-index) - var(--fan-offset)) * var(--stack-fan-arc)));
+}
+
+/* Mobile / tablet: keep the fan (no grid). Tap expands via .is-expanded */
+@media (max-width: 1024px) {
+  .stack-section {
+    --stack-card-w: 150px;
+    --stack-card-h: 185px;
+    --stack-glow-pad: 12px;
+    --stack-fan-step: 34px;
+    --stack-fan-tilt: 4deg;
+    --stack-fan-arc: 1.2px;
+  }
+
+  .stack-deck {
+    width: min(100%, 100vw);
+    max-width: 100%;
+    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 1.5rem);
+    padding: var(--stack-glow-pad) 0.5rem;
+    cursor: pointer;
+  }
+
+  .stack-deck.is-expanded {
+    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 3.5rem);
+  }
+
+  .stack-card-label {
+    font-size: 0.68rem;
+  }
+
+  .stack-card-icon--duo {
+    gap: 0.45rem;
+  }
+
+  .stack-icon {
+    width: min(48px, 36%);
+  }
+
+  .stack-card-icon--duo .stack-icon {
+    width: min(38px, 30%);
+  }
+
+  /* On touch: card lift uses expanded fan position, not hover */
+  .stack-deck.is-expanded .stack-card:focus-visible {
+    transform:
+      translateX(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-step)))
+      rotate(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-tilt)))
+      translateY(-14px) !important;
+    z-index: 99 !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .stack-section {
+    --stack-card-w: 132px;
+    --stack-card-h: 162px;
+    --stack-fan-step: 28px;
+    --stack-fan-tilt: 3.6deg;
   }
 }
 
