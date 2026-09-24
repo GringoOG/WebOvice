@@ -1,0 +1,4 @@
+Contact: mailto:webovice@gmail.com
+Expires: 2027-09-24T22:00:00.000Z
+Preferred-Languages: cs, en
+Canonical: https://www.webovice.eu/.well-known/security.txt

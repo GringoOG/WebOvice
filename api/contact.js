@@ -7,6 +7,9 @@ const MAX_NOTE = 4000;
 const MAX_PHONE = 40;
 const MAX_SERVICES = 8;
 const PHONE_RE = /^[+0-9()\s./-]{6,40}$/;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const CONTROL_CHARS_RE = /[\u0000-\u001F\u007F]/g;
+const NOTE_CONTROL_CHARS_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
 
 const ALLOWED_SERVICES = new Set([
   "ai",
@@ -36,7 +39,7 @@ const PACK_LABELS = {
   full: "KOMPLET",
 };
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const ALLOWED_HOSTS = new Set(["www.webovice.eu", "webovice.eu", "localhost", "127.0.0.1"]);
 
 function escapeHtml(value) {
   return String(value)
@@ -47,10 +50,20 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+/** Strip CR/LF/NUL and other controls — prevents header / log injection. */
+function sanitizeText(value, { max } = {}) {
+  let out = String(value).replace(CONTROL_CHARS_RE, " ").replace(/\s+/g, " ").trim();
+  if (typeof max === "number" && out.length > max) {
+    out = out.slice(0, max);
+  }
+  return out;
+}
+
 function json(res, status, body) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Cache-Control", "no-store");
+  res.setHeader("X-Content-Type-Options", "nosniff");
   res.end(JSON.stringify(body));
 }
 
@@ -104,7 +117,44 @@ async function parseBody(req) {
   return JSON.parse(raw);
 }
 
-function validatePayload(input) {
+function isTrustedHost(hostname) {
+  if (!hostname) return false;
+  if (ALLOWED_HOSTS.has(hostname)) return true;
+  // Vercel preview / deployment URLs for this project
+  if (hostname.endsWith(".vercel.app") && hostname.startsWith("webovice")) return true;
+  return false;
+}
+
+function isTrustedRequest(req) {
+  const origin = req.headers.origin;
+  if (origin) {
+    try {
+      const url = new URL(origin);
+      const local = url.hostname === "localhost" || url.hostname === "127.0.0.1";
+      if (url.protocol !== "https:" && !local) return false;
+      return isTrustedHost(url.hostname);
+    } catch {
+      return false;
+    }
+  }
+
+  const referer = req.headers.referer;
+  if (referer) {
+    try {
+      const url = new URL(referer);
+      const local = url.hostname === "localhost" || url.hostname === "127.0.0.1";
+      if (url.protocol !== "https:" && !local) return false;
+      return isTrustedHost(url.hostname);
+    } catch {
+      return false;
+    }
+  }
+
+  // Missing Origin/Referer: allow only outside production (local/unit tests).
+  return process.env.VERCEL_ENV !== "production";
+}
+
+export function validatePayload(input) {
   if (!input || typeof input !== "object" || Array.isArray(input)) {
     return { ok: false, error: "Neplatný požadavek." };
   }
@@ -114,23 +164,38 @@ function validatePayload(input) {
     return { ok: true, spam: true };
   }
 
-  const name = typeof input.name === "string" ? input.name.trim() : "";
-  const email = typeof input.email === "string" ? input.email.trim() : "";
-  const phone = typeof input.phone === "string" ? input.phone.trim() : "";
-  const note = typeof input.note === "string" ? input.note.trim() : "";
-  const packRaw = typeof input.pack === "string" ? input.pack.trim().toLowerCase() : "";
+  if (typeof input.name !== "string" || typeof input.email !== "string") {
+    return { ok: false, error: "Neplatný požadavek." };
+  }
+
+  const name = sanitizeText(input.name, { max: MAX_NAME });
+  const emailRaw = sanitizeText(input.email, { max: MAX_EMAIL });
+  const email = emailRaw.toLowerCase();
+  const phone =
+    typeof input.phone === "string" ? sanitizeText(input.phone, { max: MAX_PHONE }) : "";
+  const note =
+    typeof input.note === "string"
+      ? String(input.note)
+          .replace(NOTE_CONTROL_CHARS_RE, "")
+          .replace(/\r\n/g, "\n")
+          .replace(/\r/g, "\n")
+          .trim()
+          .slice(0, MAX_NOTE)
+      : "";
+  const packRaw =
+    typeof input.pack === "string" ? sanitizeText(input.pack).toLowerCase() : "";
 
   let services = Array.isArray(input.services) ? input.services : [];
   services = services
     .filter((value) => typeof value === "string")
-    .map((value) => value.trim().toLowerCase())
+    .map((value) => sanitizeText(value).toLowerCase())
     .filter(Boolean);
 
   if (!name) return { ok: false, error: "Jméno je povinné." };
   if (name.length > MAX_NAME) return { ok: false, error: "Jméno je příliš dlouhé." };
 
   if (!email) return { ok: false, error: "E-mail je povinný." };
-  if (email.length > MAX_EMAIL || !EMAIL_RE.test(email)) {
+  if (email.length > MAX_EMAIL || !EMAIL_RE.test(email) || email.includes(" ")) {
     return { ok: false, error: "E-mail nemá platný formát." };
   }
 
@@ -252,6 +317,18 @@ export default async function handler(req, res) {
     return json(res, 405, { ok: false, error: "Method not allowed" });
   }
 
+  if (!isTrustedRequest(req)) {
+    return json(res, 403, { ok: false, error: "Forbidden" });
+  }
+
+  const contentType = String(req.headers["content-type"] || "")
+    .split(";")[0]
+    .trim()
+    .toLowerCase();
+  if (contentType !== "application/json") {
+    return json(res, 415, { ok: false, error: "Unsupported Media Type" });
+  }
+
   let body;
   try {
     body = await parseBody(req);
@@ -282,7 +359,9 @@ export default async function handler(req, res) {
 
   const sentAt = new Date();
   const { text, html } = buildEmails(validated.data, sentAt);
-  const subject = `Nová poptávka z WebOvice – ${validated.data.name}`;
+  const subject = sanitizeText(`Nová poptávka z WebOvice – ${validated.data.name}`, {
+    max: 200,
+  });
 
   try {
     const resend = new Resend(apiKey);

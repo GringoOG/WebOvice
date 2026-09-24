@@ -5,7 +5,8 @@
   "scripts": {
     "dev:works": "vite",
     "build": "vite build",
-    "preview:works": "vite preview"
+    "preview:works": "vite preview",
+    "test:contact": "node scripts/contact.test.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
