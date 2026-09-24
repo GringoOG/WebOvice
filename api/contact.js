@@ -4,7 +4,9 @@ const MAX_BODY_BYTES = 16_384;
 const MAX_NAME = 120;
 const MAX_EMAIL = 254;
 const MAX_NOTE = 4000;
+const MAX_PHONE = 40;
 const MAX_SERVICES = 8;
+const PHONE_RE = /^[+0-9()\s./-]{6,40}$/;
 
 const ALLOWED_SERVICES = new Set([
   "ai",
@@ -114,6 +116,7 @@ function validatePayload(input) {
 
   const name = typeof input.name === "string" ? input.name.trim() : "";
   const email = typeof input.email === "string" ? input.email.trim() : "";
+  const phone = typeof input.phone === "string" ? input.phone.trim() : "";
   const note = typeof input.note === "string" ? input.note.trim() : "";
   const packRaw = typeof input.pack === "string" ? input.pack.trim().toLowerCase() : "";
 
@@ -129,6 +132,12 @@ function validatePayload(input) {
   if (!email) return { ok: false, error: "E-mail je povinný." };
   if (email.length > MAX_EMAIL || !EMAIL_RE.test(email)) {
     return { ok: false, error: "E-mail nemá platný formát." };
+  }
+
+  if (phone) {
+    if (phone.length > MAX_PHONE || !PHONE_RE.test(phone)) {
+      return { ok: false, error: "Telefon nemá platný formát." };
+    }
   }
 
   if (note.length > MAX_NOTE) return { ok: false, error: "Poznámka je příliš dlouhá." };
@@ -148,7 +157,7 @@ function validatePayload(input) {
   return {
     ok: true,
     spam: false,
-    data: { name, email, note, services, pack },
+    data: { name, email, phone, note, services, pack },
   };
 }
 
@@ -163,6 +172,7 @@ function formatDateTime(date) {
 function buildEmails(data, sentAt) {
   const serviceLabels = data.services.map((value) => SERVICE_LABELS[value] || value);
   const packLabel = data.pack ? PACK_LABELS[data.pack] : "";
+  const phoneText = data.phone || "—";
   const noteText = data.note || "—";
   const when = formatDateTime(sentAt);
 
@@ -171,6 +181,7 @@ function buildEmails(data, sentAt) {
     "",
     `Jméno: ${data.name}`,
     `E-mail: ${data.email}`,
+    `Telefon: ${phoneText}`,
     `Služby: ${serviceLabels.join(", ")}`,
     packLabel ? `Marketingový balíček: ${packLabel}` : null,
     `Poznámka: ${noteText}`,
@@ -182,6 +193,7 @@ function buildEmails(data, sentAt) {
   const rows = [
     ["Jméno", data.name],
     ["E-mail", data.email],
+    ["Telefon", phoneText],
     ["Služby", serviceLabels.join(", ")],
   ];
 

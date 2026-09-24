@@ -343,6 +343,7 @@ if (contactForm) {
     const payload = {
       name: contactForm.elements.Jmeno?.value.trim() ?? "",
       email: contactForm.elements.Email?.value.trim() ?? "",
+      phone: contactForm.elements.Telefon?.value.trim() ?? "",
       services: selected,
       pack,
       note: contactForm.elements.Poznamka?.value.trim() ?? "",
