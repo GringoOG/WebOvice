@@ -669,24 +669,25 @@ textarea {
 
 @media (max-width: 767px) {
   .hero-ludek {
-    object-position: center 30%;
+    object-position: 72% 30%;
     opacity: 1;
-    transform: scale(0.9);
-    transform-origin: center center;
+    /* Menší figura od pravého okraje — celý Luděk za textem, bez useknutí doprava */
+    transform: scale(0.7);
+    transform-origin: right center;
     filter: contrast(1.08) brightness(1.1) saturate(1.06);
     -webkit-mask-image: radial-gradient(
-      ellipse 72% 68% at 50% 42%,
-      #000 32%,
-      rgba(0, 0, 0, 0.92) 50%,
-      rgba(0, 0, 0, 0.5) 68%,
+      ellipse 70% 72% at 62% 40%,
+      #000 30%,
+      rgba(0, 0, 0, 0.92) 48%,
+      rgba(0, 0, 0, 0.5) 66%,
       rgba(0, 0, 0, 0.14) 84%,
       transparent 97%
     );
     mask-image: radial-gradient(
-      ellipse 72% 68% at 50% 42%,
-      #000 32%,
-      rgba(0, 0, 0, 0.92) 50%,
-      rgba(0, 0, 0, 0.5) 68%,
+      ellipse 70% 72% at 62% 40%,
+      #000 30%,
+      rgba(0, 0, 0, 0.92) 48%,
+      rgba(0, 0, 0, 0.5) 66%,
       rgba(0, 0, 0, 0.14) 84%,
       transparent 97%
     );
@@ -2592,7 +2593,7 @@ a.works-timeline-media--link:focus-visible {
   }
 
   .stack-deck.is-expanded {
-    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 3.5rem);
+    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 5rem);
   }
 
   .stack-card-label {
@@ -2611,7 +2612,25 @@ a.works-timeline-media--link:focus-visible {
     width: min(38px, 30%);
   }
 
-  /* On touch: card lift uses expanded fan position, not hover */
+  /* Tap a card → lift above the fan so label/icons are readable */
+  .stack-deck.is-expanded .stack-card.is-active {
+    transform:
+      translateX(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-step) * 0.35))
+      rotate(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-tilt) * 0.2))
+      translateY(-42px) !important;
+    z-index: 99 !important;
+    filter:
+      drop-shadow(0 0 14px color-mix(in srgb, var(--stack-accent) 28%, transparent))
+      drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
+  }
+
+  .stack-deck.is-expanded .stack-card.is-active .stack-card-face {
+    transform: scale(1.06);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      inset 0 -28px 56px color-mix(in srgb, var(--stack-accent) 14%, transparent);
+  }
+
   .stack-deck.is-expanded .stack-card:focus-visible {
     transform:
       translateX(calc((var(--card-index) - var(--fan-offset)) * var(--stack-fan-step)))

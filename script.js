@@ -474,6 +474,18 @@ if (techStackDeck) {
     });
   };
 
+  const clearActiveStackCard = () => {
+    stackCards.forEach((card) => {
+      card.classList.remove("is-active");
+    });
+  };
+
+  const activateStackCard = (card) => {
+    stackCards.forEach((item) => {
+      item.classList.toggle("is-active", item === card);
+    });
+  };
+
   const isStackExpanded = () =>
     stackDeckHovered || techStackDeck.classList.contains("is-expanded");
 
@@ -517,6 +529,7 @@ if (techStackDeck) {
     techStackDeck.classList.remove("is-expanded");
     techStackDeck.setAttribute("aria-expanded", "false");
     stackDeckHovered = false;
+    clearActiveStackCard();
     resetStackOrder();
     startStackRotation();
   };
@@ -565,18 +578,29 @@ if (techStackDeck) {
     startStackRotation();
   });
 
-  /* Touch / coarse pointer: tap toggles fan expand */
+  /* Touch / coarse pointer: tap expands; tap card lifts it for reading */
   techStackDeck.addEventListener("click", (event) => {
     if (stackFinePointer.matches) {
       return;
     }
 
     event.preventDefault();
-    if (techStackDeck.classList.contains("is-expanded")) {
-      collapseStack();
-    } else {
+    const card = event.target.closest(".stack-card");
+
+    if (!techStackDeck.classList.contains("is-expanded")) {
       expandStack();
+      if (card) {
+        activateStackCard(card);
+      }
+      return;
     }
+
+    if (card) {
+      activateStackCard(card);
+      return;
+    }
+
+    collapseStack();
   });
 
   document.addEventListener("click", (event) => {
@@ -596,6 +620,7 @@ if (techStackDeck) {
     if (stackFinePointer.matches) {
       techStackDeck.classList.remove("is-expanded");
       techStackDeck.setAttribute("aria-expanded", "false");
+      clearActiveStackCard();
     }
 
     if (!isStackExpanded()) {
