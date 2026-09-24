@@ -4331,7 +4331,8 @@ textarea {
   height: 100%;
   object-fit: contain;
   transform-origin: center center;
-  animation: rotaceLoga 15s linear infinite;
+  /* Menší ikona působí pomaleji — kratší doba ≈ stejný dojem jako footer (15s) */
+  animation: rotaceLoga 7.5s linear infinite;
   filter: drop-shadow(0 0 10px rgba(155, 111, 240, 0.35));
 }
 
