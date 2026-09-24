@@ -1971,7 +1971,7 @@ a.works-timeline-card--link:focus-visible {
 .works-timeline--expandable .works-timeline-card--expandable {
   --works-media-collapsed: 4.5rem;
   --works-media-expanded: 15.75rem;
-  --works-expand-duration: 3.2s;
+  --works-expand-duration: 1.07s;
   --works-expand-ease: cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
@@ -3859,12 +3859,14 @@ textarea {
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
 }
 
 .footer-copy {
   margin: 0;
   font-size: 0.85rem;
   color: var(--text-soft);
+  text-align: center;
 }
 
 /* ── Responsive ── */
@@ -4060,10 +4062,6 @@ textarea {
   .footer-contact-row {
     grid-template-columns: 1fr;
     gap: 0.45rem;
-  }
-
-  .footer-bottom {
-    text-align: left;
   }
 
   .accordion-trigger {

@@ -1327,7 +1327,7 @@ function primeServiceVideoPreview(video) {
   document.body.appendChild(el);
 
   const size = 22;
-  const lag = 0.1; // lower = more delay
+  const lag = 0.15; // higher = catches up faster (was 0.1)
   const offsetX = 16;
   const offsetY = 16;
 
