@@ -372,10 +372,11 @@
       "contact.form.note": "Poznámka (volitelná)",
       "contact.form.note.placeholder": "Stručně popište projekt…",
       "contact.form.submit": "Odeslat poptávku",
-      "contact.form.submitting": "Odesílám...",
-      "contact.form.success": "Díky za poptávku, brzy se ozvu!",
+      "contact.form.submitting": "Odesílám…",
+      "contact.form.success":
+        "Děkujeme. Vaše zpráva byla odeslána a brzy se vám ozveme.",
       "contact.form.error":
-        "Odeslání se nezdařilo. Zkuste to prosím znovu, nebo napište na email.",
+        "Zprávu se nepodařilo odeslat. Zkuste to prosím znovu.",
 
       "workPage.kicker": "[ MOJE PRÁCE ]",
       "workPage.title": "Moje práce",
@@ -764,8 +765,10 @@
       "contact.form.note.placeholder": "Briefly describe your project…",
       "contact.form.submit": "Send inquiry",
       "contact.form.submitting": "Sending…",
-      "contact.form.success": "Thanks for your inquiry — I’ll get back soon!",
-      "contact.form.error": "Sending failed. Please try again, or email me.",
+      "contact.form.success":
+        "Thank you. Your message has been sent and we’ll get back to you soon.",
+      "contact.form.error":
+        "We couldn’t send your message. Please try again.",
 
       "workPage.kicker": "[ MY WORK ]",
       "workPage.title": "My work",

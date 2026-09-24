@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "installCommand": "npm install --omit=dev",
   "redirects": [
     {
       "source": "/pripadove-studie",

@@ -166,6 +166,16 @@
                 <label for="note" data-i18n="contact.form.note">Poznámka (volitelná)</label>
                 <textarea id="note" name="Poznamka" data-i18n-placeholder="contact.form.note.placeholder" placeholder="Stručně popište projekt…"></textarea>
               </div>
+              <div class="form-honeypot" aria-hidden="true">
+                <label for="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
               <button class="btn btn-hero btn-hero-dark" type="submit" data-i18n="contact.form.submit">Odeslat poptávku</button>
             </form>
           </div>

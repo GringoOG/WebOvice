@@ -177,16 +177,6 @@ if (contactForm) {
   const servicesDone = document.getElementById("services-menu-done");
   const servicesToggleLabel = servicesToggle?.querySelector("[data-services-toggle-label]");
   const tForm = (key, fallback) => window.WebOviceI18n?.t?.(key) ?? fallback;
-  const SERVICE_LABEL_KEYS = {
-    ai: "contact.form.opt.ai",
-    elearning: "contact.form.opt.elearning",
-    energy: "contact.form.opt.energy",
-    apps: "contact.form.opt.apps",
-    marketing: "contact.form.opt.marketing",
-    ops: "contact.form.opt.ops",
-    web: "contact.form.opt.web",
-    other: "contact.form.opt.other",
-  };
   const PACK_LABEL_KEYS = {
     start: "pricing.packs.start.name",
     growth: "pricing.packs.growth.name",
@@ -220,7 +210,7 @@ if (contactForm) {
     if (submitBtn) {
       submitBtn.disabled = isSubmitting;
       submitBtn.textContent = isSubmitting
-        ? tForm("contact.form.submitting", "Odesílám...")
+        ? tForm("contact.form.submitting", "Odesílám…")
         : tForm("contact.form.submit", "Odeslat poptávku");
     }
   };
@@ -348,60 +338,48 @@ if (contactForm) {
     }
 
     const selected = getSelectedServices();
-    const labels = selected.map((value) => {
-      const key = SERVICE_LABEL_KEYS[value];
-      return key ? tForm(key, value) : value;
-    });
     const pack = getSelectedPack();
-    const packLabel = pack ? tForm(PACK_LABEL_KEYS[pack], pack) : "";
 
     const payload = {
-      jmeno: contactForm.elements.Jmeno?.value.trim() ?? "",
+      name: contactForm.elements.Jmeno?.value.trim() ?? "",
       email: contactForm.elements.Email?.value.trim() ?? "",
-      sluzby: labels,
-      sluzba: labels.join(", "),
-      balicek: packLabel,
-      poznamka: contactForm.elements.Poznamka?.value.trim() ?? "",
+      services: selected,
+      pack,
+      note: contactForm.elements.Poznamka?.value.trim() ?? "",
+      website: contactForm.elements.website?.value ?? "",
     };
 
     setSubmitting(true);
 
     try {
-      /*
-       * PRO PROVOZ NAOSTRO — nahraď simulaci skutečným voláním API:
-       *
-       * const response = await fetch("https://formspree.io/f/TVUJ_ID", {
-       *   method: "POST",
-       *   headers: {
-       *     "Content-Type": "application/json",
-       *     Accept: "application/json",
-       *   },
-       *   body: JSON.stringify(payload),
-       * });
-       *
-       * // Resend / vlastní backend:
-       * const response = await fetch("https://api.webovice.cz/contact", {
-       *   method: "POST",
-       *   headers: { "Content-Type": "application/json" },
-       *   body: JSON.stringify(payload),
-       * });
-       *
-       * if (!response.ok) throw new Error("Odeslání se nezdařilo.");
-       */
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!response.ok) {
+        throw new Error("Odeslání se nezdařilo.");
+      }
 
       contactForm.reset();
       syncPackVisibility();
       syncServiceValidity();
       setServicesOpen(false);
-      showStatus(tForm("contact.form.success", "Díky za poptávku, brzy se ozvu!"));
-    } catch (error) {
-      console.error("Chyba při odesílání formuláře:", error);
+      showStatus(
+        tForm(
+          "contact.form.success",
+          "Děkujeme. Vaše zpráva byla odeslána a brzy se vám ozveme."
+        )
+      );
+    } catch {
       showStatus(
         tForm(
           "contact.form.error",
-          "Odeslání se nezdařilo. Zkuste to prosím znovu, nebo napište na email."
+          "Zprávu se nepodařilo odeslat. Zkuste to prosím znovu."
         ),
         "error"
       );
