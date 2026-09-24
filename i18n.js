@@ -198,19 +198,19 @@
       "refs.title": "Co říkají klienti",
       "refs.1.quote":
         "„Dřív jsme přepisovali stavy měřidel ručně a zabralo to spoustu času. Snap Meter to zvládne rychle a spolehlivě — <strong>ušetřilo nám to desítky hodin týdně</strong> a data máme rovnou v Excelu bez chyb.\"",
-      "refs.1.name": "Miroslav Pěček",
+      "refs.1.name": "Miroslav P.",
       "refs.1.role": "technik",
-      "refs.1.author": "Miroslav Pěček (technik)",
+      "refs.1.author": "Miroslav P. (technik)",
       "refs.2.quote":
         "„Vývoj webu zabral opravdu krátkou dobu. Web funguje lépe, než jsme předpokládali. Proces školení je opravdu jednoduchý a automatizovaný pro rychlé generování certifikátů — <strong>od objednávky k certifikátu během několika chvil</strong>. WebOvice se nám také stará o marketing. Můžeme jen doporučit.\"",
-      "refs.2.name": "Karel Hrbek",
+      "refs.2.name": "Karel H.",
       "refs.2.role": "majitel, Onlineškolení.eu",
-      "refs.2.author": "Karel Hrbek (majitel) — Onlineškolení.eu",
+      "refs.2.author": "Karel H. (majitel) — Onlineškolení.eu",
       "refs.3.quote":
         "„Web Prokat Invest nám dal důvěryhodnou online prezentaci služeb. Aktualizace, drobné opravy i běžný provoz — <strong>vše řeší WebOvice</strong>, takže se můžeme soustředit na klienty.\"",
-      "refs.3.name": "Vladimír Škrlant",
+      "refs.3.name": "Vladimír Š.",
       "refs.3.role": "majitel, Web Prokat Invest",
-      "refs.3.author": "Vladimír Škrlant (majitel) — Web Prokat Invest",
+      "refs.3.author": "Vladimír Š. (majitel) — Web Prokat Invest",
       "refs.5.quote":
         "„Sofisticator nám velkým způsobem ulehčil celý proces revizí. Nejen, že je eviduje a hlídá termíny, ale automaticky generuje a posílá platné protokoly. <strong>Dvěma kliknutími letí protokol přímo ke klientovi.</strong> Přidání jakékoliv funkce je pro nás otázka jednoho telefonátu :).\"",
       "refs.5.name": "Karel H.",
@@ -589,19 +589,19 @@
       "refs.title": "What clients say",
       "refs.1.quote":
         "“We used to copy meter readings by hand and it took forever. Snap Meter does it fast and reliably — it <strong>saved us dozens of hours a week</strong>, with data straight into Excel and far fewer mistakes.”",
-      "refs.1.name": "Miroslav Pěček",
+      "refs.1.name": "Miroslav P.",
       "refs.1.role": "technician",
-      "refs.1.author": "Miroslav Pěček (technician)",
+      "refs.1.author": "Miroslav P. (technician)",
       "refs.2.quote":
         "“The website was built really quickly. It works better than we expected. Training is simple and automated for fast certificate generation — <strong>from order to certificate in moments</strong>. WebOvice also handles our marketing. We can only recommend them.”",
-      "refs.2.name": "Karel Hrbek",
+      "refs.2.name": "Karel H.",
       "refs.2.role": "owner, Onlineškolení.eu",
-      "refs.2.author": "Karel Hrbek (owner) — Onlineškolení.eu",
+      "refs.2.author": "Karel H. (owner) — Onlineškolení.eu",
       "refs.3.quote":
         "“The Prokat Invest website gave us a credible online presentation of our services. Updates, small fixes, and day-to-day upkeep — <strong>WebOvice handles it all</strong>, so we can focus on clients.”",
-      "refs.3.name": "Vladimír Škrlant",
+      "refs.3.name": "Vladimír Š.",
       "refs.3.role": "owner, Prokat Invest website",
-      "refs.3.author": "Vladimír Škrlant (owner) — Prokat Invest website",
+      "refs.3.author": "Vladimír Š. (owner) — Prokat Invest website",
       "refs.5.quote":
         "“Sofisticator made our whole revision process much easier. It not only records them and tracks deadlines, but also automatically generates and sends valid protocols. <strong>With two clicks, the protocol goes straight to the client.</strong> Adding any feature is just one phone call for us :).”",
       "refs.5.name": "Karel H.",

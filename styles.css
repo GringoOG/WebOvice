@@ -3851,12 +3851,14 @@ textarea {
 }
 
 .footer-email {
-  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
   color: #fff;
-  word-break: break-word;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
   transition: color 0.2s ease;
 }
 
