@@ -2582,18 +2582,25 @@ a.works-timeline-media--link:focus-visible {
     --stack-fan-step: 34px;
     --stack-fan-tilt: 4deg;
     --stack-fan-arc: 1.2px;
+    /* Méně černého místa pod vějířem před další sekcí */
+    padding-bottom: clamp(1.1rem, 3.5vw, 1.75rem);
+  }
+
+  .stack-header {
+    /* Víc vzduchu mezi nadpisem a kartami */
+    margin-bottom: clamp(3.5rem, 9vw, 5rem);
   }
 
   .stack-deck {
     width: min(100%, 100vw);
     max-width: 100%;
-    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 1.5rem);
+    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 0.35rem);
     padding: var(--stack-glow-pad) 0.5rem;
     cursor: pointer;
   }
 
   .stack-deck.is-expanded {
-    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 5rem);
+    height: calc(var(--stack-card-h) + var(--stack-glow-pad) * 2 + 4.25rem);
   }
 
   .stack-card-label {
@@ -2646,6 +2653,11 @@ a.works-timeline-media--link:focus-visible {
     --stack-card-h: 162px;
     --stack-fan-step: 28px;
     --stack-fan-tilt: 3.6deg;
+    padding-bottom: 1rem;
+  }
+
+  .stack-header {
+    margin-bottom: 3.75rem;
   }
 }
 
@@ -2897,8 +2909,9 @@ a.works-timeline-media--link:focus-visible {
   }
 
   .refs-showcase-pin {
-    padding-top: calc(var(--nav-height) + 1.5rem);
-    padding-bottom: 1.75rem;
+    /* Bez zbytečné mezery pod tech stackem (nav-height tu na mobilu není potřeba) */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 
