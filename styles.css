@@ -112,12 +112,17 @@ textarea {
   align-items: center;
   flex-shrink: 1;
   min-width: 0;
-  transition: transform 0.28s ease;
 }
 
-.brand:hover,
-.brand:focus-visible {
-  transform: scale(1.06);
+@media (hover: hover) and (pointer: fine) {
+  .brand {
+    transition: transform 0.28s ease;
+  }
+
+  .brand:hover,
+  .brand:focus-visible {
+    transform: scale(1.06);
+  }
 }
 
 .brand-logo {
@@ -3941,6 +3946,10 @@ textarea {
     height: calc(var(--nav-height) - 22px);
   }
 
+  .hero-title {
+    font-size: clamp(2rem, 8.5vw, 2.5rem);
+  }
+
   .hero-cta-row {
     flex-direction: column;
     align-items: stretch;
@@ -3961,6 +3970,22 @@ textarea {
   .hero-quote {
     max-width: none;
     align-self: stretch;
+  }
+
+  .footer-email {
+    font-size: clamp(0.88rem, 4.2vw, 1.05rem);
+  }
+
+  .form-card,
+  .form-grid {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .form-checkboxes,
+  .form-packs {
+    max-width: 100%;
+    overflow-x: auto;
   }
 }
 
@@ -4063,8 +4088,8 @@ textarea {
   }
 
   .footer-logo.container-loga {
-    width: min(260px, 68vw);
-    height: min(260px, 68vw);
+    width: min(200px, 58vw);
+    height: min(200px, 58vw);
   }
 
   .footer-contact {

@@ -793,6 +793,13 @@ function primeServiceVideoPreview(video) {
     return;
   }
 
+  const markVisible = (el) => {
+    if (el.classList.contains("is-visible")) {
+      return;
+    }
+    el.classList.add("is-visible");
+  };
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -800,17 +807,37 @@ function primeServiceVideoPreview(video) {
           return;
         }
 
-        entry.target.classList.add("is-visible");
+        markVisible(entry.target);
         observer.unobserve(entry.target);
       });
     },
     {
-      rootMargin: "0px 0px -18% 0px",
-      threshold: 0.18,
+      /* threshold 0: tall mobile sections (e.g. #sluzby) can never reach 0.18 ratio */
+      rootMargin: "0px 0px -8% 0px",
+      threshold: 0,
     }
   );
 
   revealEls.forEach((el) => observer.observe(el));
+
+  /* Fallback: IO can miss tall sections during programmatic/emulated scroll */
+  const revealFallback = () => {
+    const vh = window.innerHeight || 1;
+    revealEls.forEach((el) => {
+      if (el.classList.contains("is-visible")) {
+        return;
+      }
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.92 && rect.bottom > vh * 0.05) {
+        markVisible(el);
+        observer.unobserve(el);
+      }
+    });
+  };
+
+  window.addEventListener("scroll", revealFallback, { passive: true });
+  window.addEventListener("resize", revealFallback);
+  revealFallback();
 })();
 
 /* ── Scroll timelines — fade-in + progress line (works + refs) ── */
@@ -845,8 +872,9 @@ function primeServiceVideoPreview(video) {
         });
       },
       {
-        rootMargin: "0px 0px -12% 0px",
-        threshold: 0.28,
+        /* Items can be tall on mobile; any intersection is enough */
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0,
       }
     );
 

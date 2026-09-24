@@ -333,7 +333,7 @@
       "faq.title": "Časté dotazy",
       "faq.q1": "Jaké služby nabízíte?",
       "faq.a1":
-        "Weby na míru, interní nástroje a aplikace, provoz a údržbu, automatizaci procesů (AI), e-learning a online marketing (Google Ads, SEO, sociální sítě, e-mail, analytika, obsah). Díky zázemí v energetice nabízím i technické systémy — kotelny, TČ, FVE a chlazení.",
+        "Weby na míru, interní nástroje a aplikace, provoz a údržbu, automatizaci procesů (AI), e-learning a online marketing (Google Ads, SEO, sociální sítě, e-mail, analytika, obsah). Díky zázemí v energetice přináším i technické know-how — kotelny, TČ, FVE a chlazení — přímo do digitálních řešení.",
       "faq.q2": "Jak dlouho trvá projekt?",
       "faq.a2":
         "Záleží na rozsahu — jednoduchý web nebo automatizaci zvládneme během pár dnů až týdnů, větší projekty po domluvě.",
@@ -342,7 +342,7 @@
         "Ano — od 1&nbsp;000&nbsp;Kč měsíčně nebo od 10&nbsp;000&nbsp;Kč ročně. Starám se o aktualizace, monitoring a drobné úpravy.",
       "faq.q4": "Umíte AI automatizaci na míru mé firmě?",
       "faq.a4":
-        "Ano — viz projekt Snap Meter výše. Analyzuji váš proces, navrhnu automatizaci a nasadím ji s minimem chyb.",
+        "Ano — například Snap Meter (z fotek měřidel rovnou do Excelu, viz Moje práce). Analyzuji váš proces, navrhnu automatizaci a nasadím ji s minimem chyb.",
       "faq.q5": "Pracujete i na dálku?",
       "faq.a5": "Ano — většinu projektů řeším remote, odkudkoli. Osobní setkání po domluvě.",
 
@@ -724,7 +724,7 @@
       "faq.title": "FAQ",
       "faq.q1": "What services do you offer?",
       "faq.a1":
-        "Custom websites, internal tools and apps, operations and maintenance, process automation (AI), e-learning, and online marketing (Google Ads, SEO, social, email, analytics, content). With an energy background I also offer technical systems — boiler rooms, heat pumps, PV, and cooling.",
+        "Custom websites, internal tools and apps, operations and maintenance, process automation (AI), e-learning, and online marketing (Google Ads, SEO, social, email, analytics, content). With an energy background I also bring technical know-how — boiler rooms, heat pumps, PV, and cooling — straight into digital solutions.",
       "faq.q2": "How long does a project take?",
       "faq.a2":
         "It depends on scope — a simple site or automation can take a few days to weeks; larger projects by agreement.",
@@ -733,7 +733,7 @@
         "Yes — from CZK&nbsp;1,000/month or CZK&nbsp;10,000/year. I handle updates, monitoring, and small tweaks.",
       "faq.q4": "Can you build custom AI automation for my company?",
       "faq.a4":
-        "Yes — see the Snap Meter project above. I analyze your process, design the automation, and deploy it with minimal errors.",
+        "Yes — for example Snap Meter (meter photos straight into Excel; see My work). I analyze your process, design the automation, and deploy it with minimal errors.",
       "faq.q5": "Do you work remotely?",
       "faq.a5": "Yes — most projects are remote, from anywhere. In-person meetings by arrangement.",
 
