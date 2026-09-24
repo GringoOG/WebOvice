@@ -1311,3 +1311,75 @@ function primeServiceVideoPreview(video) {
   window.addEventListener("load", draw, { once: true });
   draw();
 })();
+
+/* ── Cursor logo trail (lags behind the pointer) ── */
+(() => {
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (!finePointer.matches || reducedMotion.matches) {
+    return;
+  }
+
+  const el = document.createElement("div");
+  el.className = "cursor-logo";
+  el.setAttribute("aria-hidden", "true");
+  el.innerHTML = '<img src="assets/logo-cursor.png" alt="" width="22" height="21" decoding="async" />';
+  document.body.appendChild(el);
+
+  const size = 22;
+  const lag = 0.1; // lower = more delay
+  const offsetX = 16;
+  const offsetY = 16;
+
+  let targetX = -100;
+  let targetY = -100;
+  let currentX = -100;
+  let currentY = -100;
+  let visible = false;
+  let rafId = 0;
+
+  const render = () => {
+    currentX += (targetX - currentX) * lag;
+    currentY += (targetY - currentY) * lag;
+    el.style.transform = `translate3d(${currentX - size / 2}px, ${currentY - size / 2}px, 0)`;
+    rafId = window.requestAnimationFrame(render);
+  };
+
+  const onMove = (event) => {
+    targetX = event.clientX + offsetX;
+    targetY = event.clientY + offsetY;
+    if (!visible) {
+      visible = true;
+      currentX = targetX;
+      currentY = targetY;
+      el.classList.add("is-visible");
+    }
+  };
+
+  const onLeave = () => {
+    visible = false;
+    el.classList.remove("is-visible");
+  };
+
+  window.addEventListener("pointermove", onMove, { passive: true });
+  document.addEventListener("mouseleave", onLeave);
+  rafId = window.requestAnimationFrame(render);
+
+  const tearDown = () => {
+    window.cancelAnimationFrame(rafId);
+    window.removeEventListener("pointermove", onMove);
+    document.removeEventListener("mouseleave", onLeave);
+    el.remove();
+  };
+
+  finePointer.addEventListener("change", (event) => {
+    if (!event.matches) {
+      tearDown();
+    }
+  });
+  reducedMotion.addEventListener("change", (event) => {
+    if (event.matches) {
+      tearDown();
+    }
+  });
+})();
