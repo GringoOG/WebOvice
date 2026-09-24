@@ -1142,6 +1142,7 @@ function primeServiceVideoPreview(video) {
   video.setAttribute("muted", "");
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
+  video.setAttribute("autoplay", "");
 
   let savedTime = 0;
   let pausedByBrowser = false;
@@ -1151,7 +1152,10 @@ function primeServiceVideoPreview(video) {
       return;
     }
     if (video.paused) {
-      video.play().catch(() => {});
+      const playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {});
+      }
     }
   };
 
@@ -1198,10 +1202,16 @@ function primeServiceVideoPreview(video) {
     pausedByBrowser = false;
   });
 
-  // Spusť hned, jakmile jsou data — ať je pohyb vidět po načtení stránky.
+  // Spusť co nejdřív — i při prvních bufferech, ne až po celém souboru.
+  video.addEventListener("loadedmetadata", tryPlayNow);
   video.addEventListener("loadeddata", tryPlayNow);
   video.addEventListener("canplay", tryPlayNow);
   video.addEventListener("canplaythrough", tryPlayNow);
+  video.addEventListener("progress", () => {
+    if (video.buffered.length > 0) {
+      tryPlayNow();
+    }
+  });
 
   // NEpauzovat při odscrollování. Když prohlížeč video stejně pozastaví,
   // při návratu / keepalive jen play() bez resetu na začátek.
@@ -1225,13 +1235,23 @@ function primeServiceVideoPreview(video) {
     }
   });
 
+  window.addEventListener("pageshow", resumeWithoutRestart);
+  window.addEventListener("focus", resumeWithoutRestart);
+
   window.setInterval(() => {
     if (!document.hidden) {
       resumeWithoutRestart();
     }
   }, 2000);
 
-  resumeWithoutRestart();
+  try {
+    video.load();
+  } catch {
+    /* ignore */
+  }
+  tryPlayNow();
+  window.setTimeout(tryPlayNow, 120);
+  window.setTimeout(tryPlayNow, 400);
 })();
 
 /* ── Why-flow connectors: 1 svislá nit od loga + vodorovné větve ── */
