@@ -2991,8 +2991,39 @@ a.works-timeline-media--link:focus-visible {
 }
 
 .pricing-packages {
-  margin-top: 2rem;
-  padding-top: 0.5rem;
+  margin-top: 0.35rem;
+  padding-top: 0.25rem;
+}
+
+.pricing-grid--quad > .pricing-packages {
+  grid-column: 1 / -1;
+}
+
+/*
+  Mobil (1 sloupec): DOM pořadí = Marketing → balíčky → AI.
+  Od 2 sloupců výš: balíčky až pod všemi 4 kartami, ať nerozbijí mřížku.
+*/
+@media (min-width: 640px) {
+  .pricing-grid--quad > .price-card:nth-child(1) {
+    order: 1;
+  }
+
+  .pricing-grid--quad > .price-card:nth-child(2) {
+    order: 2;
+  }
+
+  .pricing-grid--quad > .price-card:nth-child(3) {
+    order: 3;
+  }
+
+  .pricing-grid--quad > .price-card:nth-child(5) {
+    order: 4;
+  }
+
+  .pricing-grid--quad > .pricing-packages {
+    order: 5;
+    margin-top: 1.25rem;
+  }
 }
 
 .pricing-packages[hidden] {
@@ -4191,7 +4222,8 @@ textarea {
   transition:
     opacity 1.45s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+  /* Zabraňuje scroll-anchoring skokům, když se sekce právě objeví */
+  overflow-anchor: none;
 }
 
 .reveal.is-visible {
@@ -4212,11 +4244,43 @@ textarea {
   transition:
     opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-anchor: none;
 }
 
 .reveal-stagger.is-visible > * {
   opacity: 1;
   transform: translateY(0);
+}
+
+/*
+  Mobil / in-app browsery (Messenger, Instagram…): překlad Y + pozdní IO
+  způsoboval „přeskočení“ kolem konce Ceníku → O nás. Necháme jen fade.
+*/
+@media (max-width: 1024px) {
+  .reveal {
+    transform: none;
+    transition: opacity 0.7s ease-out;
+  }
+
+  .reveal.is-visible {
+    transform: none;
+  }
+
+  .reveal-stagger > * {
+    transform: none;
+    transition: opacity 0.55s ease-out;
+  }
+
+  .reveal-stagger.is-visible > * {
+    transform: none;
+  }
+
+  .reveal-stagger > *:nth-child(1) { transition-delay: 0.04s; }
+  .reveal-stagger > *:nth-child(2) { transition-delay: 0.08s; }
+  .reveal-stagger > *:nth-child(3) { transition-delay: 0.12s; }
+  .reveal-stagger > *:nth-child(4) { transition-delay: 0.16s; }
+  .reveal-stagger > *:nth-child(5) { transition-delay: 0.2s; }
+  .reveal-stagger > *:nth-child(6) { transition-delay: 0.24s; }
 }
 
 @media (prefers-reduced-motion: reduce) {

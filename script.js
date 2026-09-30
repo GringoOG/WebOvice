@@ -875,8 +875,12 @@ function primeServiceVideoPreview(video) {
       });
     },
     {
-      /* threshold 0: tall mobile sections (e.g. #sluzby) can never reach 0.18 ratio */
-      rootMargin: "0px 0px -8% 0px",
+      /*
+        Expand root so sections (esp. #omne after Ceník) fade in before they
+        hit the fold. Negative bottom margin delayed reveal on some WebViews
+        and felt like a scroll skip.
+      */
+      rootMargin: "20% 0px 25% 0px",
       threshold: 0,
     }
   );
@@ -891,7 +895,8 @@ function primeServiceVideoPreview(video) {
         return;
       }
       const rect = el.getBoundingClientRect();
-      if (rect.top < vh * 0.92 && rect.bottom > vh * 0.05) {
+      /* Reveal earlier while approaching — matches expanded rootMargin */
+      if (rect.top < vh * 1.15 && rect.bottom > -vh * 0.1) {
         markVisible(el);
         observer.unobserve(el);
       }
