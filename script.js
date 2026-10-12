@@ -970,6 +970,132 @@ function primeServiceVideoPreview(video) {
   initScrollTimeline("worksTimeline", "worksTimelineProgress", "[data-timeline-item]");
 })();
 
+/* ── Moje práce — kategorie → projekty ── */
+(() => {
+  const categoriesRoot = document.getElementById("worksCategories");
+  const resultsRoot = document.getElementById("worksResults");
+  const timeline = document.getElementById("worksTimeline");
+  const backBtn = document.getElementById("worksBackToCategories");
+  const labelEl = document.getElementById("worksActiveCategoryLabel");
+  if (!categoriesRoot || !resultsRoot || !timeline) {
+    return;
+  }
+
+  const categoryBtns = Array.from(categoriesRoot.querySelectorAll("[data-works-category]"));
+  const items = Array.from(timeline.querySelectorAll("[data-timeline-item][data-works-cats]"));
+  const t = (key, fallback) => window.WebOviceI18n?.t?.(key) ?? fallback;
+
+  const categoryTitle = (id) =>
+    t(`works.cat.${id}.title`, id);
+
+  const syncCounts = () => {
+    categoryBtns.forEach((btn) => {
+      const id = btn.getAttribute("data-works-category");
+      const count = items.filter((item) =>
+        (item.getAttribute("data-works-cats") || "")
+          .split(/\s+/)
+          .includes(id)
+      ).length;
+      const countEl = btn.querySelector("[data-works-count]");
+      const labelSpan = btn.querySelector(".works-category-count [data-i18n]");
+      if (countEl) {
+        countEl.textContent = String(count);
+      }
+      if (labelSpan) {
+        const key = count === 1 ? "works.cat.countOne" : "works.cat.count";
+        labelSpan.setAttribute("data-i18n", key);
+        labelSpan.textContent = t(key, count === 1 ? "projekt" : "projekty");
+      }
+      btn.hidden = count === 0;
+    });
+  };
+
+  const showCategories = () => {
+    categoriesRoot.hidden = false;
+    resultsRoot.hidden = true;
+    resultsRoot.removeAttribute("data-active-category");
+    categoryBtns.forEach((btn) => btn.setAttribute("aria-pressed", "false"));
+    items.forEach((item) => {
+      item.hidden = false;
+    });
+    if (window.history?.replaceState) {
+      const url = new URL(window.location.href);
+      url.hash = "";
+      window.history.replaceState(null, "", `${url.pathname}${url.search}`);
+    }
+  };
+
+  const showCategory = (categoryId, { updateHash = true } = {}) => {
+    if (!categoryId) {
+      showCategories();
+      return;
+    }
+
+    const matchBtn = categoryBtns.find(
+      (btn) => btn.getAttribute("data-works-category") === categoryId
+    );
+    if (!matchBtn || matchBtn.hidden) {
+      showCategories();
+      return;
+    }
+
+    categoriesRoot.hidden = true;
+    resultsRoot.hidden = false;
+    resultsRoot.setAttribute("data-active-category", categoryId);
+    categoryBtns.forEach((btn) => {
+      btn.setAttribute(
+        "aria-pressed",
+        String(btn.getAttribute("data-works-category") === categoryId)
+      );
+    });
+
+    if (labelEl) {
+      labelEl.textContent = categoryTitle(categoryId);
+    }
+
+    items.forEach((item) => {
+      const cats = (item.getAttribute("data-works-cats") || "").split(/\s+/);
+      item.hidden = !cats.includes(categoryId);
+    });
+
+    if (updateHash && window.history?.replaceState) {
+      const url = new URL(window.location.href);
+      url.hash = categoryId;
+      window.history.replaceState(null, "", `${url.pathname}${url.search}#${categoryId}`);
+    }
+
+    resultsRoot.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  categoryBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      showCategory(btn.getAttribute("data-works-category"));
+    });
+  });
+
+  backBtn?.addEventListener("click", () => {
+    showCategories();
+    categoriesRoot.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  window.addEventListener("webovice:langchange", () => {
+    syncCounts();
+    const active = categoryBtns.find((btn) => btn.getAttribute("aria-pressed") === "true");
+    if (active && labelEl) {
+      labelEl.textContent = categoryTitle(active.getAttribute("data-works-category"));
+    }
+  });
+
+  syncCounts();
+
+  const initial = (window.location.hash || "").replace(/^#/, "").trim();
+  if (initial && categoryBtns.some((btn) => btn.getAttribute("data-works-category") === initial)) {
+    showCategory(initial, { updateHash: false });
+  } else {
+    showCategories();
+  }
+})();
+
 /* ── Refs showcase — infinite marquee + drag ── */
 (() => {
   const section = document.getElementById("reference");

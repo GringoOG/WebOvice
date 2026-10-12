@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#06060c" />
     <meta
       name="description"
-      content="Moje práce WebOvice — Prokat Invest, onlineskolení.eu, WebOvice, Snap Meter, AndeStay Hostel a Refugio de Mery."
+      content="Moje práce WebOvice — weby i aplikace: Prokat Invest, Sofisticator, Snap Meter, onlineskolení.eu a další."
     />
     <title>Moje práce — WebOvice</title>
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -83,8 +83,47 @@
           <div class="section-head center">
             <p class="section-kicker" data-i18n="workPage.kicker">[ MOJE PRÁCE ]</p>
             <h1 class="section-title" data-i18n="workPage.title">Moje práce</h1>
-            <p class="section-text" data-i18n="works.intro">Cesta měřitelných výsledků — od automatizace po weby a e-learning.</p>
+            <p class="section-text" data-i18n="works.intro">Nejdřív vyberte kategorii — pak uvidíte konkrétní projekty.</p>
           </div>
+
+          <div class="works-categories" id="worksCategories" role="list">
+            <button
+              type="button"
+              class="works-category-card"
+              role="listitem"
+              data-works-category="weby"
+              aria-pressed="false"
+            >
+              <span class="works-category-kicker" data-i18n="works.cat.weby.kicker">[ WEBY ]</span>
+              <span class="works-category-title" data-i18n="works.cat.weby.title">Weby</span>
+              <span class="works-category-count"><span data-works-count>5</span> <span data-i18n="works.cat.count">projekty</span></span>
+              <span class="works-category-cta" data-i18n="works.cat.open">Zobrazit projekty →</span>
+            </button>
+            <button
+              type="button"
+              class="works-category-card"
+              role="listitem"
+              data-works-category="aplikace"
+              aria-pressed="false"
+            >
+              <span class="works-category-kicker" data-i18n="works.cat.aplikace.kicker">[ APLIKACE ]</span>
+              <span class="works-category-title" data-i18n="works.cat.aplikace.title">Aplikace</span>
+              <span class="works-category-count"><span data-works-count>2</span> <span data-i18n="works.cat.count">projekty</span></span>
+              <span class="works-category-cta" data-i18n="works.cat.open">Zobrazit projekty →</span>
+            </button>
+          </div>
+
+          <div class="works-results" id="worksResults" hidden>
+            <div class="works-results-bar">
+              <button type="button" class="works-results-back" id="worksBackToCategories">
+                <span aria-hidden="true">←</span>
+                <span data-i18n="works.cat.back">Zpět ke kategoriím</span>
+              </button>
+              <p class="works-results-label">
+                <span data-i18n="works.cat.showing">Kategorie:</span>
+                <strong id="worksActiveCategoryLabel"></strong>
+              </p>
+            </div>
 
           <div class="works-timeline works-timeline--expandable" id="worksTimeline">
             <div class="works-timeline-track" aria-hidden="true">
@@ -92,7 +131,7 @@
             </div>
 
             <div class="works-timeline-col works-timeline-col--left">
-              <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
+              <article class="works-timeline-item works-timeline-item--left" data-timeline-item data-works-cats="weby">
                 <div class="works-timeline-card works-timeline-card--expandable">
                   <div class="works-timeline-body">
                     <span class="work-index">[ 01 ]</span>
@@ -123,7 +162,7 @@
                 <span class="works-timeline-node" aria-hidden="true"></span>
               </article>
 
-              <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
+              <article class="works-timeline-item works-timeline-item--left" data-timeline-item data-works-cats="weby">
                 <div class="works-timeline-card works-timeline-card--expandable">
                   <div class="works-timeline-body">
                     <span class="work-index">[ 03 ]</span>
@@ -152,10 +191,43 @@
                 <span class="works-timeline-node" aria-hidden="true"></span>
               </article>
 
-              <article class="works-timeline-item works-timeline-item--left" data-timeline-item>
-                <div class="works-timeline-card works-timeline-card--expandable">
+              <article class="works-timeline-item works-timeline-item--left" data-timeline-item data-works-cats="aplikace">
+                <div class="works-timeline-card works-timeline-card--expandable works-timeline-card--app">
                   <div class="works-timeline-body">
                     <span class="work-index">[ 05 ]</span>
+                    <p class="works-stat"><span class="works-stat-value" data-i18n="works.item5.statValue">Pár kliků</span> <span data-i18n="works.item5.stat">od revize po protokol</span></p>
+                    <h3 data-i18n="works.item5.title">Sofisticator — správa a generování revizí</h3>
+                    <p data-i18n-html="works.item5.body">
+                      Od revize až po protokol k zákazníkovi —
+                      <strong>vše automatizované na pár kliknutí</strong>. Evidence, termíny i výstupy na jednom místě.
+                    </p>
+                    <p class="works-features-label" data-i18n="works.features.label">Klíčové funkce</p>
+                    <ul class="works-features">
+                      <li data-i18n="works.item5.f1">Evidence revizí na jednom místě</li>
+                      <li data-i18n="works.item5.f2">Automatické hlídání termínů</li>
+                      <li data-i18n="works.item5.f3">Generování platných protokolů</li>
+                      <li data-i18n="works.item5.f4">Odeslání protokolu klientovi na 2 kliky</li>
+                      <li data-i18n="works.item5.f5">Přehled stavu a historie zakázek</li>
+                      <li data-i18n="works.item5.f6">Rozšiřitelné funkce na míru firmy</li>
+                    </ul>
+                    <div class="work-tags">
+                      <span>App</span>
+                      <span>Python</span>
+                      <span>Enterprise</span>
+                    </div>
+                  </div>
+                  <div class="works-timeline-media">
+                    <img src="assets/solution-5.jpg" alt="" width="1024" height="578" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+                <span class="works-timeline-branch" aria-hidden="true"></span>
+                <span class="works-timeline-node" aria-hidden="true"></span>
+              </article>
+
+              <article class="works-timeline-item works-timeline-item--left" data-timeline-item data-works-cats="weby">
+                <div class="works-timeline-card works-timeline-card--expandable">
+                  <div class="works-timeline-body">
+                    <span class="work-index">[ 06 ]</span>
                     <p class="works-stat"><span class="works-stat-value" data-i18n="works.item6.statValue">QloApps</span> <span data-i18n="works.item6.stat">+ systém ve vývoji</span></p>
                     <h3 data-i18n="works.item6.title">Web AndeStay Hostel</h3>
                     <p data-i18n-html="works.item6.body">
@@ -185,7 +257,7 @@
             </div>
 
             <div class="works-timeline-col works-timeline-col--right">
-              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
+              <article class="works-timeline-item works-timeline-item--right" data-timeline-item data-works-cats="weby">
                 <span class="works-timeline-node" aria-hidden="true"></span>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
                 <div class="works-timeline-card works-timeline-card--expandable">
@@ -216,10 +288,10 @@
                 </div>
               </article>
 
-              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
+              <article class="works-timeline-item works-timeline-item--right" data-timeline-item data-works-cats="aplikace">
                 <span class="works-timeline-node" aria-hidden="true"></span>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
-                <div class="works-timeline-card works-timeline-card--expandable">
+                <div class="works-timeline-card works-timeline-card--expandable works-timeline-card--app">
                   <div class="works-timeline-body">
                     <span class="work-index">[ 04 ]</span>
                     <p class="works-stat"><span class="works-stat-value">90&nbsp;%</span> <span data-i18n="works.item1.stat">úspora času</span></p>
@@ -228,6 +300,15 @@
                       Pro energetiky i kohokoli, kdo přepisuje hodnoty z fotek: AI je přečte a
                       <strong>zapíše rovnou do Excelu</strong> — méně ruční práce, méně chyb.
                     </p>
+                    <p class="works-features-label" data-i18n="works.features.label">Klíčové funkce</p>
+                    <ul class="works-features">
+                      <li data-i18n="works.item1.f1">OCR / AI čtení hodnot z fotek</li>
+                      <li data-i18n="works.item1.f2">Automatický zápis přímo do Excelu</li>
+                      <li data-i18n="works.item1.f3">Kontrola a validace naměřených hodnot</li>
+                      <li data-i18n="works.item1.f4">Méně chyb než při ručním přepisu</li>
+                      <li data-i18n="works.item1.f5">Výrazná úspora času techniků</li>
+                      <li data-i18n="works.item1.f6">Použitelné i mimo energetiku</li>
+                    </ul>
                     <div class="work-tags">
                       <span>Python</span>
                       <span>AI / OCR</span>
@@ -240,12 +321,12 @@
                 </div>
               </article>
 
-              <article class="works-timeline-item works-timeline-item--right" data-timeline-item>
+              <article class="works-timeline-item works-timeline-item--right" data-timeline-item data-works-cats="weby">
                 <span class="works-timeline-node" aria-hidden="true"></span>
                 <span class="works-timeline-branch" aria-hidden="true"></span>
                 <div class="works-timeline-card works-timeline-card--expandable">
                   <div class="works-timeline-body">
-                    <span class="work-index">[ 06 ]</span>
+                    <span class="work-index">[ 07 ]</span>
                     <p class="works-stat"><span class="works-stat-value" data-i18n="works.item7.statValue">QloApps</span> <span data-i18n="works.item7.stat">+ systém ve vývoji</span></p>
                     <h3 data-i18n="works.item7.title">Web Refugio de Mery</h3>
                     <p data-i18n-html="works.item7.body">
@@ -271,6 +352,7 @@
                 </div>
               </article>
             </div>
+          </div>
           </div>
         </div>
       </section>
