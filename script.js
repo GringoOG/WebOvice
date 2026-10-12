@@ -1053,9 +1053,21 @@ function primeServiceVideoPreview(video) {
       labelEl.textContent = categoryTitle(categoryId);
     }
 
+    const visible = [];
     items.forEach((item) => {
       const cats = (item.getAttribute("data-works-cats") || "").split(/\s+/);
-      item.hidden = !cats.includes(categoryId);
+      const match = cats.includes(categoryId);
+      item.hidden = !match;
+      if (match) {
+        visible.push(item);
+      }
+    });
+
+    visible.forEach((item, index) => {
+      const indexEl = item.querySelector(".work-index");
+      if (indexEl) {
+        indexEl.textContent = `[ ${String(index + 1).padStart(2, "0")} ]`;
+      }
     });
 
     if (updateHash && window.history?.replaceState) {
