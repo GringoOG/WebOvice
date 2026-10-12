@@ -2061,6 +2061,30 @@ a.works-timeline-media--link:focus-visible {
   }
 }
 
+/* Logo media (např. Snap Meter): vždy celé logo, bez ořezu */
+.works-timeline-media--logo {
+  background: #fff !important;
+}
+
+.works-timeline--expandable .works-timeline-card--expandable .works-timeline-media--logo {
+  aspect-ratio: 16 / 10.4;
+}
+
+.works-timeline--expandable .works-timeline-card--expandable .works-timeline-media--logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .works-timeline--expandable .works-timeline-card--expandable:hover .works-timeline-media--logo,
+  .works-timeline--expandable .works-timeline-card--expandable:focus-within .works-timeline-media--logo {
+    max-height: min(var(--works-media-expanded), 34rem);
+  }
+}
+
 .works-timeline-body {
   padding: 1.35rem 1.4rem;
 }
