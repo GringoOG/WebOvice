@@ -2419,22 +2419,28 @@ a.works-timeline-media--link:focus-visible {
 }
 
 /* ── WEBY: timeline cards (compact, wrap-safe) ── */
+.page-works .works-timeline-card--web .works-timeline-body {
+  padding-inline-end: clamp(2.5rem, 3.5vw, 3.1rem);
+}
+
 .page-works .works-timeline-card--web .works-card-title,
 .page-works .works-timeline-card--web h3 {
   margin: 0 0 0.65rem;
   width: 100%;
   max-width: 100%;
-  font-size: clamp(1.25rem, 1rem + 0.85vw, 1.75rem);
+  font-size: clamp(1.05rem, 0.82rem + 0.7vw, 1.45rem);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
   background: none;
   -webkit-background-clip: unset;
   background-clip: unset;
   color: var(--text);
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  overflow-wrap: normal;
   word-break: normal;
-  hyphens: auto;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 .page-works .works-timeline-card--web .works-card-desc {
@@ -2599,7 +2605,7 @@ a.works-timeline-media--link:focus-visible {
 
   .page-works .works-timeline-card--web .works-card-title,
   .page-works .works-timeline-card--web h3 {
-    font-size: clamp(1.25rem, 5.2vw, 1.55rem);
+    font-size: clamp(0.98rem, 3.8vw, 1.2rem);
   }
 
   .page-works .works-timeline-card--app .works-card-title,
