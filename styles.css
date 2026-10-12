@@ -2277,7 +2277,7 @@ a.works-timeline-media--link:focus-visible {
   margin-top: auto;
 }
 
-/* Aplikace: hezčí čitelnost funkcí v jednom sloupci */
+/* Aplikace: stacked case-study cards */
 .works-results[data-active-category="aplikace"] .works-timeline {
   display: flex;
   flex-direction: column;
@@ -2295,7 +2295,7 @@ a.works-timeline-media--link:focus-visible {
 }
 
 .works-results[data-active-category="aplikace"] .works-timeline-item {
-  width: min(100%, 720px);
+  width: min(100%, 960px);
   margin-inline: auto;
   opacity: 1;
   transform: none;
@@ -2303,6 +2303,15 @@ a.works-timeline-media--link:focus-visible {
 
 .works-results[data-active-category="aplikace"] .works-timeline-card--app {
   min-height: auto;
+}
+
+.page-works .works-results[data-active-category="aplikace"] .works-timeline {
+  padding-left: 0;
+  width: 100%;
+}
+
+.page-works .works-results[data-active-category="aplikace"] .works-timeline-item {
+  padding-left: 0;
 }
 
 @media (min-width: 640px) {
@@ -2314,6 +2323,197 @@ a.works-timeline-media--link:focus-visible {
 
   .works-results[data-active-category="aplikace"] .works-features {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── Moje práce: case-study typography & hierarchy ── */
+.page-works .works-timeline-item--left .works-timeline-card,
+.page-works .works-timeline-item--right .works-timeline-card {
+  text-align: left;
+}
+
+.page-works .works-timeline-item--left .work-tags,
+.page-works .works-timeline-item--right .work-tags {
+  justify-content: flex-start;
+}
+
+.page-works .works-timeline-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: clamp(1.35rem, 2.8vw, 2.1rem) clamp(1.25rem, 3vw, 2.25rem);
+  padding-inline-end: clamp(3.25rem, 5vw, 4.25rem);
+}
+
+.page-works .work-index {
+  position: absolute;
+  top: clamp(1.2rem, 2.5vw, 1.85rem);
+  right: clamp(1.15rem, 2.8vw, 2rem);
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(230, 230, 240, 0.42);
+  line-height: 1;
+}
+
+.page-works .works-stat {
+  margin: 0 0 0.85rem;
+  max-width: min(100%, 42rem);
+  font-size: clamp(0.8125rem, 0.76rem + 0.2vw, 0.9375rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.45;
+  color: var(--text-soft);
+  text-wrap: pretty;
+}
+
+.page-works .works-stat-value {
+  color: color-mix(in srgb, var(--accent) 72%, white);
+}
+
+.page-works .works-card-title,
+.page-works .works-timeline-card h3 {
+  margin: 0 0 0.85rem;
+  max-width: min(100%, 38rem);
+  font-size: clamp(1.75rem, 1.15rem + 2.1vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+.page-works .works-card-name {
+  display: block;
+  color: var(--text);
+}
+
+.page-works .works-card-lead {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--accent) 55%, #e8e4f8);
+}
+
+.page-works .works-card-desc,
+.page-works .works-timeline-body > p.works-card-desc {
+  margin: 0;
+  max-width: min(100%, 46rem);
+  font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--text-muted);
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.page-works .works-card-desc strong {
+  color: rgba(245, 245, 247, 0.92);
+  font-weight: 600;
+}
+
+.page-works .works-features-label {
+  margin: 1.55rem 0 0.7rem;
+  font-size: clamp(0.72rem, 0.68rem + 0.15vw, 0.8rem);
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  line-height: 1.3;
+}
+
+.page-works .works-features {
+  width: 100%;
+  max-width: min(100%, 46rem);
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 1.75rem;
+  row-gap: 0.15rem;
+}
+
+.page-works .works-features li {
+  position: relative;
+  margin: 0;
+  padding: 0.55rem 0 0.55rem 1.2rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(235, 235, 245, 0.86);
+  font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.page-works .works-features li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.page-works .works-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05em;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: var(--gradient);
+  box-shadow: 0 0 10px rgba(155, 111, 240, 0.28);
+}
+
+.page-works .work-tags {
+  margin-top: 1.45rem;
+  gap: 0.5rem;
+}
+
+.page-works .works-timeline-card--app .work-tags {
+  margin-top: 1.45rem;
+}
+
+.page-works .work-tags span {
+  padding: 0.32rem 0.75rem;
+  font-size: 0.76rem;
+  color: rgba(230, 230, 240, 0.78);
+}
+
+@media (min-width: 640px) {
+  .page-works .works-features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+    row-gap: 0.2rem;
+  }
+
+  .page-works .works-features li + li {
+    border-top: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .page-works .works-timeline-body {
+    padding-inline-end: clamp(1.25rem, 4vw, 1.5rem);
+    padding-top: clamp(2.4rem, 7vw, 2.75rem);
+  }
+
+  .page-works .work-index {
+    top: 1.05rem;
+    right: 1.1rem;
+  }
+
+  .page-works .works-card-title,
+  .page-works .works-timeline-card h3 {
+    font-size: clamp(1.55rem, 6.2vw, 2rem);
   }
 }
 

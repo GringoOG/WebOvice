@@ -158,6 +158,8 @@
       "works.cat.showing": "Kategorie:",
       "works.features.label": "Klíčové funkce",
       "works.item1.stat": "úspora času",
+      "works.item1.name": "Snap Meter",
+      "works.item1.lead": "Z fotek do Excelu",
       "works.item1.title": "Snap Meter — z fotek do Excelu",
       "works.item1.body":
         "Pro energetiky i kohokoli, kdo přepisuje hodnoty z fotek: AI je přečte a <strong>zapíše rovnou do Excelu</strong> — méně ruční práce, méně chyb.",
@@ -181,6 +183,8 @@
         "Firemní web pro energetiku — <strong>profesionální prezentace služeb</strong> a rychlý kontakt.",
       "works.item5.statValue": "Pár kliků",
       "works.item5.stat": "od revize po protokol",
+      "works.item5.name": "Sofisticator",
+      "works.item5.lead": "Správa a generování revizí",
       "works.item5.title": "Sofisticator — správa a generování revizí",
       "works.item5.body":
         "Od revize až po protokol k zákazníkovi — <strong>vše automatizované na pár kliknutí</strong>. Evidence, termíny i výstupy na jednom místě.",
@@ -573,6 +577,8 @@
       "works.cat.showing": "Category:",
       "works.features.label": "Key features",
       "works.item1.stat": "time saved",
+      "works.item1.name": "Snap Meter",
+      "works.item1.lead": "From photos to Excel",
       "works.item1.title": "Snap Meter — from photos to Excel",
       "works.item1.body":
         "For energy companies and anyone who types values from photos: AI reads them and <strong>writes straight into Excel</strong> — less manual work, fewer mistakes.",
@@ -596,6 +602,8 @@
         "Corporate site for energy — <strong>professional service presentation</strong> and fast contact.",
       "works.item5.statValue": "A few clicks",
       "works.item5.stat": "revision to protocol",
+      "works.item5.name": "Sofisticator",
+      "works.item5.lead": "Revision management & generation",
       "works.item5.title": "Sofisticator — revision management & generation",
       "works.item5.body":
         "From revision to the customer protocol — <strong>fully automated in a few clicks</strong>. Records, deadlines, and outputs in one place.",
