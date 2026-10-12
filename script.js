@@ -975,8 +975,6 @@ function primeServiceVideoPreview(video) {
   const categoriesRoot = document.getElementById("worksCategories");
   const resultsRoot = document.getElementById("worksResults");
   const timeline = document.getElementById("worksTimeline");
-  const backBtn = document.getElementById("worksBackToCategories");
-  const labelEl = document.getElementById("worksActiveCategoryLabel");
   if (!categoriesRoot || !resultsRoot || !timeline) {
     return;
   }
@@ -984,9 +982,6 @@ function primeServiceVideoPreview(video) {
   const categoryBtns = Array.from(categoriesRoot.querySelectorAll("[data-works-category]"));
   const items = Array.from(timeline.querySelectorAll("[data-timeline-item][data-works-cats]"));
   const t = (key, fallback) => window.WebOviceI18n?.t?.(key) ?? fallback;
-
-  const categoryTitle = (id) =>
-    t(`works.cat.${id}.title`, id);
 
   const syncCounts = () => {
     categoryBtns.forEach((btn) => {
@@ -1010,8 +1005,7 @@ function primeServiceVideoPreview(video) {
     });
   };
 
-  const showCategories = () => {
-    categoriesRoot.hidden = false;
+  const clearCategory = () => {
     resultsRoot.hidden = true;
     resultsRoot.removeAttribute("data-active-category");
     categoryBtns.forEach((btn) => btn.setAttribute("aria-pressed", "false"));
@@ -1025,9 +1019,9 @@ function primeServiceVideoPreview(video) {
     }
   };
 
-  const showCategory = (categoryId, { updateHash = true } = {}) => {
+  const showCategory = (categoryId, { updateHash = true, scroll = true } = {}) => {
     if (!categoryId) {
-      showCategories();
+      clearCategory();
       return;
     }
 
@@ -1035,11 +1029,10 @@ function primeServiceVideoPreview(video) {
       (btn) => btn.getAttribute("data-works-category") === categoryId
     );
     if (!matchBtn || matchBtn.hidden) {
-      showCategories();
+      clearCategory();
       return;
     }
 
-    categoriesRoot.hidden = true;
     resultsRoot.hidden = false;
     resultsRoot.setAttribute("data-active-category", categoryId);
     categoryBtns.forEach((btn) => {
@@ -1048,10 +1041,6 @@ function primeServiceVideoPreview(video) {
         String(btn.getAttribute("data-works-category") === categoryId)
       );
     });
-
-    if (labelEl) {
-      labelEl.textContent = categoryTitle(categoryId);
-    }
 
     const visible = [];
     items.forEach((item) => {
@@ -1076,7 +1065,9 @@ function primeServiceVideoPreview(video) {
       window.history.replaceState(null, "", `${url.pathname}${url.search}#${categoryId}`);
     }
 
-    resultsRoot.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (scroll) {
+      resultsRoot.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   categoryBtns.forEach((btn) => {
@@ -1085,26 +1076,17 @@ function primeServiceVideoPreview(video) {
     });
   });
 
-  backBtn?.addEventListener("click", () => {
-    showCategories();
-    categoriesRoot.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
   window.addEventListener("webovice:langchange", () => {
     syncCounts();
-    const active = categoryBtns.find((btn) => btn.getAttribute("aria-pressed") === "true");
-    if (active && labelEl) {
-      labelEl.textContent = categoryTitle(active.getAttribute("data-works-category"));
-    }
   });
 
   syncCounts();
 
   const initial = (window.location.hash || "").replace(/^#/, "").trim();
   if (initial && categoryBtns.some((btn) => btn.getAttribute("data-works-category") === initial)) {
-    showCategory(initial, { updateHash: false });
+    showCategory(initial, { updateHash: false, scroll: false });
   } else {
-    showCategories();
+    clearCategory();
   }
 })();
 

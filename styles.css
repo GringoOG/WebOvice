@@ -2219,46 +2219,8 @@ a.works-timeline-media--link:focus-visible {
   color: transparent;
 }
 
-.works-results-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.85rem 1.25rem;
-  margin-bottom: 1.75rem;
-}
-
-.works-results-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text);
-  font: inherit;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.works-results-back:hover,
-.works-results-back:focus-visible {
-  border-color: rgba(155, 111, 240, 0.45);
-  background: rgba(155, 111, 240, 0.08);
-  outline: none;
-}
-
-.works-results-label {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-.works-results-label strong {
-  color: var(--text);
-  font-weight: 650;
+.works-results {
+  margin-top: 0.5rem;
 }
 
 .works-timeline-item[hidden] {
