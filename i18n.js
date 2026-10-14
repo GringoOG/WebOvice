@@ -181,6 +181,7 @@
       "works.item3.title": "Web Prokat Invest",
       "works.item3.body":
         "Firemní web pro energetiku — <strong>profesionální prezentace služeb</strong> a rychlý kontakt.",
+      "works.item5.linkLabel": "Otevřít Sofisticator",
       "works.item5.statValue": "Pár kliků",
       "works.item5.stat": "od revize po protokol",
       "works.item5.name": "Sofisticator",
@@ -600,6 +601,7 @@
       "works.item3.title": "Prokat Invest website",
       "works.item3.body":
         "Corporate site for energy — <strong>professional service presentation</strong> and fast contact.",
+      "works.item5.linkLabel": "Open Sofisticator",
       "works.item5.statValue": "A few clicks",
       "works.item5.stat": "revision to protocol",
       "works.item5.name": "Sofisticator",
