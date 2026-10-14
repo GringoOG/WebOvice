@@ -2673,7 +2673,7 @@ a.works-timeline-media--link:focus-visible {
     margin-top: 0;
   }
 
-  /* Keep visual order 01–06 on mobile (L1, R1, L2, R2, L3, R3) */
+  /* Keep visual order on mobile (L1, R1, L2, R2, L3, R3, L4, R4) */
   .works-timeline-col--left .works-timeline-item:nth-child(1) {
     order: 1;
   }
@@ -2691,6 +2691,12 @@ a.works-timeline-media--link:focus-visible {
   }
   .works-timeline-col--right .works-timeline-item:nth-child(3) {
     order: 6;
+  }
+  .works-timeline-col--left .works-timeline-item:nth-child(4) {
+    order: 7;
+  }
+  .works-timeline-col--right .works-timeline-item:nth-child(4) {
+    order: 8;
   }
 
   /* On phones: always show full project image (no hover-peek collapse). */

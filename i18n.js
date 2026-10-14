@@ -39,7 +39,7 @@
         "Kontakt WebOvice — napište, co potřebujete. Ozvu se s návrhem řešení webu, appky, AI nebo marketingu.",
       "meta.work.title": "Moje práce — WebOvice",
       "meta.work.description":
-        "Moje práce WebOvice — weby i aplikace: Prokat Invest, Sofisticator, Snap Meter, onlineskolení.eu a další.",
+        "Moje práce WebOvice — weby i aplikace: Prokat Invest, Kulebrani, Sofisticator, Snap Meter, onlineskolení.eu a další.",
       "meta.about.title": "O nás — WebOvice",
       "meta.about.description":
         "O nás — WebOvice. Technologie, které dávají smysl: weby, aplikace, automatizace a digitální růst firem.",
@@ -213,9 +213,15 @@
       "works.item8.title": "Web WebOvice",
       "works.item8.body":
         "Prezentační web agentury — <strong>služby, práce i kontakt</strong> na jednom místě, rychlé načítání a bilingvní obsah.",
+      "works.item9.linkLabel": "Otevřít web Kulebrani",
+      "works.item9.statValue": "Online",
+      "works.item9.stat": "interaktivní pozvánka",
+      "works.item9.title": "Web Kulebrani",
+      "works.item9.body": "Online interaktivní pozvánka na svatbu.",
       "works.tag.websites": "Weby",
       "works.tag.energy": "Energetika",
       "works.tag.travel": "Turistika",
+      "works.tag.wedding": "Svatba",
       "works.cta": "Všechny moje práce",
 
       "stack.title": "Můj TECH STACK",
@@ -459,7 +465,7 @@
         "Contact WebOvice — tell me what you need. I’ll reply with a proposed solution for a website, app, AI, or marketing.",
       "meta.work.title": "My work — WebOvice",
       "meta.work.description":
-        "WebOvice work — websites and apps: Prokat Invest, Sofisticator, Snap Meter, onlineskolení.eu and more.",
+        "WebOvice work — websites and apps: Prokat Invest, Kulebrani, Sofisticator, Snap Meter, onlineskolení.eu and more.",
       "meta.about.title": "About — WebOvice",
       "meta.about.description":
         "About WebOvice. Technology that makes sense: websites, apps, automation, and digital growth for businesses.",
@@ -633,9 +639,15 @@
       "works.item8.title": "WebOvice website",
       "works.item8.body":
         "Agency presentation site — <strong>services, work, and contact</strong> in one place, fast loading and bilingual content.",
+      "works.item9.linkLabel": "Open Kulebrani website",
+      "works.item9.statValue": "Online",
+      "works.item9.stat": "interactive invitation",
+      "works.item9.title": "Kulebrani website",
+      "works.item9.body": "An online interactive wedding invitation.",
       "works.tag.websites": "Websites",
       "works.tag.energy": "Energy",
       "works.tag.travel": "Travel",
+      "works.tag.wedding": "Wedding",
       "works.cta": "All my work",
 
       "stack.title": "My TECH STACK",
