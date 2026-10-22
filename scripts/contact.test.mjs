@@ -1,8 +1,8 @@
 /**
  * Contact API validation tests — no Resend network calls.
- * Run: node api/contact.test.mjs
+ * Run: npm run test:contact
  */
-import { validatePayload } from "../api/contact.js";
+import { validatePayload, __testIsTrustedHost } from "../api/contact.js";
 
 let passed = 0;
 let failed = 0;
@@ -90,6 +90,13 @@ console.log("Contact validation tests\n");
 {
   const r = validatePayload({ ...valid, phone: "" });
   assert(r.ok && r.data.phone === "", "empty phone allowed");
+}
+
+{
+  assert(__testIsTrustedHost("www.webovice.eu") === true, "trusted www host");
+  assert(__testIsTrustedHost("webovice.eu") === true, "trusted apex host");
+  assert(__testIsTrustedHost("evil.example.com") === false, "reject foreign host");
+  assert(__testIsTrustedHost("webovice-attacker.vercel.app") === false, "reject arbitrary webovice*.vercel.app");
 }
 
 console.log(`\n${passed} passed, ${failed} failed`);

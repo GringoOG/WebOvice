@@ -41,6 +41,37 @@ const PACK_LABELS = {
 
 const ALLOWED_HOSTS = new Set(["www.webovice.eu", "webovice.eu", "localhost", "127.0.0.1"]);
 
+/** Best-effort per-isolate rate limit (not a shared store across serverless instances). */
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 8;
+const rateBuckets = new Map();
+
+function clientIp(req) {
+  const forwarded = String(req.headers["x-forwarded-for"] || "")
+    .split(",")[0]
+    .trim();
+  if (forwarded) return forwarded.slice(0, 64);
+  const realIp = String(req.headers["x-real-ip"] || "").trim();
+  if (realIp) return realIp.slice(0, 64);
+  return "unknown";
+}
+
+function allowRequestRate(ip) {
+  const now = Date.now();
+  let bucket = rateBuckets.get(ip);
+  if (!bucket || now - bucket.start >= RATE_WINDOW_MS) {
+    bucket = { start: now, count: 0 };
+    rateBuckets.set(ip, bucket);
+  }
+  bucket.count += 1;
+  if (rateBuckets.size > 2_000) {
+    for (const [key, value] of rateBuckets) {
+      if (now - value.start >= RATE_WINDOW_MS) rateBuckets.delete(key);
+    }
+  }
+  return bucket.count <= RATE_MAX;
+}
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -120,9 +151,19 @@ async function parseBody(req) {
 function isTrustedHost(hostname) {
   if (!hostname) return false;
   if (ALLOWED_HOSTS.has(hostname)) return true;
-  // Vercel preview / deployment URLs for this project
-  if (hostname.endsWith(".vercel.app") && hostname.startsWith("webovice")) return true;
+
+  // Exact deployment / branch URLs injected by Vercel for this project only.
+  const vercelHosts = [process.env.VERCEL_URL, process.env.VERCEL_BRANCH_URL]
+    .filter(Boolean)
+    .map((value) => String(value).replace(/^https?:\/\//, "").toLowerCase());
+  if (vercelHosts.includes(hostname.toLowerCase())) return true;
+
   return false;
+}
+
+/** Exported for unit tests. */
+export function __testIsTrustedHost(hostname) {
+  return isTrustedHost(hostname);
 }
 
 function isTrustedRequest(req) {
@@ -319,6 +360,10 @@ export default async function handler(req, res) {
 
   if (!isTrustedRequest(req)) {
     return json(res, 403, { ok: false, error: "Forbidden" });
+  }
+
+  if (!allowRequestRate(clientIp(req))) {
+    return json(res, 429, { ok: false, error: "Too many requests" });
   }
 
   const contentType = String(req.headers["content-type"] || "")

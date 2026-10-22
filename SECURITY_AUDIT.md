@@ -1,137 +1,139 @@
 # WebOvice Security Audit
 
-**Date:** 2026-09-24  
-**Scope:** Public production site `https://www.webovice.eu` (Vercel static + serverless `/api/contact`)  
-**Push / production deploy:** not performed as part of this audit
-
-## Security posture
-
-**BEFORE → AFTER**
-
-- Public static marketing site with a contact form that already used Resend server-side, honeypot, HTML escaping, and basic validation — but **no HTTP security headers / CSP**, **no Origin checks**, **no Content-Type enforcement**, **no apex→www redirect in repo config**, **no security.txt**, and **transitive npm audit findings** in the Vite toolchain.
-- After this work: hardened contact API, security headers + usable CSP, apex redirect, dependency audit clean, validation tests, and an explicit manual checklist for items that cannot be fixed in git alone.
+**Date:** 2026-10-22  
+**Scope:** Public production site `https://www.webovice.eu` (Vercel static HTML/CSS/JS + serverless `POST /api/contact`)  
+**Auditor role:** Principal / AppSec review against OWASP ASVS-oriented checklist  
+**Push / production deploy:** **not** performed as part of this audit (requires explicit approval)
 
 ---
 
-## Inventory (Phase 1)
+## Executive Summary
 
-| Item | Finding |
+WebOvice is a **static marketing site** with a single serverless contact endpoint (Resend). There is **no application authentication, database, Supabase runtime, file upload, or PHP application runtime** in this repository or in the verified Vercel production response path.
+
+| Area | Status |
 | --- | --- |
-| Framework | **Not** Next.js / React app for the public site. Static HTML/CSS/JS. Vite + React only for `works-studio` build artifact. |
-| Runtime | Vercel static hosting + Node serverless (`api/contact.js`), project Node 24.x |
-| Dependencies | `resend` (runtime), `react` / `react-dom` / `framer-motion` (works-studio), Vite toolchain (dev) |
-| Public pages | `/`, `/kontakt`, `/moje-prace`, `/o-nas`, `/404` |
-| API | `POST /api/contact` only |
-| Forms | Contact form (`#contact-form`) on `index.html` + `kontakt.html` |
-| ENV | `RESEND_API_KEY`, `CONTACT_EMAIL` (Vercel; not in git) |
-| Third parties | Resend, Google Fonts, Framer CDN avatar image |
-| Analytics | None found |
-| Cookies | None set by app (only `localStorage` for language) |
-| DB / auth / uploads | None |
-| Redirects | `/pripadove-studie` → `/moje-prace`; **added** apex `webovice.eu` → `www.webovice.eu` |
-| Middleware | None |
+| Overall posture | **Hardened for the attack surface that exists** |
+| Critical app findings (repo / production path) | **None confirmed** |
+| PHP2Shell (CVE-2026-109618 / CVE-2026-109619) | **N/A to production WebOvice** — no PHP SAPI in deploy. Local Homebrew PHP CLI on the workstation is **unpatched (8.5.9)** and should be upgraded separately. |
+| High findings remediated this pass | npm `vite` / `source-map-js`; overly broad Vercel preview Origin allow-list; missing deploy ignore for local `CN/` business docs |
+| Residual high/medium | Contact spam without distributed rate limit / CAPTCHA; CSP `style-src 'unsafe-inline'`; platform `Access-Control-Allow-Origin: *` on static assets |
 
-### Threat model (anonymous attacker)
-
-Realistic attacks:
-
-1. **Spam / abuse of `/api/contact`** → email flood via Resend  
-2. **Malicious payload** in form fields → XSS in notification email (if not escaped) / header injection in Subject/Reply-To  
-3. **CSRF-ish cross-site POST** to send spam mail from victim browsers  
-4. **Clickjacking** the marketing UI  
-5. **Missing security headers** / mixed content  
-6. **Dependency / supply-chain** issues in build toolchain  
-7. **Secret leakage** via client bundle or git  
-
-Not applicable (no feature surface): SSRF from user URLs, file upload attacks, session cookie theft, authenticated IDOR, admin panels.
+**Do not claim 100% security.** This audit covers the reachable code and configuration that were inspectable locally plus live header checks against production.
 
 ---
 
-## Findings
+## Technology Inventory
+
+| Item | Verified finding |
+| --- | --- |
+| Public app | Static HTML/CSS/JS (`index.html`, `kontakt.html`, `moje-prace.html`, `o-nas.html`, `404.html`) |
+| API | `api/contact.js` — Node serverless on Vercel |
+| Frameworks | **Not** Next.js / PHP app. Vite + React only for `assets/works-studio` build artifact |
+| Node (local) | v25.9.0 / npm 11.12.1 |
+| Runtime deps | `resend@6.28.1`, `react@19.3.0`, `react-dom@19.3.0`, `framer-motion` (works-studio) |
+| Dev toolchain | `vite@7.3.7` (patched this pass), `@vitejs/plugin-react@4.7.0` |
+| Hosting | Vercel (`server: Vercel`), HTTPS enforced, apex→www redirect in `vercel.json` |
+| ENV (production) | `RESEND_API_KEY`, `CONTACT_EMAIL` — Vercel only; **not** in git |
+| Third parties | Resend, Google Fonts, Framer CDN image host (CSP allow-list) |
+| Auth / sessions / cookies (app) | None |
+| Database / Supabase | **Not used** (Supabase appears only as a marketing “stack” icon) |
+| Analytics | None found |
+| PHP in repo | **Zero** `.php` files |
+| PHP on workstation | Homebrew CLI **PHP 8.5.9** present — **not** used by this site’s Vercel deploy |
+
+### PHP2Shell assessment (CVE-2026-109618, CVE-2026-109619)
+
+Official sources consulted (2026-10-22):
+
+- https://www.php.net/archive/2026.php (21 Oct 2026 advisory)
+- CISA alert on critical PHP RCE (“php2shell”)
+- Patched releases: **8.5.12 / 8.4.27 / 8.3.36 / 8.2.35**
+
+| Check | Result |
+| --- | --- |
+| PHP files in WebOvice repo | None |
+| Vercel production responses | Node/static (`server: Vercel`); contact API is Node handler |
+| Container / Dockerfile PHP | None in repo |
+| Local `php -v` | **8.5.9** (CLI) — **below** patched 8.5.12 |
+
+**Conclusion:** Production WebOvice is **not exposed** to php2shell via this codebase. Local PHP CLI should still be upgraded (`brew upgrade php` or equivalent) for workstation hygiene. IoC hunting on production PHP workers is **N/A**.
+
+---
+
+## Vulnerability Register
 
 ### CRITICAL
 
-_None found in repository code or reachable attack surface after review._
-
-No Resend API key or `CONTACT_EMAIL` values were present in tracked git content. Local `.vercel/.env.production.local` is gitignored and contains Vercel platform vars (including `VERCEL_OIDC_TOKEN`) — not committed.
+_None confirmed in WebOvice production application path._
 
 ---
 
 ### HIGH
 
-#### H1 — Missing HTTP security headers / CSP
-- **Problem:** Responses had no HSTS, CSP, `frame-ancestors`, `nosniff`, Referrer-Policy, or Permissions-Policy.
-- **Why:** Enables clickjacking, MIME sniffing, weaker HTTPS posture, freer XSS exfil if an XSS ever appears.
-- **Where:** Site-wide Vercel responses (`vercel.json` previously had no `headers`).
-- **Scenario:** Attacker iframes `webovice.eu` or exploits a future XSS more easily.
-- **Fixed:** Yes — `vercel.json` `headers` + CSP (see below).
-- **How:** Security headers on `/(.*)`; `Cache-Control: no-store` on `/api/(.*)`; HSTS without preload.
-- **Remaining:** Verify headers on production after deploy (`curl -I https://www.webovice.eu`).
+#### H1 — Transitive / toolchain npm vulnerabilities (`vite`, `source-map-js`)
+- **Severity:** High (npm advisory classification)
+- **Component:** `package-lock.json` / Vite build toolchain
+- **Description:** `npm audit` reported high issues in `vite@7.3.6` and `source-map-js@1.2.1`.
+- **Impact:** Supply-chain / local-dev DoS and Windows editor command issues; **low direct exploitability** on the static production site (Vite is not the production request path).
+- **Remediation:** `npm audit fix` (no `--force`) → `vite@7.3.7`, `source-map-js@1.2.2`.
+- **Verification:** `npm audit` → **0 vulnerabilities** (2026-10-22).
+- **Status:** **REMEDIATED AND TESTED**
 
-#### H2 — Contact API missing Origin / Content-Type gates
-- **Problem:** Any client could POST JSON without browser Origin checks; Content-Type was not required.
-- **Why:** Raises cross-site form abuse and odd clients posting unexpected content types.
-- **Where:** `api/contact.js`
-- **Scenario:** Malicious page triggers a victim browser to POST to `/api/contact` (spam), or non-JSON bodies confuse parsers.
-- **Fixed:** Yes — trusted Origin/Referer host allow-list; `415` unless `application/json`; production rejects missing Origin/Referer.
-- **Remaining:** Optional distributed rate limit / Turnstile (manual).
+#### H2 — Overly broad trusted Origin for `*.vercel.app`
+- **Severity:** High (abuse / spam relay potential)
+- **Component:** `api/contact.js` `isTrustedHost`
+- **Description:** Previous logic accepted any host matching `hostname.startsWith("webovice") && endsWith(".vercel.app")`, which can include unrelated Vercel projects if such a subdomain exists.
+- **Impact:** Cross-site POST from a crafted preview host could abuse Resend if Origin checks passed.
+- **Remediation:** Allow only `www.webovice.eu` / `webovice.eu` / localhost, plus **exact** `VERCEL_URL` / `VERCEL_BRANCH_URL`.
+- **Verification:** Unit tests reject `webovice-attacker.vercel.app`.
+- **Status:** **REMEDIATED AND TESTED**
 
-#### H3 — Transitive npm vulnerabilities (Vite toolchain)
-- **Problem:** `npm audit` reported high/moderate issues in `postcss`, `nanoid`, `browserslist`, `baseline-browser-mapping`.
-- **Why:** Supply-chain / build-tool risk (not directly in the contact serverless path).
-- **Where:** `package-lock.json` / Vite transitive deps.
-- **Scenario:** Compromised or vulnerable build tooling; low direct exploitability on the static production site.
-- **Fixed:** Yes — `npm audit fix` (no `--force`) → **0 vulnerabilities**.
-- **Remaining:** Keep periodic `npm audit`.
+#### H3 — Local business documents (`CN/`) not excluded from deploy ignore
+- **Severity:** High **if** accidentally deployed (document exposure)
+- **Component:** workspace `CN/*.pdf`, `CN/*.xlsx` (untracked locally)
+- **Description:** Client/CN spreadsheets and PDFs lived under the project root without `.vercelignore` / `.gitignore` entries.
+- **Impact:** Accidental `vercel deploy` of the whole tree could publish sensitive files.
+- **Remediation:** Added `CN/` (and related local junk) to `.vercelignore` and `.gitignore`.
+- **Verification:** Config present; files remain untracked.
+- **Status:** **MITIGATED** (docs never committed; ignore rules now present)
 
 ---
 
 ### MEDIUM
 
-#### M1 — Header / CRLF injection via form fields
-- **Problem:** Name/email could theoretically contain CR/LF before use in Subject / Reply-To.
-- **Why:** Header injection if a downstream mail API concatenated unsafely.
-- **Where:** `api/contact.js`
-- **Scenario:** Name `Foo\r\nBcc: attacker@…` in subject construction.
-- **Fixed:** Yes — control-char sanitization; subject sanitized; email lowercased + format check.
-- **Remaining:** None for this vector.
+#### M1 — Contact form spam / email flood
+- **Component:** `POST /api/contact` + Resend
+- **Description:** No shared distributed rate limit or CAPTCHA. Per-isolate Map rate limit added as best-effort only.
+- **Remediation this pass:** Best-effort IP rate limit (8 req / 60s / isolate) + existing honeypot + Origin gates.
+- **Remaining:** Upstash/KV rate limit and/or Turnstile (manual).
+- **Status:** **MITIGATED** (not fully eliminated)
 
-#### M2 — Apex host not redirected in repo config
-- **Problem:** `webovice.eu` → `www.webovice.eu` was not declared in `vercel.json` (may already exist in dashboard).
-- **Why:** Split cookie/canonical identity; weaker consistent HTTPS host story.
-- **Where:** `vercel.json`
-- **Fixed:** Yes — host-conditioned permanent redirect apex → www.
-- **Remaining:** Confirm in Vercel Domains that both hosts are attached and HTTPS is valid (manual).
+#### M2 — CSP requires `style-src 'unsafe-inline'`
+- **Component:** `vercel.json` CSP + many inline `style=""` in HTML
+- **Impact:** Weaker style-based XSS mitigation if script XSS ever appears.
+- **Status:** **MITIGATED** (scripts still `'self'` only; larger HTML refactor deferred)
 
-#### M3 — No `security.txt`
-- **Problem:** No documented vulnerability disclosure contact.
-- **Fixed:** Yes — `.well-known/security.txt` with `mailto:webovice@gmail.com` (public site email).
-- **Remaining:** Keep Expires date updated yearly.
+#### M3 — Static responses send `Access-Control-Allow-Origin: *`
+- **Component:** Observed on production `curl -I https://www.webovice.eu/`
+- **Impact:** Any origin can read static response bodies via XHR (HTML is public anyway). Lower risk than credentialed API CORS misconfig.
+- **Remediation this pass:** API route headers set `Access-Control-Allow-Origin: https://www.webovice.eu`.
+- **Remaining:** Confirm whether platform-level ACAO on static assets can be narrowed in Vercel dashboard.
+- **Status:** **MITIGATED** for `/api/*`; static wildcard **NOT VERIFIED** as fully removable without dashboard access
 
 ---
 
 ### LOW
 
-#### L1 — CSP requires `style-src 'unsafe-inline'`
-- **Problem:** Many legitimate inline `style=""` attributes (stack cards, refs footers).
-- **Why:** Slightly weaker XSS mitigation for style-based attacks.
-- **Where:** HTML templates.
-- **Fixed:** Partial — CSP still blocks inline/external scripts except `'self'`; `object-src 'none'`; `frame-ancestors 'none'`.
-- **Remaining:** Optional refactor of inline styles → classes to drop `'unsafe-inline'` (larger design change; not done).
+#### L1 — `innerHTML` for i18n HTML fragments
+- **Component:** `i18n.js` `data-i18n-html`
+- **Notes:** Values are static developer dictionary strings, not visitor input.
+- **Status:** **ACCEPTED RISK** with rule: never feed URL/API data into these keys.
 
-#### L2 — `innerHTML` in i18n / UI cloning
-- **Problem:** `i18n.js` uses `innerHTML` for `data-i18n-html` keys; `script.js` clones card `innerHTML` and sets a fixed logo img string.
-- **Why:** XSS if those strings ever became user-controlled.
-- **Where:** `i18n.js`, `script.js`
-- **Scenario:** Today strings are static developer-controlled dictionary entries — **not** visitor input.
-- **Fixed:** No code change (would be security theatre / break intentional `<strong>` markup). Documented.
-- **Remaining:** Never pipe URL params or API data into `data-i18n-html`.
-
-#### L3 — No distributed rate limiting
-- **Problem:** Serverless instances cannot share an in-memory counter.
-- **Why:** Determined bot can still spam Resend within account limits.
-- **Fixed:** Not with a fake Map. Honeypot retained; Origin checks added.
-- **Remaining:** OPTIONAL Upstash / Vercel KV / Cloudflare Turnstile / Resend account limits (manual checklist).
+#### L2 — Local PHP CLI unpatched (8.5.9)
+- **Component:** Developer workstation Homebrew PHP — **outside** WebOvice deploy.
+- **Action:** Upgrade to ≥ 8.5.12.
+- **Status:** **REQUIRES MANUAL ACTION** (workstation)
 
 ---
 
@@ -139,98 +141,81 @@ No Resend API key or `CONTACT_EMAIL` values were present in tracked git content.
 
 | ID | Note |
 | --- | --- |
-| I1 | No auth, sessions, cookies (app), DB, uploads, SSRF sinks, analytics, open redirects with user input. |
-| I2 | `rel="noopener noreferrer"` already present on `target="_blank"` links. |
-| I3 | Resend FROM is hard-coded `WebOvice <poptavky@webovice.eu>`; visitor email only as validated `replyTo`. |
-| I4 | `.env*` and `.vercel` are gitignored; no `.env` files in repo root. |
-| I5 | `localStorage` only stores UI language key. |
-| I6 | Production contact responses already used `Cache-Control: no-store` + generic errors (no Resend details). |
-| I7 | `SECURITY_AUDIT.md` is excluded from Vercel deploy via `.vercelignore` `*.md` (not publicly served). |
-| I8 | GET on `/api/contact` returns 405 (covered by handler). |
+| I1 | Live headers verified: HSTS, CSP, `X-Frame-Options: DENY`, `nosniff`, Referrer-Policy, Permissions-Policy. |
+| I2 | `security.txt` present and served (`Expires: 2027-09-24`). |
+| I3 | No secrets found in tracked source (`RESEND_API_KEY` / `CONTACT_EMAIL` only via env). |
+| I4 | No app auth, cookies, DB, uploads, SSRF sinks, or admin UI. |
+| I5 | Contact API returns generic errors; no stack traces / Resend details to clients. |
+| I6 | `SECURITY_AUDIT.md` excluded from Vercel via `.vercelignore` `*.md`. |
 
 ---
 
-## What was implemented in code
+## Remediation Log (this pass)
 
-1. **`vercel.json`** — security headers, CSP, HSTS (no preload), apex→www redirect, API `no-store`
-2. **`api/contact.js`** — Origin/Referer allow-list, Content-Type `application/json`, stronger sanitization, CRLF hardening, exported `validatePayload`
-3. **`.well-known/security.txt`** — disclosure contact
-4. **Canonical URLs** on main HTML pages → `https://www.webovice.eu/...`
-5. **`npm audit fix`** — lockfile clean (0 vulns)
-6. **`scripts/contact.test.mjs`** + `npm run test:contact`
-7. **`.vercelignore`** — exclude `scripts/` from deploy
-
----
-
-## Dependency audit result
-
-```
-npm audit  →  found 0 vulnerabilities
-```
-
-(after non-force `npm audit fix`)
-
-Production serverless path primarily needs `resend`. Remaining React/Vite packages are for the works-studio build.
+| Change | Reason |
+| --- | --- |
+| `npm audit fix` → vite 7.3.7, source-map-js 1.2.2 | Clear high npm advisories |
+| `api/contact.js` Origin allow-list tightened | Prevent arbitrary `webovice*.vercel.app` trust |
+| `api/contact.js` best-effort IP rate limit | Soft abuse reduction |
+| `vercel.json` API `Access-Control-Allow-Origin` | Narrow API CORS |
+| `.vercelignore` / `.gitignore` add `CN/` (+ related) | Prevent accidental publish of local docs |
+| `scripts/contact.test.mjs` host tests | Regression for Origin host policy |
+| `SECURITY_AUDIT.md` rewritten | Full 2026-10-22 register |
 
 ---
 
-## Tests / build
+## Tests executed (actual results)
 
 | Check | Result |
 | --- | --- |
-| `npm run test:contact` | 14 passed |
+| `npm run test:contact` | **18 passed, 0 failed** |
 | `node --check api/contact.js` | OK |
-| `npm run build` (Vite works-studio) | OK |
-| lint / typecheck | N/A (no project ESLint/TS setup) |
-
-Handler-level checks (GET, Origin, Content-Type) are enforced in `api/contact.js`; full HTTP integration against Resend was **not** run (by design — no live spam emails).
-
----
-
-## MANUAL SECURITY CHECKLIST
-
-Do these outside the repo before/after deploy:
-
-### Vercel
-
-- [ ] Confirm Production env: `RESEND_API_KEY`, `CONTACT_EMAIL=webovice@gmail.com`
-- [ ] Confirm Preview env either has the same vars or is acceptable for test sends
-- [ ] Project Settings → Domains: `www.webovice.eu` + `webovice.eu` both HTTPS; apex redirects to www (repo now also encodes this)
-- [ ] After deploy: `curl -I https://www.webovice.eu` and verify `content-security-policy`, `strict-transport-security`, `x-content-type-options`, `x-frame-options` / CSP `frame-ancestors`
-- [ ] After deploy: `curl -I https://www.webovice.eu/.well-known/security.txt`
-- [ ] Settings → Deployment Protection: consider protecting **Preview** deployments (Vercel Authentication) so random preview URLs are not public spam relays
-- [ ] Team access: review members; enable 2FA on the Vercel (and GitHub) account
-- [ ] Optional: Vercel Firewall / WAF / bot rate rules if plan allows — especially path `/api/contact`
-
-### Resend
-
-- [ ] Domain `webovice.eu` remains verified
-- [ ] Sending identity `poptavky@webovice.eu` allowed
-- [ ] Review Resend dashboard rate limits / alerts
-- [ ] If any key was ever pasted into chat/logs, **rotate** `RESEND_API_KEY`
-
-### DNS
-
-- [ ] Apex `webovice.eu` and `www` both point as Vercel documents
-- [ ] No stale HTTP-only records
-
-### Optional bot defenses (not implemented — need accounts/secrets)
-
-- [ ] Cloudflare Turnstile (or similar) on the contact form
-- [ ] Distributed rate limit via Upstash Redis / Vercel KV keyed by IP + `/api/contact`
-
-### Git / ops
-
-- [ ] Keep `.vercel/` and `.env*` out of git (already gitignored)
-- [ ] Do not commit real API keys
-- [ ] After merging this audit branch: deploy only when you explicitly approve
+| `npm audit` | **0 vulnerabilities** |
+| `npm run build` (works-studio) | OK |
+| `curl -I https://www.webovice.eu/` | Headers present (HSTS/CSP/XFO/…) |
+| `curl -I https://www.webovice.eu/api/contact` | **405** + security headers + `Allow: POST` |
+| `curl -I …/security.txt` | **200** |
+| Intrusive PHP exploit testing | **Not performed** (policy + N/A) |
+| Production Resend live send flood test | **Not performed** (non-destructive policy) |
+| Vercel dashboard env / team 2FA review | **NOT VERIFIED** (no dashboard session claimed) |
 
 ---
 
-## Deploy readiness
+## Deployment Checklist (when you approve)
 
-**Yes — safe to deploy from a security standpoint**, provided the Manual checklist Domain/ENV items are confirmed.
+1. Confirm Production env: `RESEND_API_KEY`, `CONTACT_EMAIL`.
+2. Confirm Preview protection (Vercel Authentication) if previews must not hit Resend.
+3. Deploy intentionally (`vercel --prod` only after approval).
+4. Post-deploy: `curl -I https://www.webovice.eu` and `/api/contact`.
+5. Smoke-test contact form once (one real email).
+6. Rollback: redeploy previous Vercel deployment alias if needed.
 
-This change set does **not** alter visual design. Contact UX is unchanged; API is stricter (Origin + JSON Content-Type), which is correct for the browser form (`fetch` already sends both).
+---
 
-**Do not push/deploy until you confirm.**
+## Outstanding Actions (manual)
+
+- [ ] Upgrade local Homebrew PHP CLI to **≥ 8.5.12** (`php -v` verify).
+- [ ] Optional: Turnstile / distributed rate limit for `/api/contact`.
+- [ ] Optional: Protect Preview deployments; review Vercel team 2FA.
+- [ ] Optional: Narrow static `Access-Control-Allow-Origin: *` in Vercel if configurable.
+- [ ] Keep `CN/` and secrets out of git (now gitignored).
+- [ ] Rotate `RESEND_API_KEY` if it was ever exposed in chat/logs.
+
+---
+
+## Final Security Status
+
+| Claim | Status |
+| --- | --- |
+| Production WebOvice exposed to PHP2Shell via this app | **VERIFIED SECURE AGAINST TESTED ISSUE** (no PHP SAPI in path) |
+| Contact XSS/header injection in notification email | **REMEDIATED AND TESTED** (escape + sanitize; unit tests) |
+| Contact Origin / Content-Type gates | **REMEDIATED AND TESTED** |
+| npm high vulns (vite / source-map-js) | **REMEDIATED AND TESTED** (`npm audit` clean) |
+| Distributed anti-spam | **MITIGATED** (honeypot + Origin + soft rate limit) |
+| Local PHP CLI patch level | **REQUIRES MANUAL ACTION** |
+| Vercel dashboard secrets / team settings | **NOT VERIFIED** |
+| “100% secure” | **UNRESOLVED / impossible claim** |
+
+### Ready for controlled production deployment?
+
+**Yes, from a code/security standpoint**, after you explicitly approve deploy and confirm ENV / domain checklist items. This audit pass **does not** push or deploy.
